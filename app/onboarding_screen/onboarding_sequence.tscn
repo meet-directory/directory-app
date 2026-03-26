@@ -1,0 +1,115 @@
+[gd_scene load_steps=9 format=3 uid="uid://cwk57ar17s111"]
+
+[ext_resource type="Script" uid="uid://c1gclwgj4s0kr" path="res://app/onboarding_screen/onboarding_sequence.gd" id="1_iow3c"]
+[ext_resource type="Theme" uid="uid://c52euoe38n0nm" path="res://resources/styles/app_theme.tres" id="1_rmgpu"]
+[ext_resource type="PackedScene" uid="uid://de6qbtfyq0uh3" path="res://app/onboarding_screen/onboarding_birthday.tscn" id="2_nqrxi"]
+[ext_resource type="PackedScene" uid="uid://5dirtg6fwdc2" path="res://app/onboarding_screen/onboarding_screen.tscn" id="3_lc4iw"]
+[ext_resource type="PackedScene" uid="uid://ciqhr0cf4dfjy" path="res://app/onboarding_screen/onboarding_email.tscn" id="3_lxccs"]
+[ext_resource type="StyleBox" uid="uid://dvjyuhjb1s8f4" path="res://resources/styles/app_background.tres" id="5_lxccs"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rmgpu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lxccs"]
+font_size = 23
+outline_size = 1
+
+[node name="OnboardingSequence" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_rmgpu")
+script = ExtResource("1_iow3c")
+sequence = Array[PackedScene]([ExtResource("2_nqrxi"), ExtResource("3_lxccs"), ExtResource("3_lc4iw")])
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("5_lxccs")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 2
+
+[node name="Panel" type="Panel" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rmgpu")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="BackButton" type="Button" parent="VBoxContainer/MarginContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Back"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "Account Creation"
+label_settings = SubResource("LabelSettings_lxccs")
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Progress: "
+
+[node name="Panel" type="Panel" parent="VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="Panel2" type="Panel" parent="VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="Panel3" type="Panel" parent="VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+
+[node name="Underlay" type="MarginContainer" parent="VBoxContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="pressed" from="VBoxContainer/MarginContainer/MarginContainer/BackButton" to="." method="_on_back_button_pressed"]

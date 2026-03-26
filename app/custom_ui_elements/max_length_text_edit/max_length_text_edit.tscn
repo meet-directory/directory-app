@@ -1,0 +1,56 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbh7rn8ndc5br"]
+
+[ext_resource type="Script" uid="uid://bx4hv65weu3yj" path="res://app/custom_ui_elements/max_length_text_edit/max_length_text_edit.gd" id="1_2ffkc"]
+[ext_resource type="LabelSettings" uid="uid://crec8tr40vb4i" path="res://resources/styles/subtle_grey_text_label_setting.tres" id="2_xuip7"]
+
+[node name="MaxLengthTextEdit" type="MarginContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 172.0
+grow_horizontal = 2
+script = ExtResource("1_2ffkc")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="TextEdit" type="TextEdit" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+mouse_filter = 1
+placeholder_text = "placeholder"
+wrap_mode = 1
+caret_multiple = false
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label4" type="Label" parent="VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+text = "chars left: "
+label_settings = ExtResource("2_xuip7")
+horizontal_alignment = 2
+
+[node name="CharsUsedLabel" type="Label" parent="VBoxContainer/HBoxContainer4"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "300"
+label_settings = ExtResource("2_xuip7")
+horizontal_alignment = 2
+
+[node name="Label3" type="Label" parent="VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "max length:"
+label_settings = ExtResource("2_xuip7")
+horizontal_alignment = 2
+
+[node name="MaxLenLabel" type="Label" parent="VBoxContainer/HBoxContainer4"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+text = "300"
+label_settings = ExtResource("2_xuip7")
+horizontal_alignment = 2
+
+[connection signal="text_changed" from="VBoxContainer/TextEdit" to="." method="_on_text_edit_text_changed"]

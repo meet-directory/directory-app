@@ -1,0 +1,87 @@
+[gd_scene load_steps=6 format=3 uid="uid://bu6eme21rb3ee"]
+
+[ext_resource type="Script" uid="uid://bvrersw68y1h6" path="res://app/main_screen/profile_explorer/search_tool/report_menu.gd" id="1_31vg6"]
+[ext_resource type="PackedScene" uid="uid://bihm11krr11rx" path="res://app/main_screen/reporting/report_tag_menu.tscn" id="2_nu1cv"]
+[ext_resource type="Texture2D" uid="uid://jhyqp7qwpqn3" path="res://resources/icons/9-patch-bubble.png" id="3_ocfat"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_31vg6"]
+bg_color = Color(0.11764706, 0.11764706, 0.11764706, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.188, 0.182, 0.2, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nu1cv"]
+bg_color = Color(0.11764706, 0.11764706, 0.11764706, 1)
+
+[node name="TagReportButton" type="Control"]
+z_index = 3000
+layout_mode = 3
+anchors_preset = 0
+offset_left = 460.0
+offset_top = 540.0
+offset_right = 460.0
+offset_bottom = 540.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_31vg6")
+menu_scene = ExtResource("2_nu1cv")
+metadata/_edit_use_anchors_ = true
+
+[node name="ReportMarginContainer" type="MarginContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -58.0
+offset_top = -72.0
+offset_right = 58.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ReportMarginContainer"]
+visible = false
+modulate = Color(0.33521694, 0.31068057, 0.32021576, 1)
+layout_mode = 2
+texture = ExtResource("3_ocfat")
+patch_margin_left = 29
+patch_margin_top = 31
+patch_margin_right = 47
+patch_margin_bottom = 41
+
+[node name="Panel" type="Panel" parent="ReportMarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_31vg6")
+
+[node name="Control" type="Control" parent="ReportMarginContainer"]
+layout_mode = 2
+
+[node name="Panel2" type="Panel" parent="ReportMarginContainer/Control"]
+layout_mode = 0
+offset_left = 53.999992
+offset_top = 47.000008
+offset_right = 79.57427
+offset_bottom = 67.60197
+rotation = 0.7853982
+theme_override_styles/panel = SubResource("StyleBoxFlat_nu1cv")
+
+[node name="MarginContainer" type="MarginContainer" parent="ReportMarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="Button" type="Button" parent="ReportMarginContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Report Tag?"
+
+[connection signal="pressed" from="ReportMarginContainer/MarginContainer/Button" to="." method="_on_button_pressed"]

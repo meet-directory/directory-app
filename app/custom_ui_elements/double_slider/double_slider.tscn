@@ -1,0 +1,72 @@
+[gd_scene load_steps=5 format=3 uid="uid://dgf77p8v8asvf"]
+
+[ext_resource type="Script" uid="uid://111571e340q7" path="res://app/custom_ui_elements/double_slider/track.gd" id="1_8ueks"]
+[ext_resource type="Script" uid="uid://q1xjn8rngbn8" path="res://app/custom_ui_elements/double_slider/double_slider.gd" id="1_rppgj"]
+[ext_resource type="PackedScene" uid="uid://bck6dyxamdquj" path="res://app/custom_ui_elements/double_slider/grabber.tscn" id="2_8ueks"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ueks"]
+bg_color = Color(0.3403, 0.3403, 0.41, 1)
+
+[node name="DoubleSlider" type="MarginContainer"]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -15.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_bottom = 12
+script = ExtResource("1_rppgj")
+
+[node name="Track" type="MarginContainer" parent="." node_paths=PackedStringArray("double_slider", "left_slider", "right_slider")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+mouse_filter = 0
+theme_override_constants/margin_top = 11
+theme_override_constants/margin_bottom = 11
+script = ExtResource("1_8ueks")
+double_slider = NodePath("..")
+left_slider = NodePath("../GrabberLeft")
+right_slider = NodePath("../GrabberRight")
+
+[node name="Panel" type="Panel" parent="Track"]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="SelectedTrack" type="Control" parent="Track"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Panel" type="Panel" parent="Track/SelectedTrack"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8ueks")
+
+[node name="GrabberLeft" parent="." node_paths=PackedStringArray("track") instance=ExtResource("2_8ueks")]
+unique_name_in_owner = true
+layout_mode = 2
+track = NodePath("../Track")
+is_left_side = true
+
+[node name="GrabberRight" parent="." node_paths=PackedStringArray("track") instance=ExtResource("2_8ueks")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+track = NodePath("../Track")
+
+[connection signal="draw" from="Track" to="Track" method="_on_draw"]
+[connection signal="grabber_moved" from="Track" to="." method="_on_track_grabber_moved"]
+[connection signal="button_down" from="GrabberLeft" to="Track" method="_on_grabber_left_button_down"]
+[connection signal="button_up" from="GrabberLeft" to="Track" method="_on_grabber_left_button_up"]
+[connection signal="button_down" from="GrabberRight" to="Track" method="_on_grabber_right_button_down"]
+[connection signal="button_up" from="GrabberRight" to="Track" method="_on_grabber_right_button_up"]

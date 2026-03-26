@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://hyvsanpdkxf7"]
+
+[ext_resource type="Script" uid="uid://b4nmfnaeluowr" path="res://app/custom_ui_elements/relative_margin_container.gd" id="1_6x6f1"]
+
+[node name="RelativeMarginTest" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RelativeMarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 413
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 358
+theme_override_constants/margin_bottom = 0
+script = ExtResource("1_6x6f1")
+left = 0.44999999999999996
+right = 0.39
+metadata/_custom_type_script = "uid://b4nmfnaeluowr"
+
+[node name="Panel" type="Panel" parent="RelativeMarginContainer"]
+layout_mode = 2

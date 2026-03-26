@@ -1,0 +1,322 @@
+[gd_scene load_steps=20 format=3 uid="uid://c3wl3yj0jsrnu"]
+
+[ext_resource type="Script" uid="uid://dw3xjbpltp0sc" path="res://app/main_screen/tag_selector_popup/tag_selector_popup.gd" id="1_kohni"]
+[ext_resource type="PackedScene" uid="uid://ds8fo6ghwa7vd" path="res://app/main_screen/profile_explorer/search_tool/tag_control.tscn" id="2_8pxvg"]
+[ext_resource type="Texture2D" uid="uid://761osbqsgtuu" path="res://resources/icons/search2.svg" id="2_h3yb1"]
+[ext_resource type="Script" uid="uid://cg1kfg1oqrnic" path="res://app/custom_ui_elements/virtual_keyboard_adjuster.gd" id="2_jpift"]
+[ext_resource type="Theme" uid="uid://c52euoe38n0nm" path="res://resources/styles/app_theme.tres" id="2_mjj0j"]
+[ext_resource type="Script" uid="uid://c4pwj5xjm83y2" path="res://app/main_screen/tag_selector_popup/close_button.gd" id="3_eynw2"]
+[ext_resource type="Script" uid="uid://b4nmfnaeluowr" path="res://app/custom_ui_elements/relative_margin_container.gd" id="3_hhfj1"]
+[ext_resource type="PackedScene" uid="uid://ced6q4rwlkjo3" path="res://app/main_screen/tag_selector_popup/tag_category_explorer.tscn" id="4_2qwgq"]
+[ext_resource type="PackedScene" uid="uid://h1j2bayawtao" path="res://app/main_screen/tag_selector_popup/tag_editor.tscn" id="4_mflr0"]
+[ext_resource type="LabelSettings" uid="uid://crec8tr40vb4i" path="res://resources/styles/subtle_grey_text_label_setting.tres" id="6_xglkq"]
+[ext_resource type="Script" uid="uid://bo5p503damliu" path="res://app/main_screen/tag_selector_popup/selected_tag_container.gd" id="9_eiwif"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kohni"]
+bg_color = Color(0.25882354, 0.25882354, 0.25882354, 0.24705882)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0751f"]
+bg_color = Color(0.27715763, 0.28589854, 0.33284497, 1)
+border_width_left = 2
+border_width_top = 1
+border_width_right = 2
+border_width_bottom = 4
+border_color = Color(0.18306258, 0.2035673, 0.26321578, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8pxvg"]
+content_margin_left = 5.0
+content_margin_right = 5.0
+bg_color = Color(0.07683582, 0.07683582, 0.0768358, 1)
+border_width_left = 1
+border_width_top = 2
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8pxvg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_kohni"]
+font_size = 12
+font_color = Color(0.6955032, 0.6955031, 0.6955031, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eynw2"]
+bg_color = Color(0.18431373, 0.18431373, 0.18431373, 0.28235295)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xglkq"]
+bg_color = Color(0.1672, 0.17099999, 0.19, 0.21960784)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0751f"]
+
+[node name="TagSelectorPopup" type="CanvasLayer"]
+layer = 5
+script = ExtResource("1_kohni")
+enable_add_tag_feature = true
+
+[node name="VirtualKeyboardAdjuster" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_mjj0j")
+script = ExtResource("2_jpift")
+metadata/_custom_type_script = "uid://cg1kfg1oqrnic"
+
+[node name="MarginContainer" type="Control" parent="VirtualKeyboardAdjuster"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Panel" type="Panel" parent="VirtualKeyboardAdjuster/MarginContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_kohni")
+
+[node name="RelativeMarginContainer" type="MarginContainer" parent="VirtualKeyboardAdjuster/MarginContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 21
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 0
+script = ExtResource("3_hhfj1")
+top = 0.02
+left = 0.02
+right = 0.02
+metadata/_custom_type_script = "uid://b4nmfnaeluowr"
+
+[node name="MiddleMarginContainer" type="MarginContainer" parent="VirtualKeyboardAdjuster/MarginContainer/RelativeMarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="VirtualKeyboardAdjuster/MarginContainer/RelativeMarginContainer/MiddleMarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0751f")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VirtualKeyboardAdjuster/MarginContainer/RelativeMarginContainer/MiddleMarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VirtualKeyboardAdjuster/MarginContainer/RelativeMarginContainer/MiddleMarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "🏷️Tag Explorer"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VirtualKeyboardAdjuster/MarginContainer/RelativeMarginContainer/MiddleMarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VirtualKeyboardAdjuster/MarginContainer/RelativeMarginContainer/MiddleMarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="SearchBar" type="LineEdit" parent="VirtualKeyboardAdjuster/MarginContainer/RelativeMarginContainer/MiddleMarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_8pxvg")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8pxvg")
+placeholder_text = "search tags"
+keep_editing_on_text_submit = true
+emoji_menu_enabled = false
+right_icon = ExtResource("2_h3yb1")
+caret_blink = true
+
+[node name="MainScrollContainer" type="ScrollContainer" parent="VirtualKeyboardAdjuster/MarginContainer/RelativeMarginContainer/MiddleMarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VirtualKeyboardAdjuster/MarginContainer/RelativeMarginContainer/MiddleMarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MainScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TabContainer" type="TabContainer" parent="VirtualKeyboardAdjuster/MarginContainer/RelativeMarginContainer/MiddleMarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MainScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+current_tab = 1
+tabs_visible = false
+
+[node name="TagSearchScroller" type="ScrollContainer" parent="VirtualKeyboardAdjuster/MarginContainer/RelativeMarginContainer/MiddleMarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MainScrollContainer/VBoxContainer/TabContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+metadata/_tab_index = 0
+
+[node name="VSplitContainer" type="VSplitContainer" parent="VirtualKeyboardAdjuster/MarginContainer/RelativeMarginContainer/MiddleMarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MainScrollContainer/VBoxContainer/TabContainer/TagSearchScroller"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+dragging_enabled = false
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VirtualKeyboardAdjuster/MarginContainer/RelativeMarginContainer/MiddleMarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MainScrollContainer/VBoxContainer/TabContainer/TagSearchScroller/VSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TagList" type="VBoxContainer" parent="VirtualKeyboardAdjuster/MarginContainer/RelativeMarginContainer/MiddleMarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MainScrollContainer/VBoxContainer/TabContainer/TagSearchScroller/VSplitContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="FilterContainer" type="MarginContainer" parent="VirtualKeyboardAdjuster/MarginContainer/RelativeMarginContainer/MiddleMarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MainScrollContainer/VBoxContainer/TabContainer/TagSearchScroller/VSplitContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VirtualKeyboardAdjuster/MarginContainer/RelativeMarginContainer/MiddleMarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MainScrollContainer/VBoxContainer/TabContainer/TagSearchScroller/VSplitContainer/VBoxContainer2/FilterContainer"]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="VirtualKeyboardAdjuster/MarginContainer/RelativeMarginContainer/MiddleMarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MainScrollContainer/VBoxContainer/TabContainer/TagSearchScroller/VSplitContainer/VBoxContainer2/FilterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VirtualKeyboardAdjuster/MarginContainer/RelativeMarginContainer/MiddleMarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MainScrollContainer/VBoxContainer/TabContainer/TagSearchScroller/VSplitContainer/VBoxContainer2/FilterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Similar tags in other categories"
+label_settings = SubResource("LabelSettings_kohni")
+autowrap_mode = 2
+
+[node name="OtherCategoryTagList" type="VBoxContainer" parent="VirtualKeyboardAdjuster/MarginContainer/RelativeMarginContainer/MiddleMarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MainScrollContainer/VBoxContainer/TabContainer/TagSearchScroller/VSplitContainer/VBoxContainer2/FilterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="GreyOut" type="Panel" parent="VirtualKeyboardAdjuster/MarginContainer/RelativeMarginContainer/MiddleMarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MainScrollContainer/VBoxContainer/TabContainer/TagSearchScroller/VSplitContainer/VBoxContainer2/FilterContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_eynw2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VirtualKeyboardAdjuster/MarginContainer/RelativeMarginContainer/MiddleMarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MainScrollContainer/VBoxContainer/TabContainer/TagSearchScroller/VSplitContainer"]
+visible = false
+layout_mode = 2
+
+[node name="CreateTagContainer" type="MarginContainer" parent="VirtualKeyboardAdjuster/MarginContainer/RelativeMarginContainer/MiddleMarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MainScrollContainer/VBoxContainer/TabContainer/TagSearchScroller/VSplitContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_right = 3
+
+[node name="VSplitContainer" type="VSplitContainer" parent="VirtualKeyboardAdjuster/MarginContainer/RelativeMarginContainer/MiddleMarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MainScrollContainer/VBoxContainer/TabContainer/TagSearchScroller/VSplitContainer/VBoxContainer/CreateTagContainer"]
+layout_mode = 2
+dragging_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VirtualKeyboardAdjuster/MarginContainer/RelativeMarginContainer/MiddleMarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MainScrollContainer/VBoxContainer/TabContainer/TagSearchScroller/VSplitContainer/VBoxContainer/CreateTagContainer/VSplitContainer"]
+layout_mode = 2
+
+[node name="HSeparator2" type="HSeparator" parent="VirtualKeyboardAdjuster/MarginContainer/RelativeMarginContainer/MiddleMarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MainScrollContainer/VBoxContainer/TabContainer/TagSearchScroller/VSplitContainer/VBoxContainer/CreateTagContainer/VSplitContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HFlowContainer" parent="VirtualKeyboardAdjuster/MarginContainer/RelativeMarginContainer/MiddleMarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MainScrollContainer/VBoxContainer/TabContainer/TagSearchScroller/VSplitContainer/VBoxContainer/CreateTagContainer/VSplitContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="NotFoundTag" parent="VirtualKeyboardAdjuster/MarginContainer/RelativeMarginContainer/MiddleMarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MainScrollContainer/VBoxContainer/TabContainer/TagSearchScroller/VSplitContainer/VBoxContainer/CreateTagContainer/VSplitContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_8pxvg")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VirtualKeyboardAdjuster/MarginContainer/RelativeMarginContainer/MiddleMarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MainScrollContainer/VBoxContainer/TabContainer/TagSearchScroller/VSplitContainer/VBoxContainer/CreateTagContainer/VSplitContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "not found"
+label_settings = ExtResource("6_xglkq")
+
+[node name="AddTagButton" type="Button" parent="VirtualKeyboardAdjuster/MarginContainer/RelativeMarginContainer/MiddleMarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MainScrollContainer/VBoxContainer/TabContainer/TagSearchScroller/VSplitContainer/VBoxContainer/CreateTagContainer/VSplitContainer/VBoxContainer"]
+layout_mode = 2
+text = "create new tag"
+
+[node name="TagEditor" parent="VirtualKeyboardAdjuster/MarginContainer/RelativeMarginContainer/MiddleMarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MainScrollContainer/VBoxContainer/TabContainer/TagSearchScroller/VSplitContainer/VBoxContainer/CreateTagContainer/VSplitContainer" node_paths=PackedStringArray("container") instance=ExtResource("4_mflr0")]
+unique_name_in_owner = true
+layout_mode = 2
+container = NodePath("../../../../../..")
+
+[node name="TagExplorer" type="ScrollContainer" parent="VirtualKeyboardAdjuster/MarginContainer/RelativeMarginContainer/MiddleMarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MainScrollContainer/VBoxContainer/TabContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="TagCategoryExplorer" parent="VirtualKeyboardAdjuster/MarginContainer/RelativeMarginContainer/MiddleMarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MainScrollContainer/VBoxContainer/TabContainer/TagExplorer" instance=ExtResource("4_2qwgq")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="SelectedTagContainer" type="MarginContainer" parent="VirtualKeyboardAdjuster/MarginContainer/RelativeMarginContainer/MiddleMarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MainScrollContainer/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("9_eiwif")
+
+[node name="Panel" type="Panel" parent="VirtualKeyboardAdjuster/MarginContainer/RelativeMarginContainer/MiddleMarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MainScrollContainer/VBoxContainer/SelectedTagContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VirtualKeyboardAdjuster/MarginContainer/RelativeMarginContainer/MiddleMarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MainScrollContainer/VBoxContainer/SelectedTagContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VirtualKeyboardAdjuster/MarginContainer/RelativeMarginContainer/MiddleMarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MainScrollContainer/VBoxContainer/SelectedTagContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Selected Tags"
+label_settings = ExtResource("6_xglkq")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VirtualKeyboardAdjuster/MarginContainer/RelativeMarginContainer/MiddleMarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MainScrollContainer/VBoxContainer/SelectedTagContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="SelectedTagContainer" type="HFlowContainer" parent="VirtualKeyboardAdjuster/MarginContainer/RelativeMarginContainer/MiddleMarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MainScrollContainer/VBoxContainer/SelectedTagContainer/VBoxContainer2/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Panel2" type="Panel" parent="VirtualKeyboardAdjuster/MarginContainer/RelativeMarginContainer/MiddleMarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MainScrollContainer/VBoxContainer/SelectedTagContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xglkq")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VirtualKeyboardAdjuster/MarginContainer/RelativeMarginContainer/MiddleMarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="CloseButton" type="Button" parent="VirtualKeyboardAdjuster/MarginContainer/RelativeMarginContainer/MiddleMarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0751f")
+text = "cancel"
+text_overrun_behavior = 1
+script = ExtResource("3_eynw2")
+
+[node name="SaveTags" type="Button" parent="VirtualKeyboardAdjuster/MarginContainer/RelativeMarginContainer/MiddleMarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Save Tags"
+text_overrun_behavior = 1
+
+[node name="Control" type="Control" parent="VirtualKeyboardAdjuster/MarginContainer/RelativeMarginContainer/MiddleMarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 1
+
+[connection signal="text_changed" from="VirtualKeyboardAdjuster/MarginContainer/RelativeMarginContainer/MiddleMarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SearchBar" to="." method="_on_search_bar_text_changed"]
+[connection signal="text_submitted" from="VirtualKeyboardAdjuster/MarginContainer/RelativeMarginContainer/MiddleMarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SearchBar" to="." method="_on_search_bar_text_submitted"]
+[connection signal="pressed" from="VirtualKeyboardAdjuster/MarginContainer/RelativeMarginContainer/MiddleMarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MainScrollContainer/VBoxContainer/TabContainer/TagSearchScroller/VSplitContainer/VBoxContainer/CreateTagContainer/VSplitContainer/VBoxContainer/AddTagButton" to="." method="_on_add_tag_button_pressed"]
+[connection signal="canceled" from="VirtualKeyboardAdjuster/MarginContainer/RelativeMarginContainer/MiddleMarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MainScrollContainer/VBoxContainer/TabContainer/TagSearchScroller/VSplitContainer/VBoxContainer/CreateTagContainer/VSplitContainer/TagEditor" to="." method="_on_tag_editor_canceled"]
+[connection signal="closed" from="VirtualKeyboardAdjuster/MarginContainer/RelativeMarginContainer/MiddleMarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MainScrollContainer/VBoxContainer/TabContainer/TagSearchScroller/VSplitContainer/VBoxContainer/CreateTagContainer/VSplitContainer/TagEditor" to="." method="_on_tag_editor_closed"]
+[connection signal="tag_tapped" from="VirtualKeyboardAdjuster/MarginContainer/RelativeMarginContainer/MiddleMarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MainScrollContainer/VBoxContainer/TabContainer/TagExplorer/TagCategoryExplorer" to="." method="_on_tag_category_explorer_tag_tapped"]
+[connection signal="pressed" from="VirtualKeyboardAdjuster/MarginContainer/RelativeMarginContainer/MiddleMarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="VirtualKeyboardAdjuster/MarginContainer/RelativeMarginContainer/MiddleMarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/SaveTags" to="." method="_on_add_tags_pressed"]

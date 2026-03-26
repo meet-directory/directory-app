@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://ceuv06iwksn2x"]
+
+[ext_resource type="Script" uid="uid://1mw3nw83rlf5" path="res://app/main_screen/profile/photo_viewer/photo_viewer_index_button.gd" id="1_mgvob"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mgvob"]
+bg_color = Color(0.39308554, 0.39308554, 0.39308533, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7vo5x"]
+bg_color = Color(0.5409904, 0.54099053, 0.5409904, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_canwm"]
+bg_color = Color(0.39308554, 0.39308554, 0.39308533, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="PhotoViewerIndex" type="Button"]
+offset_right = 5.0
+offset_bottom = 23.0
+scale = Vector2(0.25, 0.25)
+theme_override_styles/normal = SubResource("StyleBoxFlat_mgvob")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7vo5x")
+theme_override_styles/hover = SubResource("StyleBoxFlat_canwm")
+toggle_mode = true
+text = "    "
+script = ExtResource("1_mgvob")

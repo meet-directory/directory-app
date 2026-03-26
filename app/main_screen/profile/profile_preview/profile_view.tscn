@@ -1,0 +1,116 @@
+[gd_scene load_steps=8 format=3 uid="uid://cr731ljnp80m6"]
+
+[ext_resource type="Script" uid="uid://lo38u26sfmrm" path="res://app/main_screen/profile/profile_preview/profile_view.gd" id="1_juomk"]
+[ext_resource type="StyleBox" uid="uid://fh3x8tnulkac" path="res://resources/styles/profile_panel_background.tres" id="2_omvvx"]
+[ext_resource type="PackedScene" uid="uid://bwn5vy8firy3" path="res://app/main_screen/profile/photo_viewer/photo_viewer.tscn" id="2_xdqhq"]
+[ext_resource type="PackedScene" uid="uid://cn5xs71ca846w" path="res://app/main_screen/profile/profile_preview/tag_container.tscn" id="3_xdqhq"]
+[ext_resource type="PackedScene" uid="uid://c03ewan0er1vt" path="res://app/main_screen/profile/profile_preview/profile_match_options.tscn" id="5_lyk1e"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_c2q5j"]
+font_size = 19
+font_color = Color(0.73950005, 0.79843336, 0.85, 1)
+outline_size = 1
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(-1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_guhvx"]
+font_color = Color(0.6509804, 0.7058824, 0.7490196, 1)
+
+[node name="Profile" type="MarginContainer"]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 320.0
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_juomk")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_omvvx")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="ContentClipper" type="MarginContainer" parent="MarginContainer/MarginContainer"]
+clip_contents = true
+layout_mode = 2
+theme_override_constants/margin_left = 7
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_right = 7
+theme_override_constants/margin_bottom = 7
+
+[node name="AxisLockedScrollContainer" type="ScrollContainer" parent="MarginContainer/MarginContainer/ContentClipper"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer/ContentClipper/AxisLockedScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PhotoViewer" parent="MarginContainer/MarginContainer/ContentClipper/AxisLockedScrollContainer/VBoxContainer" instance=ExtResource("2_xdqhq")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/MarginContainer/ContentClipper/AxisLockedScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="MarginContainer/MarginContainer/ContentClipper/AxisLockedScrollContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Name"
+label_settings = SubResource("LabelSettings_c2q5j")
+
+[node name="AgeLabel" type="Label" parent="MarginContainer/MarginContainer/ContentClipper/AxisLockedScrollContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "32"
+label_settings = SubResource("LabelSettings_c2q5j")
+horizontal_alignment = 2
+
+[node name="PersonalTags" parent="MarginContainer/MarginContainer/ContentClipper/AxisLockedScrollContainer/VBoxContainer" instance=ExtResource("3_xdqhq")]
+unique_name_in_owner = true
+layout_mode = 2
+title = "💁 I am"
+
+[node name="RelationshipTags" parent="MarginContainer/MarginContainer/ContentClipper/AxisLockedScrollContainer/VBoxContainer" instance=ExtResource("3_xdqhq")]
+unique_name_in_owner = true
+layout_mode = 2
+title = "🧑‍🤝‍🧑 Relationship Goals"
+
+[node name="DescriptionLabel" type="Label" parent="MarginContainer/MarginContainer/ContentClipper/AxisLockedScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Description"
+label_settings = SubResource("LabelSettings_guhvx")
+autowrap_mode = 3
+
+[node name="DesireTags" parent="MarginContainer/MarginContainer/ContentClipper/AxisLockedScrollContainer/VBoxContainer" instance=ExtResource("3_xdqhq")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+title = "😏 Interests"
+
+[node name="OtherTags" parent="MarginContainer/MarginContainer/ContentClipper/AxisLockedScrollContainer/VBoxContainer" instance=ExtResource("3_xdqhq")]
+unique_name_in_owner = true
+layout_mode = 2
+title = "🤩 Interests"
+
+[node name="MatchOptions" parent="MarginContainer/MarginContainer/ContentClipper/AxisLockedScrollContainer/VBoxContainer" instance=ExtResource("5_lyk1e")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_constants/margin_top = 20

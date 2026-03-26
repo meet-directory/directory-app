@@ -1,0 +1,96 @@
+[gd_scene load_steps=7 format=3 uid="uid://rlwqcw06icrj"]
+
+[ext_resource type="StyleBox" uid="uid://fh3x8tnulkac" path="res://resources/styles/profile_panel_background.tres" id="1_jmtp6"]
+[ext_resource type="Script" uid="uid://ct8gp1n5q1v8f" path="res://app/main_screen/messages/like_request_pane.gd" id="1_mmwii"]
+[ext_resource type="Texture2D" uid="uid://btmnrhfcdxyia" path="res://resources/icons/no-photo.png" id="3_mmwii"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c0ogf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mmwii"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.38542253, 0.47425246, 0.38013417, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 4
+border_color = Color(0.14406252, 0.14406258, 0.14406243, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1aw0m"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.6640859, 0.3295607, 0.3373069, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 4
+border_color = Color(0.14406252, 0.14406258, 0.14406243, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_bottom = 2.0
+
+[node name="LikeRequestPane" type="MarginContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 69.0
+grow_horizontal = 2
+script = ExtResource("1_mmwii")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("1_jmtp6")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 6
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="ViewProfileButton" type="Button" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/icon_max_width = 40
+text = "Username User"
+icon = ExtResource("3_mmwii")
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 13
+theme_override_styles/separator = SubResource("StyleBoxEmpty_c0ogf")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AcceptButton" type="Button" parent="MarginContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_mmwii")
+text = "Accept"
+
+[node name="DeclineButton" type="Button" parent="MarginContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_1aw0m")
+text = "Decline"
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/ViewProfileButton" to="." method="_on_view_profile_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/HBoxContainer/AcceptButton" to="." method="_on_accept_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/HBoxContainer/DeclineButton" to="." method="_on_decline_button_pressed"]

@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpfm4eyc412ma"]
+
+[ext_resource type="Script" uid="uid://d3qfxdqrumhum" path="res://app/main_screen/settings/tag_editor_row.gd" id="1_2q4sp"]
+[ext_resource type="PackedScene" uid="uid://ds8fo6ghwa7vd" path="res://app/main_screen/profile_explorer/search_tool/tag_control.tscn" id="1_e80hb"]
+
+[node name="TagEditorRow" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2q4sp")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="RemoveButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+tooltip_text = "Remove Tag"
+text = "x"
+
+[node name="Tag" parent="HBoxContainer" instance=ExtResource("1_e80hb")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="OptionButton" type="OptionButton" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+selected = 0
+item_count = 4
+popup/item_0/text = "Personal"
+popup/item_0/id = 0
+popup/item_1/text = "Relationship Type"
+popup/item_1/id = 1
+popup/item_2/text = "Desire"
+popup/item_2/id = 2
+popup/item_3/text = "Other"
+popup/item_3/id = 3
+
+[connection signal="pressed" from="HBoxContainer/RemoveButton" to="." method="_on_remove_button_pressed"]
+[connection signal="item_selected" from="HBoxContainer/OptionButton" to="." method="_on_option_button_item_selected"]

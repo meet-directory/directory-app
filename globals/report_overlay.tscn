@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxj8yhjdeq5dw"]
+
+[ext_resource type="Script" uid="uid://bgcwwsy2ehdhp" path="res://globals/report_overlay.gd" id="1_a8457"]
+[ext_resource type="Theme" uid="uid://c52euoe38n0nm" path="res://resources/styles/app_theme.tres" id="2_oyvn1"]
+[ext_resource type="StyleBox" uid="uid://7s6g47fwt5ve" path="res://resources/styles/greyed_background_panel.tres" id="3_10dne"]
+[ext_resource type="PackedScene" uid="uid://bu6eme21rb3ee" path="res://app/main_screen/reporting/tag_report_button.tscn" id="3_a8457"]
+
+[node name="ReportOverlay" type="CanvasLayer"]
+layer = 50
+script = ExtResource("1_a8457")
+tag_report_menu_scene = ExtResource("3_a8457")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("2_oyvn1")
+
+[node name="GreyPanel" type="Button" parent="MarginContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_styles/normal = ExtResource("3_10dne")
+theme_override_styles/pressed = ExtResource("3_10dne")
+theme_override_styles/hover = ExtResource("3_10dne")
+theme_override_styles/disabled = ExtResource("3_10dne")
+
+[node name="Menus" type="Control" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[connection signal="pressed" from="MarginContainer/GreyPanel" to="." method="_on_grey_panel_pressed"]

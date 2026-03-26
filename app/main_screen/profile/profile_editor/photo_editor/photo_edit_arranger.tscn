@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://407tgnvratx3"]
+
+[ext_resource type="Script" uid="uid://wmv4c7ukpr02" path="res://app/main_screen/profile/profile_editor/photo_editor/photo_edit_arranger.gd" id="1_5r5ip"]
+[ext_resource type="PackedScene" uid="uid://bbyxfs4lar07c" path="res://app/main_screen/profile/profile_editor/photo_editor/photo_edit_button.tscn" id="1_a5lch"]
+
+[node name="PhotoViewer" type="HFlowContainer"]
+offset_right = 524.0
+offset_bottom = 128.0
+script = ExtResource("1_5r5ip")
+
+[node name="Button" parent="." instance=ExtResource("1_a5lch")]
+layout_mode = 2
+
+[node name="Button2" parent="." instance=ExtResource("1_a5lch")]
+layout_mode = 2
+
+[node name="Button3" parent="." instance=ExtResource("1_a5lch")]
+layout_mode = 2
+
+[node name="Button4" parent="." instance=ExtResource("1_a5lch")]
+layout_mode = 2

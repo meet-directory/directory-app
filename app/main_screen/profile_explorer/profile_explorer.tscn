@@ -1,0 +1,147 @@
+[gd_scene load_steps=9 format=3 uid="uid://cx4lbwt3umi84"]
+
+[ext_resource type="Script" uid="uid://crwt3567ph2f1" path="res://app/main_screen/profile_explorer/profile_explorer.gd" id="1_ht752"]
+[ext_resource type="PackedScene" uid="uid://cr731ljnp80m6" path="res://app/main_screen/profile/profile_preview/profile_view.tscn" id="2_or637"]
+[ext_resource type="PackedScene" uid="uid://c8yiorv412rn5" path="res://app/custom_ui_elements/drop_down_menu/drop_down_menu.tscn" id="3_37nw0"]
+[ext_resource type="Theme" uid="uid://c52euoe38n0nm" path="res://resources/styles/app_theme.tres" id="3_j8q7b"]
+[ext_resource type="PackedScene" uid="uid://eeutadd3g8ww" path="res://app/main_screen/profile_explorer/search_tool/search_parameter_tool.tscn" id="3_or637"]
+[ext_resource type="PackedScene" uid="uid://cphg263xqxvj0" path="res://app/main_screen/profile_explorer/profile_scroller/profile_scroller.tscn" id="6_gq7jo"]
+[ext_resource type="Script" uid="uid://b4nmfnaeluowr" path="res://app/custom_ui_elements/relative_margin_container.gd" id="6_pgkf3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_or637"]
+bg_color = Color(0.34987462, 0.3201513, 0.3412211, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="ProfileExplorer" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ht752")
+profile_viewer_scene = ExtResource("2_or637")
+
+[node name="SearchMenu" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+
+[node name="MarginContainer2" type="MarginContainer" parent="SearchMenu"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 53.0
+grow_horizontal = 2
+theme = ExtResource("3_j8q7b")
+
+[node name="Panel" type="Panel" parent="SearchMenu/MarginContainer2"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_or637")
+
+[node name="MarginContainer" type="MarginContainer" parent="SearchMenu/MarginContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SearchMenu/MarginContainer2/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SearchMenu/MarginContainer2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="RefreshSearchResultButton" type="Button" parent="SearchMenu/MarginContainer2/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "🔄"
+
+[node name="SearchToggleButton" type="Button" parent="SearchMenu/MarginContainer2/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Edit Search Criteria"
+text_overrun_behavior = 2
+
+[node name="DropDownMenu" parent="SearchMenu/MarginContainer2/MarginContainer/VBoxContainer" node_paths=PackedStringArray("toggle_button", "collapsable_content") instance=ExtResource("3_37nw0")]
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 2
+toggle_button = NodePath("../HBoxContainer/SearchToggleButton")
+collapsable_content = NodePath("SearchParamScrollContainer/MarginContainer")
+
+[node name="SearchParamScrollContainer" type="ScrollContainer" parent="SearchMenu/MarginContainer2/MarginContainer/VBoxContainer/DropDownMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="SearchMenu/MarginContainer2/MarginContainer/VBoxContainer/DropDownMenu/SearchParamScrollContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SearchParamList" parent="SearchMenu/MarginContainer2/MarginContainer/VBoxContainer/DropDownMenu/SearchParamScrollContainer/MarginContainer" instance=ExtResource("3_or637")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="SearchButton" type="Button" parent="SearchMenu/MarginContainer2/MarginContainer/VBoxContainer/DropDownMenu/SearchParamScrollContainer/MarginContainer/SearchParamList"]
+layout_mode = 2
+text = "Search Users"
+
+[node name="Control" type="Control" parent="SearchMenu/MarginContainer2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Page" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="PlaceHolder" type="MarginContainer" parent="Page"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 10
+
+[node name="Button" type="Button" parent="Page/PlaceHolder"]
+layout_mode = 2
+text = "ed"
+
+[node name="ProfileScroller" parent="Page" instance=ExtResource("6_gq7jo")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+
+[node name="SuspendedView" type="MarginContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+script = ExtResource("6_pgkf3")
+left = 0.2
+right = 0.2
+metadata/_custom_type_script = "uid://b4nmfnaeluowr"
+
+[node name="Label" type="Label" parent="SuspendedView"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+text = "Browsing is disabled for suspended accounts. 
+Unsuspend your account in the settings"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[connection signal="pressed" from="SearchMenu/MarginContainer2/MarginContainer/VBoxContainer/HBoxContainer/RefreshSearchResultButton" to="." method="_on_refresh_search_result_button_pressed"]
+[connection signal="pressed" from="SearchMenu/MarginContainer2/MarginContainer/VBoxContainer/HBoxContainer/RefreshSearchResultButton" to="SearchMenu/MarginContainer2/MarginContainer/VBoxContainer/DropDownMenu" method="_drop_down_if_open"]
+[connection signal="toggled" from="SearchMenu/MarginContainer2/MarginContainer/VBoxContainer/HBoxContainer/SearchToggleButton" to="." method="_on_search_toggle_button_toggled"]
+[connection signal="pressed" from="SearchMenu/MarginContainer2/MarginContainer/VBoxContainer/DropDownMenu/SearchParamScrollContainer/MarginContainer/SearchParamList/SearchButton" to="." method="_on_search_button_pressed"]
+[connection signal="pressed" from="SearchMenu/MarginContainer2/MarginContainer/VBoxContainer/DropDownMenu/SearchParamScrollContainer/MarginContainer/SearchParamList/SearchButton" to="SearchMenu/MarginContainer2/MarginContainer/VBoxContainer/DropDownMenu" method="_drop_down_if_open"]

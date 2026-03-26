@@ -1,0 +1,51 @@
+[gd_scene load_steps=2 format=3 uid="uid://ced6q4rwlkjo3"]
+
+[ext_resource type="Script" uid="uid://biumnpax0n5ah" path="res://app/main_screen/tag_selector_popup/tag_category_explorer.gd" id="1_cxmnd"]
+
+[node name="TagCategoryExplorer" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_cxmnd")
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer3"]
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="VBoxContainer3/HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "back "
+
+[node name="ButtonContainer" type="VBoxContainer" parent="VBoxContainer3/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="VBoxContainer3/HBoxContainer/ButtonContainer"]
+layout_mode = 2
+text = "category"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer3"]
+layout_mode = 2
+
+[node name="CategoryHFlow" type="HFlowContainer" parent="VBoxContainer3/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer3/VBoxContainer2"]
+visible = false
+layout_mode = 2
+
+[node name="SpecificHFlow" type="HFlowContainer" parent="VBoxContainer3/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[connection signal="pressed" from="VBoxContainer3/HBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

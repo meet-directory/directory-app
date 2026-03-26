@@ -1,0 +1,89 @@
+[gd_scene load_steps=5 format=3 uid="uid://bxu2mkkvlpgcv"]
+
+[ext_resource type="Script" uid="uid://bivmlw4f8rjko" path="res://app/popups/confirmation_popup_dialogue.gd" id="1_xfunr"]
+[ext_resource type="StyleBox" uid="uid://7s6g47fwt5ve" path="res://resources/styles/greyed_background_panel.tres" id="2_53o8q"]
+[ext_resource type="Theme" uid="uid://c52euoe38n0nm" path="res://resources/styles/app_theme.tres" id="2_pwmra"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d7pvo"]
+bg_color = Color(0.6039811, 0.5917094, 0.64426404, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.20871013, 0.20871016, 0.20870999, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="InfoPopupDialogue" type="CanvasLayer"]
+layer = 100
+script = ExtResource("1_xfunr")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("2_pwmra")
+
+[node name="Panel" type="Panel" parent="MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_53o8q")
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Popup" type="MarginContainer" parent="MarginContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="MarginContainer/CenterContainer/Popup"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_d7pvo")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/CenterContainer/Popup"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CenterContainer/Popup/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/CenterContainer/Popup/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "ℹ️"
+
+[node name="DescriptionLabel" type="Label" parent="MarginContainer/CenterContainer/Popup/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "description ipsum dolor ya yada yada"
+autowrap_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/CenterContainer/Popup/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CancelButton" type="Button" parent="MarginContainer/CenterContainer/Popup/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Go back"
+
+[node name="ConfirmButton" type="Button" parent="MarginContainer/CenterContainer/Popup/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Confirm"
+
+[node name="HFlowContainer" type="HFlowContainer" parent="MarginContainer/CenterContainer/Popup/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[connection signal="pressed" from="MarginContainer/CenterContainer/Popup/MarginContainer/VBoxContainer/HBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
+[connection signal="pressed" from="MarginContainer/CenterContainer/Popup/MarginContainer/VBoxContainer/HBoxContainer/ConfirmButton" to="." method="_on_confirm_button_pressed"]

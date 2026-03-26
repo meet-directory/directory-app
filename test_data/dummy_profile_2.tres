@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ProfileResource" load_steps=6 format=3 uid="uid://doydgjkji7bjv"]
+
+[ext_resource type="Script" uid="uid://cngoe7gwhue6f" path="res://custom_resources/rsc_tag.gd" id="1_bo3b1"]
+[ext_resource type="Script" uid="uid://cyfqsrlkwby8i" path="res://custom_resources/rsc_message.gd" id="1_c172j"]
+[ext_resource type="Texture2D" uid="uid://csirohkmuh41t" path="res://icon.svg" id="2_ygcr0"]
+[ext_resource type="Script" uid="uid://bmfu7rwsqwyrb" path="res://custom_resources/rsc_profile.gd" id="3_j4wc8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c172j"]
+atlas = ExtResource("2_ygcr0")
+region = Rect2(30, 20.5, 70, 87)
+
+[resource]
+script = ExtResource("3_j4wc8")
+username = "beep"
+email = "kek@kek.kek"
+photos = Array[Texture2D]([SubResource("AtlasTexture_c172j"), ExtResource("2_ygcr0"), ExtResource("2_ygcr0")])
+description = "Hi hi hi howdy"
+metadata/_custom_type_script = "uid://bmfu7rwsqwyrb"

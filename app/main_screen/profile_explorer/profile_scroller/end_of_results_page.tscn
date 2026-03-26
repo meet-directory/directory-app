@@ -1,0 +1,66 @@
+[gd_scene load_steps=4 format=3 uid="uid://dcft8k5hl0jk3"]
+
+[ext_resource type="Script" uid="uid://bphium1cotqoc" path="res://app/main_screen/profile_explorer/profile_scroller/end_of_results_page.gd" id="1_t5r4y"]
+[ext_resource type="LabelSettings" uid="uid://crec8tr40vb4i" path="res://resources/styles/subtle_grey_text_label_setting.tres" id="2_sym4r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5aqq6"]
+
+[node name="EndOfResultsPage" type="MarginContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -74.5
+offset_top = -15.5
+offset_right = 74.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_t5r4y")
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_5aqq6")
+current_tab = 0
+tabs_visible = false
+
+[node name="LoadMoreTab" type="CenterContainer" parent="TabContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="LoadMoreButton" type="Button" parent="TabContainer/LoadMoreTab"]
+layout_mode = 2
+text = "Load More Profiles"
+
+[node name="EndOfResultsTab" type="CenterContainer" parent="TabContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="Label" type="Label" parent="TabContainer/EndOfResultsTab"]
+layout_mode = 2
+text = "End Of Results
+---
+Try searching with fewer 
+criteria to see more results"
+label_settings = ExtResource("2_sym4r")
+horizontal_alignment = 1
+
+[node name="NoResultsTab" type="CenterContainer" parent="TabContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="Label" type="Label" parent="TabContainer/NoResultsTab"]
+layout_mode = 2
+text = "No Results Found :-(
+---
+Try searching with fewer criteria"
+label_settings = ExtResource("2_sym4r")
+horizontal_alignment = 1
+
+[connection signal="pressed" from="TabContainer/LoadMoreTab/LoadMoreButton" to="." method="_on_load_more_button_pressed"]

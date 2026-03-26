@@ -1,0 +1,131 @@
+[gd_scene load_steps=10 format=3 uid="uid://b7o8n2d1lrj4u"]
+
+[ext_resource type="Theme" uid="uid://c52euoe38n0nm" path="res://resources/styles/app_theme.tres" id="1_myqrv"]
+[ext_resource type="Script" uid="uid://bay3gygeet1fi" path="res://app/main_screen/settings/submit_tag_menu/submit_tag_menu.gd" id="2_f2kdp"]
+[ext_resource type="StyleBox" uid="uid://fh3x8tnulkac" path="res://resources/styles/profile_panel_background.tres" id="3_cuksv"]
+[ext_resource type="PackedScene" uid="uid://ds8fo6ghwa7vd" path="res://app/main_screen/profile_explorer/search_tool/tag_control.tscn" id="4_06ebo"]
+[ext_resource type="LabelSettings" uid="uid://crec8tr40vb4i" path="res://resources/styles/subtle_grey_text_label_setting.tres" id="5_5m81r"]
+[ext_resource type="Script" uid="uid://ba878oe3x4vgt" path="res://app/main_screen/settings/submit_tag_menu/tag_category_option.gd" id="5_f2kdp"]
+[ext_resource type="PackedScene" uid="uid://bto7w6rkrgka3" path="res://app/main_screen/settings/submit_tag_menu/tag_search_bar.tscn" id="5_myqrv"]
+[ext_resource type="PackedScene" uid="uid://dh42ok3r4vn3g" path="res://app/main_screen/settings/submit_tag_menu/warning_box.tscn" id="7_f2kdp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_otefm"]
+
+[node name="SubmitTagMenu" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_myqrv")
+script = ExtResource("2_f2kdp")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("3_cuksv")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Creating New Tag"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TagEditPreview" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("4_06ebo")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="HFlowContainer2" type="HFlowContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HFlowContainer2"]
+layout_mode = 2
+text = "Tag Category:"
+
+[node name="TagCategoryOption" type="OptionButton" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HFlowContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("5_f2kdp")
+
+[node name="TagSearchBar" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("5_myqrv")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_vertical = 0
+max_results = 3
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+text = "⚠️Tags will be publically accessible for all users to use and search and are periodically reviewed. Accounts that create tags associated with slurs or hate speech may be suspended. If you are not sure whether a tag would fit our policy please email us to add it manually."
+label_settings = ExtResource("5_5m81r")
+autowrap_mode = 3
+
+[node name="WarningBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/WarningBoxContainer"]
+layout_mode = 2
+text = "⚠️ Tag must:"
+label_settings = ExtResource("5_5m81r")
+
+[node name="WarningBox" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/WarningBoxContainer" instance=ExtResource("7_f2kdp")]
+unique_name_in_owner = true
+layout_mode = 2
+warnings = Dictionary[String, String]({
+"duplicate": "have name that does not already exist",
+"empty-category": "have a category",
+"empty-name": "not have an empty name."
+})
+
+[node name="Options" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="CloseButton" type="Button" parent="MarginContainer/VBoxContainer/Options"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_otefm")
+text = "cancel"
+text_overrun_behavior = 1
+
+[node name="SaveTagButton" type="Button" parent="MarginContainer/VBoxContainer/Options"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+disabled = true
+text = "Submit Tag"
+text_overrun_behavior = 1
+
+[connection signal="got_results" from="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/TagSearchBar" to="." method="_on_tag_search_bar_got_results"]
+[connection signal="text_changed" from="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/TagSearchBar" to="." method="_on_tag_search_bar_text_changed"]
+[connection signal="all_warnings_cleared" from="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/WarningBoxContainer/WarningBox" to="." method="_on_warning_box_all_warnings_cleared"]
+[connection signal="warning_activated" from="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/WarningBoxContainer/WarningBox" to="." method="_on_warning_box_warning_activated"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Options/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Options/SaveTagButton" to="." method="_on_save_tag_button_pressed"]

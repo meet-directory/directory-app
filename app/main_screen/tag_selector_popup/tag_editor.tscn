@@ -1,0 +1,114 @@
+[gd_scene load_steps=5 format=3 uid="uid://h1j2bayawtao"]
+
+[ext_resource type="Script" uid="uid://dqj3minsxqwbn" path="res://app/main_screen/tag_selector_popup/tag_editor.gd" id="1_b1p64"]
+[ext_resource type="PackedScene" uid="uid://ds8fo6ghwa7vd" path="res://app/main_screen/profile_explorer/search_tool/tag_control.tscn" id="2_pqg8l"]
+
+[sub_resource type="GDScript" id="GDScript_2qwgq"]
+script/source = "extends OptionButton
+
+func _ready() -> void:
+	for cat in Tag.TYPE:
+		var emoji:String = Constants.tag.get_emoji(Tag.TYPE[cat])
+		var cat_str:String =  emoji + \" \" + str(cat)
+		add_item(cat_str)
+	select(Tag.TYPE.Other)
+		# would be nice to have the background color match tag color
+		#add_icon_item(preload(\"res://icon.svg\"), cat)
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b1p64"]
+bg_color = Color(0.77, 0.6288333, 0, 0.26666668)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="TagEditor" type="Control"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+script = ExtResource("1_b1p64")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Creating New Tag:"
+
+[node name="TagEditPreview" parent="ScrollContainer/VBoxContainer" instance=ExtResource("2_pqg8l")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="HSeparator" type="HSeparator" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HFlowContainer" type="HFlowContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/HFlowContainer"]
+layout_mode = 2
+text = "Select Category:"
+
+[node name="TagCategoryOption" type="OptionButton" parent="ScrollContainer/VBoxContainer/HFlowContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+script = SubResource("GDScript_2qwgq")
+
+[node name="HSeparator2" type="HSeparator" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="WarningPanel" type="MarginContainer" parent="ScrollContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="ScrollContainer/VBoxContainer/WarningPanel"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_b1p64")
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/VBoxContainer/WarningPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Label2" type="Label" parent="ScrollContainer/VBoxContainer/WarningPanel/MarginContainer"]
+layout_mode = 2
+text = "⚠️Tags will be publically accessible for all users to use and search and are periodically reviewed. Accounts that create tags associated with slurs or hate speech may be suspended. If you are not sure whether a tag would fit our policy please email us to add it manually."
+autowrap_mode = 3
+
+[node name="HFlowContainer2" type="HFlowContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="CancelButton" type="Button" parent="ScrollContainer/VBoxContainer/HFlowContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Cancel Tag Submission"
+
+[node name="SubmitButton" type="Button" parent="ScrollContainer/VBoxContainer/HFlowContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Submit New Tag"
+
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/HFlowContainer2/CancelButton" to="." method="_on_cancel_button_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/HFlowContainer2/SubmitButton" to="." method="_on_submit_button_pressed"]

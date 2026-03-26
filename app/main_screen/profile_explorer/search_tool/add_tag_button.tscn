@@ -1,0 +1,79 @@
+[gd_scene load_steps=6 format=3 uid="uid://c1j7o3jj3dw1u"]
+
+[ext_resource type="Texture2D" uid="uid://bfuhnki48no50" path="res://resources/icons/plus.svg" id="1_57ro7"]
+[ext_resource type="Script" uid="uid://da2uf0mew4q6u" path="res://app/main_screen/profile_explorer/search_tool/add_tag_button.gd" id="1_q3281"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q3281"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.5474351, 0.62987775, 0.51805806, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 3
+border_color = Color(0.2465, 0.29, 0.25665, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_57ro7"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.46003997, 0.53, 0.43459997, 1)
+border_width_left = 1
+border_width_top = 3
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.2465, 0.29, 0.25665, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wcgvp"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.61914396, 0.6998786, 0.5885078, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 3
+border_color = Color(0.2465, 0.29, 0.25665, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="AddTagButton" type="Button"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -9.0
+offset_top = -15.5
+offset_right = 9.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+tooltip_text = "add tag"
+theme_override_styles/normal = SubResource("StyleBoxFlat_q3281")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_57ro7")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wcgvp")
+theme_override_styles/focus = SubResource("StyleBoxFlat_q3281")
+text = "  "
+icon = ExtResource("1_57ro7")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("1_q3281")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

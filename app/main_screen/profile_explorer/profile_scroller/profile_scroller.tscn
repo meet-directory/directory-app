@@ -1,0 +1,126 @@
+[gd_scene load_steps=8 format=3 uid="uid://cphg263xqxvj0"]
+
+[ext_resource type="Script" uid="uid://con4d1e8qw57q" path="res://app/main_screen/profile_explorer/profile_scroller/profile_scroller.gd" id="1_g8j0m"]
+[ext_resource type="PackedScene" uid="uid://cr731ljnp80m6" path="res://app/main_screen/profile/profile_preview/profile_view.tscn" id="1_ytsve"]
+[ext_resource type="Script" uid="uid://bvgtssvy1rsod" path="res://app/custom_ui_elements/snapping_scroll_container.gd" id="3_3k41x"]
+[ext_resource type="PackedScene" uid="uid://dcft8k5hl0jk3" path="res://app/main_screen/profile_explorer/profile_scroller/end_of_results_page.tscn" id="3_w2sq0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w2sq0"]
+bg_color = Color(0.55758023, 0.5737011, 0.71647096, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 4
+border_color = Color(0.18717611, 0.18717617, 0.18717599, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gv7q5"]
+bg_color = Color(0.50104535, 0.5166426, 0.66522974, 1)
+border_width_left = 1
+border_width_top = 4
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.18717611, 0.18717617, 0.18717599, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+expand_margin_left = 5.0
+expand_margin_top = 6.0
+expand_margin_right = 5.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wp0fx"]
+bg_color = Color(0.612184, 0.6275203, 0.7613423, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 4
+border_color = Color(0.18717611, 0.18717617, 0.18717599, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[node name="ProfileScroller" type="MarginContainer"]
+custom_minimum_size = Vector2(400, 0)
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -11.5
+offset_right = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_g8j0m")
+profile_viewer_scene = ExtResource("1_ytsve")
+end_of_results_scene = ExtResource("3_w2sq0")
+
+[node name="ProfileScrollContainer" type="ScrollContainer" parent="." node_paths=PackedStringArray("item_container")]
+unique_name_in_owner = true
+layout_mode = 2
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 0
+script = ExtResource("3_3k41x")
+item_padding = Vector2(10, 0)
+item_container = NodePath("MarginContainer/ProfileScroller")
+metadata/_custom_type_script = "uid://bvgtssvy1rsod"
+
+[node name="MarginContainer" type="MarginContainer" parent="ProfileScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_right = 100
+
+[node name="ProfileScroller" type="HBoxContainer" parent="ProfileScrollContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+theme_override_constants/separation = 100
+
+[node name="Profile" parent="ProfileScrollContainer/MarginContainer/ProfileScroller" instance=ExtResource("1_ytsve")]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+
+[node name="Profile2" parent="ProfileScrollContainer/MarginContainer/ProfileScroller" instance=ExtResource("1_ytsve")]
+layout_mode = 2
+
+[node name="Profile3" parent="ProfileScrollContainer/MarginContainer/ProfileScroller" instance=ExtResource("1_ytsve")]
+layout_mode = 2
+
+[node name="RightButton" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxFlat_w2sq0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gv7q5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wp0fx")
+text = "➡️"
+
+[node name="LeftButton" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxFlat_w2sq0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gv7q5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wp0fx")
+text = "⬅️"
+
+[connection signal="pressed" from="RightButton" to="." method="_on_right_button_pressed"]
+[connection signal="pressed" from="LeftButton" to="." method="_on_left_button_pressed"]

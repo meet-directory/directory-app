@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8yiorv412rn5"]
+
+[ext_resource type="Script" uid="uid://dmi3ri4vkiijv" path="res://app/custom_ui_elements/drop_down_menu/drop_down_menu.gd" id="1_sn1la"]
+
+[node name="DropDownMenu" type="Control" node_paths=PackedStringArray("collapse_control")]
+clip_children = 2
+clip_contents = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sn1la")
+collapse_control = NodePath(".")

@@ -1,0 +1,119 @@
+[gd_scene load_steps=6 format=3 uid="uid://dlp24xb8w8dpq"]
+
+[ext_resource type="Script" uid="uid://cueis1ohvy5v4" path="res://app/main_screen/messages/matches.gd" id="1_as1ef"]
+[ext_resource type="Script" uid="uid://dyj603klmmiyo" path="res://app/main_screen/messages/slide_window.gd" id="2_exor4"]
+[ext_resource type="Script" uid="uid://cqgdswj1lyike" path="res://app/main_screen/tab_manager.gd" id="3_exor4"]
+[ext_resource type="LabelSettings" uid="uid://crec8tr40vb4i" path="res://resources/styles/subtle_grey_text_label_setting.tres" id="3_vkdml"]
+[ext_resource type="Script" uid="uid://b6lh6hsveq2l" path="res://app/main_screen/messages/tab_container.gd" id="4_nrdkc"]
+
+[node name="Matches" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_as1ef")
+metadata/_tab_index = 1
+
+[node name="SlideWindow" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("2_exor4")
+
+[node name="TabContainer" type="TabContainer" parent="SlideWindow"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+current_tab = 0
+tabs_visible = false
+
+[node name="MarginContainer" type="MarginContainer" parent="SlideWindow/TabContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+metadata/_tab_index = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SlideWindow/TabContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="TabManager" type="HBoxContainer" parent="SlideWindow/TabContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("3_exor4")
+current_tab = 1
+
+[node name="LikeButton" type="Button" parent="SlideWindow/TabContainer/MarginContainer/VBoxContainer/TabManager"]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "👋 Like Requests"
+
+[node name="ChatButton" type="Button" parent="SlideWindow/TabContainer/MarginContainer/VBoxContainer/TabManager"]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "💬 Chats"
+
+[node name="TabContainer" type="TabContainer" parent="SlideWindow/TabContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tab_alignment = 1
+current_tab = 0
+tabs_visible = false
+script = ExtResource("4_nrdkc")
+
+[node name="Likes" type="MarginContainer" parent="SlideWindow/TabContainer/MarginContainer/VBoxContainer/TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="NoLikesLabel" type="Label" parent="SlideWindow/TabContainer/MarginContainer/VBoxContainer/TabContainer/Likes"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 6
+text = "No pending likes"
+label_settings = ExtResource("3_vkdml")
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="SlideWindow/TabContainer/MarginContainer/VBoxContainer/TabContainer/Likes"]
+layout_mode = 2
+
+[node name="LikeRequestsContainer" type="VBoxContainer" parent="SlideWindow/TabContainer/MarginContainer/VBoxContainer/TabContainer/Likes/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Chats" type="MarginContainer" parent="SlideWindow/TabContainer/MarginContainer/VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="NoChatsLabel" type="Label" parent="SlideWindow/TabContainer/MarginContainer/VBoxContainer/TabContainer/Chats"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 6
+text = "You don't have any chats yet."
+label_settings = ExtResource("3_vkdml")
+horizontal_alignment = 1
+
+[node name="ScrollContainer2" type="ScrollContainer" parent="SlideWindow/TabContainer/MarginContainer/VBoxContainer/TabContainer/Chats"]
+layout_mode = 2
+
+[node name="ChatsContainer" type="VBoxContainer" parent="SlideWindow/TabContainer/MarginContainer/VBoxContainer/TabContainer/Chats/ScrollContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RefreshButton" type="Button" parent="."]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "refresh"
+
+[connection signal="tab_pressed" from="SlideWindow/TabContainer/MarginContainer/VBoxContainer/TabManager" to="SlideWindow/TabContainer/MarginContainer/VBoxContainer/TabContainer" method="_on_tab_manager_tab_pressed"]
+[connection signal="pressed" from="RefreshButton" to="." method="_on_refresh_button_pressed"]

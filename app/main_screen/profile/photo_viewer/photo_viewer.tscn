@@ -1,0 +1,92 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwn5vy8firy3"]
+
+[ext_resource type="Script" uid="uid://c7ur1emuhx3c7" path="res://app/main_screen/profile/photo_viewer/photo_viewer.gd" id="1_6vxon"]
+[ext_resource type="PackedScene" uid="uid://ceuv06iwksn2x" path="res://app/main_screen/profile/photo_viewer/photo_viewer_index_button.tscn" id="3_1ub40"]
+[ext_resource type="PackedScene" uid="uid://c7kfhjronlyao" path="res://app/main_screen/profile/photo_viewer/photo_container.tscn" id="3_ldt2f"]
+[ext_resource type="Script" uid="uid://bvgtssvy1rsod" path="res://app/custom_ui_elements/snapping_scroll_container.gd" id="4_ux30x"]
+
+[node name="PhotoViewer" type="AspectRatioContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 0
+ratio = 0.8
+script = ExtResource("1_6vxon")
+photo_container_scene = ExtResource("3_ldt2f")
+photo_index_button = ExtResource("3_1ub40")
+
+[node name="PhotoViewer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="PhotoViewer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PhotoViewer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ViewerSizeNode" type="AspectRatioContainer" parent="PhotoViewer/MarginContainer"]
+unique_name_in_owner = true
+clip_contents = true
+layout_mode = 2
+ratio = 0.8
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PhotoViewer/MarginContainer/ViewerSizeNode" node_paths=PackedStringArray("item_container")]
+unique_name_in_owner = true
+layout_mode = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+script = ExtResource("4_ux30x")
+scroll_type = 0
+item_container = NodePath("PhotoContainerList")
+metadata/_custom_type_script = "uid://bvgtssvy1rsod"
+
+[node name="PhotoContainerList" type="VBoxContainer" parent="PhotoViewer/MarginContainer/ViewerSizeNode/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 4
+
+[node name="Control" type="Control" parent="PhotoViewer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="IndexList" type="VBoxContainer" parent="PhotoViewer/MarginContainer/Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -38.5
+offset_right = 20.0
+offset_bottom = 38.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+
+[node name="Button" parent="PhotoViewer/MarginContainer/Control/IndexList" instance=ExtResource("3_1ub40")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Button2" parent="PhotoViewer/MarginContainer/Control/IndexList" instance=ExtResource("3_1ub40")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Button3" parent="PhotoViewer/MarginContainer/Control/IndexList" instance=ExtResource("3_1ub40")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[connection signal="scrolled_to" from="PhotoViewer/MarginContainer/ViewerSizeNode/ScrollContainer" to="." method="_on_scroll_container_scrolled_to"]

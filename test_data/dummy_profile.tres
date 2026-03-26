@@ -1,0 +1,50 @@
+[gd_resource type="Resource" script_class="ProfileResource" load_steps=11 format=3 uid="uid://hl6sbmnijmpw"]
+
+[ext_resource type="Script" uid="uid://cyfqsrlkwby8i" path="res://custom_resources/rsc_message.gd" id="1_1jboh"]
+[ext_resource type="Script" uid="uid://cngoe7gwhue6f" path="res://custom_resources/rsc_tag.gd" id="1_c5u6x"]
+[ext_resource type="Texture2D" uid="uid://csirohkmuh41t" path="res://icon.svg" id="2_c5u6x"]
+[ext_resource type="Script" uid="uid://bmfu7rwsqwyrb" path="res://custom_resources/rsc_profile.gd" id="2_nmfyr"]
+
+[sub_resource type="Resource" id="Resource_iudnh"]
+script = ExtResource("1_c5u6x")
+tag_name = "woman"
+metadata/_custom_type_script = "uid://cngoe7gwhue6f"
+
+[sub_resource type="Resource" id="Resource_830r5"]
+script = ExtResource("1_c5u6x")
+tag_name = "gay"
+metadata/_custom_type_script = "uid://cngoe7gwhue6f"
+
+[sub_resource type="Resource" id="Resource_npd68"]
+script = ExtResource("1_c5u6x")
+tag_name = "vegan"
+type = 3
+metadata/_custom_type_script = "uid://cngoe7gwhue6f"
+
+[sub_resource type="Resource" id="Resource_v6xcx"]
+script = ExtResource("1_c5u6x")
+tag_name = "being-dominant"
+type = 2
+metadata/_custom_type_script = "uid://cngoe7gwhue6f"
+
+[sub_resource type="Resource" id="Resource_qxv2s"]
+script = ExtResource("1_c5u6x")
+tag_name = "serious"
+type = 1
+metadata/_custom_type_script = "uid://cngoe7gwhue6f"
+
+[sub_resource type="Resource" id="Resource_sduqv"]
+script = ExtResource("1_c5u6x")
+tag_name = "polyamorous"
+type = 1
+metadata/_custom_type_script = "uid://cngoe7gwhue6f"
+
+[resource]
+script = ExtResource("2_nmfyr")
+username = "kek"
+email = "kek@kek.kek"
+photos = Array[Texture2D]([ExtResource("2_c5u6x"), ExtResource("2_c5u6x")])
+description = "Hi I'm kek and I like to have fun"
+is_tags = Array[ExtResource("1_c5u6x")]([SubResource("Resource_iudnh"), SubResource("Resource_830r5"), SubResource("Resource_npd68"), SubResource("Resource_v6xcx")])
+wants_tags = Array[ExtResource("1_c5u6x")]([SubResource("Resource_qxv2s"), SubResource("Resource_sduqv")])
+metadata/_custom_type_script = "uid://bmfu7rwsqwyrb"

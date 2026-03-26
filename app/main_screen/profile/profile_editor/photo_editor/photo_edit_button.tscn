@@ -1,0 +1,73 @@
+[gd_scene load_steps=5 format=3 uid="uid://bbyxfs4lar07c"]
+
+[ext_resource type="Script" uid="uid://bubgrddmfo7ro" path="res://app/main_screen/profile/profile_editor/photo_editor/photo_edit_button.gd" id="1_3l1ru"]
+[ext_resource type="PackedScene" uid="uid://b322t7vttcqj0" path="res://app/main_screen/profile/profile_editor/photo_editor/file_dialog.tscn" id="2_md0yv"]
+[ext_resource type="PackedScene" uid="uid://cg0teb4x52wsp" path="res://app/main_screen/profile/profile_editor/photo_editor/photo_cropper.tscn" id="3_8uthp"]
+[ext_resource type="LabelSettings" uid="uid://crec8tr40vb4i" path="res://resources/styles/subtle_grey_text_label_setting.tres" id="4_xpao4"]
+
+[node name="PhotoEditButton" type="AspectRatioContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+ratio = 0.8
+script = ExtResource("1_3l1ru")
+file_dialogue_scene = ExtResource("2_md0yv")
+photo_cropper_scene = ExtResource("3_8uthp")
+
+[node name="PhotoEditButton" type="Button" parent="."]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = "+"
+icon_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="PhotoEditButton"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 2
+stretch_mode = 4
+
+[node name="DeleteButton" type="Button" parent="PhotoEditButton"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -41.0
+offset_bottom = 41.0
+grow_horizontal = 0
+text = "🗑️"
+
+[node name="FocusIndicator" type="MarginContainer" parent="PhotoEditButton"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Panel" type="Panel" parent="PhotoEditButton/FocusIndicator"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="PhotoEditButton/FocusIndicator"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Change Photo"
+label_settings = ExtResource("4_xpao4")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+
+[connection signal="mouse_entered" from="PhotoEditButton" to="." method="_on_photo_edit_button_mouse_entered"]
+[connection signal="mouse_exited" from="PhotoEditButton" to="." method="_on_photo_edit_button_mouse_exited"]
+[connection signal="pressed" from="PhotoEditButton" to="." method="_on_photo_edit_button_pressed"]
+[connection signal="mouse_entered" from="PhotoEditButton/DeleteButton" to="." method="_on_delete_button_mouse_entered"]
+[connection signal="pressed" from="PhotoEditButton/DeleteButton" to="." method="_on_delete_button_pressed"]
