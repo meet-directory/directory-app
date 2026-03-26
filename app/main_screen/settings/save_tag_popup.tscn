@@ -1,0 +1,101 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdehrvohiggko"]
+
+[ext_resource type="Script" uid="uid://bdsf3v72351fb" path="res://app/main_screen/settings/save_tag_popup.gd" id="1_0gt5j"]
+[ext_resource type="PackedScene" uid="uid://cpfm4eyc412ma" path="res://app/main_screen/settings/tag_editor_row.tscn" id="2_tpr25"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_au6s8"]
+bg_color = Color(0.77, 0.6288333, 0, 0.26666668)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="SaveTagPopup" type="CanvasLayer"]
+script = ExtResource("1_0gt5j")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="CenterContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Confirm new tags to be added"
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_au6s8")
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Label2" type="Label" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer"]
+layout_mode = 2
+text = "[!] Tags will be publically accessible for all users to use and search. Please select the most suitable type for each."
+autowrap_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 20
+
+[node name="TagRowContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TagEditorRow" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/TagRowContainer" instance=ExtResource("2_tpr25")]
+layout_mode = 2
+
+[node name="TagEditorRow2" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/TagRowContainer" instance=ExtResource("2_tpr25")]
+layout_mode = 2
+
+[node name="TagEditorRow3" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/TagRowContainer" instance=ExtResource("2_tpr25")]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HFlowContainer" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="CancelButton" type="Button" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Cancel and Remove Tags"
+
+[node name="SaveButton" type="Button" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Confirm"
+
+[connection signal="pressed" from="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
+[connection signal="pressed" from="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]

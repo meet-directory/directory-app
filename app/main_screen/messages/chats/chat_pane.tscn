@@ -1,0 +1,131 @@
+[gd_scene load_steps=10 format=3 uid="uid://4okj4j3hkk50"]
+
+[ext_resource type="PackedScene" uid="uid://daiq3ls2tnj3o" path="res://app/main_screen/messages/chats/message_control.tscn" id="1_mfmtu"]
+[ext_resource type="Script" uid="uid://5osbkfm5fs4l" path="res://app/main_screen/messages/chats/chat_pane.gd" id="1_naceh"]
+[ext_resource type="StyleBox" uid="uid://bos735icy7ien" path="res://resources/styles/chat_pane_message_container.tres" id="1_pmwdm"]
+[ext_resource type="StyleBox" uid="uid://dvjyuhjb1s8f4" path="res://resources/styles/app_background.tres" id="3_5yqn4"]
+[ext_resource type="Script" uid="uid://cf00iw1dvf02w" path="res://app/main_screen/messages/chats/chat_pane_message_edit.gd" id="4_470q8"]
+[ext_resource type="Script" uid="uid://cg1kfg1oqrnic" path="res://app/custom_ui_elements/virtual_keyboard_adjuster.gd" id="4_cf5so"]
+[ext_resource type="LabelSettings" uid="uid://crec8tr40vb4i" path="res://resources/styles/subtle_grey_text_label_setting.tres" id="4_p113a"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cf5so"]
+bg_color = Color(0.099985994, 0.09998601, 0.099985965, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.7219239, 0.4204539, 0.40639615, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pmwdm"]
+
+[node name="ChatPane" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_naceh")
+message_control_scene = ExtResource("1_mfmtu")
+grey_label_setting = ExtResource("4_p113a")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("3_5yqn4")
+
+[node name="VirtualKeyboardAdjuster" type="MarginContainer" parent="."]
+layout_mode = 2
+script = ExtResource("4_cf5so")
+metadata/_custom_type_script = "uid://cg1kfg1oqrnic"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VirtualKeyboardAdjuster"]
+layout_mode = 2
+
+[node name="Header" type="HBoxContainer" parent="VirtualKeyboardAdjuster/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="BackButton" type="Button" parent="VirtualKeyboardAdjuster/VBoxContainer/Header"]
+layout_mode = 2
+text = "Back"
+
+[node name="UsernameLabel" type="Label" parent="VirtualKeyboardAdjuster/VBoxContainer/Header"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "User 123"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VirtualKeyboardAdjuster/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VirtualKeyboardAdjuster/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Panel" type="Panel" parent="VirtualKeyboardAdjuster/VBoxContainer/ScrollContainer/MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("1_pmwdm")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VirtualKeyboardAdjuster/VBoxContainer/ScrollContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = -2
+
+[node name="MarginContainer2" type="MarginContainer" parent="VirtualKeyboardAdjuster/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VirtualKeyboardAdjuster/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="MessagesContainer" type="VBoxContainer" parent="VirtualKeyboardAdjuster/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer2/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VirtualKeyboardAdjuster/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer2/ScrollContainer/MessagesContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+label_settings = ExtResource("4_p113a")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VirtualKeyboardAdjuster/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MessageEdit" type="TextEdit" parent="VirtualKeyboardAdjuster/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_styles/normal = SubResource("StyleBoxFlat_cf5so")
+theme_override_styles/focus = SubResource("StyleBoxTexture_pmwdm")
+placeholder_text = "type message"
+context_menu_enabled = false
+deselect_on_focus_loss_enabled = false
+wrap_mode = 1
+caret_blink = true
+caret_multiple = false
+script = ExtResource("4_470q8")
+
+[node name="SubmitTextButton" type="Button" parent="VirtualKeyboardAdjuster/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "➡"
+
+[connection signal="pressed" from="VirtualKeyboardAdjuster/VBoxContainer/Header/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="child_entered_tree" from="VirtualKeyboardAdjuster/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer2/ScrollContainer/MessagesContainer" to="." method="_on_messages_container_child_entered_tree"]
+[connection signal="submitted" from="VirtualKeyboardAdjuster/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/MessageEdit" to="." method="_on_message_edit_submitted"]
+[connection signal="text_changed" from="VirtualKeyboardAdjuster/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/MessageEdit" to="VirtualKeyboardAdjuster/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/MessageEdit" method="_on_text_changed"]
+[connection signal="text_set" from="VirtualKeyboardAdjuster/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/MessageEdit" to="VirtualKeyboardAdjuster/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/MessageEdit" method="_on_text_set"]
+[connection signal="pressed" from="VirtualKeyboardAdjuster/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/SubmitTextButton" to="." method="_on_submit_text_button_pressed"]

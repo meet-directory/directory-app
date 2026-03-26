@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://r4cd031myqox"]
+
+[ext_resource type="Script" uid="uid://bsc3o1b3v21vb" path="res://globals/browser_debug.gd" id="1_m0vkj"]
+
+[node name="BrowserDebug" type="CanvasLayer"]
+visible = false
+script = ExtResource("1_m0vkj")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 2

@@ -1,0 +1,131 @@
+[gd_scene load_steps=6 format=3 uid="uid://de6qbtfyq0uh3"]
+
+[ext_resource type="Script" uid="uid://du4y63r8beqpy" path="res://app/onboarding_screen/onboarding_birthday.gd" id="1_cd1so"]
+[ext_resource type="Script" uid="uid://cg1kfg1oqrnic" path="res://app/custom_ui_elements/virtual_keyboard_adjuster.gd" id="2_bihs6"]
+[ext_resource type="StyleBox" uid="uid://n4amvtloledg" path="res://resources/styles/app_background_accent_panel.tres" id="2_yrwls"]
+[ext_resource type="LabelSettings" uid="uid://d10w3u76wg4e6" path="res://resources/styles/subtle_grey_text_accent_panel_label_setting.tres" id="3_yrwls"]
+
+[sub_resource type="GDScript" id="GDScript_yrwls"]
+script/source = "extends MarginContainer
+@onready var v_box: VBoxContainer = $VBoxContainer
+@onready var h_box: HBoxContainer = $HBoxContainer
+
+
+func _ready() -> void:
+	call_deferred(\"make_vertical\")
+
+func make_vertical() -> void:
+	if Constants.get_screen_size().x < size.x:
+		for node in h_box.get_children():
+			node.reparent(v_box)
+"
+
+[node name="OnboardingBirthday" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cd1so")
+conf_popup_text = "Are you sure {} is correct?
+You can't change this later."
+
+[node name="VirtualKeyboardAdjuster" type="MarginContainer" parent="."]
+layout_mode = 2
+script = ExtResource("2_bihs6")
+metadata/_custom_type_script = "uid://cg1kfg1oqrnic"
+
+[node name="MarginContainer2" type="MarginContainer" parent="VirtualKeyboardAdjuster"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Panel" type="Panel" parent="VirtualKeyboardAdjuster/MarginContainer2"]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_yrwls")
+
+[node name="MarginContainer" type="MarginContainer" parent="VirtualKeyboardAdjuster/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VirtualKeyboardAdjuster/MarginContainer2/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="VirtualKeyboardAdjuster/MarginContainer2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "1. Enter your birthday"
+
+[node name="Label2" type="Label" parent="VirtualKeyboardAdjuster/MarginContainer2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "This will only be used to calculate your age and won't be shown publicly."
+label_settings = ExtResource("3_yrwls")
+autowrap_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VirtualKeyboardAdjuster/MarginContainer2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+script = SubResource("GDScript_yrwls")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VirtualKeyboardAdjuster/MarginContainer2/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VirtualKeyboardAdjuster/MarginContainer2/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Months" type="OptionButton" parent="VirtualKeyboardAdjuster/MarginContainer2/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+item_count = 12
+popup/item_0/text = "January"
+popup/item_0/id = 0
+popup/item_1/text = "February"
+popup/item_1/id = 1
+popup/item_2/text = "March"
+popup/item_2/id = 2
+popup/item_3/text = "April"
+popup/item_3/id = 3
+popup/item_4/text = "May"
+popup/item_4/id = 4
+popup/item_5/text = "June"
+popup/item_5/id = 5
+popup/item_6/text = "July"
+popup/item_6/id = 6
+popup/item_7/text = "August"
+popup/item_7/id = 7
+popup/item_8/text = "September"
+popup/item_8/id = 8
+popup/item_9/text = "October"
+popup/item_9/id = 9
+popup/item_10/text = "November"
+popup/item_10/id = 10
+popup/item_11/text = "December"
+popup/item_11/id = 11
+
+[node name="Days" type="OptionButton" parent="VirtualKeyboardAdjuster/MarginContainer2/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 1
+action_mode = 1
+
+[node name="YearsSpinBox" type="SpinBox" parent="VirtualKeyboardAdjuster/MarginContainer2/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 1945.0
+max_value = 2000.0
+value = 2000.0
+rounded = true
+
+[node name="ConfirmBirthdateButton" type="Button" parent="VirtualKeyboardAdjuster/MarginContainer2/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "confirm"
+
+[connection signal="item_selected" from="VirtualKeyboardAdjuster/MarginContainer2/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Months" to="." method="_on_months_item_selected"]
+[connection signal="pressed" from="VirtualKeyboardAdjuster/MarginContainer2/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/ConfirmBirthdateButton" to="." method="_on_confirm_birthdate_button_pressed"]

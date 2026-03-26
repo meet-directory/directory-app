@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://pq7nl1g3i242"]
+
+[ext_resource type="Script" uid="uid://bnwhb14ohxien" path="res://app/popups/general_slideup_menu/slide_up_menu.gd" id="1_3cbaw"]
+[ext_resource type="Theme" uid="uid://c52euoe38n0nm" path="res://resources/styles/app_theme.tres" id="2_1qxr2"]
+[ext_resource type="Script" uid="uid://b4nmfnaeluowr" path="res://app/custom_ui_elements/relative_margin_container.gd" id="3_jucvp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cxhc7"]
+bg_color = Color(0.27, 0.27, 0.27, 0.7019608)
+
+[node name="SlideUpMenu" type="CanvasLayer"]
+layer = 50
+script = ExtResource("1_3cbaw")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Panel" type="Panel" parent="MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cxhc7")
+
+[node name="BottomMarker" type="Control" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="MenuContainer" type="MarginContainer" parent="."]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_1qxr2")
+
+[node name="SideMargins" type="MarginContainer" parent="MenuContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 21
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 0
+script = ExtResource("3_jucvp")
+top = 0.02
+left = 0.02
+right = 0.02
+metadata/_custom_type_script = "uid://b4nmfnaeluowr"

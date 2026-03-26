@@ -1,0 +1,108 @@
+[gd_scene load_steps=6 format=3 uid="uid://btk6lqa5001h2"]
+
+[ext_resource type="StyleBox" uid="uid://7s6g47fwt5ve" path="res://resources/styles/greyed_background_panel.tres" id="1_fr0qr"]
+[ext_resource type="Script" uid="uid://6jm3wg3mf7pq" path="res://app/loading_screen/loading_screen.gd" id="1_jqe46"]
+[ext_resource type="Script" uid="uid://bvoavj5ere1wu" path="res://app/loading_screen/spinner.gd" id="2_jqe46"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1klxl"]
+bg_color = Color(0.24, 0.24, 0.24, 0.05882353)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jqe46"]
+bg_color = Color(0.14406255, 0.14406255, 0.14406255, 0.91764706)
+
+[node name="LoadingScreen" type="CanvasLayer"]
+layer = 1000
+script = ExtResource("1_jqe46")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MouseBlock" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1klxl")
+
+[node name="GreyPanel" type="Panel" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("1_fr0qr")
+
+[node name="CenterContainer" type="CenterContainer" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/CenterContainer"]
+layout_mode = 2
+
+[node name="Panel2" type="Panel" parent="Control/CenterContainer/MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jqe46")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/CenterContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="VBoxContainer" parent="Control/CenterContainer/MarginContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Spinner" type="MarginContainer" parent="Control/CenterContainer/MarginContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("2_jqe46")
+
+[node name="Control" type="Control" parent="Control/CenterContainer/MarginContainer/MarginContainer/HBoxContainer/Spinner"]
+layout_mode = 2
+
+[node name="axis" type="Control" parent="Control/CenterContainer/MarginContainer/MarginContainer/HBoxContainer/Spinner/Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control/CenterContainer/MarginContainer/MarginContainer/HBoxContainer/Spinner/Control/axis"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -11.5
+offset_right = 30.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Loading"
+
+[node name="Control" type="Control" parent="Control"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

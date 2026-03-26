@@ -1,0 +1,266 @@
+[gd_scene load_steps=15 format=3 uid="uid://duy1kwsnwrcb5"]
+
+[ext_resource type="Theme" uid="uid://c52euoe38n0nm" path="res://resources/styles/app_theme.tres" id="1_5i0su"]
+[ext_resource type="Script" uid="uid://cp2q16pyq35lc" path="res://app/login_screen/login.gd" id="2_704r5"]
+[ext_resource type="PackedScene" uid="uid://c8yiorv412rn5" path="res://app/custom_ui_elements/drop_down_menu/drop_down_menu.tscn" id="2_my7at"]
+[ext_resource type="StyleBox" uid="uid://dvjyuhjb1s8f4" path="res://resources/styles/app_background.tres" id="3_b5krj"]
+[ext_resource type="StyleBox" uid="uid://n4amvtloledg" path="res://resources/styles/app_background_accent_panel.tres" id="4_c23a4"]
+[ext_resource type="LabelSettings" uid="uid://cdcmno7gw1tok" path="res://resources/styles/login_error_label_settings.tres" id="4_v6k8x"]
+[ext_resource type="Script" uid="uid://b4nmfnaeluowr" path="res://app/custom_ui_elements/relative_margin_container.gd" id="4_wwvf7"]
+[ext_resource type="Script" uid="uid://btwfpxf4bhuux" path="res://app/login_screen/scroll_container.gd" id="5_wwvf7"]
+[ext_resource type="Script" uid="uid://bo3d14iw8rcc3" path="res://app/login_screen/username_field.gd" id="8_b4fbf"]
+[ext_resource type="Script" uid="uid://dmkxlpy8ehgun" path="res://app/login_screen/dev_blocker.gd" id="10_t2x35"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_704r5"]
+font_size = 15
+font_color = Color(0.8431839, 0.8431839, 0.84318376, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_v6k8x"]
+font_size = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_kv2mc"]
+font_size = 12
+font_color = Color(0.88, 0.88, 0.22879998, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v6k8x"]
+bg_color = Color(0.17254902, 0.18039216, 0.078431375, 1)
+draw_center = false
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.8, 0.21599999, 0.21599999, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="LoginScreen" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_5i0su")
+script = ExtResource("2_704r5")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("3_b5krj")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 184
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 184
+theme_override_constants/margin_bottom = 0
+script = ExtResource("4_wwvf7")
+left = 0.2
+right = 0.2
+metadata/_custom_type_script = "uid://b4nmfnaeluowr"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 0
+script = ExtResource("5_wwvf7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Welcome to"
+label_settings = SubResource("LabelSettings_704r5")
+horizontal_alignment = 1
+autowrap_mode = 1
+
+[node name="Label2" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Directory"
+label_settings = SubResource("LabelSettings_v6k8x")
+horizontal_alignment = 1
+autowrap_mode = 1
+
+[node name="Label3" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "!!!!!!!! WARNING: I will not be responsible for any data you put into this website."
+label_settings = SubResource("LabelSettings_kv2mc")
+autowrap_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+
+[node name="Panel" type="Panel" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_c23a4")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="CreateAccountButton" type="Button" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Create Account"
+
+[node name="LoginButton" type="Button" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+toggle_mode = true
+text = "Login"
+
+[node name="DropDownMenu" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/MarginContainer/VBoxContainer" node_paths=PackedStringArray("toggle_button", "collapsable_content") instance=ExtResource("2_my7at")]
+layout_mode = 2
+toggle_button = NodePath("../LoginButton")
+collapsable_content = NodePath("MarginContainer")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/MarginContainer/VBoxContainer/DropDownMenu"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 66.0
+grow_horizontal = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/MarginContainer/VBoxContainer/DropDownMenu/MarginContainer"]
+layout_mode = 2
+
+[node name="UsernameField" type="LineEdit" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/MarginContainer/VBoxContainer/DropDownMenu/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "email"
+script = ExtResource("8_b4fbf")
+
+[node name="PasswordField" type="LineEdit" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/MarginContainer/VBoxContainer/DropDownMenu/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "password"
+secret = true
+
+[node name="LoginButton" type="Button" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/MarginContainer/VBoxContainer/DropDownMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Login!"
+
+[node name="ErrorPanel" type="MarginContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/ErrorPanel"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_v6k8x")
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/ErrorPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/ErrorPanel/MarginContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/ErrorPanel/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+text = "⚠️ Errors"
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/ErrorPanel/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="ErrorMessages" type="VBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/ErrorPanel/MarginContainer2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="WarnEmailInvalid" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/ErrorPanel/MarginContainer2/VBoxContainer/ErrorMessages"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "- email must be valid format"
+label_settings = ExtResource("4_v6k8x")
+autowrap_mode = 3
+
+[node name="WarnEmailEmpty" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/ErrorPanel/MarginContainer2/VBoxContainer/ErrorMessages"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "- email must not be empty"
+label_settings = ExtResource("4_v6k8x")
+autowrap_mode = 3
+
+[node name="WarnPasswordEmpty" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/ErrorPanel/MarginContainer2/VBoxContainer/ErrorMessages"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "- password must not be empty"
+label_settings = ExtResource("4_v6k8x")
+autowrap_mode = 3
+
+[node name="WarnIncorrectLogin" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/ErrorPanel/MarginContainer2/VBoxContainer/ErrorMessages"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "email or password is incorrect!"
+label_settings = ExtResource("4_v6k8x")
+autowrap_mode = 3
+
+[node name="WarnEmailDuplicate" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/ErrorPanel/MarginContainer2/VBoxContainer/ErrorMessages"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "There is already an account associated with that email."
+label_settings = ExtResource("4_v6k8x")
+autowrap_mode = 3
+
+[node name="Control" type="Control" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="DevBlocker" type="CanvasLayer" parent="."]
+visible = false
+script = ExtResource("10_t2x35")
+
+[node name="MarginContainer" type="MarginContainer" parent="DevBlocker"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel2" type="Panel" parent="DevBlocker/MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("3_b5krj")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DevBlocker/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="DevBlocker/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Enter development password:"
+
+[node name="LineEdit" type="LineEdit" parent="DevBlocker/MarginContainer/VBoxContainer"]
+layout_mode = 2
+secret = true
+
+[connection signal="pressed" from="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/MarginContainer/VBoxContainer/CreateAccountButton" to="." method="_on_create_account_button_pressed"]
+[connection signal="toggled" from="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/MarginContainer/VBoxContainer/LoginButton" to="." method="_on_login_button_toggled"]
+[connection signal="text_changed" from="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/MarginContainer/VBoxContainer/DropDownMenu/MarginContainer/VBoxContainer/UsernameField" to="." method="_on_username_field_text_changed"]
+[connection signal="text_submitted" from="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/MarginContainer/VBoxContainer/DropDownMenu/MarginContainer/VBoxContainer/UsernameField" to="." method="_on_username_field_text_submitted"]
+[connection signal="text_changed" from="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/MarginContainer/VBoxContainer/DropDownMenu/MarginContainer/VBoxContainer/PasswordField" to="." method="_on_password_field_text_changed"]
+[connection signal="text_submitted" from="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/MarginContainer/VBoxContainer/DropDownMenu/MarginContainer/VBoxContainer/PasswordField" to="." method="_on_password_field_text_submitted"]
+[connection signal="pressed" from="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/MarginContainer/VBoxContainer/DropDownMenu/MarginContainer/VBoxContainer/LoginButton" to="." method="_on_login_button_pressed"]
+[connection signal="text_submitted" from="DevBlocker/MarginContainer/VBoxContainer/LineEdit" to="DevBlocker" method="_on_line_edit_text_submitted"]

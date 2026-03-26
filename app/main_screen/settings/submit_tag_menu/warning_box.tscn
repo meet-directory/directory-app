@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://dh42ok3r4vn3g"]
+
+[ext_resource type="Script" uid="uid://c1wn3vle1sq7o" path="res://app/main_screen/settings/submit_tag_menu/warning_box.gd" id="1_abyph"]
+[ext_resource type="LabelSettings" uid="uid://crec8tr40vb4i" path="res://resources/styles/subtle_grey_text_label_setting.tres" id="2_2xxka"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_myqrv"]
+bg_color = Color(0.77, 0.6288333, 0, 0.26666668)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="WarningBox" type="MarginContainer"]
+custom_minimum_size = Vector2(80, 0)
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 85.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 10
+script = ExtResource("1_abyph")
+label_setting = ExtResource("2_2xxka")
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_myqrv")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="WarningLabelContainer" type="VBoxContainer" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2

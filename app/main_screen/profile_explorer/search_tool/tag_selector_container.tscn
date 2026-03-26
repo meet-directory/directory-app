@@ -1,0 +1,86 @@
+[gd_scene load_steps=5 format=3 uid="uid://bffx2x1gb5he5"]
+
+[ext_resource type="Script" uid="uid://1uhhaage1bh2" path="res://app/main_screen/profile_explorer/search_tool/tag_selector_container.gd" id="1_je86g"]
+[ext_resource type="StyleBox" uid="uid://dglfl5sw7ex3c" path="res://resources/styles/tag_selector_container.tres" id="2_mypok"]
+[ext_resource type="PackedScene" uid="uid://di2hd4aocgljw" path="res://app/main_screen/profile_explorer/search_tool/editable_tag.tscn" id="2_s3e7v"]
+[ext_resource type="PackedScene" uid="uid://c1j7o3jj3dw1u" path="res://app/main_screen/profile_explorer/search_tool/add_tag_button.tscn" id="3_mypok"]
+
+[node name="TagSelectorContainer" type="MarginContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 141.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+script = ExtResource("1_je86g")
+enable_add_tag_feature = true
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_mypok")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HFlowContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="InfoButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "ℹ️"
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Must Match"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TagContainer" type="HFlowContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="EditableTag" parent="MarginContainer/VBoxContainer/HBoxContainer/TagContainer" instance=ExtResource("2_s3e7v")]
+layout_mode = 2
+backgrounds = Dictionary[int, StyleBoxFlat]({
+0: null,
+1: null,
+2: null,
+3: null
+})
+
+[node name="EditableTag5" parent="MarginContainer/VBoxContainer/HBoxContainer/TagContainer" instance=ExtResource("2_s3e7v")]
+layout_mode = 2
+backgrounds = Dictionary[int, StyleBoxFlat]({
+0: null,
+1: null,
+2: null,
+3: null
+})
+
+[node name="EditableTag6" parent="MarginContainer/VBoxContainer/HBoxContainer/TagContainer" instance=ExtResource("2_s3e7v")]
+layout_mode = 2
+backgrounds = Dictionary[int, StyleBoxFlat]({
+0: null,
+1: null,
+2: null,
+3: null
+})
+
+[node name="AddTagButton" parent="MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("3_mypok")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/InfoButton" to="." method="_on_info_button_pressed"]
+[connection signal="tags_added" from="MarginContainer/VBoxContainer/HBoxContainer/AddTagButton" to="." method="_on_add_tag_button_tags_added"]

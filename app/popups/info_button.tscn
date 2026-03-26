@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://i3vafh00rvpw"]
+
+[ext_resource type="Script" uid="uid://xjx28jok11sv" path="res://app/popups/info_button.gd" id="1_fngil"]
+
+[node name="InfoButton" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "ℹ️"
+script = ExtResource("1_fngil")

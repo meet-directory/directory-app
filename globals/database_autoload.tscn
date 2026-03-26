@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ltxu8i84h6pd"]
+
+[ext_resource type="Script" uid="uid://c2icivfyrqctx" path="res://globals/api_server_autoload.gd" id="1_11oku"]
+
+[node name="DatabaseAutoload" type="Node"]
+script = ExtResource("1_11oku")
+debug = true

@@ -1,0 +1,81 @@
+[gd_scene load_steps=10 format=3 uid="uid://ds8fo6ghwa7vd"]
+
+[ext_resource type="Script" uid="uid://xsup7x8d6rgg" path="res://app/main_screen/profile_explorer/search_tool/tag.gd" id="1_mw8eu"]
+[ext_resource type="StyleBox" uid="uid://d1gvm3stgniun" path="res://resources/styles/tag_other.tres" id="2_2j2ut"]
+[ext_resource type="StyleBox" uid="uid://bs20c151xep0t" path="res://resources/styles/tag_personal.tres" id="2_5wjtb"]
+[ext_resource type="StyleBox" uid="uid://bfc3a0nbjtv7w" path="res://resources/styles/tag_relationship.tres" id="3_5cxxf"]
+[ext_resource type="StyleBox" uid="uid://bgjd43jo3xk4w" path="res://resources/styles/tag_desire.tres" id="4_l1ktr"]
+[ext_resource type="StyleBox" uid="uid://qc04wsnkfi06" path="res://resources/styles/tag_match_overlay.tres" id="6_5cxxf"]
+[ext_resource type="StyleBox" uid="uid://cofqnutog6fpo" path="res://resources/styles/tag_unset_default.tres" id="6_owgwo"]
+[ext_resource type="StyleBox" uid="uid://dyeklt0xs0nt3" path="res://resources/styles/tag_overlay_disabled.tres" id="7_l1ktr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_51836"]
+
+[node name="Tag" type="MarginContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.5
+offset_top = -12.0
+offset_right = 50.5
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+script = ExtResource("1_mw8eu")
+backgrounds = Dictionary[int, StyleBoxFlat]({
+0: ExtResource("2_5wjtb"),
+1: ExtResource("3_5cxxf"),
+2: ExtResource("4_l1ktr"),
+3: ExtResource("2_2j2ut")
+})
+
+[node name="BackgroundPanel" type="Panel" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/panel = ExtResource("6_owgwo")
+
+[node name="MatchPanel" type="Panel" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_styles/panel = ExtResource("6_5cxxf")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="EmojiLabel" type="Label" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "❔"
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "unknown"
+
+[node name="Button" type="Button" parent="MarginContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_51836")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_51836")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_51836")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_51836")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_51836")
+
+[node name="DisabledPanel" type="Panel" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_styles/panel = ExtResource("7_l1ktr")
+
+[connection signal="button_down" from="MarginContainer/Button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="MarginContainer/Button" to="." method="_on_button_button_up"]

@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=3 uid="uid://daiq3ls2tnj3o"]
+
+[ext_resource type="Script" uid="uid://dhm3b77k8kstk" path="res://app/main_screen/messages/chats/message_control.gd" id="1_hqyx2"]
+[ext_resource type="StyleBox" uid="uid://ceovsmxc3h3ih" path="res://resources/styles/chat_message_from_user.tres" id="2_ab348"]
+[ext_resource type="Script" uid="uid://b4nmfnaeluowr" path="res://app/custom_ui_elements/relative_margin_container.gd" id="2_mdq43"]
+[ext_resource type="StyleBox" uid="uid://ehr4642t4s4k" path="res://app/main_screen/messages/chats/chat_message_from_contact.tres" id="3_clo8n"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hjojd"]
+font_size = 13
+font_color = Color(0.601223, 0.601223, 0.60122293, 1)
+
+[node name="MessageControl" type="VBoxContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 77.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+script = ExtResource("1_hqyx2")
+sent_by_user_panel = ExtResource("2_ab348")
+sent_by_other_panel = ExtResource("3_clo8n")
+
+[node name="BubbleContainer" type="MarginContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 276
+theme_override_constants/margin_bottom = 0
+script = ExtResource("2_mdq43")
+right = 0.3
+metadata/_custom_type_script = "uid://b4nmfnaeluowr"
+
+[node name="Panel" type="Panel" parent="BubbleContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_ab348")
+
+[node name="MarginContainer" type="MarginContainer" parent="BubbleContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="MessageLabel" type="Label" parent="BubbleContainer/MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
+text = "this is a text message teehee. Hey sexy whats up my man. How you doin?"
+autowrap_mode = 2
+
+[node name="TimeStampLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+text = "10:22 PM"
+label_settings = SubResource("LabelSettings_hjojd")

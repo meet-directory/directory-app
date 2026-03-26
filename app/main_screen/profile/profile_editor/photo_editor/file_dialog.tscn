@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://b322t7vttcqj0"]
+
+[node name="FileDialog" type="FileDialog"]
+oversampling_override = 1.0
+title = "Open a File"
+initial_position = 1
+size = Vector2i(749, 360)
+visible = true
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.jpg", "*.jpeg")
+use_native_dialog = true

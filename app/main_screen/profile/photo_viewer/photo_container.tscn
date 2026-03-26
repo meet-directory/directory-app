@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7kfhjronlyao"]
+
+[ext_resource type="Script" uid="uid://c5rj2dvfeent4" path="res://app/main_screen/profile/photo_viewer/photo_container.gd" id="1_e6i5k"]
+[ext_resource type="Shader" uid="uid://5lvlujhai0u2" path="res://resources/styles/photo_loading.gdshader" id="2_clg5u"]
+[ext_resource type="Texture2D" uid="uid://crmvkbb7fahei" path="res://resources/icons/grey.png" id="2_mc85w"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yqs00"]
+shader = ExtResource("2_clg5u")
+shader_parameter/line_width = 0.400000019
+shader_parameter/speed = 8.00000037674012
+shader_parameter/brightness = 0.0950000045125
+shader_parameter/softness = 0.02000000095
+shader_parameter/pause_duration = 1.0
+
+[node name="PhotoContainer" type="AspectRatioContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+ratio = 0.8
+script = ExtResource("1_e6i5k")
+load_material = SubResource("ShaderMaterial_yqs00")
+
+[node name="PhotoContainer" type="MarginContainer" parent="."]
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="PhotoContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_mc85w")
+expand_mode = 3
+stretch_mode = 4

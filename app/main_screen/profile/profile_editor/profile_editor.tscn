@@ -1,0 +1,227 @@
+[gd_scene load_steps=9 format=3 uid="uid://6ilqw78x5j3o"]
+
+[ext_resource type="Script" uid="uid://cbvndcsy1hci7" path="res://app/main_screen/profile/profile_editor/profile_editor.gd" id="1_mo5yl"]
+[ext_resource type="PackedScene" uid="uid://bwn5vy8firy3" path="res://app/main_screen/profile/photo_viewer/photo_viewer.tscn" id="2_huoy0"]
+[ext_resource type="PackedScene" uid="uid://bffx2x1gb5he5" path="res://app/main_screen/profile_explorer/search_tool/tag_selector_container.tscn" id="2_mo5yl"]
+[ext_resource type="PackedScene" uid="uid://407tgnvratx3" path="res://app/main_screen/profile/profile_editor/photo_editor/photo_edit_arranger.tscn" id="2_uc052"]
+[ext_resource type="PackedScene" uid="uid://bbh7rn8ndc5br" path="res://app/custom_ui_elements/max_length_text_edit/max_length_text_edit.tscn" id="3_50a7t"]
+[ext_resource type="Script" uid="uid://b64fitfbob0sm" path="res://app/main_screen/profile/profile_editor/photo_editor/photo_editor.gd" id="4_u4xtl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_re2j5"]
+bg_color = Color(0.6, 0.6, 0.6, 0.101960786)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uc052"]
+bg_color = Color(0.12591082, 0.12591085, 0.12591076, 1)
+border_width_left = 3
+border_width_top = 3
+border_color = Color(0.015737293, 0.021698317, 0.035178836, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="ProfileEditor" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mo5yl")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_re2j5")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="EditProfileContainer" type="VBoxContainer" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="EditProfileContainer" type="ScrollContainer" parent="MarginContainer/EditProfileContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/EditProfileContainer/EditProfileContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label2" type="Label" parent="MarginContainer/EditProfileContainer/EditProfileContainer/VBoxContainer"]
+layout_mode = 2
+text = "Photos"
+
+[node name="PhotoViewer" parent="MarginContainer/EditProfileContainer/EditProfileContainer/VBoxContainer" instance=ExtResource("2_huoy0")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="EditPhotosButton" type="Button" parent="MarginContainer/EditProfileContainer/EditProfileContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "    Edit Photos...    "
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/EditProfileContainer/EditProfileContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 21
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/EditProfileContainer/EditProfileContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="MarginContainer/EditProfileContainer/EditProfileContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Display Name"
+
+[node name="NameEdit" type="LineEdit" parent="MarginContainer/EditProfileContainer/EditProfileContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+max_length = 80
+
+[node name="DescriptionLabel" type="Label" parent="MarginContainer/EditProfileContainer/EditProfileContainer/VBoxContainer"]
+layout_mode = 2
+text = "Bio"
+
+[node name="DescriptionEdit" parent="MarginContainer/EditProfileContainer/EditProfileContainer/VBoxContainer" instance=ExtResource("3_50a7t")]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "description"
+
+[node name="HSeparator2" type="HSeparator" parent="MarginContainer/EditProfileContainer/EditProfileContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 21
+
+[node name="Label" type="Label" parent="MarginContainer/EditProfileContainer/EditProfileContainer/VBoxContainer"]
+layout_mode = 2
+text = "Tags"
+
+[node name="PersonalTags" parent="MarginContainer/EditProfileContainer/EditProfileContainer/VBoxContainer" instance=ExtResource("2_mo5yl")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+title = "💁 Personal"
+info_text = "Personal tags should be about your personal characteristics. For example, your gender and sexuality."
+use_filter = true
+filter_white_list = Array[int]([0])
+
+[node name="WantsTags" parent="MarginContainer/EditProfileContainer/EditProfileContainer/VBoxContainer" instance=ExtResource("2_mo5yl")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+title = "🧑‍🤝‍🧑 Relationship Goals"
+info_text = "These are the tags specifying the kind of relationship you're looking for. For example: platonic, monogamous, casual, serious, fwb."
+use_filter = true
+filter_white_list = Array[int]([1])
+
+[node name="DesireTags" parent="MarginContainer/EditProfileContainer/EditProfileContainer/VBoxContainer" instance=ExtResource("2_mo5yl")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+title = "😏 Interests"
+info_text = "List your kinks or what you want to explore sexually. Feel free to leave this empty or only show people who you have matched with."
+use_filter = true
+filter_white_list = Array[int]([2])
+
+[node name="ShowToMatchesCheckButton" type="CheckButton" parent="MarginContainer/EditProfileContainer/EditProfileContainer/VBoxContainer/DesireTags/MarginContainer/VBoxContainer" index="2"]
+layout_mode = 2
+size_flags_horizontal = 10
+tooltip_text = "If turned on, this profile section will be hidden until someone has matched with you."
+text = "Show only to matches"
+
+[node name="OtherTags" parent="MarginContainer/EditProfileContainer/EditProfileContainer/VBoxContainer" instance=ExtResource("2_mo5yl")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+title = "🤩 Interests"
+info_text = "This section should include your hobbies, lifestyle, fandoms, favorite things, etc."
+use_filter = true
+filter_white_list = Array[int]([2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14])
+
+[node name="Tags" parent="MarginContainer/EditProfileContainer/EditProfileContainer/VBoxContainer" instance=ExtResource("2_mo5yl")]
+unique_name_in_owner = true
+layout_mode = 2
+title = "🤩 Tags"
+info_text = "Tags that represent you! Your profile will be searchable on these tags."
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/EditProfileContainer"]
+layout_mode = 2
+
+[node name="CancelEditButton" type="Button" parent="MarginContainer/EditProfileContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Cancel Changes"
+
+[node name="SaveEditButton" type="Button" parent="MarginContainer/EditProfileContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Save Profile"
+
+[node name="EditPhotosContainer" type="ScrollContainer" parent="MarginContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="PhotoEditor" type="MarginContainer" parent="MarginContainer/EditPhotosContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("4_u4xtl")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/EditPhotosContainer/PhotoEditor"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/EditPhotosContainer/PhotoEditor/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Panel" type="Panel" parent="MarginContainer/EditPhotosContainer/PhotoEditor/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_uc052")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/EditPhotosContainer/PhotoEditor/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/EditPhotosContainer/PhotoEditor/VBoxContainer/MarginContainer2/MarginContainer"]
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+
+[node name="PhotoEditViewer" parent="MarginContainer/EditPhotosContainer/PhotoEditor/VBoxContainer/MarginContainer2/MarginContainer/ScrollContainer" instance=ExtResource("2_uc052")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/EditPhotosContainer/PhotoEditor/VBoxContainer"]
+layout_mode = 2
+
+[node name="CancelButton" type="Button" parent="MarginContainer/EditPhotosContainer/PhotoEditor/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Cancel Changes"
+
+[node name="SaveButton" type="Button" parent="MarginContainer/EditPhotosContainer/PhotoEditor/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Save Changes"
+
+[connection signal="pressed" from="MarginContainer/EditProfileContainer/EditProfileContainer/VBoxContainer/EditPhotosButton" to="." method="_on_edit_photos_button_pressed"]
+[connection signal="toggled" from="MarginContainer/EditProfileContainer/EditProfileContainer/VBoxContainer/DesireTags/MarginContainer/VBoxContainer/ShowToMatchesCheckButton" to="." method="_on_show_to_matches_check_button_toggled"]
+[connection signal="pressed" from="MarginContainer/EditProfileContainer/HBoxContainer/CancelEditButton" to="." method="_on_cancel_edit_button_pressed"]
+[connection signal="pressed" from="MarginContainer/EditProfileContainer/HBoxContainer/SaveEditButton" to="." method="_on_save_edit_button_pressed"]
+[connection signal="editing_finished" from="MarginContainer/EditPhotosContainer/PhotoEditor" to="." method="_on_photo_editor_editing_finished"]
+[connection signal="pressed" from="MarginContainer/EditPhotosContainer/PhotoEditor/VBoxContainer/HBoxContainer2/CancelButton" to="MarginContainer/EditPhotosContainer/PhotoEditor" method="_on_cancel_button_pressed"]
+[connection signal="pressed" from="MarginContainer/EditPhotosContainer/PhotoEditor/VBoxContainer/HBoxContainer2/SaveButton" to="MarginContainer/EditPhotosContainer/PhotoEditor" method="_on_save_button_pressed"]
+
+[editable path="MarginContainer/EditProfileContainer/EditProfileContainer/VBoxContainer/DesireTags"]

@@ -1,0 +1,139 @@
+[gd_scene load_steps=7 format=3 uid="uid://eeutadd3g8ww"]
+
+[ext_resource type="Script" uid="uid://cytsucydo1gbd" path="res://app/main_screen/profile_explorer/search_tool/search_parameter_tool.gd" id="1_8s0uw"]
+[ext_resource type="Script" uid="uid://bow5u7ragc1tj" path="res://app/main_screen/profile_explorer/search_tool/max_distance.gd" id="1_kdd2m"]
+[ext_resource type="PackedScene" uid="uid://bffx2x1gb5he5" path="res://app/main_screen/profile_explorer/search_tool/tag_selector_container.tscn" id="3_kalbu"]
+[ext_resource type="PackedScene" uid="uid://dgf77p8v8asvf" path="res://app/custom_ui_elements/double_slider/double_slider.tscn" id="3_mujbb"]
+[ext_resource type="PackedScene" uid="uid://i3vafh00rvpw" path="res://app/popups/info_button.tscn" id="4_0m016"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0m016"]
+bg_color = Color(0.15, 0.15, 0.15, 0.32156864)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="SearchParamList" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8s0uw")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer2/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_right = 15
+
+[node name="DistanceRange" type="HBoxContainer" parent="HBoxContainer2/MarginContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+script = ExtResource("1_kdd2m")
+
+[node name="Label" type="Label" parent="HBoxContainer2/MarginContainer/MarginContainer/DistanceRange"]
+layout_mode = 2
+text = "Distance: "
+
+[node name="DistanceSlider" parent="HBoxContainer2/MarginContainer/MarginContainer/DistanceRange" instance=ExtResource("3_mujbb")]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 200.0
+min_value = 1.0
+step_value = 2.0
+
+[node name="Panel" type="Panel" parent="HBoxContainer2/MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0m016")
+
+[node name="InfoButton" parent="HBoxContainer2" instance=ExtResource("4_0m016")]
+layout_mode = 2
+info_text = "Directory is currently only supported in North Carolina and we expect most users to be in the triangle area. We currently don't have the resources to add a fine-grained location filter, but that is first on our list if the launch of Directory is successful. Thanks for your understanding!"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_right = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="AgeRange" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+script = ExtResource("1_kdd2m")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/AgeRange"]
+layout_mode = 2
+text = "Age:         "
+
+[node name="AgeSlider" parent="MarginContainer/VBoxContainer/AgeRange" instance=ExtResource("3_mujbb")]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 18.0
+
+[node name="HeightRange" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 12
+script = ExtResource("1_kdd2m")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HeightRange"]
+layout_mode = 2
+text = "Height: "
+
+[node name="DoubleSlider" parent="MarginContainer/VBoxContainer/HeightRange" instance=ExtResource("3_mujbb")]
+layout_mode = 2
+max_value = 96.0
+min_value = 36.0
+step_value = 2.0
+
+[node name="SeenProfiles" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Label" type="Label" parent="SeenProfiles"]
+layout_mode = 2
+text = "Don't show previously seen profiles:"
+
+[node name="DontShowSeenCheckBox" type="CheckBox" parent="SeenProfiles"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="MustMatchTagsContainer" parent="." instance=ExtResource("3_kalbu")]
+unique_name_in_owner = true
+layout_mode = 2
+enable_add_tag_feature = false
+
+[node name="WantMatchTagsContainer" parent="." instance=ExtResource("3_kalbu")]
+unique_name_in_owner = true
+layout_mode = 2
+title = "Want Match"
+enable_add_tag_feature = false
+
+[node name="DontMatchTagsContainer" parent="." instance=ExtResource("3_kalbu")]
+unique_name_in_owner = true
+layout_mode = 2
+title = "Dont Match"
+enable_add_tag_feature = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+visible = false
+layout_mode = 2
+
+[node name="Button" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+disabled = true
+text = "Save as Default"
+
+[node name="Button2" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+disabled = true
+text = "Reset to Profile Default"

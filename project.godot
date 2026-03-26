@@ -1,0 +1,85 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[app]
+
+api_url="0.0.0.0:10000"
+
+[application]
+
+config/name="Directory"
+run/main_scene="uid://duy1kwsnwrcb5"
+config/quit_on_go_back=false
+config/features=PackedStringArray("4.5", "Forward Plus")
+boot_splash/image="uid://6hd57acjr2eb"
+config/icon="res://icon.svg"
+
+[autoload]
+
+BrowserDebug="*res://globals/BrowserDebug.tscn"
+TokenStorage="*res://globals/token_storage.gd"
+Server="*res://globals/api_server_autoload.gd"
+App="*res://globals/app.tscn"
+ScaleManager="*res://globals/scale_manager.gd"
+Websockets="*res://globals/websockets.gd"
+Constants="*res://globals/constants.gd"
+LocationService="*res://globals/location_service.gd"
+ObjectStorage="*res://globals/object_storage.gd"
+ScrollOwner="*res://globals/scroll_owner.gd"
+ReportOverlay="*res://globals/report_overlay.tscn"
+
+[display]
+
+window/size/viewport_width=920
+window/size/viewport_height=1080
+window/stretch/aspect="ignore"
+window/stretch/scale=2.0
+window/handheld/orientation=1
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/file_access_web/plugin.cfg")
+
+[gui]
+
+theme/custom_font="uid://bi37j6bt4qrvy"
+
+[input]
+
+left-click={
+"deadzone": 0.2,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(66, 17),"global_position":Vector2(75, 65),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
+]
+}
+message_enter={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194309,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
+scroll_wheel_up={
+"deadzone": 0.2,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":8,"position":Vector2(226, 18),"global_position":Vector2(235, 66),"factor":1.0,"button_index":4,"canceled":false,"pressed":true,"double_click":false,"script":null)
+]
+}
+scroll_wheel_down={
+"deadzone": 0.2,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":16,"position":Vector2(371, 6),"global_position":Vector2(380, 54),"factor":1.0,"button_index":5,"canceled":false,"pressed":true,"double_click":false,"script":null)
+]
+}
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
