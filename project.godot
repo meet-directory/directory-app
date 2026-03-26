@@ -8,6 +8,10 @@
 
 config_version=5
 
+[app]
+
+api_url="0.0.0.0:10000"
+
 [application]
 
 config/name="Directory"

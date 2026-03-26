@@ -59,13 +59,15 @@ func _remove_loading_screen():
 			_active_loading_screen = null
 
 
-func _ready() -> void:	
+func _ready() -> void:
+	var api_url = ProjectSettings.get_setting("app/api_url")
+	BASE_URL = api_url
+	print("USING URL ", api_url)
+
 	if App.is_prod:
 		HTTP_PREFIX = "https://"
-		BASE_URL = PROD_BASE_URL
 	else:
 		HTTP_PREFIX = "http://"
-		BASE_URL = DEV_BASE_URL
 		
 		var flush_timer:Timer = Timer.new()
 		add_child(flush_timer)
