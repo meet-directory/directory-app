@@ -674,7 +674,9 @@ Public License instead of this License.  But first, please read
 <https://www.gnu.org/licenses/why-not-lgpl.html>.
 
 
-Additional Terms
+-- above text is the full GPL v3 unchanged, below is additional terms --
+
+Additional Terms under Section 7:
 
 The "Social Directory" name and logo are trademarks of Social 
 Directory LLC and are not covered by this license. No permission 
