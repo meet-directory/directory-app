@@ -4,7 +4,7 @@ const NPROFILES_PER_QUERY = 10
 
 var BASE_URL:String
 var HTTP_PREFIX:String = "https://"
-const DEV_BASE_URL = "0.0.0.0:10000"
+#const DEV_BASE_URL = "0.0.0.0:10000"
 #const PROD_BASE_URL = "directory-api-w9mi.onrender.com"
 #const PROD_BASE_URL = "https://directory-api-1.onrender.com"
 
@@ -64,12 +64,12 @@ func _ready() -> void:
 	var api_url = ProjectSettings.get_setting("app/api_url")
 	BASE_URL = api_url
 	#print("USING URL ", api_url)
-
+	
 	if App.is_prod:
 		HTTP_PREFIX = "https://"
 	else:
 		HTTP_PREFIX = "http://"
-		
+	
 	var flush_timer:Timer = Timer.new()
 	add_child(flush_timer)
 	flush_timer.wait_time = MARK_SEEN_FLUSH_INTERVAL
