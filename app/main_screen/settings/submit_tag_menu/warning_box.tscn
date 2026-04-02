@@ -4,7 +4,7 @@
 [ext_resource type="LabelSettings" uid="uid://crec8tr40vb4i" path="res://resources/styles/subtle_grey_text_label_setting.tres" id="2_2xxka"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_myqrv"]
-bg_color = Color(0.77, 0.6288333, 0, 0.26666668)
+bg_color = Color(0.76862746, 0.627451, 0, 0.09803922)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -22,17 +22,28 @@ script = ExtResource("1_abyph")
 label_setting = ExtResource("2_2xxka")
 
 [node name="Panel" type="Panel" parent="."]
-visible = false
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_myqrv")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+text = "⚠️ warnings"
+label_settings = ExtResource("2_2xxka")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="WarningLabelContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="WarningLabelContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2

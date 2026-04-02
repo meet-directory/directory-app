@@ -21,6 +21,7 @@ const GET_USER_PROFILE_ENDPOINT = 'fetch_user_profile'
 const REFRESH_ENDPOINT = 'auth/refresh'
 const COMPLETE_ONBOARD_ENDPOINT = 'complete_onboard'
 const DELETE_ACCOUNT_ENDPOINT = 'delete'
+const ACCOUNT_CHG_PASSWORD_ENDPOINT = 'change_password'
 const MARK_SEEN_ENDPOINT = 'mark_seen'
 
 const HTTP_ERROR_DEFAULT = "An error occured. Try again later"
@@ -307,6 +308,9 @@ func unsuspend_account(callback:Callable) -> void:
 func update_profile(new_profile_data:Dictionary, callback:Callable) -> void:
 	_send_post_request(callback, 'profile', new_profile_data)
 
+func change_password(old_password:String, new_password:String, callback:Callable) -> void:
+	var data:Dictionary = {'old_password': old_password, 'new_password': new_password}
+	_send_post_request(callback, ACCOUNT_CHG_PASSWORD_ENDPOINT, data)
 
 
 ### Other ########################################################

@@ -1,0 +1,82 @@
+[gd_scene load_steps=6 format=3 uid="uid://fqjrmqkdhvkf"]
+
+[ext_resource type="Script" uid="uid://m4q17njm7xsi" path="res://app/main_screen/settings/settings.gd" id="1_vu2du"]
+[ext_resource type="PackedScene" uid="uid://b7o8n2d1lrj4u" path="res://app/main_screen/settings/submit_tag_menu/submit_tag_menu.tscn" id="2_gnyii"]
+[ext_resource type="Script" uid="uid://djwhax4cylmsw" path="res://app/main_screen/settings/greeting_label.gd" id="2_opeqm"]
+[ext_resource type="PackedScene" uid="uid://l0y7vw5m8x5n" path="res://app/main_screen/settings/account_management_menu/account_management_menu.tscn" id="3_ha2qc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_siucu"]
+
+[node name="Settings" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+script = ExtResource("1_vu2du")
+add_tag_menu = ExtResource("2_gnyii")
+account_mgmt_menu = ExtResource("3_ha2qc")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Hello, user!"
+script = ExtResource("2_opeqm")
+
+[node name="HSeparator" type="HSeparator" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="EditProfileButton" type="Button" parent="ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "✏️ Edit Profile"
+alignment = 0
+
+[node name="ProfileViewToggle" type="Button" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "👁️ View Profile"
+alignment = 0
+
+[node name="AddTagButton" type="Button" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "🏷️ Submit New Tag"
+alignment = 0
+
+[node name="HSeparator2" type="HSeparator" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 9
+theme_override_styles/separator = SubResource("StyleBoxEmpty_siucu")
+
+[node name="AccountManagementButton" type="Button" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "⚙️ Account Management"
+alignment = 0
+
+[node name="HSeparator3" type="HSeparator" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 9
+theme_override_styles/separator = SubResource("StyleBoxEmpty_siucu")
+
+[node name="PaymentButton" type="Button" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "😇 Donate"
+alignment = 0
+
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/EditProfileButton" to="." method="_on_edit_profile_button_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/ProfileViewToggle" to="." method="_on_profile_view_toggle_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/AddTagButton" to="." method="_on_add_tag_button_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/AccountManagementButton" to="." method="_on_account_management_button_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/PaymentButton" to="." method="_on_payment_button_pressed"]

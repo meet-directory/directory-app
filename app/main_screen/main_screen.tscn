@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cx4lbwt3umi84" path="res://app/main_screen/profile_explorer/profile_explorer.tscn" id="1_n2g21"]
 [ext_resource type="Theme" uid="uid://c52euoe38n0nm" path="res://resources/styles/app_theme.tres" id="1_qm8y5"]
 [ext_resource type="StyleBox" uid="uid://dvjyuhjb1s8f4" path="res://resources/styles/app_background.tres" id="1_qvskh"]
-[ext_resource type="PackedScene" uid="uid://fqjrmqkdhvkf" path="res://globals/Settings.tscn" id="2_bqwcg"]
+[ext_resource type="PackedScene" uid="uid://fqjrmqkdhvkf" path="res://app/main_screen/settings/Settings.tscn" id="2_bqwcg"]
 [ext_resource type="Script" uid="uid://c6lq1h82n3xpe" path="res://app/main_screen/tab_container.gd" id="3_vn0a5"]
 [ext_resource type="PackedScene" uid="uid://dlp24xb8w8dpq" path="res://app/main_screen/messages/matches.tscn" id="6_lk2rg"]
 [ext_resource type="Script" uid="uid://cqgdswj1lyike" path="res://app/main_screen/tab_manager.gd" id="6_qm8y5"]

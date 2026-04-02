@@ -7,7 +7,6 @@ func _ready() -> void:
 		_on_user_session_loaded(Server.session_profile)
 
 func _on_user_session_loaded(prof:ProfileResource) -> void:
-	print('loaded for suspend settings')
 	if prof.suspended:
 		text = "🫥 Unsuspend Account"
 	else:

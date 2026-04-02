@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://duy1kwsnwrcb5"]
+[gd_scene load_steps=14 format=3 uid="uid://duy1kwsnwrcb5"]
 
 [ext_resource type="Theme" uid="uid://c52euoe38n0nm" path="res://resources/styles/app_theme.tres" id="1_5i0su"]
 [ext_resource type="Script" uid="uid://cp2q16pyq35lc" path="res://app/login_screen/login.gd" id="2_704r5"]
@@ -8,7 +8,6 @@
 [ext_resource type="LabelSettings" uid="uid://cdcmno7gw1tok" path="res://resources/styles/login_error_label_settings.tres" id="4_v6k8x"]
 [ext_resource type="Script" uid="uid://b4nmfnaeluowr" path="res://app/custom_ui_elements/relative_margin_container.gd" id="4_wwvf7"]
 [ext_resource type="Script" uid="uid://btwfpxf4bhuux" path="res://app/login_screen/scroll_container.gd" id="5_wwvf7"]
-[ext_resource type="Script" uid="uid://bo3d14iw8rcc3" path="res://app/login_screen/username_field.gd" id="8_b4fbf"]
 [ext_resource type="Script" uid="uid://dmkxlpy8ehgun" path="res://app/login_screen/dev_blocker.gd" id="10_t2x35"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_704r5"]
@@ -145,7 +144,6 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 placeholder_text = "email"
-script = ExtResource("8_b4fbf")
 
 [node name="PasswordField" type="LineEdit" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/MarginContainer/VBoxContainer/DropDownMenu/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true

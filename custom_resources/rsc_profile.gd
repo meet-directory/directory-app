@@ -65,12 +65,15 @@ func from_db(dict:Dictionary, load_textures:bool=true):
 			photos[i].set_url(image_urls[i])
 	
 	# All of these fields MUST be present in the data, default values are only provided
-	# incase onboarding was started but no profile data was sent yet.
+	# in case onboarding was started but no profile data was sent yet.
 	username = data.get('username', '')
 	age = dict.get('age', 0)
 	description = data.get('bio', '')
 	id = dict['user_id']
 	suspended = dict.get('suspend_status', true)
+	
+	if data.has('email'):  # only present for the logged-in user
+		email = data['email']
 	
 	match_status = match_status_tx[dict.get('match_status', 'none')]
 	
