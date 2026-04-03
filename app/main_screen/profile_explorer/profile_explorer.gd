@@ -14,6 +14,8 @@ extends MarginContainer
 
 func _ready() -> void:
 	selected()
+	await get_tree().create_timer(0.05).timeout
+	_refresh_search()
 	#search_param_list.hide()
 
 func _on_search_toggle_button_toggled(toggled_on: bool) -> void:
