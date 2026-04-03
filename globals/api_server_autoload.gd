@@ -14,6 +14,7 @@ const PROFILE_QUERY_ENDPOINT = 'profiles'
 const LOGIN_ENDPOINT = 'login'
 const REGISTER_ENDPOINT = 'register'
 const REPORT_TAG_ENDPOINT = 'report_tag'
+const REPORT_FEEDBACK_ENDPOINT = 'submit_feedback'
 const SEND_LIKE_ENDPOINT = 'add_like'
 const ACCEPT_LIKE_ENDPOINT = 'accept_like'
 const GET_LIKES_ENDPOINT = 'get_likes'
@@ -329,6 +330,14 @@ func report_tag(tag_name:String, description:String, callback:Callable) -> void:
 		'description': description
 	}
 	_send_post_request(callback, REPORT_TAG_ENDPOINT, data)
+
+func report_feedback(email:String, reason:String, description:String, callback:Callable) -> void:
+	var data = {
+		'email': email,
+		'reason': reason,
+		'description': description
+	}
+	_send_post_request(callback, REPORT_FEEDBACK_ENDPOINT, data)
 
 ### Seen Profiles ########################################################
 

@@ -1,0 +1,115 @@
+[gd_scene load_steps=6 format=3 uid="uid://dhd4ptdci304x"]
+
+[ext_resource type="Theme" uid="uid://c52euoe38n0nm" path="res://resources/styles/app_theme.tres" id="1_hxqng"]
+[ext_resource type="StyleBox" uid="uid://fh3x8tnulkac" path="res://resources/styles/profile_panel_background.tres" id="2_3dmid"]
+[ext_resource type="Script" uid="uid://eesyjeprpimg" path="res://app/main_screen/reporting/user_feedback_menu.gd" id="2_hew1t"]
+[ext_resource type="PackedScene" uid="uid://bbh7rn8ndc5br" path="res://app/custom_ui_elements/max_length_text_edit/max_length_text_edit.tscn" id="4_3dmid"]
+[ext_resource type="LabelSettings" uid="uid://crec8tr40vb4i" path="res://resources/styles/subtle_grey_text_label_setting.tres" id="4_wsw6w"]
+
+[node name="FeedbackMenu" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_hxqng")
+script = ExtResource("2_hew1t")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_3dmid")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer2/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 14
+
+[node name="HBoxContainer3" type="HFlowContainer" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "User Feedback"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Feedback Type:"
+
+[node name="ReportReasonOptions" type="OptionButton" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+item_count = 4
+popup/item_0/text = "Bug Report"
+popup/item_0/id = 1
+popup/item_1/text = "Feature Suggestion"
+popup/item_1/id = 2
+popup/item_2/text = "Positive feedback"
+popup/item_2/id = 0
+popup/item_3/text = "Other"
+popup/item_3/id = 5
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Feedback:"
+
+[node name="MaxLengthTextEdit" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("4_3dmid")]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "I love this app! But you should mail me a consolation muffin whenever someone doesn't respond to my Likes!"
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "You may respond or follow up with me about this feedback:"
+label_settings = ExtResource("4_wsw6w")
+horizontal_alignment = 2
+autowrap_mode = 2
+
+[node name="ContactCheckBox" type="CheckBox" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="CancelButton" type="Button" parent="MarginContainer/VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Cancel"
+
+[node name="SubmitButton" type="Button" parent="MarginContainer/VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Submit Feedback"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer2/HBoxContainer2/CancelButton" to="." method="_on_cancel_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer2/HBoxContainer2/SubmitButton" to="." method="_on_submit_button_pressed"]

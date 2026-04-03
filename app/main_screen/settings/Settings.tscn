@@ -1,11 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://fqjrmqkdhvkf"]
+[gd_scene load_steps=8 format=3 uid="uid://fqjrmqkdhvkf"]
 
 [ext_resource type="Script" uid="uid://m4q17njm7xsi" path="res://app/main_screen/settings/settings.gd" id="1_vu2du"]
 [ext_resource type="PackedScene" uid="uid://b7o8n2d1lrj4u" path="res://app/main_screen/settings/submit_tag_menu/submit_tag_menu.tscn" id="2_gnyii"]
 [ext_resource type="Script" uid="uid://djwhax4cylmsw" path="res://app/main_screen/settings/greeting_label.gd" id="2_opeqm"]
 [ext_resource type="PackedScene" uid="uid://l0y7vw5m8x5n" path="res://app/main_screen/settings/account_management_menu/account_management_menu.tscn" id="3_ha2qc"]
+[ext_resource type="PackedScene" uid="uid://dhd4ptdci304x" path="res://app/main_screen/reporting/user_feedback_menu.tscn" id="4_ha2qc"]
+[ext_resource type="LabelSettings" uid="uid://crec8tr40vb4i" path="res://resources/styles/subtle_grey_text_label_setting.tres" id="5_x8np0"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_siucu"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x8np0"]
+bg_color = Color(0.60784316, 0.5647059, 0.6431373, 1)
+border_color = Color(0.60784316, 0.5647059, 0.6431373, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 3
+expand_margin_left = 18.0
+expand_margin_right = 19.0
 
 [node name="Settings" type="MarginContainer"]
 anchors_preset = 15
@@ -20,6 +30,7 @@ theme_override_constants/margin_bottom = 10
 script = ExtResource("1_vu2du")
 add_tag_menu = ExtResource("2_gnyii")
 account_mgmt_menu = ExtResource("3_ha2qc")
+feedback_menu = ExtResource("4_ha2qc")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 2
@@ -54,20 +65,10 @@ layout_mode = 2
 text = "🏷️ Submit New Tag"
 alignment = 0
 
-[node name="HSeparator2" type="HSeparator" parent="ScrollContainer/VBoxContainer"]
+[node name="Panel" type="Panel" parent="ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 2)
 layout_mode = 2
-theme_override_constants/separation = 9
-theme_override_styles/separator = SubResource("StyleBoxEmpty_siucu")
-
-[node name="AccountManagementButton" type="Button" parent="ScrollContainer/VBoxContainer"]
-layout_mode = 2
-text = "⚙️ Account Management"
-alignment = 0
-
-[node name="HSeparator3" type="HSeparator" parent="ScrollContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 9
-theme_override_styles/separator = SubResource("StyleBoxEmpty_siucu")
+theme_override_styles/panel = SubResource("StyleBoxFlat_x8np0")
 
 [node name="PaymentButton" type="Button" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
@@ -75,8 +76,32 @@ size_flags_horizontal = 3
 text = "😇 Donate"
 alignment = 0
 
+[node name="FeedBackButton" type="Button" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "📝 Feedback"
+alignment = 0
+
+[node name="Panel2" type="Panel" parent="ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_x8np0")
+
+[node name="AccountManagementButton" type="Button" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "⚙️ Account Management"
+alignment = 0
+
+[node name="Label2" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+text = "v0.1-beta"
+label_settings = ExtResource("5_x8np0")
+horizontal_alignment = 2
+
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/EditProfileButton" to="." method="_on_edit_profile_button_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/ProfileViewToggle" to="." method="_on_profile_view_toggle_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/AddTagButton" to="." method="_on_add_tag_button_pressed"]
-[connection signal="pressed" from="ScrollContainer/VBoxContainer/AccountManagementButton" to="." method="_on_account_management_button_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/PaymentButton" to="." method="_on_payment_button_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/FeedBackButton" to="." method="_on_feed_back_button_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/AccountManagementButton" to="." method="_on_account_management_button_pressed"]
