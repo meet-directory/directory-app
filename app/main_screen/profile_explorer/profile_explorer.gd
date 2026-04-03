@@ -14,9 +14,10 @@ extends MarginContainer
 
 func _ready() -> void:
 	selected()
+	
+	# show profiles when the app is loaded
 	await get_tree().create_timer(0.05).timeout
 	_refresh_search()
-	#search_param_list.hide()
 
 func _on_search_toggle_button_toggled(toggled_on: bool) -> void:
 	if toggled_on:
