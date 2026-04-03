@@ -53,7 +53,6 @@ func _mark_seen(index:int) -> void:
 		if profile_scroller.get_child_count() > index:
 			var p = profile_scroller.get_child(index)
 			if p is ProfileView:
-				#print('mark seen ', index, ' - ', p.profile_data.username)
 				Server.push_seen_profile(p.profile_data.id)
 
 func show_profiles(search_tags, optional_search_tags) -> void:
@@ -78,8 +77,6 @@ func _http_request_completed(_resp_code, response):
 			var profile = ProfileResource.new()
 			profile.from_db(data)
 			profiles.append(profile)
-			#print('got profile ', profile.username, ' ', profile.id)
-			#profile.photos = _get_dummy_photos()
 		profile_scroller.show()
 		if end_screen:
 			end_screen.queue_free()

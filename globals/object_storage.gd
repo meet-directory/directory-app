@@ -25,11 +25,12 @@ func upload_image(presigned_url: String, image_texture: ImageTexture) -> void:
 
 
 func _on_upload_completed(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray) -> void:
-	if response_code == 200:
-		print("Upload successful!")
-	else:
-		print("Upload failed with code: ", response_code)
-		print("Body: ", body.get_string_from_utf8())
+	pass
+	#if response_code == 200:
+		#print("Upload successful!")
+	#else:
+		#print("Upload failed with code: ", response_code)
+		#print("Body: ", body.get_string_from_utf8())
 
 func get_texture(presigned_url:String, callback:Callable) -> void:
 	var http_request = HTTPRequest.new()

@@ -36,9 +36,7 @@ func _ready():
 	elif OS.get_name() == "Android" or OS.get_name() == "iOS":
 		version = VERSIONS.MOBILE
 	
-	var scale = DisplayServer.screen_get_scale()
-	BrowserDebug.print_to_screen("scale " + str(scale) + ' and size ' + str(DisplayServer.screen_get_size()) + ' and dpi ' + str(DisplayServer.screen_get_dpi()))
-	
+	var scale = DisplayServer.screen_get_scale()	
 	
 	# When browsing on desktop or desktop-web, give profile previews a max width
 	await get_tree().process_frame
@@ -127,8 +125,8 @@ func add_node(scene:PackedScene) -> Node:
 
 func _on_timer_timeout() -> void:
 	var h = DisplayServer.virtual_keyboard_get_height()
-	BrowserDebug.print_to_screen("keyb height: "+ str(h))
-	if DisplayServer.has_feature(DisplayServer.FEATURE_VIRTUAL_KEYBOARD):
-		BrowserDebug.print_to_screen("Virtual keyboard supported")
-	else:
-		BrowserDebug.print_to_screen("Virtual keyboard not supported")
+	#BrowserDebug.print_to_screen("keyb height: "+ str(h))
+	#if DisplayServer.has_feature(DisplayServer.FEATURE_VIRTUAL_KEYBOARD):
+		#BrowserDebug.print_to_screen("Virtual keyboard supported")
+	#else:
+		#BrowserDebug.print_to_screen("Virtual keyboard not supported")

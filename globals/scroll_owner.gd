@@ -39,9 +39,7 @@ func _input(event: InputEvent) -> void:
 						_locked_axis = Axis.VERTICAL
 		
 					if event is InputEventScreenDrag or event is InputEventMouseMotion:
-						#print('got screen drag')
 						var modified: InputEvent = event.duplicate()
-						#print(modified)
 						get_viewport().set_input_as_handled()  # Block the original event from reaching any node
 							
 						match _locked_axis:
@@ -52,7 +50,6 @@ func _input(event: InputEvent) -> void:
 								modified.relative.x = 0.0
 							Axis.NONE:
 								pass  
-						
 						
 						# for some reason touch is less sensitive on android
 						if OS.get_name() == 'Android':

@@ -104,8 +104,6 @@ func scroll_to(index:int) -> void:
 			scrolled_to.emit(index)
 	_max_scroll = item_girth*(index + 1.1) # 1.2
 	_min_scroll = item_girth*(index-1)
-	#print('scroll to ', index)
-	#print('min ', _min_scroll, 'max ', _max_scroll, ' girth ', item_girth)
 
 func _process(_delta: float) -> void:
 	if _max_scroll == null:

@@ -4,8 +4,8 @@ const NPROFILES_PER_QUERY = 10
 
 var BASE_URL:String
 var HTTP_PREFIX:String = "https://"
-#const DEV_BASE_URL = "0.0.0.0:10000"
-#const PROD_BASE_URL = "directory-api-w9mi.onrender.com"
+const DEV_BASE_URL = "0.0.0.0:10000"
+const PROD_BASE_URL = "directory-api-w9mi.onrender.com"
 #const PROD_BASE_URL = "https://directory-api-1.onrender.com"
 
 const TAG_QUERY_ENDPOINT = 'tags'
@@ -63,31 +63,22 @@ func _remove_loading_screen():
 
 
 func _ready() -> void:
-	var api_url = ProjectSettings.get_setting("app/api_url")
-	BASE_URL = api_url
+	#var api_url = ProjectSettings.get_setting("app/api_url")
+	#BASE_URL = api_url
 	#print("USING URL ", api_url)
 	
 	if App.is_prod:
 		HTTP_PREFIX = "https://"
+		BASE_URL = PROD_BASE_URL
 	else:
 		HTTP_PREFIX = "http://"
+		BASE_URL = DEV_BASE_URL
 	
 	var flush_timer:Timer = Timer.new()
 	add_child(flush_timer)
 	flush_timer.wait_time = MARK_SEEN_FLUSH_INTERVAL
 	flush_timer.timeout.connect(_flush_seen_profiles)
 	flush_timer.start()
-	
-	print("Connecting to API on ", api_url)
-		
-		## TODO DELETE FOR PRODUCTION
-		## login to dummy user for testing just this scene without having to go through login screen
-		#var email = Constants.TEST_USER
-		#var password = Constants.TEST_PASS
-		#
-		#await get_tree().create_timer(1).timeout
-		#if not Server.session_profile:
-			#Server.login(email, password, _on_login_request_returned)
 
 
 
@@ -104,8 +95,7 @@ func _send_post_request(callback:Callable, endpoint, data:Dictionary = {}, http_
 		'base_url': HTTP_PREFIX + BASE_URL, 
 		'endpoint': endpoint,
 		})
-	if debug:
-		print('POST request to ', url, ' with data ', data, ' and header ', get_cookie_header())
+	if debug: print('POST request to ', url, ' with data ', data, ' and header ', get_cookie_header())
 	
 	var error
 	if !data.is_empty():
@@ -142,8 +132,7 @@ func _send_get_request(callback:Callable, endpoint, url_params='', http_callback
 		'endpoint': endpoint,
 		'params': url_params
 		})
-	if debug:
-		print('GET req to ', url)
+	if debug: print('GET req to ', url)
 	var error = http_request.request(url, [get_cookie_header()], HTTPClient.METHOD_GET)
 	if error != OK:
 		push_error("An error occurred in the HTTP request: ", error)
@@ -193,8 +182,7 @@ func refresh_token(retry_callback:Callable) -> void:
 		})
 	
 	var headers = [CONTENT_JSON_HEADER, 'Authorization: Bearer ' + TokenStorage.load_refresh_token()]
-	if debug:
-		print('POST request to ', url, ' with headers ', headers)
+	if debug: print('POST request to ', url, ' with headers ', headers)
 	var error = http_request.request(
 		url, 
 		headers,
@@ -211,10 +199,9 @@ func _on_got_refresh_token(_result, response_code, _headers, body, retry_callbac
 	match response_code:
 		200:
 			var token = response["access_token"]
-			print("got new access token! ", token)
 			TokenStorage.save_access_token(token)
 			retry_callback.call()
-			print('RETRY!!!')
+			if debug: print('RETRY!!!')
 		_:
 			logout()
 			App.show_login_screen()
@@ -234,8 +221,7 @@ func _http_login_request_completed(result, response_code, headers, body, callbac
 		401: # this is handled by the login callback on the login page
 			pass
 		_:
-			if debug:
-				print('http request result', result,' ', response_code, ' ', headers, ' ', response)
+			if debug: print('http request result', result,' ', response_code, ' ', headers, ' ', response)
 			App.show_error_popup(HTTP_ERROR_POPUP_MSGS.get(response_code, HTTP_ERROR_DEFAULT))
 	
 	_remove_loading_screen()
@@ -270,7 +256,6 @@ func set_session_profile(resp_code, response_data) -> void:
 			current_profile.from_db(profile_data, true)
 			session_profile = current_profile
 			user_session_loaded.emit(session_profile)
-			print('emit session loaded')
 		_:
 			failed_to_load_user_session.emit()
 

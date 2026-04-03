@@ -63,7 +63,6 @@ func _on_tag_deselected(tag:Tag):
 	tag_deselected.emit(tag.tag_name)
 
 func _on_search_bar_text_changed(new_text: String) -> void:
-	#BrowserDebug.print_to_screen("text entered " + new_text)
 	if new_text.is_empty():
 		tag_explorer.show()
 		tag_category_explorer.reset()
@@ -118,12 +117,10 @@ func _on_search_returned(_resp_code, data, search_text) -> void:
 				search_text_found = true
 		
 	if enable_add_tag_feature:
-		#print('search text ', search_text, ' ', len(search_text))
 		if len(search_text) < 2:
 			create_tag_container.hide()
 			return
-		#if search_text in Server.get_pending_tag_names():
-			#search_text_found = true
+
 		if search_text_found:
 			create_tag_container.hide()
 		else:
@@ -158,7 +155,6 @@ func _get_first_tag_result() -> Tag:
 
 func _on_search_bar_text_submitted(_new_text: String) -> void:
 	## Add the first search result as if you had tapped it when enter is pressed
-	BrowserDebug.print_to_screen("text submitted")
 	var first_tag:Tag = _get_first_tag_result()
 	if first_tag:
 		_on_tag_tapped(first_tag)

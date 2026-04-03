@@ -18,8 +18,8 @@ var city_str:String
 
 func _ready() -> void:
 	location_received.connect(_save_loc)
-	location_received.connect(_print_location)
-	location_failed.connect(_print_err)
+	#location_received.connect(_print_location)
+	#location_failed.connect(_print_err)
 	get_location()
 
 func _save_loc(lat:float, lon:float, city) -> void:
@@ -27,11 +27,11 @@ func _save_loc(lat:float, lon:float, city) -> void:
 	longitude = snappedf(lon, rounding_degree)
 	city_str = city
 
-func _print_location(lat, lon, city) -> void:
-	print("Got location ", lat,' ', lon, ' ', city, '. In NC? ', is_in_north_carolina(lat, lon))
-
-func _print_err(err:String) -> void:
-	print("Got location failed: ", err)
+#func _print_location(lat, lon, city) -> void:
+	#print("Got location ", lat,' ', lon, ' ', city, '. In NC? ', is_in_north_carolina(lat, lon))
+#
+#func _print_err(err:String) -> void:
+	#print("Got location failed: ", err)
 
 # Simplified NC border polygon [longitude, latitude]
 const NC_POLYGON = [

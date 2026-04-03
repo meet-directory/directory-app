@@ -11,14 +11,6 @@ func _input(event: InputEvent) -> void:
 
 
 func _on_text_changed() -> void:
-	#var last_char = text[-1]
-	#print('last char [', last_char, ']')
-	#if last_char == '\n':
-		#text = text.rstrip('\n')
+
 	text = text.remove_chars('\n')
 	set_caret_column(len(text))
-
-
-#func _on_text_set() -> void:
-	#submitted.emit(text)
-	#print('set')

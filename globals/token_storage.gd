@@ -37,15 +37,12 @@ func get_device_key() -> String:
 		components.append("bloop") # TODO probably insecure idk
 	components.append(OS.get_model_name())
 	var raw = "salt-akdsfjagmbpo392582fkweo48o:" + ":".join(components)
-	print('using device key ', raw.sha256_text())
 	return raw.sha256_text()
 
 # TODO yeah code is duplicated below, but it probably won't be the same once we
 # actually use android/ios secure storage so no point refactoring
 
 func save_refresh_token(token: String) -> void:
-	print('refresh token ', token)
-
 	var key = get_device_key()
 	var file = FileAccess.open_encrypted_with_pass(REFRESH_TOKEN_PATH, FileAccess.WRITE, key)
 	if file:
@@ -54,7 +51,6 @@ func save_refresh_token(token: String) -> void:
 
 func save_access_token(token: String) -> void:
 	_access_token = token
-	print('access token ', token)
 	
 	var key = get_device_key()
 	var file = FileAccess.open_encrypted_with_pass(ACCESS_TOKEN_PATH, FileAccess.WRITE, key)

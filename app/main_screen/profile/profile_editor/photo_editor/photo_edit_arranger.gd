@@ -13,5 +13,4 @@ func get_uris() -> Array[String]:
 		if child is PhotoEditButton:
 			if child.uri:
 				uris.append(child.uri)
-	print('return URIS ', len(uris), '\n', uris)
 	return uris

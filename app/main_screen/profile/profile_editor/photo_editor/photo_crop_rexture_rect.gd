@@ -9,7 +9,7 @@ var max_scale := 8
 func _ready():
 	mouse_filter = Control.MOUSE_FILTER_STOP
 	#pivot_offset.x = size.x / 2.0
-	clamp_to_bounds()
+	#clamp_to_bounds()
 
 func set_photo(tex:Texture2D) -> void:
 	if not get_parent().is_node_ready():

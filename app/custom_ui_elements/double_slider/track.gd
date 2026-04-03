@@ -100,11 +100,8 @@ func _on_draw() -> void:
 		var rd = center - right_pos
 		var nrd = rd * ratio
 		var new_right_pos = new_center - nrd
-		print('slider ', rd, ' ', nrd, ' ', new_right_pos)
-		print('size slider ', size.x, ' ', new_right_pos, ' ', _right_pading)
 
 		right_slider.position.x = clamp(new_right_pos, new_left_pos, size.x - _right_pading)
-		print('right slider to ', right_slider.position.x)
 		right_pos = new_right_pos
 		
 		_update_selection_bar()
