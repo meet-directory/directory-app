@@ -5,7 +5,7 @@ class_name Tag
 enum TYPE {
 	Personal, 
 	RelationshipType, 
-	Desire,
+	Intimacy,
 	Other,
 	Outdoors,
 	Sport,
@@ -23,7 +23,7 @@ enum TYPE {
 const raw_to_type:Dictionary[String, TYPE] = {
 	'personal': TYPE.Personal,
 	'relationship': TYPE.RelationshipType,
-	'sex': TYPE.Desire,
+	'intimacy': TYPE.Intimacy,
 	'outdoors': TYPE.Outdoors,
 	'sport': TYPE.Sport,
 	'movies': TYPE.Movies,

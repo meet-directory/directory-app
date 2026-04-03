@@ -7,7 +7,7 @@ signal tapped(tag:Tag)
 @export var backgrounds:Dictionary[Tag.TYPE, StyleBoxFlat] = {
 	Tag.TYPE.Personal: null,
 	Tag.TYPE.RelationshipType: null,
-	Tag.TYPE.Desire: null,
+	Tag.TYPE.Intimacy: null,
 	Tag.TYPE.Other:null
 }
 

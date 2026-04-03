@@ -53,7 +53,7 @@ func display(profile:ProfileResource, must_have_tags:Array[String]=[], wanted_ta
 		personal_tags.add_tags(ptags)
 	else:
 		personal_tags.hide()
-	desire_tags.add_tags(profile.is_tags.filter(func (t:Tag): return t.type == Tag.TYPE.Desire))
+	desire_tags.add_tags(profile.is_tags.filter(func (t:Tag): return t.type == Tag.TYPE.Intimacy))
 	other_tags.add_tags(profile.is_tags.filter(func (t:Tag): return t.type not in [Tag.TYPE.Personal, Tag.TYPE.RelationshipType]))
 	
 	var tag_containers:Array[TagContainer] = [relationship_tags, personal_tags, desire_tags, other_tags]
