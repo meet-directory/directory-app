@@ -55,10 +55,10 @@ func _on_back_button_pressed() -> void:
 	queue_free()
 
 
-func append_message(text:String, timestamp:String, by_user:bool) -> void:
+func append_message(text:String, utc_timestamp:String, by_user:bool) -> void:
 	var msg:MessageControl = message_control_scene.instantiate()
 	messages_container.add_child(msg)
-	msg.display_message(text, timestamp, by_user)
+	msg.display_message(text, utc_timestamp, by_user)
 
 func _on_message_edit_submitted(_msg: String) -> void:
 	_send_message()

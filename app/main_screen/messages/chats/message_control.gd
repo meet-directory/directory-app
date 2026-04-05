@@ -35,22 +35,20 @@ func _ready() -> void:
 		#bubble_container.custom_minimum_size.x = screen_size.x * 0.6
 		set_correct_style()
 
-func display_message(text:String, timestamp:String, sent_by_this:bool) -> void:
+func display_message(text:String, utc_timestamp:String, sent_by_this:bool) -> void:
 	message_label.text = text
-	time_stamp_label.text = _convert_timestamp(timestamp)
+	time_stamp_label.text = _convert_timestamp(utc_timestamp)
 	sent_by_user = sent_by_this
 	set_correct_style()
 
-func _convert_timestamp(timestamp:String) -> String:
+func _convert_timestamp(utc_timestamp:String) -> String:
 	# YYYY-MM-DDTHH:MM:SS.SSSS
-	var parts = timestamp.split('T')
-	#var date = parts[0].split('-')
-	#var month = date[1]
-	#var day = date[2]
+	var unix_time:int = Time.get_unix_time_from_datetime_string(utc_timestamp)
+	var offset:int = Time.get_time_zone_from_system().bias * 60
+	var local_unix = unix_time + offset
+	var local_time = Time.get_datetime_dict_from_unix_time(local_unix)
 	
-	var time = parts[1].split(':')
-	var hour = time[0]
-	var minute = time[1]
-	
-	return hour + ':' + minute
+	var hour = local_time.hour
+	var minute = local_time.minute
+	return "%02d:%02d" % [hour, minute]
 	
