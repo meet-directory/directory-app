@@ -54,5 +54,6 @@ func _on_fetch_completed(result: int, response_code: int, headers: PackedStringA
 	match response_code:
 		200:
 			var image:Image = Image.new()
-			image.load_jpg_from_buffer(body)
-			callback.call(image)
+			if !body.is_empty():
+				image.load_jpg_from_buffer(body)
+				callback.call(image)
