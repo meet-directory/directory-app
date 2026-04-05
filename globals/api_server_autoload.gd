@@ -259,7 +259,7 @@ func set_session_profile(resp_code, response_data) -> void:
 		200:
 			var current_profile:ProfileResource = ProfileResource.new()
 			var profile_data:Dictionary = response_data
-			current_profile.from_db(profile_data, true)
+			current_profile.from_db(profile_data)
 			session_profile = current_profile
 			user_session_loaded.emit(session_profile)
 		_:
@@ -348,7 +348,7 @@ func _flush_seen_profiles():
 		_mark_profiles_seen(_flush_queue.keys(), _on_mark_seen_returned)
 
 # NOTE between the time the request is sent and received, some profiles could get added and then erased
-func _on_mark_seen_returned(resp_code:int, resp) -> void:
+func _on_mark_seen_returned(resp_code:int, _resp) -> void:
 	match resp_code:
 		200:
 			for key in _flush_queue.keys():

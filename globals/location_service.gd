@@ -96,7 +96,7 @@ func _get_ip_location():
 	http.request_completed.connect(_on_ip_request_completed)
 	http.request("https://ipwho.is/")
 
-func _on_ip_request_completed(result, response_code, headers, body):
+func _on_ip_request_completed(_result, response_code, _headers, body):
 	if response_code == 200:
 		var json = JSON.new()
 		json.parse(body.get_string_from_utf8())

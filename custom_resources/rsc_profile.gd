@@ -48,7 +48,7 @@ func to_db() -> Dictionary:
 	}
 	return data
 
-func from_db(dict:Dictionary, load_textures:bool=true):
+func from_db(dict:Dictionary):
 	var data:Dictionary
 	if dict.has('data'):
 		data = dict['data']

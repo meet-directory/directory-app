@@ -32,7 +32,6 @@ func set_sizing():
 	### if the photo viewer takes up the whole screen, there is no place to grab
 	### to scroll and see the rest of the profile.
 	### Likewise the photoviewer size control flags should never be set to EXPAND.
-	var name_padding = 50
 	var y = photo_viewer.get_parent().size.x*1.2 # photo_viewer.get_parent().size.x - name_padding)
 	photo_viewer.custom_minimum_size.y = y
 

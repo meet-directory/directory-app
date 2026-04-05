@@ -41,7 +41,7 @@ func _on_conf():
 	Server.create_tag(tag_edit_preview.get_tag_name(), tag_edit_preview.type, _on_submitted_tag)
 	
 
-func _on_submitted_tag(resp_code:int, resp) -> void:
+func _on_submitted_tag(resp_code:int, _resp) -> void:
 	match resp_code:
 		200:
 			App.show_info_popup("The tag was sucessfully submitted to the public Server. Thank you for your contribution!")

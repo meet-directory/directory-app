@@ -52,7 +52,7 @@ func get_edited_profile() -> ProfileResource:
 	return prof
 
 
-func _on_show_to_matches_check_button_toggled(toggled_on: bool) -> void:
+func _on_show_to_matches_check_button_toggled(_toggled_on: bool) -> void:
 	# TODO mark this as hidden in the db and add to profileresource
 	pass # Replace with function body.
 

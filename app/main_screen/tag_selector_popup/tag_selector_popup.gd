@@ -35,7 +35,7 @@ func _ready() -> void:
 	create_tag_container.visible = false
 	search_bar.max_length = Constants.MAX_TAG_NAME_LENGTH
 	search_bar.grab_focus() # enable typing straight away without first clicking search bar
-	var screen_size = Constants.get_screen_size()
+	#var screen_size = Constants.get_screen_size()
 	#middle_margin_container.custom_minimum_size.x = min(screen_size.x*.95, 450)
 	#middle_margin_container.custom_minimum_size.y = min(screen_size.y*.95, 500)
 	

@@ -24,7 +24,7 @@ func upload_image(presigned_url: String, image_texture: ImageTexture) -> void:
 		print("Upload request failed to start: ", error)
 
 
-func _on_upload_completed(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray) -> void:
+func _on_upload_completed(_result: int, _response_code: int, _headers: PackedStringArray, _body: PackedByteArray) -> void:
 	pass
 	#if response_code == 200:
 		#print("Upload successful!")
@@ -47,7 +47,7 @@ func get_texture(presigned_url:String, callback:Callable) -> void:
 		print("Upload request failed to start: ", error)
 	
 
-func _on_fetch_completed(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray, callback:Callable) -> void:
+func _on_fetch_completed(_result: int, response_code: int, _headers: PackedStringArray, body: PackedByteArray, callback:Callable) -> void:
 	# if user just logged out avoid running callback functions on instances that may have been freed.
 	if !Server.is_logged_in():  
 		return

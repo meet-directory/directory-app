@@ -52,7 +52,3 @@ func reduce_tag_name(accum:String, tag:Tag) -> String:
 
 func get_tag_name(tag:Tag) -> String:
 	return tag.tag_name
-
-
-func _on_double_slider_value_changed(min_val: float, max_val: float) -> void:
-	pass # Replace with function body.

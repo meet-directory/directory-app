@@ -9,7 +9,7 @@ var _participant_names:Array
 
 signal pressed(chat_id, participant_ids:Array, participant_names:Array)
 
-func setup(chat_id:float, participant_ids:Array, participant_names:Array, participant_photo_uris:Array) -> void:
+func setup(chat_id:int, participant_ids:Array, participant_names:Array, participant_photo_uris:Array) -> void:
 	assert(len(participant_ids) == len(participant_names))
 	assert(len(participant_ids) > 0)
 	button.text = participant_names[0]

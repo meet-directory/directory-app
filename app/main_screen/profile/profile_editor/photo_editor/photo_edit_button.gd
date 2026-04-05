@@ -47,7 +47,8 @@ func _get_new_picture() -> void:
 		get_tree().root.add_child(dialogue)
 
 func _on_progress(current_bytes: int, total_bytes: int) -> void:
-	var percentage: float = float(current_bytes) / float(total_bytes) * 100
+	pass
+	#var percentage: float = float(current_bytes) / float(total_bytes) * 100
 	#progress.value = percentage
 
 func _on_web_file_loaded(_file_name: String, _file_type: String, base64_data: String) -> void:

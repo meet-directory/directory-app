@@ -1,7 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://eeutadd3g8ww"]
 
 [ext_resource type="Script" uid="uid://cytsucydo1gbd" path="res://app/main_screen/profile_explorer/search_tool/search_parameter_tool.gd" id="1_8s0uw"]
-[ext_resource type="Script" uid="uid://bow5u7ragc1tj" path="res://app/main_screen/profile_explorer/search_tool/max_distance.gd" id="1_kdd2m"]
 [ext_resource type="PackedScene" uid="uid://bffx2x1gb5he5" path="res://app/main_screen/profile_explorer/search_tool/tag_selector_container.tscn" id="3_kalbu"]
 [ext_resource type="PackedScene" uid="uid://dgf77p8v8asvf" path="res://app/custom_ui_elements/double_slider/double_slider.tscn" id="3_mujbb"]
 [ext_resource type="PackedScene" uid="uid://i3vafh00rvpw" path="res://app/popups/info_button.tscn" id="4_0m016"]
@@ -12,6 +11,18 @@ corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
+
+[sub_resource type="GDScript" id="GDScript_mujbb"]
+script/source = "extends HBoxContainer
+#@onready var h_slider: HSlider = $MaxDistanceSlider
+#@onready var dist_amount_label: Label = %DistAmountLabel
+
+
+#
+#
+#func _on_h_slider_value_changed(value: float) -> void:
+	#dist_amount_label.text = str(round(value))
+"
 
 [node name="SearchParamList" type="VBoxContainer"]
 anchors_preset = 15
@@ -35,7 +46,6 @@ theme_override_constants/margin_right = 15
 [node name="DistanceRange" type="HBoxContainer" parent="HBoxContainer2/MarginContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 12
-script = ExtResource("1_kdd2m")
 
 [node name="Label" type="Label" parent="HBoxContainer2/MarginContainer/MarginContainer/DistanceRange"]
 layout_mode = 2
@@ -66,7 +76,7 @@ layout_mode = 2
 [node name="AgeRange" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 12
-script = ExtResource("1_kdd2m")
+script = SubResource("GDScript_mujbb")
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/AgeRange"]
 layout_mode = 2
@@ -81,7 +91,7 @@ min_value = 18.0
 visible = false
 layout_mode = 2
 theme_override_constants/separation = 12
-script = ExtResource("1_kdd2m")
+script = SubResource("GDScript_mujbb")
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HeightRange"]
 layout_mode = 2

@@ -72,9 +72,7 @@ func _on_message_sent(resp_code, _resp) -> void:
 	match resp_code:
 		200:
 			# YYYY-MM-DDTHH:MM:SS.SSSS
-			var now = Time.get_unix_time_from_system()
 			var ts = Time.get_datetime_string_from_system()
-			#print('timae stamp ', ts)
 			append_message(message_edit.text, ts, true)
 			message_edit.clear()
 		_: Server.show_default_error_msg(resp_code)
