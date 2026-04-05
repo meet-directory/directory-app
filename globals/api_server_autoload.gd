@@ -6,24 +6,30 @@ var BASE_URL:String
 var HTTP_PREFIX:String = "https://"
 const DEV_BASE_URL = "0.0.0.0:10000"
 const PROD_BASE_URL = "directory-api-w9mi.onrender.com"
-#const PROD_BASE_URL = "https://directory-api-1.onrender.com"
+#const PROD_BASE_URL = "directory-api-1.onrender.com"
 
-const TAG_QUERY_ENDPOINT = 'tags'
-const CREATE_TAG_ENDPOINT = 'create_tag'
-const PROFILE_QUERY_ENDPOINT = 'profiles'
-const LOGIN_ENDPOINT = 'login'
-const REGISTER_ENDPOINT = 'register'
-const REPORT_TAG_ENDPOINT = 'report_tag'
-const REPORT_FEEDBACK_ENDPOINT = 'submit_feedback'
-const SEND_LIKE_ENDPOINT = 'add_like'
-const ACCEPT_LIKE_ENDPOINT = 'accept_like'
-const GET_LIKES_ENDPOINT = 'get_likes'
-const GET_USER_PROFILE_ENDPOINT = 'fetch_user_profile'
-const REFRESH_ENDPOINT = 'auth/refresh'
-const COMPLETE_ONBOARD_ENDPOINT = 'complete_onboard'
-const DELETE_ACCOUNT_ENDPOINT = 'delete'
-const ACCOUNT_CHG_PASSWORD_ENDPOINT = 'change_password'
-const MARK_SEEN_ENDPOINT = 'mark_seen'
+const LOGIN_ENDPOINT =               'login'
+const REGISTER_ENDPOINT =            'register'
+const REFRESH_ENDPOINT =             'auth/refresh'
+const API =                           'api/'
+const TAG_QUERY_ENDPOINT =            API + 'tags'
+const CREATE_TAG_ENDPOINT =           API + 'create_tag'
+const PROFILE_QUERY_ENDPOINT =        API + 'profiles'
+const REPORT_TAG_ENDPOINT =           API + 'report_tag'
+const REPORT_FEEDBACK_ENDPOINT =      API + 'submit_feedback'
+const SEND_LIKE_ENDPOINT =            API + 'add_like'
+const ACCEPT_LIKE_ENDPOINT =          API + 'accept_like'
+const GET_LIKES_ENDPOINT =            API + 'get_likes'
+const GET_USER_PROFILE_ENDPOINT =     API + 'fetch_user_profile'
+const COMPLETE_ONBOARD_ENDPOINT =     API + 'complete_onboard'
+const DELETE_ACCOUNT_ENDPOINT =       API + 'delete'
+const ACCOUNT_CHG_PASSWORD_ENDPOINT = API + 'change_password'
+const MARK_SEEN_ENDPOINT =            API + 'mark_seen'
+const SEND_MSG_ENDPOINT =             API + 'send_message'
+const GET_CHATS_ENDPOINT =            API + 'get_chats'
+const GET_CHAT_MSGS_ENDPOINT =        API + 'get_chat_messages'
+const PHOTO_GET_URL_ENDPOINT =        API + 'get_presigned_url'
+const PHOTO_UPDATE_ORDER_ENDPOINT =   API + 'update_photo_order'
 
 const HTTP_ERROR_DEFAULT = "An error occured. Try again later"
 const HTTP_ERROR_POPUP_MSGS = {
@@ -400,20 +406,20 @@ func accept_like(from_id:int, callback:Callable) -> void:
 	_send_post_request(callback, ACCEPT_LIKE_ENDPOINT, data)
 
 func get_chats(callback:Callable) -> void:
-	_send_get_request(callback, 'get_chats')
+	_send_get_request(callback, GET_CHATS_ENDPOINT)
 
 func get_chat_msgs(chat_id:int, callback:Callable) -> void:
 	var data = {"chat_id": chat_id}
-	_send_post_request(callback, 'get_chat_messages', data)
+	_send_post_request(callback, GET_CHAT_MSGS_ENDPOINT, data)
 
 func send_message(chat_id:int, text:String, callback:Callable) -> void:
 	var data = {"chat_id": chat_id, "text": text}
-	_send_post_request(callback, 'send_message', data)
+	_send_post_request(callback, SEND_MSG_ENDPOINT, data)
 
 
 ### OBJECT STORAGE #######################################
 func get_uri(index:int, callback:Callable) -> void:
-	_send_post_request(callback, 'get_presigned_url', {'index': index})
+	_send_post_request(callback, PHOTO_GET_URL_ENDPOINT, {'index': index})
 
 func update_and_confirm_photos(uris:Array[String], callback:Callable) -> void:
-	_send_post_request(callback, 'update_photo_order', {'uris': uris})
+	_send_post_request(callback, PHOTO_UPDATE_ORDER_ENDPOINT, {'uris': uris})
