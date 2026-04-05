@@ -95,7 +95,7 @@ alignment = 0
 [node name="Label2" type="Label" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 10
-text = "v0.1.0-beta"
+text = "v0.1.1-beta"
 label_settings = ExtResource("5_x8np0")
 horizontal_alignment = 2
 
