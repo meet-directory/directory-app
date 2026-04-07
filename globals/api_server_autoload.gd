@@ -13,6 +13,10 @@ const REGISTER_ENDPOINT =            'register'
 const REFRESH_ENDPOINT =             'auth/refresh'
 const API =                           'api/'
 const TAG_QUERY_ENDPOINT =            API + 'tags'
+const ENDPOINT_SUSPEND =              API + 'suspend'
+const ENDPOINT_UNSUSPEND =            API + 'unsuspend'
+const ENDPOINT_SAVE_PROFILE =         API + 'profile'
+const ENDPOINT_REPORT_USER =          API + 'report_user'
 const CREATE_TAG_ENDPOINT =           API + 'create_tag'
 const PROFILE_QUERY_ENDPOINT =        API + 'profiles'
 const REPORT_TAG_ENDPOINT =           API + 'report_tag'
@@ -292,13 +296,13 @@ func complete_onboard(callback:Callable) -> void:
 	_send_post_request(callback, COMPLETE_ONBOARD_ENDPOINT)
 
 func suspend_account(callback:Callable) -> void:
-	_send_post_request(callback, 'suspend')
+	_send_post_request(callback, ENDPOINT_SUSPEND)
 
 func unsuspend_account(callback:Callable) -> void:
-	_send_post_request(callback, 'unsuspend')
+	_send_post_request(callback, ENDPOINT_UNSUSPEND)
 
 func update_profile(new_profile_data:Dictionary, callback:Callable) -> void:
-	_send_post_request(callback, 'profile', new_profile_data)
+	_send_post_request(callback, ENDPOINT_SAVE_PROFILE, new_profile_data)
 
 func change_password(old_password:String, new_password:String, callback:Callable) -> void:
 	var data:Dictionary = {'old_password': old_password, 'new_password': new_password}
@@ -313,7 +317,7 @@ func report_user(user_id:int, reason:String, description:String, callback:Callab
 		'reason': reason,
 		'description': description
 	}
-	_send_post_request(callback, 'report_user', data)
+	_send_post_request(callback, ENDPOINT_REPORT_USER, data)
 
 func report_tag(tag_name:String, description:String, callback:Callable) -> void:
 	var data = {
