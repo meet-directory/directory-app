@@ -30,7 +30,7 @@ const GET_CHATS_ENDPOINT =            API + 'get_chats'
 const GET_CHAT_MSGS_ENDPOINT =        API + 'get_chat_messages'
 const PHOTO_GET_URL_ENDPOINT =        API + 'get_presigned_url'
 const PHOTO_UPDATE_ORDER_ENDPOINT =   API + 'update_photo_order'
-
+const TAG_CATEGORY_ENDPOINT =   API + 'tag_category'
 const HTTP_ERROR_DEFAULT = "An error occured. Try again later"
 const HTTP_ERROR_POPUP_MSGS = {
 	0: "There was no response from the server. Please try again in a moment.",
@@ -384,7 +384,7 @@ func query_profiles(callback:Callable, page=0) -> void:
 
 func get_tags_of(tag_type:String, callback:Callable) -> void:
 	assert(tag_type in Tag.raw_to_type.keys())
-	_send_post_request(callback, 'tag_category', {"category": tag_type})
+	_send_post_request(callback, TAG_CATEGORY_ENDPOINT, {"category": tag_type})
 
 func create_tag(tag_name:String, tag_type:Tag.TYPE, callback:Callable) -> void:
 	var type_str = Constants.tag.get_string_from_type(tag_type)
