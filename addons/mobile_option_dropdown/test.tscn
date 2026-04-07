@@ -1,0 +1,159 @@
+[gd_scene load_steps=7 format=3 uid="uid://30m7ebx7khdw"]
+
+[ext_resource type="Script" uid="uid://cr5s2h5o41gc7" path="res://addons/mobile_option_dropdown/mobile_option_dropdown_menu.gd" id="1_ija0f"]
+[ext_resource type="Script" uid="uid://c26qmhbug6ra3" path="res://addons/mobile_option_dropdown/test.gd" id="1_m6i5k"]
+[ext_resource type="Theme" uid="uid://c52euoe38n0nm" path="res://resources/styles/app_theme.tres" id="1_tte5b"]
+[ext_resource type="Texture2D" uid="uid://b2erchym6iip4" path="res://addons/mobile_option_dropdown/arrow_down.svg" id="3_4r0mn"]
+[ext_resource type="Script" uid="uid://ba878oe3x4vgt" path="res://app/main_screen/settings/submit_tag_menu/tag_category_option.gd" id="4_4r0mn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tte5b"]
+
+[node name="Test" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_tte5b")
+script = ExtResource("1_m6i5k")
+
+[node name="PopupMenu" type="PopupMenu" parent="."]
+oversampling_override = 1.0
+size = Vector2i(106, 251)
+item_count = 9
+item_0/text = "heyo"
+item_0/id = 0
+item_1/text = "what"
+item_1/id = 1
+item_2/text = "fadf"
+item_2/id = 2
+item_3/text = "fdafafdf"
+item_3/id = 3
+item_4/text = "afdsf"
+item_4/id = 4
+item_5/text = "asdgads"
+item_5/id = 5
+item_6/text = "geagwg"
+item_6/id = 6
+item_7/text = "ageaeg"
+item_7/id = 7
+item_8/text = "aegaweg"
+item_8/id = 8
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PopupMenu"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PopupMenu/ScrollContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="PopupMenu/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "aaa"
+
+[node name="Button2" type="Button" parent="PopupMenu/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "aaa"
+
+[node name="Button3" type="Button" parent="PopupMenu/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "aaa"
+
+[node name="Button4" type="Button" parent="PopupMenu/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "aaa"
+
+[node name="Button5" type="Button" parent="PopupMenu/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "aaa"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -197.0
+offset_top = -133.5
+offset_bottom = 133.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Lets see!"
+
+[node name="OptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+item_count = 16
+popup/item_0/text = "test"
+popup/item_0/id = 0
+popup/item_1/text = "two"
+popup/item_1/id = 1
+popup/item_1/separator = true
+popup/item_2/text = "beep"
+popup/item_2/id = 2
+popup/item_3/id = 3
+popup/item_4/text = "f"
+popup/item_4/id = 4
+popup/item_5/text = "d"
+popup/item_5/id = 5
+popup/item_6/text = "s"
+popup/item_6/id = 6
+popup/item_7/text = "x"
+popup/item_7/id = 7
+popup/item_8/text = "f"
+popup/item_8/id = 8
+popup/item_9/text = "f"
+popup/item_9/id = 9
+popup/item_10/text = "f"
+popup/item_10/id = 10
+popup/item_11/text = "f"
+popup/item_11/id = 11
+popup/item_12/text = "s"
+popup/item_12/id = 12
+popup/item_13/text = "d"
+popup/item_13/id = 13
+popup/item_14/text = "g"
+popup/item_14/id = 14
+popup/item_15/text = "s"
+popup/item_15/id = 15
+
+[node name="MobileDropDown" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+icon = ExtResource("3_4r0mn")
+icon_alignment = 2
+script = ExtResource("1_ija0f")
+fit_to_longest_item = false
+items = Array[String](["one", "one long one heheheh", "three", "f", "k", "k", "l", "o", "f", "k", "f", "fadf", "fa;kejlg"])
+metadata/_custom_type_script = "uid://cr5s2h5o41gc7"
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+text = "popup"
+
+[node name="TagCategoryOption" type="OptionButton" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_tte5b")
+script = ExtResource("4_4r0mn")
+
+[connection signal="toggled" from="MarginContainer/VBoxContainer/Button" to="." method="_on_button_toggled"]

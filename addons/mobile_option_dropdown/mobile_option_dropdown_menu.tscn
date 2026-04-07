@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcqb3bdfvw230"]
+
+[ext_resource type="Script" uid="uid://cr5s2h5o41gc7" path="res://addons/mobile_option_dropdown/mobile_option_dropdown_menu.gd" id="1_ags6n"]
+[ext_resource type="Texture2D" uid="uid://b2erchym6iip4" path="res://addons/mobile_option_dropdown/arrow_down.svg" id="1_j32hk"]
+
+[node name="MobileOptionDropdownMenu" type="Button"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 8.0
+grow_horizontal = 2
+icon = ExtResource("1_j32hk")
+icon_alignment = 2
+script = ExtResource("1_ags6n")
