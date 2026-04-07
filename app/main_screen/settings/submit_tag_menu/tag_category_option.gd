@@ -1,6 +1,7 @@
-extends OptionButton
+extends MobileDropDown
 
 func _ready() -> void:
+	super()
 	add_item("No Category Selected")
 	for cat in Tag.TYPE:
 		var emoji:String = Constants.tag.get_emoji(Tag.TYPE[cat])

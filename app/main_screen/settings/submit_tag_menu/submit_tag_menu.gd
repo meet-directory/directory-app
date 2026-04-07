@@ -1,6 +1,6 @@
 extends Menu
 @onready var tag_edit_preview: TagControl = %TagEditPreview
-@onready var tag_category_option: OptionButton = %TagCategoryOption
+@onready var tag_category_option: MobileDropDown = %TagCategory
 @onready var save_tag_button: Button = %SaveTagButton
 @onready var warning_box: WarningBox = %WarningBox
 @onready var tag_search_bar: VBoxContainer = %TagSearchBar

@@ -4,8 +4,8 @@ signal confirmed(variable: Variant)
 
 @export_multiline var conf_popup_text:String
 
-@onready var months_option: OptionButton = %Months
-@onready var days_option: OptionButton = %Days
+@onready var months_option: MobileDropDown = %Months
+@onready var days_option: MobileDropDown = %Days
 @onready var years_spin_box: SpinBox = %YearsSpinBox
 
 var month_days:Dictionary[String, int] = {
@@ -39,8 +39,10 @@ func _on_months_item_selected(index: int) -> void:
 	var month = months_option.get_item_text(index)
 	var day_amount = month_days[month]
 	days_option.clear()
-	for i in range(1, day_amount):
+	for i in range(1, day_amount + 1):
 		days_option.add_item(str(i))
+	
+	days_option.selected = clamp(days_option.selected, 0, day_amount-1)
 
 func _get_birthdate() -> Dictionary:
 	var year = int(years_spin_box.get_line_edit().text)

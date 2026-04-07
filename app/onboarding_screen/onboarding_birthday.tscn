@@ -1,14 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://de6qbtfyq0uh3"]
+[gd_scene load_steps=7 format=3 uid="uid://de6qbtfyq0uh3"]
 
 [ext_resource type="Script" uid="uid://du4y63r8beqpy" path="res://app/onboarding_screen/onboarding_birthday.gd" id="1_cd1so"]
 [ext_resource type="Script" uid="uid://cg1kfg1oqrnic" path="res://app/custom_ui_elements/virtual_keyboard_adjuster.gd" id="2_bihs6"]
 [ext_resource type="StyleBox" uid="uid://n4amvtloledg" path="res://resources/styles/app_background_accent_panel.tres" id="2_yrwls"]
 [ext_resource type="LabelSettings" uid="uid://d10w3u76wg4e6" path="res://resources/styles/subtle_grey_text_accent_panel_label_setting.tres" id="3_yrwls"]
+[ext_resource type="Script" uid="uid://cr5s2h5o41gc7" path="res://addons/mobile_option_dropdown/mobile_option_dropdown_menu.gd" id="5_xygl3"]
 
 [sub_resource type="GDScript" id="GDScript_yrwls"]
 script/source = "extends MarginContainer
 @onready var v_box: VBoxContainer = $VBoxContainer
-@onready var h_box: HBoxContainer = $HBoxContainer
+@onready var h_box: Control = $HBoxContainer
 
 
 func _ready() -> void:
@@ -76,46 +77,22 @@ script = SubResource("GDScript_yrwls")
 layout_mode = 2
 mouse_filter = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VirtualKeyboardAdjuster/MarginContainer2/MarginContainer/VBoxContainer/MarginContainer"]
-layout_mode = 2
-mouse_filter = 2
-
-[node name="Months" type="OptionButton" parent="VirtualKeyboardAdjuster/MarginContainer2/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="Months" type="Button" parent="VirtualKeyboardAdjuster/MarginContainer2/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-item_count = 12
-popup/item_0/text = "January"
-popup/item_0/id = 0
-popup/item_1/text = "February"
-popup/item_1/id = 1
-popup/item_2/text = "March"
-popup/item_2/id = 2
-popup/item_3/text = "April"
-popup/item_3/id = 3
-popup/item_4/text = "May"
-popup/item_4/id = 4
-popup/item_5/text = "June"
-popup/item_5/id = 5
-popup/item_6/text = "July"
-popup/item_6/id = 6
-popup/item_7/text = "August"
-popup/item_7/id = 7
-popup/item_8/text = "September"
-popup/item_8/id = 8
-popup/item_9/text = "October"
-popup/item_9/id = 9
-popup/item_10/text = "November"
-popup/item_10/id = 10
-popup/item_11/text = "December"
-popup/item_11/id = 11
+text = "month"
+script = ExtResource("5_xygl3")
+metadata/_custom_type_script = "uid://cr5s2h5o41gc7"
 
-[node name="Days" type="OptionButton" parent="VirtualKeyboardAdjuster/MarginContainer2/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="Days" type="Button" parent="VirtualKeyboardAdjuster/MarginContainer2/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 1
-action_mode = 1
+text = "day"
+script = ExtResource("5_xygl3")
+metadata/_custom_type_script = "uid://cr5s2h5o41gc7"
 
-[node name="YearsSpinBox" type="SpinBox" parent="VirtualKeyboardAdjuster/MarginContainer2/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="YearsSpinBox" type="SpinBox" parent="VirtualKeyboardAdjuster/MarginContainer2/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 min_value = 1945.0
@@ -123,9 +100,13 @@ max_value = 2000.0
 value = 2000.0
 rounded = true
 
-[node name="ConfirmBirthdateButton" type="Button" parent="VirtualKeyboardAdjuster/MarginContainer2/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="ConfirmBirthdateButton" type="Button" parent="VirtualKeyboardAdjuster/MarginContainer2/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "confirm"
 
-[connection signal="item_selected" from="VirtualKeyboardAdjuster/MarginContainer2/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Months" to="." method="_on_months_item_selected"]
-[connection signal="pressed" from="VirtualKeyboardAdjuster/MarginContainer2/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/ConfirmBirthdateButton" to="." method="_on_confirm_birthdate_button_pressed"]
+[node name="HBoxContainer" type="HFlowContainer" parent="VirtualKeyboardAdjuster/MarginContainer2/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[connection signal="item_selected" from="VirtualKeyboardAdjuster/MarginContainer2/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Months" to="." method="_on_months_item_selected"]
+[connection signal="pressed" from="VirtualKeyboardAdjuster/MarginContainer2/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/ConfirmBirthdateButton" to="." method="_on_confirm_birthdate_button_pressed"]

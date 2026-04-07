@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b7o8n2d1lrj4u"]
+[gd_scene format=3 uid="uid://b7o8n2d1lrj4u"]
 
 [ext_resource type="Theme" uid="uid://c52euoe38n0nm" path="res://resources/styles/app_theme.tres" id="1_myqrv"]
 [ext_resource type="Script" uid="uid://bay3gygeet1fi" path="res://app/main_screen/settings/submit_tag_menu/submit_tag_menu.gd" id="2_f2kdp"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dbe4jrv6lp1ki" path="res://favicon.png" id="5_06ebo"]
 [ext_resource type="Script" uid="uid://ba878oe3x4vgt" path="res://app/main_screen/settings/submit_tag_menu/tag_category_option.gd" id="5_f2kdp"]
 [ext_resource type="PackedScene" uid="uid://bto7w6rkrgka3" path="res://app/main_screen/settings/submit_tag_menu/tag_search_bar.tscn" id="5_myqrv"]
+[ext_resource type="Texture2D" uid="uid://b2erchym6iip4" path="res://addons/mobile_option_dropdown/arrow_down.svg" id="7_5m81r"]
 [ext_resource type="PackedScene" uid="uid://dh42ok3r4vn3g" path="res://app/main_screen/settings/submit_tag_menu/warning_box.tscn" id="7_f2kdp"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cuksv"]
@@ -25,7 +26,7 @@ font_color = Color(0.65012825, 0.6501283, 0.65012825, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_otefm"]
 
-[node name="SubmitTagMenu" type="MarginContainer"]
+[node name="SubmitTagMenu" type="MarginContainer" unique_id=1558965276]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -34,60 +35,60 @@ grow_vertical = 2
 theme = ExtResource("1_myqrv")
 script = ExtResource("2_f2kdp")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="." unique_id=1669313824]
 layout_mode = 2
 theme_override_styles/panel = ExtResource("3_cuksv")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1545524911]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=28566907]
 layout_mode = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer" unique_id=2032535119]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer" unique_id=1804506920]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 8
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1497302592]
 layout_mode = 2
 text = "🏷️ Creating New Tag"
 horizontal_alignment = 1
 
-[node name="HSeparator2" type="HSeparator" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="HSeparator2" type="HSeparator" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1460758795]
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_cuksv")
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=615453005]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer" unique_id=1222748285]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=1930592080]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer/HBoxContainer/MarginContainer"]
+[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer/HBoxContainer/MarginContainer" unique_id=1169711873]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_cuksv")
 
-[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer/HBoxContainer/MarginContainer"]
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer/HBoxContainer/MarginContainer" unique_id=1973780740]
 custom_minimum_size = Vector2(121, 44)
 layout_mode = 2
 
-[node name="TagEditPreview" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer/HBoxContainer/MarginContainer/Control" instance=ExtResource("4_06ebo")]
+[node name="TagEditPreview" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer/HBoxContainer/MarginContainer/Control" unique_id=1125995505 instance=ExtResource("4_06ebo")]
 unique_name_in_owner = true
 layout_mode = 0
 anchors_preset = 0
@@ -107,47 +108,49 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=1221400545]
 layout_mode = 2
 text = " --> "
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=360875373]
 layout_mode = 2
 texture = ExtResource("5_06ebo")
 expand_mode = 3
 
-[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1410985262]
 layout_mode = 2
 
-[node name="HFlowContainer2" type="HFlowContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="HFlowContainer2" type="HFlowContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1216412836]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HFlowContainer2"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HFlowContainer2" unique_id=845399902]
 layout_mode = 2
 text = "Tag Category:"
 label_settings = ExtResource("5_5m81r")
 
-[node name="TagCategoryOption" type="OptionButton" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HFlowContainer2"]
+[node name="TagCategory" type="Button" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HFlowContainer2" unique_id=944418747]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 3
+icon = ExtResource("7_5m81r")
+icon_alignment = 2
 script = ExtResource("5_f2kdp")
+metadata/_custom_type_script = "uid://cr5s2h5o41gc7"
 
-[node name="TagSearchBar" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("5_myqrv")]
+[node name="TagSearchBar" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1283338339 instance=ExtResource("5_myqrv")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 size_flags_vertical = 0
 max_results = 3
 
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1085943502]
 layout_mode = 2
 size_flags_vertical = 2
 text = "⚠️Tags will be publically accessible for all users to use and search and are periodically reviewed. Accounts that create tags associated with slurs or hate speech may be suspended."
 label_settings = SubResource("LabelSettings_cuksv")
 autowrap_mode = 3
 
-[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=281594924]
 visible = false
 layout_mode = 2
 size_flags_vertical = 2
@@ -155,18 +158,18 @@ text = "⚠️Tags will be publically accessible for all users to use and search
 label_settings = ExtResource("5_5m81r")
 autowrap_mode = 3
 
-[node name="WarningBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="WarningBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=191908220]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/WarningBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/WarningBoxContainer" unique_id=2055547017]
 layout_mode = 2
 text = "⚠️ Tag must:"
 label_settings = ExtResource("5_5m81r")
 
-[node name="WarningBox" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/WarningBoxContainer" instance=ExtResource("7_f2kdp")]
+[node name="WarningBox" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/WarningBoxContainer" unique_id=1851798206 instance=ExtResource("7_f2kdp")]
 unique_name_in_owner = true
 layout_mode = 2
 warnings = Dictionary[String, String]({
@@ -175,11 +178,11 @@ warnings = Dictionary[String, String]({
 "empty-name": "not have an empty name."
 })
 
-[node name="Options" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="Options" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1592656414]
 layout_mode = 2
 size_flags_vertical = 8
 
-[node name="CloseButton" type="Button" parent="MarginContainer/VBoxContainer/Options"]
+[node name="CloseButton" type="Button" parent="MarginContainer/VBoxContainer/Options" unique_id=1117922303]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -188,7 +191,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_otefm")
 text = "cancel"
 text_overrun_behavior = 1
 
-[node name="SaveTagButton" type="Button" parent="MarginContainer/VBoxContainer/Options"]
+[node name="SaveTagButton" type="Button" parent="MarginContainer/VBoxContainer/Options" unique_id=774817588]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
