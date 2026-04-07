@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://fqjrmqkdhvkf"]
+[gd_scene load_steps=9 format=3 uid="uid://fqjrmqkdhvkf"]
 
 [ext_resource type="Script" uid="uid://m4q17njm7xsi" path="res://app/main_screen/settings/settings.gd" id="1_vu2du"]
 [ext_resource type="PackedScene" uid="uid://b7o8n2d1lrj4u" path="res://app/main_screen/settings/submit_tag_menu/submit_tag_menu.tscn" id="2_gnyii"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://l0y7vw5m8x5n" path="res://app/main_screen/settings/account_management_menu/account_management_menu.tscn" id="3_ha2qc"]
 [ext_resource type="PackedScene" uid="uid://dhd4ptdci304x" path="res://app/main_screen/reporting/user_feedback_menu.tscn" id="4_ha2qc"]
 [ext_resource type="LabelSettings" uid="uid://crec8tr40vb4i" path="res://resources/styles/subtle_grey_text_label_setting.tres" id="5_x8np0"]
+[ext_resource type="Script" uid="uid://d2uc7bhpo6e1h" path="res://app/main_screen/settings/version_label.gd" id="7_obkuf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x8np0"]
 bg_color = Color(0.60784316, 0.5647059, 0.6431373, 1)
@@ -98,6 +99,7 @@ size_flags_vertical = 10
 text = "v0.1.1-beta"
 label_settings = ExtResource("5_x8np0")
 horizontal_alignment = 2
+script = ExtResource("7_obkuf")
 
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/EditProfileButton" to="." method="_on_edit_profile_button_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/ProfileViewToggle" to="." method="_on_profile_view_toggle_pressed"]
