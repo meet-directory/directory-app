@@ -85,9 +85,10 @@ func _http_request_completed(_resp_code, response):
 func _add_profiles(profiles:Array[ProfileResource]) -> void:
 	for profile in profiles:
 		var profile_viewer:ProfileView = profile_viewer_scene.instantiate()
+		profile_viewer.user_blocked.connect(_on_user_blocked.bind(profile_viewer))
 		profile_scroller.add_child(profile_viewer)
+		profile_viewer.set_display_mode(ProfileView.DISPLAY_MODES.all_options)
 		profile_viewer.display(profile, _search_tags, _optional_search_tags)
-		profile_viewer.show_match_options = true
 	
 	end_screen = end_of_results_scene.instantiate()
 	profile_scroller.add_child(end_screen)
@@ -103,6 +104,12 @@ func _add_profiles(profiles:Array[ProfileResource]) -> void:
 			left_button.hide()
 		else:
 			end_screen.show_eor()
+
+func _on_user_blocked(viewer:ProfileView) -> void:
+	var tween:Tween = create_tween()
+	tween.tween_property(viewer, "modulate:a", 0, 0.5)
+	await tween.finished
+	viewer.queue_free()
 
 func _on_right_button_pressed() -> void:
 	scroll_container.scroll_up()

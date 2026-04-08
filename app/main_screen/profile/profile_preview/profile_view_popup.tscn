@@ -49,4 +49,5 @@ layout_mode = 2
 layout_mode = 2
 text = "Close Preview"
 
+[connection signal="user_blocked" from="MenuContainer/VBoxContainer/ProfileViewer" to="." method="_on_profile_viewer_user_blocked"]
 [connection signal="pressed" from="MenuContainer/VBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]

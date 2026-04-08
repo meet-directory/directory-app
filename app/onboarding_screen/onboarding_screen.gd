@@ -54,7 +54,7 @@ func _on_profile_failed() -> void:
 	get_tree().quit()
 
 func _on_preview_profile_button_pressed() -> void:
-	App.show_profile_preview(Server.session_profile)
+	App.show_profile_preview(Server.session_profile, ProfileView.DISPLAY_MODES.no_options)
 
 func _attempt_show_launch() -> void:
 	var enabled = profile_saved and dpp_check_box.button_pressed and tos_check_box.button_pressed

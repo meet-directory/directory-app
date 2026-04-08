@@ -10,6 +10,7 @@ extends MarginContainer
 func _ready() -> void:
 	Server.user_session_loaded.connect(refresh)
 	Websockets.new_message_received.connect(refresh)
+	App.user_blocked_from_profile_popup.connect(refresh)
 
 func selected() -> void:
 	refresh()

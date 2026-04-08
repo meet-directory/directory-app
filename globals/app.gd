@@ -1,6 +1,6 @@
 extends Node
 @export var is_prod = true
-var software_version = 'v0.1.2-beta'
+var software_version = 'v0.1.3-beta'
 ## Prevents downloading photos during development. If using prod, should always be true
 @export var load_photos = true
 
@@ -17,6 +17,8 @@ enum VERSIONS {MOBILE, MOBILE_WEB, DESKTOP_WEB}
 var version:VERSIONS = VERSIONS.DESKTOP_WEB
 
 var PROFILE_VIEW_WIDTH
+
+signal user_blocked_from_profile_popup
 
 func is_mobile():
 	return OS.get_name() in ['Android', 'iOS'] or OS.has_feature("web_android") or OS.has_feature("web_ios")
@@ -61,19 +63,12 @@ func show_main_app_screen() -> void:
 		await popup.closed
 		get_tree().change_scene_to_file(Constants.onboarding_screen_file)
 
-
-
-
-
-
-
 ###################################
 
-
-func show_profile_preview(profile:ProfileResource):
+func show_profile_preview(profile:ProfileResource, display_mode:ProfileView.DISPLAY_MODES):
 	var preview = Constants.profile_preview_popup_scene.instantiate()
 	get_tree().root.add_child(preview)
-	preview.show_profile(profile)
+	preview.show_profile(profile, display_mode)
 
 func show_profile_editor(creation_mode=false) -> ProfileEditorPopup:
 	var editor:ProfileEditorPopup = Constants.profile_editor_scene.instantiate()

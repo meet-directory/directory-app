@@ -1,7 +1,7 @@
 extends MarginContainer
 class_name ChatActivator
 @onready var button: Button = %Button
-@onready var texture_rect: TextureRect = %TextureRect
+@onready var view_profile_button: ViewProfileButton = %ViewProfileButton
 
 var _chat_id:int
 var _participant_ids:Array
@@ -17,12 +17,9 @@ func setup(chat_id:int, participant_ids:Array, participant_names:Array, particip
 	_participant_ids.assign(participant_ids)
 	_participant_names.assign(participant_names)
 	
-	var url = participant_photo_uris[0]
-	if url:
-		ObjectStorage.get_texture(url, _got_photo)
+	view_profile_button.set_user_info(_participant_ids[0], participant_photo_uris[0])
+	
 
-func _got_photo(img:Image) -> void:
-	texture_rect.texture = ImageTexture.create_from_image(img)
 
 func _on_button_pressed() -> void:
 	pressed.emit(_chat_id, _participant_ids, _participant_names)

@@ -85,27 +85,25 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [node name="MatchOptions" type="MarginContainer"]
-anchors_preset = 12
-anchor_top = 1.0
+anchors_preset = 10
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -48.0
+offset_bottom = 44.0
 grow_horizontal = 2
-grow_vertical = 0
 size_flags_vertical = 8
 script = ExtResource("1_5yok3")
 report_user_menu = ExtResource("4_cgf6k")
 
 [node name="Panel" type="Panel" parent="."]
+visible = false
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_lyk1e")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
 
 [node name="TabContainer" type="TabContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -132,6 +130,7 @@ text_overrun_behavior = 2
 
 [node name="MenuButton" type="Button" parent="MarginContainer/TabContainer/LikeOptions"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 toggle_mode = true
 text = "      "
@@ -193,3 +192,4 @@ horizontal_alignment = 1
 [connection signal="pressed" from="MarginContainer/TabContainer/LikeOptions/LikeButton" to="." method="_on_like_button_pressed"]
 [connection signal="toggled" from="MarginContainer/TabContainer/LikeOptions/MenuButton" to="MarginContainer/TabContainer/LikeOptions/MenuButton" method="_on_toggled"]
 [connection signal="pressed" from="MarginContainer/TabContainer/LikeOptions/MenuButton/Menu/MarginContainer/VBoxContainer/ReportUserButton" to="." method="_on_report_user_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/LikeOptions/MenuButton/Menu/MarginContainer/VBoxContainer/BlockUserButton" to="." method="_on_block_user_button_pressed"]

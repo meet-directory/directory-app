@@ -11,21 +11,32 @@ class_name ProfileView
 @onready var personal_tags: TagContainer = %PersonalTags
 @onready var match_options: MarginContainer = %MatchOptions
 @onready var age_label: Label = %AgeLabel
+@onready var report_menu: MarginContainer = %ReportMenu
 
 var profile_data:ProfileResource
 
-@export var show_match_options:bool = false:
-	set(value):
-		show_match_options = value
-		match_options.visible = show_match_options
+enum DISPLAY_MODES {
+	no_options, 		# no actions to perform on this user (used to display a user's own profile)
+	all_options, 		# Like, report, or block this user
+	only_report_options	# Users that are already liked or matched only show report and block options
+	}
+var display_mode:DISPLAY_MODES
 
-#@export var profile:ProfileResource
+func set_display_mode(mode:DISPLAY_MODES) -> void:
+	display_mode = mode
+	match mode:
+		DISPLAY_MODES.no_options:
+			report_menu.hide()
+		DISPLAY_MODES.all_options:
+			match_options.visible = true
+		DISPLAY_MODES.only_report_options:
+			match_options.visible = false
+
+signal user_blocked
 
 func _ready() -> void:
-	match_options.visible = show_match_options
 	call_deferred("set_sizing")
 	custom_minimum_size.x = App.PROFILE_VIEW_WIDTH
-	
 
 func set_sizing():
 	### Ensure the name is always visible, even on small displays
@@ -62,3 +73,8 @@ func display(profile:ProfileResource, must_have_tags:Array[String]=[], wanted_ta
 		tag_container.show_matched_tags(wanted_tags)
 	
 	photo_viewer.setup(profile.photos)
+
+
+
+func _on_block_user_button_user_blocked() -> void:
+	user_blocked.emit()

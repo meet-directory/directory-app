@@ -8,9 +8,9 @@ const DEV_BASE_URL = "0.0.0.0:10000"
 const PROD_BASE_URL = "directory-api-w9mi.onrender.com"
 #const PROD_BASE_URL = "directory-api-1.onrender.com"
 
-const LOGIN_ENDPOINT =               'login'
-const REGISTER_ENDPOINT =            'register'
-const REFRESH_ENDPOINT =             'auth/refresh'
+const LOGIN_ENDPOINT =                'login'
+const REGISTER_ENDPOINT =             'register'
+const REFRESH_ENDPOINT =              'auth/refresh'
 const API =                           'api/'
 const TAG_QUERY_ENDPOINT =            API + 'tags'
 const ENDPOINT_SUSPEND =              API + 'suspend'
@@ -20,6 +20,7 @@ const ENDPOINT_REPORT_USER =          API + 'report_user'
 const CREATE_TAG_ENDPOINT =           API + 'create_tag'
 const PROFILE_QUERY_ENDPOINT =        API + 'profiles'
 const REPORT_TAG_ENDPOINT =           API + 'report_tag'
+const BLOCK_USER_ENDPOINT =           API + 'block'
 const REPORT_FEEDBACK_ENDPOINT =      API + 'submit_feedback'
 const SEND_LIKE_ENDPOINT =            API + 'add_like'
 const ACCEPT_LIKE_ENDPOINT =          API + 'accept_like'
@@ -310,6 +311,10 @@ func change_password(old_password:String, new_password:String, callback:Callable
 
 
 ### Other ########################################################
+
+func block_user(user_id:int, callback:Callable) -> void:
+	var data = {'user_id': user_id}
+	_send_post_request(callback, BLOCK_USER_ENDPOINT, data)
 
 func report_user(user_id:int, reason:String, description:String, callback:Callable) -> void:
 	var data = {

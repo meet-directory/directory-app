@@ -23,7 +23,7 @@ func _on_edit_profile_button_pressed() -> void:
 	var _editor:ProfileEditorPopup = App.show_profile_editor()
 
 func _on_profile_view_toggle_pressed() -> void:
-	App.show_profile_preview(Server.session_profile)
+	App.show_profile_preview(Server.session_profile, ProfileView.DISPLAY_MODES.no_options)
 
 func _on_add_tag_button_pressed() -> void:
 	_show_menu(add_tag_menu)

@@ -1,15 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://buaob3exm4enb"]
+[gd_scene load_steps=5 format=3 uid="uid://buaob3exm4enb"]
 
 [ext_resource type="Script" uid="uid://ddnedc4jgqts6" path="res://app/main_screen/messages/chats/chat_activation_button.gd" id="1_kg2fs"]
-[ext_resource type="Shader" uid="uid://cvjknxt7b8aeq" path="res://resources/profile_circle.gdshader" id="2_qkuk6"]
-[ext_resource type="Texture2D" uid="uid://btmnrhfcdxyia" path="res://resources/icons/no-photo.png" id="3_n0e3p"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_oq0gs"]
-shader = ExtResource("2_qkuk6")
-shader_parameter/radius = 0.5
-shader_parameter/center = Vector2(0.5, 0.5)
-shader_parameter/smooth_edge = true
-shader_parameter/edge_softness = 0.005
+[ext_resource type="PackedScene" uid="uid://xmn6w3gata1k" path="res://app/main_screen/messages/view_profile_button.tscn" id="2_40ixj"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_koce4"]
 
@@ -35,16 +27,10 @@ theme_override_constants/margin_right = 10
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="ViewProfileButton" parent="VBoxContainer/MarginContainer/HBoxContainer" instance=ExtResource("2_40ixj")]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_oq0gs")
-custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 0
-size_flags_vertical = 0
-texture = ExtResource("3_n0e3p")
-expand_mode = 2
-stretch_mode = 4
 
 [node name="Button" type="Button" parent="VBoxContainer/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true

@@ -2,7 +2,7 @@
 
 [ext_resource type="StyleBox" uid="uid://fh3x8tnulkac" path="res://resources/styles/profile_panel_background.tres" id="1_jmtp6"]
 [ext_resource type="Script" uid="uid://ct8gp1n5q1v8f" path="res://app/main_screen/messages/like_request_pane.gd" id="1_mmwii"]
-[ext_resource type="Texture2D" uid="uid://btmnrhfcdxyia" path="res://resources/icons/no-photo.png" id="3_mmwii"]
+[ext_resource type="PackedScene" uid="uid://xmn6w3gata1k" path="res://app/main_screen/messages/view_profile_button.tscn" id="3_mmwii"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c0ogf"]
 
@@ -61,13 +61,9 @@ theme_override_constants/margin_bottom = 6
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="ViewProfileButton" type="Button" parent="MarginContainer/HBoxContainer"]
+[node name="ViewProfileButton" parent="MarginContainer/HBoxContainer" instance=ExtResource("3_mmwii")]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/icon_max_width = 40
-text = "Username User"
-icon = ExtResource("3_mmwii")
 
 [node name="VSeparator" type="VSeparator" parent="MarginContainer/HBoxContainer"]
 visible = false
@@ -91,6 +87,5 @@ size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxFlat_1aw0m")
 text = "Decline"
 
-[connection signal="pressed" from="MarginContainer/HBoxContainer/ViewProfileButton" to="." method="_on_view_profile_button_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/HBoxContainer/AcceptButton" to="." method="_on_accept_button_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/HBoxContainer/DeclineButton" to="." method="_on_decline_button_pressed"]

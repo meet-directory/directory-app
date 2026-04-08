@@ -61,11 +61,12 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 tab_alignment = 1
-current_tab = 0
+current_tab = 1
 tabs_visible = false
 script = ExtResource("4_nrdkc")
 
 [node name="Likes" type="MarginContainer" parent="SlideWindow/TabContainer/MarginContainer/VBoxContainer/TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -87,7 +88,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Chats" type="MarginContainer" parent="SlideWindow/TabContainer/MarginContainer/VBoxContainer/TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 

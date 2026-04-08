@@ -10,7 +10,8 @@ extends CanvasLayer
 func _ready() -> void:
 	call_deferred('animate_menu_slide')
 
-func show_profile(profile:ProfileResource) -> void:
+func show_profile(profile:ProfileResource, mode:ProfileView.DISPLAY_MODES) -> void:
+	profile_viewer.set_display_mode(mode)
 	profile_viewer.display(profile)
 	
 
@@ -29,4 +30,9 @@ func animate_menu_slide_down() -> void:
 	queue_free()
 
 func _on_close_button_pressed() -> void:
+	animate_menu_slide_down()
+
+
+func _on_profile_viewer_user_blocked() -> void:
+	App.user_blocked_from_profile_popup.emit()
 	animate_menu_slide_down()
