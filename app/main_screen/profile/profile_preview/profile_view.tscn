@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cr731ljnp80m6"]
+[gd_scene load_steps=24 format=3 uid="uid://cr731ljnp80m6"]
 
 [ext_resource type="Script" uid="uid://lo38u26sfmrm" path="res://app/main_screen/profile/profile_preview/profile_view.gd" id="1_juomk"]
 [ext_resource type="StyleBox" uid="uid://fh3x8tnulkac" path="res://resources/styles/profile_panel_background.tres" id="2_omvvx"]
@@ -21,6 +21,18 @@ outline_size = 1
 shadow_size = 2
 shadow_color = Color(0, 0, 0, 1)
 shadow_offset = Vector2(-1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2dt1s"]
+content_margin_right = 5.0
+bg_color = Color(0.541604, 0.5974396, 0.7444965, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_4t5cw"]
+font_size = 13
+font_color = Color(0.19523549, 0.2657579, 0.3471535, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_guhvx"]
 font_color = Color(0.6509804, 0.7058824, 0.7490196, 1)
@@ -146,6 +158,35 @@ size_flags_horizontal = 3
 text = "32"
 label_settings = SubResource("LabelSettings_c2q5j")
 horizontal_alignment = 2
+
+[node name="LocationPanel" type="MarginContainer" parent="MarginContainer/MarginContainer/ContentClipper/AxisLockedScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Panel" type="Panel" parent="MarginContainer/MarginContainer/ContentClipper/AxisLockedScrollContainer/VBoxContainer/LocationPanel"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2dt1s")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/MarginContainer/ContentClipper/AxisLockedScrollContainer/VBoxContainer/LocationPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_right = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/MarginContainer/ContentClipper/AxisLockedScrollContainer/VBoxContainer/LocationPanel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="Label" type="Label" parent="MarginContainer/MarginContainer/ContentClipper/AxisLockedScrollContainer/VBoxContainer/LocationPanel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "📍"
+label_settings = SubResource("LabelSettings_4t5cw")
+
+[node name="LocationLabel" type="Label" parent="MarginContainer/MarginContainer/ContentClipper/AxisLockedScrollContainer/VBoxContainer/LocationPanel/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Durham, NC"
+label_settings = SubResource("LabelSettings_4t5cw")
 
 [node name="PersonalTags" parent="MarginContainer/MarginContainer/ContentClipper/AxisLockedScrollContainer/VBoxContainer" instance=ExtResource("3_xdqhq")]
 unique_name_in_owner = true

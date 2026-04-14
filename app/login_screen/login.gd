@@ -39,6 +39,7 @@ func _on_user_session_not_loaded() -> void:
 	TokenStorage.clear_access_token()
 
 func _on_user_session_loaded(_prof:ProfileResource=null) -> void:
+	Server.update_location() # location is updated once on app start
 	App.show_main_app_screen()
 
 func _on_login_button_pressed() -> void:

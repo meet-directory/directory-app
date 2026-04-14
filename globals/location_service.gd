@@ -1,109 +1,136 @@
 extends Node
 
-""" 
-Just detects if IP address is in NC or not as a rough way to limit people from making accounts
-elsewhere.
-
-IP location is only accurate to around 50km
-In the future will need iOS and Android plugins to use actual GPS data.
-"""
-
-signal location_received(lat: float, lon: float, city:String)
-signal location_failed(error: String)
-
-const rounding_degree = 0.01
 var latitude:float
 var longitude:float
-var city_str:String
+var city_string:String
+
+var is_location_updated:bool = false
+signal location_updated
 
 func _ready() -> void:
-	location_received.connect(_save_loc)
-	#location_received.connect(_print_location)
-	#location_failed.connect(_print_err)
-	get_location()
+	match OS.get_name():
+		'Web':
+			request_location_web()
+		'Android':
+			pass
+		_:
+			request_location_desktop()
 
-func _save_loc(lat:float, lon:float, city) -> void:
-	latitude = snappedf(lat, rounding_degree)
-	longitude = snappedf(lon, rounding_degree)
-	city_str = city
+func _got_location(lat, lon, city:String='') -> void:
+	
+	if city.is_empty():
+		city = await reverse_geocode(lat, lon)
+	latitude = lat
+	longitude = lon
+	city_string = city
+	is_location_updated = true
+	location_updated.emit()
 
-#func _print_location(lat, lon, city) -> void:
-	#print("Got location ", lat,' ', lon, ' ', city, '. In NC? ', is_in_north_carolina(lat, lon))
-#
-#func _print_err(err:String) -> void:
-	#print("Got location failed: ", err)
-
-# Simplified NC border polygon [longitude, latitude]
-const NC_POLYGON = [
-	[-84.32, 34.99], [-84.29, 35.21], [-84.10, 35.27], [-83.96, 35.46],
-	[-83.49, 35.56], [-83.17, 35.73], [-82.90, 35.92], [-82.69, 36.12],
-	[-82.41, 36.07], [-82.03, 36.12], [-81.91, 36.30], [-81.70, 36.54],
-	[-81.35, 36.57], [-80.88, 36.56], [-80.44, 36.55], [-79.95, 36.54],
-	[-79.51, 36.54], [-77.90, 36.55], [-76.92, 36.55],
-	[-76.00, 36.55], [-75.60, 36.55], [-75.40, 36.20],
-	[-75.20, 35.90], [-74.90, 35.60], [-74.90, 35.20],
-	[-75.10, 34.90], [-75.40, 34.60],
-	[-75.60, 34.20], [-76.00, 33.70], [-76.60, 33.70],
-	[-77.20, 33.70], [-77.80, 33.80], [-78.55, 33.75], [-79.06, 34.20],
-	[-79.67, 34.80], [-80.32, 34.81], [-80.56, 34.82],
-	[-80.93, 35.10], [-81.04, 35.05], [-81.37, 35.16],
-	[-82.27, 35.20], [-82.78, 35.07], [-83.11, 35.00],
-	[-84.02, 35.00], [-84.32, 34.99]
-]
-
-func is_in_north_carolina(lat:float=latitude, lon:float=longitude) -> bool:
-	return _point_in_polygon(lon, lat, NC_POLYGON)
-
-func _point_in_polygon(x: float, y: float, polygon: Array) -> bool:
-	var inside = false
-	var j = polygon.size() - 1
-	for i in range(polygon.size()):
-		var xi = polygon[i][0]; var yi = polygon[i][1]
-		var xj = polygon[j][0]; var yj = polygon[j][1]
-		if ((yi > y) != (yj > y)) and (x < (xj - xi) * (y - yi) / (yj - yi) + xi):
-			inside = !inside
-		j = i
-	return inside
-
-
-func get_location():
-	return  # disable till we use it
-	if OS.get_name() == "Web":
-		_get_web_location()
-	else:
-		_get_ip_location()
-
-var on_success
-var on_error
-
-func _get_web_location():
-	# Set up JS callbacks that signal back into GDScript
-	on_success = JavaScriptBridge.create_callback(_on_web_success)
-	on_error = JavaScriptBridge.create_callback(_on_web_error)
-	JavaScriptBridge.get_interface("navigator").geolocation.getCurrentPosition(on_success, on_error)
-
-func _on_web_success(args) -> void:
-	var coords = args[0].coords
-	emit_signal("location_received", coords.latitude, coords.longitude, '')
-
-func _on_web_error(args) -> void:
-	emit_signal("location_failed", str(args[0].message))
-
-
-func _get_ip_location():
+func reverse_geocode(lat: float, lon: float) -> String:
+	var url = "https://nominatim.openstreetmap.org/reverse?lat=%s&lon=%s&format=json" % [lat, lon]
 	var http = HTTPRequest.new()
 	add_child(http)
-	http.request_completed.connect(_on_ip_request_completed)
-	http.request("https://ipwho.is/")
+	
+	http.request(url, ["User-Agent: Directory/1.0"])
+	
+	var response = await http.request_completed
+	http.queue_free()
+	
+	var result_code = response[1]
+	var body = response[3]
+	
+	if result_code != 200:
+		push_error("Reverse geocode failed with code: %d" % result_code)
+		return ""
+	
+	var json = JSON.new()
+	if json.parse(body.get_string_from_utf8()) != OK:
+		push_error("Reverse geocode JSON parse failed")
+		return ""
+	
+	var data = json.get_data()
+	var address = data.get("address", {})
+	
+	var city = address.get("city",
+		address.get("town",
+		address.get("village", "")))
+	
+	if city == "":
+		return ""
+	
+	var country_code = address.get("country_code", "")
+	if country_code == "us":
+		var state_code = data.get("ISO3166-2-lvl4", "")
+		if state_code != "":
+			var parts = state_code.split("-")
+			if parts.size() == 2:
+				return "%s, %s" % [city, parts[1]]
+	
+	return city
+### Android ####################################################################
 
-func _on_ip_request_completed(_result, response_code, _headers, body):
-	if response_code == 200:
-		var json = JSON.new()
-		json.parse(body.get_string_from_utf8())
-		var data = json.get_data()
-		if data.get("success", false):
-			emit_signal("location_received", data.latitude, data.longitude, data.city)
-		else:
-			emit_signal("location_failed", "IP lookup failed")
-	else:
-		emit_signal("location_failed", "HTTP error: " + str(response_code))
+
+
+### Web ########################################################################
+
+var _js_success_callback
+var _js_error_callback
+
+func request_location_web():
+	_js_success_callback = JavaScriptBridge.create_callback(_on_location_success)
+	_js_error_callback = JavaScriptBridge.create_callback(_on_location_error)
+
+	# Assign to window FIRST, before the eval that references them
+	JavaScriptBridge.get_interface("window").godot_geo_success = _js_success_callback
+	JavaScriptBridge.get_interface("window").godot_geo_error = _js_error_callback
+
+	JavaScriptBridge.eval("""
+		navigator.geolocation.getCurrentPosition(
+			godot_geo_success,
+			godot_geo_error,
+			{ enableHighAccuracy: false, timeout: 10000 }
+		);
+	""")
+
+func _on_location_success(args) -> void:
+	var position = args[0]
+	var lat = position.coords.latitude
+	var lon = position.coords.longitude
+	var accuracy = position.coords.accuracy  # metres
+	_got_location(lat, lon)
+
+
+func _on_location_error(args) -> void:
+	var error = args[0]
+	print("Geolocation error code: ", error.code, " - ", error.message)
+	if error == 1: # DENIED access
+		print('user denied location access')
+		# Show prompt that location is required to continue
+		# user can refresh to show the location prompt again
+		pass
+	
+
+### Desktop ####################################################################
+# Desktop apps aren't supported yet, just need this for testing
+
+func request_location_desktop():
+	var http = HTTPRequest.new()
+	add_child(http)
+	http.request_completed.connect(_on_request_completed)
+	http.request("https://ipapi.co/json/")
+
+func _on_request_completed(result, response_code, headers, body):
+	var json = JSON.parse_string(body.get_string_from_utf8())
+	var lat = json["latitude"]
+	var lon = json["longitude"]
+	var city = json["city"]
+	#print("Location: ", lat, ", ", lon, " (", city, ")")
+	#lat = 35.7877
+	#lon = -78.6442
+	#city = "Raleigh"
+	#lat = 37.074527
+	#lon = -77.9072229
+	#city = 'VA'
+	_got_location(lat, lon, city)
+
+################################################################################

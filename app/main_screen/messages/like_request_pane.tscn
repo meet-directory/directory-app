@@ -1,44 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://rlwqcw06icrj"]
+[gd_scene load_steps=11 format=3 uid="uid://rlwqcw06icrj"]
 
 [ext_resource type="StyleBox" uid="uid://fh3x8tnulkac" path="res://resources/styles/profile_panel_background.tres" id="1_jmtp6"]
 [ext_resource type="Script" uid="uid://ct8gp1n5q1v8f" path="res://app/main_screen/messages/like_request_pane.gd" id="1_mmwii"]
 [ext_resource type="PackedScene" uid="uid://xmn6w3gata1k" path="res://app/main_screen/messages/view_profile_button.tscn" id="3_mmwii"]
+[ext_resource type="StyleBox" uid="uid://dwqeuj5eif0lg" path="res://resources/styles/red_button/normal.tres" id="4_7rpdl"]
+[ext_resource type="StyleBox" uid="uid://drihdbvru1ol2" path="res://resources/styles/green_button/normal.tres" id="4_cciqf"]
+[ext_resource type="StyleBox" uid="uid://vjsj43yrvofy" path="res://resources/styles/green_button/pressed.tres" id="5_5gpid"]
+[ext_resource type="StyleBox" uid="uid://gbckrp24phf4" path="res://resources/styles/red_button/pressed.tres" id="5_ln335"]
+[ext_resource type="StyleBox" uid="uid://c5dh0bhij2yb" path="res://resources/styles/red_button/hover.tres" id="6_eutcb"]
+[ext_resource type="StyleBox" uid="uid://b3ssbri50bt2i" path="res://resources/styles/green_button/hover.tres" id="6_hrc0v"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c0ogf"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mmwii"]
-content_margin_left = 5.0
-content_margin_top = 5.0
-content_margin_right = 5.0
-content_margin_bottom = 5.0
-bg_color = Color(0.38542253, 0.47425246, 0.38013417, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 4
-border_color = Color(0.14406252, 0.14406258, 0.14406243, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-expand_margin_bottom = 2.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1aw0m"]
-content_margin_left = 5.0
-content_margin_top = 5.0
-content_margin_right = 5.0
-content_margin_bottom = 5.0
-bg_color = Color(0.6640859, 0.3295607, 0.3373069, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 4
-border_color = Color(0.14406252, 0.14406258, 0.14406243, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-expand_margin_bottom = 2.0
 
 [node name="LikeRequestPane" type="MarginContainer"]
 anchors_preset = 10
@@ -78,13 +50,17 @@ size_flags_horizontal = 3
 [node name="AcceptButton" type="Button" parent="MarginContainer/HBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_styles/normal = SubResource("StyleBoxFlat_mmwii")
+theme_override_styles/normal = ExtResource("4_cciqf")
+theme_override_styles/pressed = ExtResource("5_5gpid")
+theme_override_styles/hover = ExtResource("6_hrc0v")
 text = "Accept"
 
 [node name="DeclineButton" type="Button" parent="MarginContainer/HBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_styles/normal = SubResource("StyleBoxFlat_1aw0m")
+theme_override_styles/normal = ExtResource("4_7rpdl")
+theme_override_styles/pressed = ExtResource("5_ln335")
+theme_override_styles/hover = ExtResource("6_eutcb")
 text = "Decline"
 
 [connection signal="pressed" from="MarginContainer/HBoxContainer/HBoxContainer/AcceptButton" to="." method="_on_accept_button_pressed"]

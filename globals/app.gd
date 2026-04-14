@@ -49,8 +49,6 @@ func _ready():
 		PROFILE_VIEW_WIDTH = min(get_screen_size().x - 20, 400)
 
 
-
-
 func show_login_screen() -> void:
 	get_tree().change_scene_to_file(Constants.login_screen_file)
 

@@ -9,6 +9,7 @@ class_name ProfileResource
 @export var id:int = -1
 @export var suspended:bool
 @export var onboarded:bool
+@export var loc_string:String
 
 @export var messages:Dictionary[String, Message]
 
@@ -56,6 +57,10 @@ func from_db(dict:Dictionary):
 		data = dict
 	
 	onboarded = data.get('onboarded', true)
+	var city = dict.get('city', '')
+	if city == null:
+		city = ''
+	loc_string = city
 	
 	var image_urls = dict.get('image_uris', [])
 	if true:

@@ -26,8 +26,6 @@ func _on_search_toggle_button_toggled(toggled_on: bool) -> void:
 	else:
 		search_toggle_button.text = "Edit Search Criteria"
 		
-		#search_param_list.hide()
-
 
 func _refresh_search() -> void:
 	show_profiles()

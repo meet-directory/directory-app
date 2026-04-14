@@ -24,8 +24,10 @@ const BLOCK_USER_ENDPOINT =           API + 'block'
 const REPORT_FEEDBACK_ENDPOINT =      API + 'submit_feedback'
 const SEND_LIKE_ENDPOINT =            API + 'add_like'
 const ACCEPT_LIKE_ENDPOINT =          API + 'accept_like'
+const DECLINE_LIKE_ENDPOINT =         API + 'decline_like'
 const GET_LIKES_ENDPOINT =            API + 'get_likes'
 const GET_USER_PROFILE_ENDPOINT =     API + 'fetch_user_profile'
+const GET_USER_SEARCH_PARAM_ENDPOINT =API + 'search_preferences'
 const COMPLETE_ONBOARD_ENDPOINT =     API + 'complete_onboard'
 const DELETE_ACCOUNT_ENDPOINT =       API + 'delete'
 const ACCOUNT_CHG_PASSWORD_ENDPOINT = API + 'change_password'
@@ -35,7 +37,8 @@ const GET_CHATS_ENDPOINT =            API + 'get_chats'
 const GET_CHAT_MSGS_ENDPOINT =        API + 'get_chat_messages'
 const PHOTO_GET_URL_ENDPOINT =        API + 'get_presigned_url'
 const PHOTO_UPDATE_ORDER_ENDPOINT =   API + 'update_photo_order'
-const TAG_CATEGORY_ENDPOINT =   API + 'tag_category'
+const ENDPOINT_UPDATE_LOC =           API + 'update_loc'
+const TAG_CATEGORY_ENDPOINT =         API + 'tag_category'
 const HTTP_ERROR_DEFAULT = "An error occured. Try again later"
 const HTTP_ERROR_POPUP_MSGS = {
 	0: "There was no response from the server. Please try again in a moment.",
@@ -287,8 +290,17 @@ func logout() -> void:
 #   -H "Content-Type: application/json" \
 #   -d '{"email":"user@example.com","password":"test123"}'
 func register_new_user(email:String, password:String, birthdate:String, callback:Callable) -> void:
-	var data = {"email": email,"password": password, "birthdate": birthdate}
+	var data = {"email": email,"password": password, "birthdate": birthdate, "lat": LocationService.latitude, "lon": LocationService.longitude, "city": LocationService.city_string}
 	_send_post_request(callback, REGISTER_ENDPOINT, data)
+
+func update_location() -> void:
+	if !LocationService.is_location_updated:
+		await LocationService.location_updated
+	var data = {"lat": LocationService.latitude, "lon": LocationService.longitude, "city": LocationService.city_string}
+	_send_post_request(func (_rc, _r): return, ENDPOINT_UPDATE_LOC, data, _http_request_completed, false)
+
+func get_user_search_params(callback:Callable) -> void:
+	_send_get_request(callback, GET_USER_SEARCH_PARAM_ENDPOINT)
 
 func delete_account(callback:Callable) -> void:
 	_send_post_request(callback, DELETE_ACCOUNT_ENDPOINT)
@@ -378,6 +390,8 @@ func fuzzy_search_tags(text:String, callback:Callable) -> void:
 var search_tool:SearchParamList
 
 func query_profiles(callback:Callable, page=0) -> void:
+	if !search_tool.is_params_retrieved:
+		await search_tool.params_retrived
 	var parameters:Dictionary = search_tool.get_html_query_values()
 	
 	parameters['limit'] = NPROFILES_PER_QUERY
@@ -413,6 +427,10 @@ func get_likes(callback:Callable) -> void:
 func accept_like(from_id:int, callback:Callable) -> void:
 	var data = {"to_id": from_id}
 	_send_post_request(callback, ACCEPT_LIKE_ENDPOINT, data)
+
+func decline_like(from_id:int, callback:Callable) -> void:
+	var data = {"to_id": from_id}
+	_send_post_request(callback, DECLINE_LIKE_ENDPOINT, data)
 
 func get_chats(callback:Callable) -> void:
 	_send_get_request(callback, GET_CHATS_ENDPOINT)

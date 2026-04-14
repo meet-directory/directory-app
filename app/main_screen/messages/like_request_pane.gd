@@ -24,8 +24,29 @@ func _on_accept_button_pressed() -> void:
 
 
 func _on_decline_button_pressed() -> void:
-	pass # Replace with function body.
+	var conf:ConfirmationPopup = App.show_conf_popup(
+		"Would you also like to block this person so they can no longer see your profile?",
+		"Yes, decline and block",
+		"No, just decline"
+	)
+	conf.cancel_pressed.connect(_on_blocked)
+	conf.confirm_pressed.connect(_on_declined)
 
+func _on_declined() -> void:
+	Server.decline_like(_user_id, func (code, _resp):
+		match code:
+			200:
+				queue_free()
+			_: Server.show_default_error_msg(code)
+		)
+
+func _on_blocked() -> void:
+	Server.block_user(_user_id, func (code, _resp):
+		match code:
+			200:
+				queue_free()
+			_: Server.show_default_error_msg(code)
+		)
 
 func _on_got_profile(resp_code, resp) -> void:
 	match resp_code:

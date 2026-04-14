@@ -11,15 +11,6 @@ func _ready() -> void:
 	index += 1
 	if Server.session_profile:
 		_resume_onboarding()
-	
-	# temp disabled
-	#if !LocationService.is_in_north_carolina():
-		#var msg = "We detected that you are in {}. Unfortunately this service \
-		#is currently only available in North Carolina, USA. If you think this \
-		#is in error or are interested in us coming to your area, please contact us!".format([LocationService.city_str], "{}")
-		#var popup:InfoPopup = App.show_info_popup(msg)
-		#await popup.closed
-		#_account_canceled()
 
 func _step_done(variable:Variant):
 	for node in underlay.get_children():

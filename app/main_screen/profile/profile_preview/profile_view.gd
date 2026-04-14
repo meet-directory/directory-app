@@ -12,6 +12,8 @@ class_name ProfileView
 @onready var match_options: MarginContainer = %MatchOptions
 @onready var age_label: Label = %AgeLabel
 @onready var report_menu: MarginContainer = %ReportMenu
+@onready var location_label: Label = %LocationLabel
+@onready var location_panel: MarginContainer = %LocationPanel
 
 var profile_data:ProfileResource
 
@@ -52,6 +54,9 @@ func display(profile:ProfileResource, must_have_tags:Array[String]=[], wanted_ta
 	name_label.text = profile.username
 	description_label.text = profile.description
 	age_label.text = str(profile.age)
+	location_label.text = profile.loc_string
+	if profile.loc_string.is_empty():
+		location_panel.hide()
 	
 	var rtags = profile.is_tags.filter(func (t:Tag): return t.type == Tag.TYPE.RelationshipType)
 	if len(rtags) > 0:
