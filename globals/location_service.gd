@@ -12,14 +12,14 @@ func _ready() -> void:
 		'Web':
 			request_location_web()
 		'Android':
-			pass
+			request_location_desktop()
 		_:
 			request_location_desktop()
 
 func _got_location(lat, lon, city:String='') -> void:
-	
 	if city.is_empty():
 		city = await reverse_geocode(lat, lon)
+	#print('got location! ', city, ' , ', lat, ', ', lon)
 	latitude = lat
 	longitude = lon
 	city_string = city

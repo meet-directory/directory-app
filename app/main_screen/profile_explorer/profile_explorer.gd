@@ -11,7 +11,6 @@ extends MarginContainer
 @onready var page: VBoxContainer = %Page
 
 
-
 func _ready() -> void:
 	selected()
 	
@@ -25,11 +24,9 @@ func _on_search_toggle_button_toggled(toggled_on: bool) -> void:
 		#search_param_list.show()
 	else:
 		search_toggle_button.text = "Edit Search Criteria"
-		
 
 func _refresh_search() -> void:
 	show_profiles()
-
 
 func _on_refresh_search_result_button_pressed() -> void:
 	_refresh_search()
@@ -40,7 +37,6 @@ func show_profiles() -> void:
 	var optional_search_tags = Server.search_tool.get_wanted_tags()
 	
 	profile_scroller.show_profiles(search_tags, optional_search_tags)
-
 
 func _on_search_button_pressed() -> void:
 	search_toggle_button.button_pressed = false

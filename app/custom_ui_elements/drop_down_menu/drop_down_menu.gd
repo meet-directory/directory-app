@@ -9,6 +9,7 @@ extends Control
 ## If set, won't expand to bigger than the size of this control. Expects use of a scroll container to see elements that don't fit.
 @export var max_size_container:Control
 
+var _closed:bool = true
 
 var active:bool = false
 
@@ -37,26 +38,28 @@ func toggle() -> void:
 
 func _on_button_toggled(_toggled_on:bool) -> void:
 	if active:
-		if collapse_control.custom_minimum_size.y == 0:
+		if _closed:
 			toggle_button.button_pressed = true
 			_expand_size()
+			_closed = false
 		else:
 			toggle_button.button_pressed = false
 			var tween:Tween = create_tween()
 			tween.tween_property(collapse_control, "custom_minimum_size:y", 0, expand_time)
 			await tween.finished
 			collapse_control.hide()
+			_closed = true
 
 func _expand_size():
 	var tween = create_tween()
 	var max_size:float = INF
 	if max_size_container:
-		max_size = max_size_container.size.y
+		max_size = clamp(max_size_container.size.y - 30, 30, INF)
 	var expand_size:float = clamp(collapsable_content.size.y, 0, max_size)
 	tween.tween_property(collapse_control, "custom_minimum_size:y", expand_size, expand_time)
 	await tween.finished
 	collapse_control.show()
 
 func _drop_down_if_open() -> void:
-	if !(collapse_control.custom_minimum_size.y == 0):
+	if !_closed:
 		_on_button_toggled(false)

@@ -28,6 +28,7 @@ func reset() -> void:
 	for category in Tag.raw_to_type.keys():
 		var button:Button = Button.new()
 		button_container.add_child(button)
+		button.mouse_filter = Control.MOUSE_FILTER_PASS # allows tap to scroll by passing tap input to scroll container
 		var type:Tag.TYPE = Tag.raw_to_type[category]
 		
 		var style = Constants.tag_styleboxes[type]

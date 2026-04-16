@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://hfria8mrmtqh"]
+[gd_scene load_steps=6 format=3 uid="uid://hfria8mrmtqh"]
 
 [ext_resource type="Script" uid="uid://blsftd81wmsgg" path="res://app/main_screen/reporting/report_user_menu.gd" id="1_6mb2b"]
 [ext_resource type="Theme" uid="uid://c52euoe38n0nm" path="res://resources/styles/app_theme.tres" id="1_nkbym"]
 [ext_resource type="StyleBox" uid="uid://fh3x8tnulkac" path="res://resources/styles/profile_panel_background.tres" id="2_nkbym"]
 [ext_resource type="LabelSettings" uid="uid://crec8tr40vb4i" path="res://resources/styles/subtle_grey_text_label_setting.tres" id="2_tud1d"]
+[ext_resource type="Script" uid="uid://cmiecml4cjstp" path="res://app/custom_ui_elements/MobileScrollContainer.gd" id="4_26krp"]
 
 [node name="ReportUserMenu" type="MarginContainer"]
 anchors_preset = 15
@@ -25,37 +26,43 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
 layout_mode = 2
+script = ExtResource("4_26krp")
+metadata/_custom_type_script = "uid://cmiecml4cjstp"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_constants/separation = 14
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxContainer3" type="HFlowContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
 
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
+[node name="Label2" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
 text = "Reporting user: "
 horizontal_alignment = 1
 
-[node name="usernameLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
+[node name="usernameLabel" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer3"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Reporting"
 horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HFlowContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Select reason"
 
-[node name="ReportReasonOptions" type="OptionButton" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="ReportReasonOptions" type="OptionButton" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -73,55 +80,57 @@ popup/item_4/id = 4
 popup/item_5/text = "Other"
 popup/item_5/id = 5
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 text = "Please explain the reason for reporting:"
+autowrap_mode = 2
 
-[node name="TextEdit" type="TextEdit" parent="MarginContainer/VBoxContainer"]
+[node name="TextEdit" type="TextEdit" parent="MarginContainer/ScrollContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
+mouse_filter = 1
 placeholder_text = "optional"
 wrap_mode = 1
 caret_multiple = false
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label4" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4"]
+[node name="Label4" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer4"]
 layout_mode = 2
 text = "chars left: "
 label_settings = ExtResource("2_tud1d")
 horizontal_alignment = 2
 
-[node name="CharsUsedLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4"]
+[node name="CharsUsedLabel" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer4"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "300"
 label_settings = ExtResource("2_tud1d")
 horizontal_alignment = 2
 
-[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4"]
+[node name="Label3" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer4"]
 layout_mode = 2
 size_flags_horizontal = 10
 text = "max length: 300"
 label_settings = ExtResource("2_tud1d")
 horizontal_alignment = 2
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 10
 
-[node name="CancelButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="CancelButton" type="Button" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Cancel"
 
-[node name="SubmitButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="SubmitButton" type="Button" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Submit Report"
 
-[connection signal="text_changed" from="MarginContainer/VBoxContainer/TextEdit" to="." method="_on_text_edit_text_changed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/CancelButton" to="." method="_on_cancel_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/SubmitButton" to="." method="_on_submit_button_pressed"]
+[connection signal="text_changed" from="MarginContainer/ScrollContainer/VBoxContainer/TextEdit" to="." method="_on_text_edit_text_changed"]
+[connection signal="pressed" from="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer2/CancelButton" to="." method="_on_cancel_button_pressed"]
+[connection signal="pressed" from="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer2/SubmitButton" to="." method="_on_submit_button_pressed"]

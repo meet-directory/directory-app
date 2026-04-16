@@ -1,67 +1,81 @@
-[gd_scene load_steps=4 format=3 uid="uid://eeutadd3g8ww"]
+[gd_scene load_steps=6 format=3 uid="uid://eeutadd3g8ww"]
 
 [ext_resource type="Script" uid="uid://cytsucydo1gbd" path="res://app/main_screen/profile_explorer/search_tool/search_parameter_tool.gd" id="1_8s0uw"]
+[ext_resource type="LabelSettings" uid="uid://crec8tr40vb4i" path="res://resources/styles/subtle_grey_text_label_setting.tres" id="2_mujbb"]
 [ext_resource type="PackedScene" uid="uid://bffx2x1gb5he5" path="res://app/main_screen/profile_explorer/search_tool/tag_selector_container.tscn" id="3_kalbu"]
 [ext_resource type="Script" uid="uid://df2klrys7sahx" path="res://addons/double_slider/double_slider.gd" id="4_bf8gs"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mujbb"]
+bg_color = Color(0.2543903, 0.2651118, 0.30569404, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
 [node name="SearchParamList" type="VBoxContainer"]
-anchors_preset = 15
+anchors_preset = 10
 anchor_right = 1.0
-anchor_bottom = 1.0
+offset_bottom = 390.0
 grow_horizontal = 2
-grow_vertical = 2
 script = ExtResource("1_8s0uw")
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Search Filters"
+horizontal_alignment = 1
+
+[node name="Sliders" type="MarginContainer" parent="."]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer2"]
+[node name="Panel2" type="Panel" parent="Sliders"]
 layout_mode = 2
-size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_mujbb")
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer2/MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Sliders"]
 layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 6
 theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 11
 
-[node name="DistanceRange" type="HBoxContainer" parent="HBoxContainer2/MarginContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Sliders/MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 12
 
-[node name="Label" type="Label" parent="HBoxContainer2/MarginContainer/MarginContainer/DistanceRange"]
+[node name="DistanceRange" type="VBoxContainer" parent="Sliders/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Distance: "
+theme_override_constants/separation = -13
 
-[node name="DistanceSlider" type="Control" parent="HBoxContainer2/MarginContainer/MarginContainer/DistanceRange"]
+[node name="Label" type="Label" parent="Sliders/MarginContainer/VBoxContainer/DistanceRange"]
+layout_mode = 2
+text = "Distance (miles):"
+label_settings = ExtResource("2_mujbb")
+horizontal_alignment = 1
+
+[node name="DistanceSlider" type="Control" parent="Sliders/MarginContainer/VBoxContainer/DistanceRange"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(50, 44)
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("4_bf8gs")
-min_value = 10.0
 max_value = 200.0
-low_value = 10.0
+low_value = 0.0
 high_value = 200.0
 range_color = Color(0.6229067, 0.5964, 0.71, 1)
 grabber_color = Color(0.80100876, 0.7843172, 0.86191726, 1)
 grabber_pressed_color = Color(0.5631667, 0.5518, 0.62, 1)
 metadata/_custom_type_script = "uid://df2klrys7sahx"
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="AgeRange" type="VBoxContainer" parent="Sliders/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_right = 20
+theme_override_constants/separation = -13
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="Label" type="Label" parent="Sliders/MarginContainer/VBoxContainer/AgeRange"]
 layout_mode = 2
+text = "Age (years):"
+label_settings = ExtResource("2_mujbb")
+horizontal_alignment = 1
 
-[node name="AgeRange" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 12
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/AgeRange"]
-layout_mode = 2
-text = "Age:          "
-
-[node name="AgeSlider" type="Control" parent="MarginContainer/VBoxContainer/AgeRange"]
+[node name="AgeSlider" type="Control" parent="Sliders/MarginContainer/VBoxContainer/AgeRange"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(50, 44)
 layout_mode = 2
@@ -75,30 +89,70 @@ grabber_color = Color(0.80100876, 0.7843172, 0.86191726, 1)
 grabber_pressed_color = Color(0.5631667, 0.5518, 0.62, 1)
 metadata/_custom_type_script = "uid://df2klrys7sahx"
 
-[node name="SeenProfiles" type="HBoxContainer" parent="."]
+[node name="Checkers" type="MarginContainer" parent="."]
 layout_mode = 2
-size_flags_horizontal = 8
 
-[node name="Label" type="Label" parent="SeenProfiles"]
+[node name="Panel2" type="Panel" parent="Checkers"]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mujbb")
+
+[node name="MarginContainer" type="MarginContainer" parent="Checkers"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 6
+
+[node name="SeenProfiles" type="HBoxContainer" parent="Checkers/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Checkers/MarginContainer/SeenProfiles"]
+layout_mode = 2
+size_flags_horizontal = 3
 text = "Don't show previously seen profiles:"
+label_settings = ExtResource("2_mujbb")
+horizontal_alignment = 2
+autowrap_mode = 2
 
-[node name="DontShowSeenCheckBox" type="CheckBox" parent="SeenProfiles"]
+[node name="DontShowSeenCheckBox" type="CheckBox" parent="Checkers/MarginContainer/SeenProfiles"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="MustMatchTagsContainer" parent="." instance=ExtResource("3_kalbu")]
+[node name="TagFilters" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="TagFilters"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mujbb")
+
+[node name="MarginContainer2" type="MarginContainer" parent="TagFilters"]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TagFilters/MarginContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TagFilters/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+text = "Tag Filters"
+label_settings = ExtResource("2_mujbb")
+horizontal_alignment = 1
+
+[node name="MustMatchTagsContainer" parent="TagFilters/MarginContainer2/VBoxContainer" instance=ExtResource("3_kalbu")]
 unique_name_in_owner = true
 layout_mode = 2
 enable_add_tag_feature = false
 
-[node name="WantMatchTagsContainer" parent="." instance=ExtResource("3_kalbu")]
+[node name="WantMatchTagsContainer" parent="TagFilters/MarginContainer2/VBoxContainer" instance=ExtResource("3_kalbu")]
 unique_name_in_owner = true
 layout_mode = 2
 title = "Want Match"
 enable_add_tag_feature = false
 
-[node name="DontMatchTagsContainer" parent="." instance=ExtResource("3_kalbu")]
+[node name="DontMatchTagsContainer" parent="TagFilters/MarginContainer2/VBoxContainer" instance=ExtResource("3_kalbu")]
 unique_name_in_owner = true
 layout_mode = 2
 title = "Dont Match"

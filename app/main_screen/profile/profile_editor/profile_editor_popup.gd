@@ -1,7 +1,6 @@
 extends CanvasLayer
 class_name ProfileEditorPopup
 @onready var profile_editor: ProfileEditor = %ProfileEditor
-@onready var save_tag_popup: CanvasLayer = %SaveTagPopup
 @onready var menu_container: MarginContainer = %MenuContainer
 @onready var bottom_marker: Control = %BottomMarker
 @onready var side_margins: MarginContainer = %SideMargins

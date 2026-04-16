@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bffx2x1gb5he5"]
+[gd_scene load_steps=6 format=3 uid="uid://bffx2x1gb5he5"]
 
 [ext_resource type="Script" uid="uid://1uhhaage1bh2" path="res://app/main_screen/profile_explorer/search_tool/tag_selector_container.gd" id="1_je86g"]
 [ext_resource type="StyleBox" uid="uid://dglfl5sw7ex3c" path="res://resources/styles/tag_selector_container.tres" id="2_mypok"]
 [ext_resource type="PackedScene" uid="uid://di2hd4aocgljw" path="res://app/main_screen/profile_explorer/search_tool/editable_tag.tscn" id="2_s3e7v"]
+[ext_resource type="LabelSettings" uid="uid://crec8tr40vb4i" path="res://resources/styles/subtle_grey_text_label_setting.tres" id="3_7jrht"]
 [ext_resource type="PackedScene" uid="uid://c1j7o3jj3dw1u" path="res://app/main_screen/profile_explorer/search_tool/add_tag_button.tscn" id="3_mypok"]
 
 [node name="TagSelectorContainer" type="MarginContainer"]
@@ -42,6 +43,7 @@ text = "ℹ️"
 unique_name_in_owner = true
 layout_mode = 2
 text = "Must Match"
+label_settings = ExtResource("3_7jrht")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2

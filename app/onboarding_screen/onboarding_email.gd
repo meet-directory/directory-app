@@ -17,7 +17,7 @@ extends MarginContainer
 signal confirmed(variable:Variant)
 func _ready() -> void:
 	var screen_size = Constants.get_screen_size()
-	container.custom_minimum_size.x = screen_size.x/2
+	container.custom_minimum_size.x = screen_size.x/1.5
 	error_panel.hide()
 	for node in error_messages.get_children():
 		node.hide()

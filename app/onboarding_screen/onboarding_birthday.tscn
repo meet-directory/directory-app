@@ -92,8 +92,17 @@ text = "day"
 script = ExtResource("5_xygl3")
 metadata/_custom_type_script = "uid://cr5s2h5o41gc7"
 
+[node name="Years" type="Button" parent="VirtualKeyboardAdjuster/MarginContainer2/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 1
+text = "day"
+script = ExtResource("5_xygl3")
+metadata/_custom_type_script = "uid://cr5s2h5o41gc7"
+
 [node name="YearsSpinBox" type="SpinBox" parent="VirtualKeyboardAdjuster/MarginContainer2/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 min_value = 1945.0
 max_value = 2000.0

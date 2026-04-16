@@ -3,11 +3,13 @@ extends Control
 @export var sequence:Array[PackedScene]
 var index = 0
 @onready var underlay: Control = %Underlay
+@onready var scroll_container: MobileScrollContainer = %ScrollContainer
 
 func _ready() -> void:
 	var current_scene = sequence[index].instantiate()
 	current_scene.confirmed.connect(_step_done)
 	underlay.add_child(current_scene)
+	scroll_container.update()
 	index += 1
 	if Server.session_profile:
 		_resume_onboarding()
@@ -20,6 +22,7 @@ func _step_done(variable:Variant):
 	next_scene.confirmed.connect(_step_done)
 	next_scene.set_passed_arg(variable)
 	underlay.add_child(next_scene)
+	scroll_container.update()
 	index +=1
 
 func _resume_onboarding():

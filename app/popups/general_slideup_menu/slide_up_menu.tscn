@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://pq7nl1g3i242"]
+[gd_scene load_steps=6 format=3 uid="uid://pq7nl1g3i242"]
 
 [ext_resource type="Script" uid="uid://bnwhb14ohxien" path="res://app/popups/general_slideup_menu/slide_up_menu.gd" id="1_3cbaw"]
 [ext_resource type="Theme" uid="uid://c52euoe38n0nm" path="res://resources/styles/app_theme.tres" id="2_1qxr2"]
+[ext_resource type="Script" uid="uid://cg1kfg1oqrnic" path="res://app/custom_ui_elements/virtual_keyboard_adjuster.gd" id="3_1qxr2"]
 [ext_resource type="Script" uid="uid://b4nmfnaeluowr" path="res://app/custom_ui_elements/relative_margin_container.gd" id="3_jucvp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cxhc7"]
@@ -36,7 +37,12 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_1qxr2")
 
-[node name="SideMargins" type="MarginContainer" parent="MenuContainer"]
+[node name="VirtualKeyboardAdjuster" type="MarginContainer" parent="MenuContainer"]
+layout_mode = 2
+script = ExtResource("3_1qxr2")
+metadata/_custom_type_script = "uid://cg1kfg1oqrnic"
+
+[node name="SideMargins" type="MarginContainer" parent="MenuContainer/VirtualKeyboardAdjuster"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/margin_left = 18

@@ -43,6 +43,7 @@ layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SearchMenu/MarginContainer2/MarginContainer"]
 layout_mode = 2
@@ -59,15 +60,17 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+action_mode = 0
 text = "Edit Search Criteria"
 text_overrun_behavior = 2
 
-[node name="DropDownMenu" parent="SearchMenu/MarginContainer2/MarginContainer/VBoxContainer" node_paths=PackedStringArray("toggle_button", "collapsable_content") instance=ExtResource("3_37nw0")]
+[node name="DropDownMenu" parent="SearchMenu/MarginContainer2/MarginContainer/VBoxContainer" node_paths=PackedStringArray("toggle_button", "collapsable_content", "max_size_container") instance=ExtResource("3_37nw0")]
 layout_mode = 2
 size_flags_vertical = 0
 mouse_filter = 2
 toggle_button = NodePath("../HBoxContainer/SearchToggleButton")
 collapsable_content = NodePath("SearchParamScrollContainer/MarginContainer")
+max_size_container = NodePath("../../../../../Page/ProfileScroller")
 
 [node name="SearchParamScrollContainer" type="ScrollContainer" parent="SearchMenu/MarginContainer2/MarginContainer/VBoxContainer/DropDownMenu"]
 layout_mode = 1
@@ -93,10 +96,6 @@ size_flags_vertical = 0
 [node name="SearchButton" type="Button" parent="SearchMenu/MarginContainer2/MarginContainer/VBoxContainer/DropDownMenu/SearchParamScrollContainer/MarginContainer/SearchParamList"]
 layout_mode = 2
 text = "Search Users"
-
-[node name="Control" type="Control" parent="SearchMenu/MarginContainer2/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
 
 [node name="Page" type="VBoxContainer" parent="."]
 unique_name_in_owner = true

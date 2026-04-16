@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bihm11krr11rx"]
+[gd_scene load_steps=6 format=3 uid="uid://bihm11krr11rx"]
 
 [ext_resource type="Script" uid="uid://c4gk46qt316uh" path="res://app/main_screen/reporting/report_tag_menu.gd" id="1_1oqdb"]
 [ext_resource type="StyleBox" uid="uid://fh3x8tnulkac" path="res://resources/styles/profile_panel_background.tres" id="2_7n6l4"]
+[ext_resource type="Script" uid="uid://cmiecml4cjstp" path="res://app/custom_ui_elements/MobileScrollContainer.gd" id="3_7n6l4"]
 [ext_resource type="PackedScene" uid="uid://ds8fo6ghwa7vd" path="res://app/main_screen/profile_explorer/search_tool/tag_control.tscn" id="3_yxpwr"]
 [ext_resource type="LabelSettings" uid="uid://crec8tr40vb4i" path="res://resources/styles/subtle_grey_text_label_setting.tres" id="4_d4ciw"]
 
@@ -24,80 +25,89 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
 layout_mode = 2
+script = ExtResource("3_7n6l4")
+metadata/_custom_type_script = "uid://cmiecml4cjstp"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_constants/separation = 14
 
-[node name="HBoxContainer3" type="HFlowContainer" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxContainer3" type="HFlowContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
+[node name="Label2" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
 text = "Reporting tag"
 horizontal_alignment = 1
 
-[node name="Tag" parent="MarginContainer/VBoxContainer/HBoxContainer3" instance=ExtResource("3_yxpwr")]
+[node name="Tag" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer3" instance=ExtResource("3_yxpwr")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
+[node name="Label3" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
 text = "for offensive content"
 horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 text = "If you want, explain why this is offensive:"
+autowrap_mode = 2
 
-[node name="TextEdit" type="TextEdit" parent="MarginContainer/VBoxContainer"]
+[node name="TextEdit" type="TextEdit" parent="MarginContainer/ScrollContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
+mouse_filter = 1
 placeholder_text = "optional"
 wrap_mode = 1
 caret_multiple = false
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label4" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4"]
+[node name="Label4" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer4"]
 layout_mode = 2
 text = "chars left: "
 label_settings = ExtResource("4_d4ciw")
 horizontal_alignment = 2
 
-[node name="CharsUsedLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4"]
+[node name="CharsUsedLabel" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer4"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "300"
 label_settings = ExtResource("4_d4ciw")
 horizontal_alignment = 2
 
-[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4"]
+[node name="Label3" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer4"]
 layout_mode = 2
 size_flags_horizontal = 10
 text = "max length: 300"
 label_settings = ExtResource("4_d4ciw")
 horizontal_alignment = 2
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 10
 
-[node name="CancelButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="CancelButton" type="Button" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Cancel"
 
-[node name="SubmitButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="SubmitButton" type="Button" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Submit Report"
 
-[connection signal="text_changed" from="MarginContainer/VBoxContainer/TextEdit" to="." method="_on_text_edit_text_changed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/CancelButton" to="." method="_on_cancel_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/SubmitButton" to="." method="_on_submit_button_pressed"]
+[connection signal="text_changed" from="MarginContainer/ScrollContainer/VBoxContainer/TextEdit" to="." method="_on_text_edit_text_changed"]
+[connection signal="pressed" from="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer2/CancelButton" to="." method="_on_cancel_button_pressed"]
+[connection signal="pressed" from="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer2/SubmitButton" to="." method="_on_submit_button_pressed"]

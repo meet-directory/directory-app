@@ -6,7 +6,8 @@ signal confirmed(variable: Variant)
 
 @onready var months_option: MobileDropDown = %Months
 @onready var days_option: MobileDropDown = %Days
-@onready var years_spin_box: SpinBox = %YearsSpinBox
+#@onready var years_spin_box: SpinBox = %YearsSpinBox
+@onready var years_option: MobileDropDown = %Years
 
 var month_days:Dictionary[String, int] = {
 	'January': 31,
@@ -28,10 +29,12 @@ func _ready() -> void:
 	for item in month_days.keys():
 		months_option.add_item(item)
 	var current_year = Time.get_date_dict_from_system()['year']
-	years_spin_box.max_value = current_year
-	#years_option.clear()
-	#for y in range(current_year, 1930, -1):
-		#years_option.add_item(str(y))
+	#years_spin_box.max_value = current_year
+	years_option.clear()
+	for y in range(current_year, 1930, -1):
+		years_option.add_item(str(y))
+	
+	years_option.select(0)
 	months_option.select(0)
 
 func _on_months_item_selected(index: int) -> void:
@@ -44,7 +47,8 @@ func _on_months_item_selected(index: int) -> void:
 	days_option.selected = clamp(days_option.selected, 0, day_amount-1)
 
 func _get_birthdate() -> Dictionary:
-	var year = int(years_spin_box.get_line_edit().text)
+	#var year = int(years_spin_box.get_line_edit().text)
+	var year = years_option.get_item_text(years_option.selected)
 	var month = months_option.get_item_text(months_option.selected)
 	var day = days_option.get_item_id(days_option.selected) + 1
 	var month_idx = months_option.get_item_id(months_option.selected) + 1
@@ -57,7 +61,7 @@ func _get_birthdate() -> Dictionary:
 	return date_dict
 
 func _over_18(date_dict:Dictionary) -> bool:
-	var year = date_dict['year']
+	var year = int(date_dict['year'])
 	var month = date_dict['month']
 	var day = date_dict['day']
 	

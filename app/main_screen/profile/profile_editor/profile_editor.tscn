@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://6ilqw78x5j3o"]
+[gd_scene load_steps=10 format=3 uid="uid://6ilqw78x5j3o"]
 
 [ext_resource type="Script" uid="uid://cbvndcsy1hci7" path="res://app/main_screen/profile/profile_editor/profile_editor.gd" id="1_mo5yl"]
 [ext_resource type="PackedScene" uid="uid://bwn5vy8firy3" path="res://app/main_screen/profile/photo_viewer/photo_viewer.tscn" id="2_huoy0"]
 [ext_resource type="PackedScene" uid="uid://bffx2x1gb5he5" path="res://app/main_screen/profile_explorer/search_tool/tag_selector_container.tscn" id="2_mo5yl"]
+[ext_resource type="Script" uid="uid://cmiecml4cjstp" path="res://app/custom_ui_elements/MobileScrollContainer.gd" id="2_odxqi"]
 [ext_resource type="PackedScene" uid="uid://407tgnvratx3" path="res://app/main_screen/profile/profile_editor/photo_editor/photo_edit_arranger.tscn" id="2_uc052"]
 [ext_resource type="PackedScene" uid="uid://bbh7rn8ndc5br" path="res://app/custom_ui_elements/max_length_text_edit/max_length_text_edit.tscn" id="3_50a7t"]
 [ext_resource type="Script" uid="uid://b64fitfbob0sm" path="res://app/main_screen/profile/profile_editor/photo_editor/photo_editor.gd" id="4_u4xtl"]
@@ -46,6 +47,8 @@ layout_mode = 2
 [node name="EditProfileContainer" type="ScrollContainer" parent="MarginContainer/EditProfileContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+script = ExtResource("2_odxqi")
+metadata/_custom_type_script = "uid://cmiecml4cjstp"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/EditProfileContainer/EditProfileContainer"]
 layout_mode = 2
