@@ -156,8 +156,8 @@ func clear() -> void:
 		node.queue_free()
 
 func select(index:int) -> void:
-	if index > 0 and index < len(items):
-		_on_new_option_selected(index, items[selected])
+	if index > -1 and index < len(items):
+		_on_new_option_selected(index, items[index])
 
 func add_item(item_text:String) -> void:
 	items.append(item_text)

@@ -33,7 +33,6 @@ func _ready() -> void:
 	#for y in range(current_year, 1930, -1):
 		#years_option.add_item(str(y))
 	months_option.select(0)
-	_on_months_item_selected(0)
 
 func _on_months_item_selected(index: int) -> void:
 	var month = months_option.get_item_text(index)
