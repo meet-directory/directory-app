@@ -6,7 +6,7 @@ class_name LikeRequestPane
 var _user_id
 var profile
 
-func setup(username:String, user_id:int) -> void:
+func setup(user_id:int) -> void:
 	_user_id = user_id
 	
 	# TODO return photo uris from server with the get_likes endpoint

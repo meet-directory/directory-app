@@ -1,7 +1,36 @@
-[gd_scene load_steps=4 format=3 uid="uid://bdehrvohiggko"]
+[gd_scene load_steps=4 format=3 uid="uid://ixlkv18pc5dk"]
 
-[ext_resource type="Script" uid="uid://bdsf3v72351fb" path="res://app/main_screen/settings/save_tag_popup.gd" id="1_0gt5j"]
 [ext_resource type="PackedScene" uid="uid://cpfm4eyc412ma" path="res://app/main_screen/settings/tag_editor_row.tscn" id="2_tpr25"]
+
+[sub_resource type="GDScript" id="GDScript_adulg"]
+script/source = "extends CanvasLayer
+@onready var tag_row_container: VBoxContainer = %TagRowContainer
+
+signal dialogue_closed
+signal canceled
+
+func load_pending_tags() -> void:
+	for child in tag_row_container.get_children():
+		child.queue_free()
+	for tag in Server.get_pending_tags():
+		var tag_row:TagEditorRow = Constants.tag_editor_row_scene.instantiate()
+		tag_row_container.add_child(tag_row)
+		
+		tag_row.set_tag(tag)
+
+
+func _on_cancel_button_pressed() -> void:
+	canceled.emit()
+	hide()
+
+
+func _on_save_button_pressed() -> void:
+	return
+	Server.save_pending_tags_to_database(_on_tags_saved)
+
+func _on_tags_saved():
+	pass
+"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_au6s8"]
 bg_color = Color(0.77, 0.6288333, 0, 0.26666668)
@@ -11,7 +40,7 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [node name="SaveTagPopup" type="CanvasLayer"]
-script = ExtResource("1_0gt5j")
+script = SubResource("GDScript_adulg")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchors_preset = 15

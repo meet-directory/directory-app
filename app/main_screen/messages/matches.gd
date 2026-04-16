@@ -28,7 +28,7 @@ func _on_get_likes_returned(resp_code, resp) -> void:
 			for row in resp:
 				var node:LikeRequestPane = Constants.like_request_pane.instantiate()
 				like_requests_container.add_child(node)
-				node.setup(row['username'], row['from_id'])
+				node.setup(row['from_id'])
 		_: Server.show_default_error_msg(resp_code)
 
 func _on_get_chats_returned(resp_code, resp) -> void:

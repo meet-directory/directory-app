@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://be0qtsrcwrwtk"]
+[gd_scene load_steps=8 format=3 uid="uid://be0qtsrcwrwtk"]
 
 [ext_resource type="PackedScene" uid="uid://6ilqw78x5j3o" path="res://app/main_screen/profile/profile_editor/profile_editor.tscn" id="1_66sqj"]
 [ext_resource type="Script" uid="uid://o0ga2qgw7wjw" path="res://app/main_screen/profile/profile_editor/profile_editor_popup.gd" id="1_457ld"]
@@ -6,7 +6,6 @@
 [ext_resource type="StyleBox" uid="uid://fh3x8tnulkac" path="res://resources/styles/profile_panel_background.tres" id="2_apxo5"]
 [ext_resource type="Theme" uid="uid://c52euoe38n0nm" path="res://resources/styles/app_theme.tres" id="2_lty33"]
 [ext_resource type="Script" uid="uid://b4nmfnaeluowr" path="res://app/custom_ui_elements/relative_margin_container.gd" id="2_t64xu"]
-[ext_resource type="PackedScene" uid="uid://bdehrvohiggko" path="res://app/main_screen/settings/save_tag_popup.tscn" id="3_ipmj1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hse4c"]
 bg_color = Color(0.27, 0.27, 0.27, 0.7019608)
@@ -79,7 +78,3 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-
-[node name="SaveTagPopup" parent="." instance=ExtResource("3_ipmj1")]
-unique_name_in_owner = true
-visible = false

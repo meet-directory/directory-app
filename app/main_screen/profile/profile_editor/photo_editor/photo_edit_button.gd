@@ -46,7 +46,7 @@ func _get_new_picture() -> void:
 		dialogue.file_selected.connect(_on_file_dialog_file_selected)
 		get_tree().root.add_child(dialogue)
 
-func _on_progress(current_bytes: int, total_bytes: int) -> void:
+func _on_progress(_current_bytes: int, _total_bytes: int) -> void:
 	pass
 	#var percentage: float = float(current_bytes) / float(total_bytes) * 100
 	#progress.value = percentage

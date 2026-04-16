@@ -39,6 +39,10 @@ ObjectStorage="*res://globals/object_storage.gd"
 ScrollOwner="*res://globals/scroll_owner.gd"
 ReportOverlay="*res://globals/report_overlay.tscn"
 
+[debug]
+
+gdscript/warnings/unused_signal=0
+
 [display]
 
 window/size/viewport_width=920

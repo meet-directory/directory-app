@@ -96,7 +96,6 @@ func _on_location_success(args) -> void:
 	var position = args[0]
 	var lat = position.coords.latitude
 	var lon = position.coords.longitude
-	var accuracy = position.coords.accuracy  # metres
 	_got_location(lat, lon)
 
 
@@ -119,7 +118,7 @@ func request_location_desktop():
 	http.request_completed.connect(_on_request_completed)
 	http.request("https://ipapi.co/json/")
 
-func _on_request_completed(result, response_code, headers, body):
+func _on_request_completed(_result, _response_code, _headers, body):
 	var json = JSON.parse_string(body.get_string_from_utf8())
 	var lat = json["latitude"]
 	var lon = json["longitude"]
