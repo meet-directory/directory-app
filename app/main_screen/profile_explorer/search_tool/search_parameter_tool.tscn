@@ -39,6 +39,7 @@ size_flags_horizontal = 3
 script = ExtResource("4_bf8gs")
 min_value = 10.0
 max_value = 200.0
+low_value = 10.0
 high_value = 200.0
 range_color = Color(0.6229067, 0.5964, 0.71, 1)
 grabber_color = Color(0.80100876, 0.7843172, 0.86191726, 1)
