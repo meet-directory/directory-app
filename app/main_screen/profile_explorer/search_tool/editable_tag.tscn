@@ -1,12 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://di2hd4aocgljw"]
+[gd_scene load_steps=7 format=3 uid="uid://di2hd4aocgljw"]
 
 [ext_resource type="PackedScene" uid="uid://ds8fo6ghwa7vd" path="res://app/main_screen/profile_explorer/search_tool/tag_control.tscn" id="1_a06eb"]
 [ext_resource type="Script" uid="uid://nv7vbj171pim" path="res://app/main_screen/profile_explorer/search_tool/editable_tag.gd" id="2_cmq7a"]
+[ext_resource type="LabelSettings" uid="uid://bubihd6l80a6x" path="res://resources/styles/tag_label.tres" id="3_al0xe"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cmq7a"]
-content_margin_left = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 3.0
+content_margin_left = 6.0
+content_margin_right = 6.0
 bg_color = Color(0.23, 0.23, 0.23, 0.52156866)
 border_width_left = 1
 border_width_top = 1
@@ -20,9 +20,7 @@ corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5kpvd"]
 content_margin_left = 4.0
-content_margin_top = 3.0
 content_margin_right = 4.0
-content_margin_bottom = 2.0
 bg_color = Color(0.23, 0.23, 0.23, 0.72156864)
 border_width_left = 1
 border_width_top = 2
@@ -35,8 +33,8 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xc0kc"]
-content_margin_left = 4.0
-content_margin_right = 4.0
+content_margin_left = 6.0
+content_margin_right = 6.0
 content_margin_bottom = 5.0
 bg_color = Color(0.23, 0.23, 0.23, 0.61960787)
 border_width_left = 1
@@ -52,8 +50,14 @@ corner_radius_bottom_left = 5
 [node name="EditableTag" instance=ExtResource("1_a06eb")]
 script = ExtResource("2_cmq7a")
 
+[node name="HBoxContainer" parent="MarginContainer" index="0"]
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer" index="0"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_constants/margin_left = -3
 theme_override_constants/margin_top = 2
 theme_override_constants/margin_bottom = 0
@@ -62,10 +66,17 @@ theme_override_constants/margin_bottom = 0
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_font_sizes/font_size = 13
 theme_override_styles/normal = SubResource("StyleBoxFlat_cmq7a")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_5kpvd")
 theme_override_styles/hover = SubResource("StyleBoxFlat_xc0kc")
 theme_override_styles/focus = SubResource("StyleBoxFlat_cmq7a")
 text = "x"
+
+[node name="EmojiLabel" parent="MarginContainer/HBoxContainer" index="1"]
+label_settings = ExtResource("3_al0xe")
+
+[node name="Label" parent="MarginContainer/HBoxContainer" index="2"]
+label_settings = ExtResource("3_al0xe")
 
 [connection signal="pressed" from="MarginContainer/HBoxContainer/MarginContainer/DeleteButton" to="." method="_on_delete_button_pressed"]

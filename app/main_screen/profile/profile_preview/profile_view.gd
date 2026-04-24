@@ -6,7 +6,6 @@ class_name ProfileView
 @onready var photo_viewer: PhotoViewer = %PhotoViewer
 
 @onready var relationship_tags: TagContainer = %RelationshipTags
-@onready var desire_tags: TagContainer = %DesireTags
 @onready var other_tags: TagContainer = %OtherTags
 @onready var personal_tags: TagContainer = %PersonalTags
 @onready var match_options: MarginContainer = %MatchOptions
@@ -68,10 +67,9 @@ func display(profile:ProfileResource, must_have_tags:Array[String]=[], wanted_ta
 		personal_tags.add_tags(ptags)
 	else:
 		personal_tags.hide()
-	desire_tags.add_tags(profile.is_tags.filter(func (t:Tag): return t.type == Tag.TYPE.Intimacy))
 	other_tags.add_tags(profile.is_tags.filter(func (t:Tag): return t.type not in [Tag.TYPE.Personal, Tag.TYPE.RelationshipType]))
 	
-	var tag_containers:Array[TagContainer] = [relationship_tags, personal_tags, desire_tags, other_tags]
+	var tag_containers:Array[TagContainer] = [relationship_tags, personal_tags, other_tags]
 	
 	for tag_container in tag_containers:
 		tag_container.show_matched_tags(must_have_tags)

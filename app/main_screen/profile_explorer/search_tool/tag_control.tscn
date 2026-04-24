@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ds8fo6ghwa7vd"]
+[gd_scene load_steps=13 format=3 uid="uid://ds8fo6ghwa7vd"]
 
 [ext_resource type="Script" uid="uid://xsup7x8d6rgg" path="res://app/main_screen/profile_explorer/search_tool/tag.gd" id="1_mw8eu"]
 [ext_resource type="StyleBox" uid="uid://d1gvm3stgniun" path="res://resources/styles/tag_other.tres" id="2_2j2ut"]
@@ -8,6 +8,13 @@
 [ext_resource type="StyleBox" uid="uid://qc04wsnkfi06" path="res://resources/styles/tag_match_overlay.tres" id="6_5cxxf"]
 [ext_resource type="StyleBox" uid="uid://cofqnutog6fpo" path="res://resources/styles/tag_unset_default.tres" id="6_owgwo"]
 [ext_resource type="StyleBox" uid="uid://dyeklt0xs0nt3" path="res://resources/styles/tag_overlay_disabled.tres" id="7_l1ktr"]
+[ext_resource type="LabelSettings" uid="uid://bubihd6l80a6x" path="res://resources/styles/tag_label.tres" id="8_kuk48"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_kuk48"]
+font_size = 13
+
+[sub_resource type="LabelSettings" id="LabelSettings_owgwo"]
+font_size = 13
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_51836"]
 
@@ -17,10 +24,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -50.5
+offset_left = -16.5
 offset_top = -12.0
 offset_right = 50.5
-offset_bottom = 12.0
+offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
@@ -31,6 +38,8 @@ backgrounds = Dictionary[int, StyleBoxFlat]({
 2: ExtResource("4_l1ktr"),
 3: ExtResource("2_2j2ut")
 })
+normal_label_setting = SubResource("LabelSettings_kuk48")
+small_label_setting = SubResource("LabelSettings_owgwo")
 
 [node name="BackgroundPanel" type="Panel" parent="."]
 unique_name_in_owner = true
@@ -45,6 +54,8 @@ theme_override_styles/panel = ExtResource("6_5cxxf")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_constants/margin_left = 3
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 3
@@ -57,11 +68,13 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 text = "❔"
+label_settings = ExtResource("8_kuk48")
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "unknown"
+label_settings = ExtResource("8_kuk48")
 
 [node name="Button" type="Button" parent="MarginContainer"]
 layout_mode = 2

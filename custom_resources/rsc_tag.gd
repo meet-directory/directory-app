@@ -42,21 +42,21 @@ const raw_to_type:Dictionary[String, TYPE] = {
 const _media_color = Color("7995b7ff")
 # enum is used as an index to the character
 const type_to_emoji = [
-	['🧍', Color("c0a895ff")],
-	['💑', Color("be8359ff")],
+	['🧍', Color("b3ac7dff")],
+	['💑', Color("b38f7dff")],
 	['😏', Color("b594adff")],
-	['⭐', Color("7a97a7ff")],
-	['🌳', Color("829989ff")],
-	['🏋️‍♀️', Color("cc6672ff")],
+	['⭐', Color("7a8e99ff")],
+	['🌳', Color("7db38eff")],
+	['🏋️‍♀️', Color("b37d82ff")],
 	['🎥', _media_color],
 	['📺', _media_color],
 	['🎵', _media_color],
 	['🎮', _media_color],
 	['🥕', Color(0.698, 0.531, 0.451, 1.0)],
-	['🕋', Color(0.459, 0.606, 0.606, 1.0)],
+	['🕋', Color(0.49, 0.7, 0.7, 1.0)],
 	['🎨', Color(0.73, 0.703, 0.496, 1.0)],
 	['📖', _media_color],
-	['🌐', Color(0.477, 0.594, 0.654, 1.0)]
+	['🌐', Color(0.49, 0.63, 0.7, 1.0)]
 	]
 
 

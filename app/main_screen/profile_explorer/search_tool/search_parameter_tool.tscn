@@ -57,9 +57,8 @@ custom_minimum_size = Vector2(50, 44)
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("4_bf8gs")
-max_value = 200.0
 low_value = 0.0
-high_value = 200.0
+high_value = 50.0
 range_color = Color(0.6229067, 0.5964, 0.71, 1)
 grabber_color = Color(0.80100876, 0.7843172, 0.86191726, 1)
 grabber_pressed_color = Color(0.5631667, 0.5518, 0.62, 1)
@@ -141,21 +140,22 @@ text = "Tag Filters"
 label_settings = ExtResource("2_mujbb")
 horizontal_alignment = 1
 
-[node name="MustMatchTagsContainer" parent="TagFilters/MarginContainer2/VBoxContainer" instance=ExtResource("3_kalbu")]
-unique_name_in_owner = true
-layout_mode = 2
-enable_add_tag_feature = false
-
 [node name="WantMatchTagsContainer" parent="TagFilters/MarginContainer2/VBoxContainer" instance=ExtResource("3_kalbu")]
 unique_name_in_owner = true
 layout_mode = 2
-title = "Want Match"
+title = "Want to see profiles with:"
+enable_add_tag_feature = false
+
+[node name="MustMatchTagsContainer" parent="TagFilters/MarginContainer2/VBoxContainer" instance=ExtResource("3_kalbu")]
+unique_name_in_owner = true
+layout_mode = 2
+title = "Only show profiles with:"
 enable_add_tag_feature = false
 
 [node name="DontMatchTagsContainer" parent="TagFilters/MarginContainer2/VBoxContainer" instance=ExtResource("3_kalbu")]
 unique_name_in_owner = true
 layout_mode = 2
-title = "Dont Match"
+title = "Dont show profiles with"
 enable_add_tag_feature = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]

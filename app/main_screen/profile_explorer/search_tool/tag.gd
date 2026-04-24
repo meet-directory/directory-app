@@ -12,6 +12,11 @@ signal tapped(tag:Tag)
 }
 
 @export var type:Tag.TYPE = Tag.TYPE.Other
+
+@export_subgroup("Internal")
+@export var normal_label_setting:LabelSettings
+@export var small_label_setting:LabelSettings
+
 @onready var match_panel: Panel = %MatchPanel
 @onready var disabled_panel: Panel = %DisabledPanel
 @onready var emoji_label: Label = %EmojiLabel
@@ -21,6 +26,7 @@ signal tapped(tag:Tag)
 
 var _disabled := false
 var _pressed := false
+
 
 func disable():
 	_disabled = true

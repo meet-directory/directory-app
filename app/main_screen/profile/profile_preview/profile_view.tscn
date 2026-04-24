@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cr731ljnp80m6"]
+[gd_scene load_steps=25 format=3 uid="uid://cr731ljnp80m6"]
 
 [ext_resource type="Script" uid="uid://lo38u26sfmrm" path="res://app/main_screen/profile/profile_preview/profile_view.gd" id="1_juomk"]
 [ext_resource type="StyleBox" uid="uid://fh3x8tnulkac" path="res://resources/styles/profile_panel_background.tres" id="2_omvvx"]
@@ -34,10 +34,14 @@ corner_radius_bottom_left = 8
 font_size = 13
 font_color = Color(0.19523549, 0.2657579, 0.3471535, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_guhvx"]
-font_color = Color(0.6509804, 0.7058824, 0.7490196, 1)
+[sub_resource type="LabelSettings" id="LabelSettings_tyljt"]
+font_size = 13
+font_color = Color(0.65012825, 0.6501283, 0.65012825, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tyljt"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_guhvx"]
+font_color = Color(0.6509804, 0.7058824, 0.7490196, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m14c4"]
 bg_color = Color(0.38431373, 0.34117648, 0.38039216, 1)
@@ -151,52 +155,56 @@ layout_mode = 2
 text = "Name"
 label_settings = SubResource("LabelSettings_c2q5j")
 
-[node name="AgeLabel" type="Label" parent="MarginContainer/MarginContainer/ContentClipper/AxisLockedScrollContainer/VBoxContainer/HBoxContainer"]
+[node name="LocationPanel" type="MarginContainer" parent="MarginContainer/MarginContainer/ContentClipper/AxisLockedScrollContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 3
-text = "32"
-label_settings = SubResource("LabelSettings_c2q5j")
-horizontal_alignment = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
 
-[node name="LocationPanel" type="MarginContainer" parent="MarginContainer/MarginContainer/ContentClipper/AxisLockedScrollContainer/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 0
-
-[node name="Panel" type="Panel" parent="MarginContainer/MarginContainer/ContentClipper/AxisLockedScrollContainer/VBoxContainer/LocationPanel"]
+[node name="Panel" type="Panel" parent="MarginContainer/MarginContainer/ContentClipper/AxisLockedScrollContainer/VBoxContainer/HBoxContainer/LocationPanel"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_2dt1s")
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/MarginContainer/ContentClipper/AxisLockedScrollContainer/VBoxContainer/LocationPanel"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/MarginContainer/ContentClipper/AxisLockedScrollContainer/VBoxContainer/HBoxContainer/LocationPanel"]
 layout_mode = 2
 theme_override_constants/margin_left = 2
 theme_override_constants/margin_right = 5
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/MarginContainer/ContentClipper/AxisLockedScrollContainer/VBoxContainer/LocationPanel/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/MarginContainer/ContentClipper/AxisLockedScrollContainer/VBoxContainer/HBoxContainer/LocationPanel/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 1
 
-[node name="Label" type="Label" parent="MarginContainer/MarginContainer/ContentClipper/AxisLockedScrollContainer/VBoxContainer/LocationPanel/MarginContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/MarginContainer/ContentClipper/AxisLockedScrollContainer/VBoxContainer/HBoxContainer/LocationPanel/MarginContainer/HBoxContainer"]
 layout_mode = 2
 text = "📍"
 label_settings = SubResource("LabelSettings_4t5cw")
 
-[node name="LocationLabel" type="Label" parent="MarginContainer/MarginContainer/ContentClipper/AxisLockedScrollContainer/VBoxContainer/LocationPanel/MarginContainer/HBoxContainer"]
+[node name="LocationLabel" type="Label" parent="MarginContainer/MarginContainer/ContentClipper/AxisLockedScrollContainer/VBoxContainer/HBoxContainer/LocationPanel/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Durham, NC"
 label_settings = SubResource("LabelSettings_4t5cw")
 
-[node name="PersonalTags" parent="MarginContainer/MarginContainer/ContentClipper/AxisLockedScrollContainer/VBoxContainer" instance=ExtResource("3_xdqhq")]
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/MarginContainer/ContentClipper/AxisLockedScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="AgeLabel" type="Label" parent="MarginContainer/MarginContainer/ContentClipper/AxisLockedScrollContainer/VBoxContainer/HBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
-title = "💁 I am"
+size_flags_horizontal = 3
+text = "32"
+label_settings = SubResource("LabelSettings_tyljt")
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/MarginContainer/ContentClipper/AxisLockedScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 14
+theme_override_styles/separator = SubResource("StyleBoxEmpty_tyljt")
 
 [node name="RelationshipTags" parent="MarginContainer/MarginContainer/ContentClipper/AxisLockedScrollContainer/VBoxContainer" instance=ExtResource("3_xdqhq")]
 unique_name_in_owner = true
 layout_mode = 2
-title = "🧑‍🤝‍🧑 Relationship Goals"
+title = "🧑‍🤝‍🧑 I'm looking for"
+small_tags = true
 
 [node name="DescriptionLabel" type="Label" parent="MarginContainer/MarginContainer/ContentClipper/AxisLockedScrollContainer/VBoxContainer"]
 unique_name_in_owner = true
@@ -205,21 +213,21 @@ text = "Description"
 label_settings = SubResource("LabelSettings_guhvx")
 autowrap_mode = 3
 
-[node name="DesireTags" parent="MarginContainer/MarginContainer/ContentClipper/AxisLockedScrollContainer/VBoxContainer" instance=ExtResource("3_xdqhq")]
+[node name="HSeparator2" type="HSeparator" parent="MarginContainer/MarginContainer/ContentClipper/AxisLockedScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 14
+theme_override_styles/separator = SubResource("StyleBoxEmpty_tyljt")
+
+[node name="PersonalTags" parent="MarginContainer/MarginContainer/ContentClipper/AxisLockedScrollContainer/VBoxContainer" instance=ExtResource("3_xdqhq")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
-title = "😏 Interests"
+title = "💁 I am"
 
 [node name="OtherTags" parent="MarginContainer/MarginContainer/ContentClipper/AxisLockedScrollContainer/VBoxContainer" instance=ExtResource("3_xdqhq")]
 unique_name_in_owner = true
 layout_mode = 2
-title = "🤩 Interests"
-
-[node name="HSeparator" type="HSeparator" parent="MarginContainer/MarginContainer/ContentClipper/AxisLockedScrollContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 14
-theme_override_styles/separator = SubResource("StyleBoxEmpty_tyljt")
+title = "🤩 I'm interested in"
 
 [node name="ReportMenu" type="MarginContainer" parent="MarginContainer/MarginContainer/ContentClipper/AxisLockedScrollContainer/VBoxContainer"]
 unique_name_in_owner = true

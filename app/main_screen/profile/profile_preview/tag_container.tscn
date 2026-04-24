@@ -24,50 +24,50 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="TagContainer" type="HFlowContainer" parent="MarginContainer"]
-unique_name_in_owner = true
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="MarginContainer/TagContainer"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 4
 text = "Interests"
 label_settings = ExtResource("3_n64qn")
 
-[node name="Colon" type="Label" parent="MarginContainer/TagContainer"]
+[node name="TagContainer" type="HFlowContainer" parent="MarginContainer/VBoxContainer2"]
+unique_name_in_owner = true
 layout_mode = 2
-text = ":"
-label_settings = ExtResource("3_n64qn")
+size_flags_horizontal = 3
+alignment = 1
 
-[node name="Tag" parent="MarginContainer/TagContainer" instance=ExtResource("2_kadew")]
-layout_mode = 2
-
-[node name="Tag2" parent="MarginContainer/TagContainer" instance=ExtResource("2_kadew")]
+[node name="Tag" parent="MarginContainer/VBoxContainer2/TagContainer" instance=ExtResource("2_kadew")]
 layout_mode = 2
 
-[node name="Tag3" parent="MarginContainer/TagContainer" instance=ExtResource("2_kadew")]
+[node name="Tag2" parent="MarginContainer/VBoxContainer2/TagContainer" instance=ExtResource("2_kadew")]
 layout_mode = 2
 
-[node name="Tag4" parent="MarginContainer/TagContainer" instance=ExtResource("2_kadew")]
+[node name="Tag3" parent="MarginContainer/VBoxContainer2/TagContainer" instance=ExtResource("2_kadew")]
 layout_mode = 2
 
-[node name="Tag5" parent="MarginContainer/TagContainer" instance=ExtResource("2_kadew")]
+[node name="Tag4" parent="MarginContainer/VBoxContainer2/TagContainer" instance=ExtResource("2_kadew")]
 layout_mode = 2
 
-[node name="Tag6" parent="MarginContainer/TagContainer" instance=ExtResource("2_kadew")]
+[node name="Tag5" parent="MarginContainer/VBoxContainer2/TagContainer" instance=ExtResource("2_kadew")]
 layout_mode = 2
 
-[node name="Tag7" parent="MarginContainer/TagContainer" instance=ExtResource("2_kadew")]
+[node name="Tag6" parent="MarginContainer/VBoxContainer2/TagContainer" instance=ExtResource("2_kadew")]
 layout_mode = 2
 
-[node name="Tag8" parent="MarginContainer/TagContainer" instance=ExtResource("2_kadew")]
+[node name="Tag7" parent="MarginContainer/VBoxContainer2/TagContainer" instance=ExtResource("2_kadew")]
 layout_mode = 2
 
-[node name="Tag9" parent="MarginContainer/TagContainer" instance=ExtResource("2_kadew")]
+[node name="Tag8" parent="MarginContainer/VBoxContainer2/TagContainer" instance=ExtResource("2_kadew")]
 layout_mode = 2
 
-[node name="Tag10" parent="MarginContainer/TagContainer" instance=ExtResource("2_kadew")]
+[node name="Tag9" parent="MarginContainer/VBoxContainer2/TagContainer" instance=ExtResource("2_kadew")]
+layout_mode = 2
+
+[node name="Tag10" parent="MarginContainer/VBoxContainer2/TagContainer" instance=ExtResource("2_kadew")]
 layout_mode = 2
 
 [node name="VBoxContainer" type="HFlowContainer" parent="MarginContainer"]

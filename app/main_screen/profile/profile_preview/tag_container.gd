@@ -6,6 +6,7 @@ class_name TagContainer
 @export_category("Add Tag Button Params")
 @export var use_filter:bool = false
 @export var tag_type_filter:Tag.TYPE
+#@export_range(0.1, 1) var tag_scale:float = 1
 
 @onready var label: Label = %Label
 @onready var container: HFlowContainer = %TagContainer
