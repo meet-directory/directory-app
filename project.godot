@@ -21,7 +21,7 @@ api_url="0.0.0.0:10000"
 config/name="Directory"
 run/main_scene="uid://duy1kwsnwrcb5"
 config/quit_on_go_back=false
-config/features=PackedStringArray("4.5", "Forward Plus")
+config/features=PackedStringArray("4.6", "Forward Plus")
 boot_splash/image="uid://6hd57acjr2eb"
 config/icon="res://icon.svg"
 
