@@ -1,4 +1,4 @@
-extends Node
+extends CanvasLayer
 @onready var draggable_photo: TextureRect = %DraggablePhoto
 @onready var crop_area: ReferenceRect = %CropArea
 
@@ -20,9 +20,9 @@ func get_cropped_texture() -> ImageTexture:
 	)
 	
 	# Photo position relative to crop area (0,0 = top-left of crop)
-	var offset = -photo.position / photo.scale
+	var p_offset = -photo.position / photo.scale
 	var src_rect = Rect2(
-		offset * scale_factor,
+		p_offset * scale_factor,
 		(crop_area.size / photo.scale) * scale_factor
 	)
 	
@@ -40,8 +40,9 @@ func get_cropped_texture() -> ImageTexture:
 
 func _on_save_button_pressed() -> void:
 	photo_cropped.emit(get_cropped_texture())
+	hide()
 	queue_free()
 
-
 func _on_cancel_button_pressed() -> void:
+	hide()
 	queue_free()
