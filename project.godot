@@ -57,7 +57,7 @@ enabled=PackedStringArray("res://addons/double_slider/plugin.cfg", "res://addons
 
 [gui]
 
-theme/custom_font="uid://bi37j6bt4qrvy"
+theme/custom_font="uid://c0rg3bblrrf5m"
 
 [input]
 
