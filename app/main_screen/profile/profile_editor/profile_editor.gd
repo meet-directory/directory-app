@@ -1,18 +1,16 @@
 extends MarginContainer
 class_name ProfileEditor
 
-#@onready var relationship_tags: TagSelectorContainer = %WantsTags
-#@onready var desire_tags: TagSelectorContainer = %DesireTags
-#@onready var other_tags: TagSelectorContainer = %OtherTags
-#@onready var personal_tags: TagSelectorContainer = %PersonalTags
-@onready var tag_container: TagSelectorContainer = %Tags
 
+@onready var tag_container: TagSelectorContainer = %Tags
 @onready var name_edit: LineEdit = %NameEdit
 @onready var description_edit: MaxLengthTextEdit = %DescriptionEdit
 @onready var photo_viewer: PhotoViewer = %PhotoViewer
 @onready var edit_profile_container: Control = %EditProfileContainer
 @onready var edit_photos_container: ScrollContainer = %EditPhotosContainer
 @onready var photo_editor: MarginContainer = %PhotoEditor
+@onready var relationship_types: MarginContainer = $MarginContainer/EditProfileContainer/EditProfileContainer/VBoxContainer/RelationshipTypes
+@onready var identity_masks: MarginContainer = %IdentityMasks
 
 signal edit_saved
 signal edit_canceled
@@ -25,30 +23,19 @@ func display(profile:ProfileResource) -> void:
 	description_edit.set_text(profile.description)
 	photo_viewer.setup(profile.photos)
 	photo_editor.setup(profile.photos)
-	#for child in photo_viewer.get_children():
-		#child.queue_free()
-	#for texture in profile.photos:
-		#var rect:TextureRect = TextureRect.new()
-		#rect.texture = texture
-		#photo_viewer.add_child(rect)
-	
-	#personal_tags.add_tags(profile.is_tags.filter(func (t:Tag): return t.type == Tag.TYPE.Personal))
-	#relationship_tags.add_tags(profile.is_tags.filter(func (t:Tag): return t.type == Tag.TYPE.RelationshipType))
-	#desire_tags.add_tags(profile.is_tags.filter(func (t:Tag): return t.type == Tag.TYPE.Desire))
-	#other_tags.add_tags(profile.is_tags.filter(func (t:Tag): return t.type not in [Tag.TYPE.Personal, Tag.TYPE.RelationshipType]))
 	tag_container.add_tags(profile.is_tags)
-	
-
+	relationship_types.set_mask(profile.relationship_mask)
+	identity_masks.set_is_mask(profile.is_mask)
+	identity_masks.set_wants_mask(profile.wants_mask)
 
 func get_edited_profile() -> ProfileResource:
 	var prof:ProfileResource = ProfileResource.new()
 	prof.username = name_edit.text
 	prof.description = description_edit.get_text()
 	prof.is_tags = tag_container.get_tags()
-	#prof.is_tags = personal_tags.get_tags()
-	#prof.is_tags.append_array(relationship_tags.get_tags())
-	##prof.is_tags.append_array(desire_tags.get_tags())
-	#prof.is_tags.append_array(other_tags.get_tags())
+	prof.is_mask = identity_masks.get_is_mask()
+	prof.wants_mask = identity_masks.get_wants_mask()
+	prof.relationship_mask = relationship_types.get_mask()
 	return prof
 
 
@@ -102,30 +89,39 @@ func _on_save_edit_button_pressed() -> void:
 		App.show_info_popup(warning)
 		return
 	
-	var rtags = len(tags.filter(func (tag:Tag): return tag.type == Tag.TYPE.RelationshipType))
-	var ptags = len(tags.filter(func (tag:Tag): return tag.type == Tag.TYPE.Personal))
-	
 	if name_edit.text == "":
 		var warning = "Your profile must have a username!"
 		App.show_info_popup(warning)
 		return
 	
-	if rtags < 1 or ptags < 2:
-		var warning:String
-		
-		if rtags < 1 and ptags < 2:
-			warning = 'We recommend adding at least one Relationship tag and ' \
-			+ "two Personal tags so that other users know what kind of relationship you're looking for." 
-		elif rtags < 1:
-			warning = 'We recommend adding at least one Relationship tag so ' \
-			+ "that other users know what kind of relationship you're looking for." 
-		elif ptags < 2:
-			warning = 'We recommend adding at least two Personal tags to ' \
-			+ "improve the likelihood of other people finding you. If you are using " \
-			+ "the app to date, add your gender and sexuality." 
-		
-		var conf:ConfirmationPopup = App.show_conf_popup(warning, "Keep Editing", "Save Anyway")
-		conf.confirm_pressed.connect(_save_profile)
+	var warnings = relationship_types.get_warnings()
+	if len(warnings) > 0:
+		App.show_info_popup(warnings[0])
+		return
+	
+	warnings = identity_masks.get_warnings()
+	if len(warnings) > 0:
+		App.show_info_popup(warnings[0])
+		return
+	
+	#var rtags = len(tags.filter(func (tag:Tag): return tag.type == Tag.TYPE.RelationshipType))
+	#var ptags = len(tags.filter(func (tag:Tag): return tag.type == Tag.TYPE.Personal))
+	#if rtags < 1 or ptags < 2:
+		#var warning:String
+		#
+		#if rtags < 1 and ptags < 2:
+			#warning = 'We recommend adding at least one Relationship tag and ' \
+			#+ "two Personal tags so that other users know what kind of relationship you're looking for." 
+		#elif rtags < 1:
+			#warning = 'We recommend adding at least one Relationship tag so ' \
+			#+ "that other users know what kind of relationship you're looking for." 
+		#elif ptags < 2:
+			#warning = 'We recommend adding at least two Personal tags to ' \
+			#+ "improve the likelihood of other people finding you. If you are using " \
+			#+ "the app to date, add your gender and sexuality." 
+		#
+		#var conf:ConfirmationPopup = App.show_conf_popup(warning, "Keep Editing", "Save Anyway")
+		#conf.confirm_pressed.connect(_save_profile)
 	else:
 		_save_profile()
 

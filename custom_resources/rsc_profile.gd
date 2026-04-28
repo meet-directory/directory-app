@@ -31,6 +31,10 @@ var match_status_tx:Dictionary[String, match_statuses] = {
 }
 var match_status:match_statuses
 
+var is_mask:int
+var wants_mask:int
+var relationship_mask:int
+
 @export var is_tags:Array[Tag]
 @export var wants_tags:Array[Tag] # DEPR?
 
@@ -45,7 +49,10 @@ func to_db() -> Dictionary:
 			},
 		"tags": is_tags.reduce(func (accum:String, tag:Tag):
 			return accum + tag.tag_name + ','
-			, '')
+			, ''),
+		"relationship_mask": relationship_mask,
+		"identity_mask": is_mask,
+		"seeking_mask": wants_mask
 	}
 	return data
 
@@ -55,6 +62,10 @@ func from_db(dict:Dictionary):
 		data = dict['data']
 	else:
 		data = dict
+	
+	relationship_mask = dict.get('relationship_mask', 0)
+	is_mask = dict.get('identity_mask', 0)
+	wants_mask = dict.get('seeking_mask', 0)
 	
 	onboarded = data.get('onboarded', true)
 	var city = dict.get('city', '')

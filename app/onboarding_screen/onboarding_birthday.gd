@@ -1,6 +1,4 @@
-extends MarginContainer
-
-signal confirmed(variable: Variant)
+extends OnboardingStep
 
 @export_multiline var conf_popup_text:String
 
@@ -89,6 +87,9 @@ func _on_confirm_birthdate_button_pressed() -> void:
 
 func _on_date_confirmed() -> void:
 	if _over_18(_get_birthdate()):
-		confirmed.emit(_get_birthdate())
+		var birthday_dict = _get_birthdate()
+		var birthday_string = '{}-{}-{}'.format([birthday_dict['year'], birthday_dict['month'], birthday_dict['day']], '{}')
+		info_added.emit('birthdate', birthday_string)
+		confirmed.emit()
 	else:
 		App.show_info_popup("Sorry, you must be over 18 to participate on Directory.")

@@ -1,158 +1,140 @@
-[gd_scene load_steps=6 format=3 uid="uid://5dirtg6fwdc2"]
+[gd_scene format=3 uid="uid://5dirtg6fwdc2"]
 
 [ext_resource type="Theme" uid="uid://c52euoe38n0nm" path="res://resources/styles/app_theme.tres" id="1_a51go"]
 [ext_resource type="Script" uid="uid://ff3rnlm2i6dv" path="res://app/onboarding_screen/onboarding_screen.gd" id="1_le52s"]
-[ext_resource type="StyleBox" uid="uid://n4amvtloledg" path="res://resources/styles/app_background_accent_panel.tres" id="2_vwrii"]
 [ext_resource type="LabelSettings" uid="uid://d10w3u76wg4e6" path="res://resources/styles/subtle_grey_text_accent_panel_label_setting.tres" id="3_a51go"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gxwlr"]
 
-[node name="OnboardingScreen" type="MarginContainer"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -151.5
-offset_top = -106.5
-offset_right = 151.5
-offset_bottom = 106.5
+[node name="OnboardingScreen" type="MarginContainer" unique_id=2101476187]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_a51go")
 script = ExtResource("1_le52s")
 
-[node name="Panel" type="Panel" parent="."]
-layout_mode = 2
-theme_override_styles/panel = ExtResource("2_vwrii")
-
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 15
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1008142923]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=1209223459]
 layout_mode = 2
-text = "Welcome to Directory!"
+text = "Almost Done!"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="Label2" type="Label" parent="VBoxContainer" unique_id=1416482961]
 visible = false
 layout_mode = 2
 text = "Add tags to your profile and find other profiles by searching for tags. Showcase what you're into and be as specific as you want! "
 label_settings = ExtResource("3_a51go")
 autowrap_mode = 3
 
-[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer" unique_id=1951297850]
 layout_mode = 2
 theme_override_constants/separation = 14
 theme_override_styles/separator = SubResource("StyleBoxEmpty_gxwlr")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer" unique_id=1384812818]
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_vertical = 3
 theme_override_constants/separation = 14
 
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Label2" type="Label" parent="VBoxContainer/VBoxContainer" unique_id=1666372964]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-text = "After creating a profile and entering the app, you will be able to create custom profile tags."
+text = "Finish your profile by adding a name, bio, and photos!"
 label_settings = ExtResource("3_a51go")
 autowrap_mode = 3
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/VBoxContainer" unique_id=1928816580]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer3"]
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer3" unique_id=104559543]
 layout_mode = 2
 text = "1. "
 
-[node name="SetProfileButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer3"]
+[node name="SetProfileButton" type="Button" parent="VBoxContainer/VBoxContainer/HBoxContainer3" unique_id=2119956999]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Set Up Your Profile"
+text = "Finish Profile"
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer/VBoxContainer" unique_id=1842163580]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer4"]
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer4" unique_id=136082050]
 layout_mode = 2
 text = "2. "
 
-[node name="PreviewProfileButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer4"]
+[node name="PreviewProfileButton" type="Button" parent="VBoxContainer/VBoxContainer/HBoxContainer4" unique_id=649692928]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 disabled = true
 text = "Preview Profile"
 
-[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Label3" type="Label" parent="VBoxContainer/VBoxContainer" unique_id=1403367526]
 visible = false
 layout_mode = 2
 text = "2. Who are you looking for?"
 
-[node name="HBoxContainer5" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="HBoxContainer5" type="HBoxContainer" parent="VBoxContainer/VBoxContainer" unique_id=2138778604]
 layout_mode = 2
 
-[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer5"]
+[node name="Label3" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer5" unique_id=1159498816]
 layout_mode = 2
 text = "3. "
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer5"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/VBoxContainer/HBoxContainer5" unique_id=882811593]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer5/VBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer5/VBoxContainer" unique_id=951161529]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "By using using directory, you agree to the"
 label_settings = ExtResource("3_a51go")
 autowrap_mode = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer5/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer/HBoxContainer5/VBoxContainer" unique_id=572263176]
 layout_mode = 2
 
-[node name="TOSCheckBox" type="CheckBox" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer5/VBoxContainer/HBoxContainer"]
+[node name="TOSCheckBox" type="CheckBox" parent="VBoxContainer/VBoxContainer/HBoxContainer5/VBoxContainer/HBoxContainer" unique_id=101844236]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="LinkButton" type="LinkButton" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer5/VBoxContainer/HBoxContainer"]
+[node name="LinkButton" type="LinkButton" parent="VBoxContainer/VBoxContainer/HBoxContainer5/VBoxContainer/HBoxContainer" unique_id=1175147179]
 layout_mode = 2
 text = "Terms of Service"
 uri = "https://meet.directory/tos"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer5/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/VBoxContainer/HBoxContainer5/VBoxContainer" unique_id=873935162]
 layout_mode = 2
 
-[node name="DPPCheckBox" type="CheckBox" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer5/VBoxContainer/HBoxContainer2"]
+[node name="DPPCheckBox" type="CheckBox" parent="VBoxContainer/VBoxContainer/HBoxContainer5/VBoxContainer/HBoxContainer2" unique_id=1243130860]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="LinkButton" type="LinkButton" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer5/VBoxContainer/HBoxContainer2"]
+[node name="LinkButton" type="LinkButton" parent="VBoxContainer/VBoxContainer/HBoxContainer5/VBoxContainer/HBoxContainer2" unique_id=2117105751]
 layout_mode = 2
 text = "Data Privacy Policy"
 uri = "https://meet.directory/dpp"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/VBoxContainer" unique_id=355621977]
 layout_mode = 2
 
-[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2"]
+[node name="Label3" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1043744545]
 layout_mode = 2
 text = "4. "
 
-[node name="LaunchButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2"]
+[node name="LaunchButton" type="Button" parent="VBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1197328274]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 disabled = true
 text = "Find Your People!"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer3/SetProfileButton" to="." method="_on_set_profile_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer4/PreviewProfileButton" to="." method="_on_preview_profile_button_pressed"]
-[connection signal="toggled" from="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer5/VBoxContainer/HBoxContainer/TOSCheckBox" to="." method="_on_tos_check_box_toggled"]
-[connection signal="toggled" from="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer5/VBoxContainer/HBoxContainer2/DPPCheckBox" to="." method="_on_dpp_check_box_toggled"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2/LaunchButton" to="." method="_on_launch_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/HBoxContainer3/SetProfileButton" to="." method="_on_set_profile_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/HBoxContainer4/PreviewProfileButton" to="." method="_on_preview_profile_button_pressed"]
+[connection signal="toggled" from="VBoxContainer/VBoxContainer/HBoxContainer5/VBoxContainer/HBoxContainer/TOSCheckBox" to="." method="_on_tos_check_box_toggled"]
+[connection signal="toggled" from="VBoxContainer/VBoxContainer/HBoxContainer5/VBoxContainer/HBoxContainer2/DPPCheckBox" to="." method="_on_dpp_check_box_toggled"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/HBoxContainer2/LaunchButton" to="." method="_on_launch_button_pressed"]

@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://bqmxcnllaunhp"]
+
+[ext_resource type="Script" uid="uid://dovj705ekeq4o" path="res://app/onboarding_screen/onboarding_tags.gd" id="1_5s14i"]
+[ext_resource type="LabelSettings" uid="uid://d10w3u76wg4e6" path="res://resources/styles/subtle_grey_text_accent_panel_label_setting.tres" id="1_v44f1"]
+[ext_resource type="PackedScene" uid="uid://bffx2x1gb5he5" path="res://app/main_screen/profile_explorer/search_tool/tag_selector_container.tscn" id="2_v44f1"]
+
+[node name="OnboardingTags" type="MarginContainer" unique_id=1007549808]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5s14i")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1629293380]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=1867099166]
+layout_mode = 2
+text = "Directory has a database of user-defined tags. Soon you can contribute your own!
+
+Go ahead and add some tags for your interests. This will help people find you!"
+autowrap_mode = 2
+
+[node name="Label2" type="Label" parent="VBoxContainer" unique_id=1933582138]
+layout_mode = 2
+text = "Tap the green plus button to open the tag explorer."
+label_settings = ExtResource("1_v44f1")
+autowrap_mode = 2
+
+[node name="TagSelectorContainer" parent="VBoxContainer" unique_id=4594904 instance=ExtResource("2_v44f1")]
+layout_mode = 2
+title = "🏷️ Profile Tags"
+
+[node name="Confirm" type="Button" parent="VBoxContainer" unique_id=638624397]
+layout_mode = 2
+size_flags_vertical = 10
+text = "Continue"
+
+[connection signal="pressed" from="VBoxContainer/Confirm" to="." method="_on_confirm_pressed"]

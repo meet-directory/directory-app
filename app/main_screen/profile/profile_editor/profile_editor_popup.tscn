@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://be0qtsrcwrwtk"]
+[gd_scene format=3 uid="uid://be0qtsrcwrwtk"]
 
 [ext_resource type="PackedScene" uid="uid://6ilqw78x5j3o" path="res://app/main_screen/profile/profile_editor/profile_editor.tscn" id="1_66sqj"]
 [ext_resource type="Script" uid="uid://o0ga2qgw7wjw" path="res://app/main_screen/profile/profile_editor/profile_editor_popup.gd" id="1_457ld"]
@@ -10,25 +10,25 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hse4c"]
 bg_color = Color(0.27, 0.27, 0.27, 0.7019608)
 
-[node name="ProfileEditorPopup" type="CanvasLayer"]
+[node name="ProfileEditorPopup" type="CanvasLayer" unique_id=1899795735]
 script = ExtResource("1_457ld")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1276960092]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="MarginContainer"]
+[node name="Panel" type="Panel" parent="MarginContainer" unique_id=1454725556]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_hse4c")
 
-[node name="BottomMarker" type="Control" parent="MarginContainer"]
+[node name="BottomMarker" type="Control" parent="MarginContainer" unique_id=970423910]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="MenuContainer" type="MarginContainer" parent="."]
+[node name="MenuContainer" type="MarginContainer" parent="." unique_id=1698251010]
 unique_name_in_owner = true
 anchors_preset = 15
 anchor_right = 1.0
@@ -37,12 +37,12 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_lty33")
 
-[node name="VirtualKeyboardAdjuster" type="MarginContainer" parent="MenuContainer"]
+[node name="VirtualKeyboardAdjuster" type="MarginContainer" parent="MenuContainer" unique_id=1120009980]
 layout_mode = 2
 script = ExtResource("2_2f0bb")
 metadata/_custom_type_script = "uid://cg1kfg1oqrnic"
 
-[node name="SideMargins" type="MarginContainer" parent="MenuContainer/VirtualKeyboardAdjuster"]
+[node name="SideMargins" type="MarginContainer" parent="MenuContainer/VirtualKeyboardAdjuster" unique_id=2101480106]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/margin_left = 18
@@ -55,26 +55,26 @@ left = 0.02
 right = 0.02
 metadata/_custom_type_script = "uid://b4nmfnaeluowr"
 
-[node name="Panel" type="Panel" parent="MenuContainer/VirtualKeyboardAdjuster/SideMargins"]
+[node name="Panel" type="Panel" parent="MenuContainer/VirtualKeyboardAdjuster/SideMargins" unique_id=153587226]
 layout_mode = 2
 theme_override_styles/panel = ExtResource("2_apxo5")
 
-[node name="MarginContainer" type="MarginContainer" parent="MenuContainer/VirtualKeyboardAdjuster/SideMargins"]
+[node name="MarginContainer" type="MarginContainer" parent="MenuContainer/VirtualKeyboardAdjuster/SideMargins" unique_id=2127496328]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MenuContainer/VirtualKeyboardAdjuster/SideMargins/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuContainer/VirtualKeyboardAdjuster/SideMargins/MarginContainer" unique_id=370864346]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MenuContainer/VirtualKeyboardAdjuster/SideMargins/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="MenuContainer/VirtualKeyboardAdjuster/SideMargins/MarginContainer/VBoxContainer" unique_id=1348806431]
 layout_mode = 2
 text = "Edit Profile"
 horizontal_alignment = 1
 
-[node name="ProfileEditor" parent="MenuContainer/VirtualKeyboardAdjuster/SideMargins/MarginContainer/VBoxContainer" instance=ExtResource("1_66sqj")]
+[node name="ProfileEditor" parent="MenuContainer/VirtualKeyboardAdjuster/SideMargins/MarginContainer/VBoxContainer" unique_id=1862400853 instance=ExtResource("1_66sqj")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3

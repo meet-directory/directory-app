@@ -1,6 +1,5 @@
-extends Control
+extends OnboardingStep
 
-signal confirmed
 @onready var launch_button: Button = %LaunchButton
 @onready var preview_profile_button: Button = %PreviewProfileButton
 @onready var tos_check_box: CheckBox = %TOSCheckBox
@@ -20,9 +19,7 @@ var profile_saved:bool = false
 
 func _ready() -> void:
 	launch_button.disabled = true
-
-func set_passed_arg(_var):
-	pass
+	Server.get_session_profile()
 
 func _on_set_profile_button_pressed() -> void:
 	var editor:ProfileEditorPopup = App.show_profile_editor(true)

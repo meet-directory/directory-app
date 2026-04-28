@@ -1,0 +1,152 @@
+[gd_scene format=3 uid="uid://cl2t3kc13p6"]
+
+[ext_resource type="Theme" uid="uid://c52euoe38n0nm" path="res://resources/styles/app_theme.tres" id="1_krjds"]
+[ext_resource type="Script" uid="uid://c0j1g5km1bi1o" path="res://app/onboarding_screen/onboarding_identifiers.gd" id="2_vhbtg"]
+[ext_resource type="LabelSettings" uid="uid://d10w3u76wg4e6" path="res://resources/styles/subtle_grey_text_accent_panel_label_setting.tres" id="3_vhbtg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hjsku"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_esgs6"]
+bg_color = Color(0.23, 0.23, 0.23, 0.40392157)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="OnboardingIdentifiers" type="MarginContainer" unique_id=24265746]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_krjds")
+script = ExtResource("2_vhbtg")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="." unique_id=1540568991]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label2" type="Label" parent="VBoxContainer2" unique_id=2007298488]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+text = "These will not be public, it is just a broad filter to affect who shows up in searches. "
+label_settings = ExtResource("3_vhbtg")
+autowrap_mode = 3
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer2" unique_id=1074783150]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_hjsku")
+
+[node name="Label" type="Label" parent="VBoxContainer2" unique_id=1866917967]
+custom_minimum_size = Vector2(20, 10)
+layout_mode = 2
+text = "How do you identify?"
+autowrap_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer2" unique_id=1690627091]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Panel" type="Panel" parent="VBoxContainer2/MarginContainer" unique_id=401630127]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_esgs6")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer2/MarginContainer" unique_id=53186594]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Dating Types" type="VBoxContainer" parent="VBoxContainer2/MarginContainer/MarginContainer" unique_id=14485121]
+layout_mode = 2
+
+[node name="IsWomanButton" type="CheckBox" parent="VBoxContainer2/MarginContainer/MarginContainer/Dating Types" unique_id=1534413458]
+unique_name_in_owner = true
+layout_mode = 2
+text = "🤠Woman"
+
+[node name="IsManButton" type="CheckBox" parent="VBoxContainer2/MarginContainer/MarginContainer/Dating Types" unique_id=13618810]
+unique_name_in_owner = true
+layout_mode = 2
+text = "💍Man"
+
+[node name="IsNBButton" type="CheckBox" parent="VBoxContainer2/MarginContainer/MarginContainer/Dating Types" unique_id=653835727]
+unique_name_in_owner = true
+layout_mode = 2
+text = "💫 Non-binary"
+
+[node name="IsOtherButton" type="CheckBox" parent="VBoxContainer2/MarginContainer/MarginContainer/Dating Types" unique_id=1712467284]
+unique_name_in_owner = true
+layout_mode = 2
+text = "💫 Something else"
+
+[node name="Label4" type="Label" parent="VBoxContainer2" unique_id=850991698]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+text = "More precise identifiers can be set up when you make your profile."
+label_settings = ExtResource("3_vhbtg")
+autowrap_mode = 3
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer2" unique_id=1045544483]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_hjsku")
+
+[node name="Label3" type="Label" parent="VBoxContainer2" unique_id=1565978727]
+custom_minimum_size = Vector2(20, 10)
+layout_mode = 2
+text = "Who are you open to meeting?"
+autowrap_mode = 3
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer2" unique_id=573129161]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Panel" type="Panel" parent="VBoxContainer2/MarginContainer2" unique_id=1605804082]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_esgs6")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer2/MarginContainer2" unique_id=483774441]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Dating Types" type="VBoxContainer" parent="VBoxContainer2/MarginContainer2/MarginContainer" unique_id=81620722]
+layout_mode = 2
+
+[node name="WantWomanButton" type="CheckBox" parent="VBoxContainer2/MarginContainer2/MarginContainer/Dating Types" unique_id=381882868]
+unique_name_in_owner = true
+layout_mode = 2
+button_pressed = true
+text = "🤠Women"
+
+[node name="WantManButton" type="CheckBox" parent="VBoxContainer2/MarginContainer2/MarginContainer/Dating Types" unique_id=1465227066]
+unique_name_in_owner = true
+layout_mode = 2
+button_pressed = true
+text = "💍Men"
+
+[node name="WantNBButton" type="CheckBox" parent="VBoxContainer2/MarginContainer2/MarginContainer/Dating Types" unique_id=1479929010]
+unique_name_in_owner = true
+layout_mode = 2
+button_pressed = true
+text = "💫 Non-binary"
+
+[node name="WantOtherButton" type="CheckBox" parent="VBoxContainer2/MarginContainer2/MarginContainer/Dating Types" unique_id=1285486456]
+unique_name_in_owner = true
+layout_mode = 2
+button_pressed = true
+text = "💫 Something else"
+
+[node name="ContinueButton" type="Button" parent="VBoxContainer2" unique_id=854289094]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 10
+text = "Continue"
+
+[connection signal="pressed" from="VBoxContainer2/ContinueButton" to="." method="_on_continue_button_pressed"]

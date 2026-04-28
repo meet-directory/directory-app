@@ -5,7 +5,7 @@ class_name ProfileView
 @onready var description_label: Label = %DescriptionLabel
 @onready var photo_viewer: PhotoViewer = %PhotoViewer
 
-@onready var relationship_tags: TagContainer = %RelationshipTags
+#@onready var relationship_tags: TagContainer = %RelationshipTags
 @onready var other_tags: TagContainer = %OtherTags
 @onready var personal_tags: TagContainer = %PersonalTags
 @onready var match_options: MarginContainer = %MatchOptions
@@ -13,6 +13,7 @@ class_name ProfileView
 @onready var report_menu: MarginContainer = %ReportMenu
 @onready var location_label: Label = %LocationLabel
 @onready var location_panel: MarginContainer = %LocationPanel
+@onready var relationship_types: MarginContainer = %RelationshipTypes
 
 var profile_data:ProfileResource
 
@@ -54,22 +55,24 @@ func display(profile:ProfileResource, must_have_tags:Array[String]=[], wanted_ta
 	description_label.text = profile.description
 	age_label.text = str(profile.age)
 	location_label.text = profile.loc_string
+	relationship_types.set_mask(profile.relationship_mask)
 	if profile.loc_string.is_empty():
 		location_panel.hide()
 	
-	var rtags = profile.is_tags.filter(func (t:Tag): return t.type == Tag.TYPE.RelationshipType)
-	if len(rtags) > 0:
-		relationship_tags.add_tags(rtags)
-	else:
-		relationship_tags.hide()
-	var ptags = profile.is_tags.filter(func (t:Tag): return t.type == Tag.TYPE.Personal)
-	if len(ptags) > 0:
-		personal_tags.add_tags(ptags)
-	else:
-		personal_tags.hide()
-	other_tags.add_tags(profile.is_tags.filter(func (t:Tag): return t.type not in [Tag.TYPE.Personal, Tag.TYPE.RelationshipType]))
+	#var rtags = profile.is_tags.filter(func (t:Tag): return t.type == Tag.TYPE.RelationshipType)
+	#if len(rtags) > 0:
+		#relationship_tags.add_tags(rtags)
+	#else:
+		#relationship_tags.hide()
+	#var ptags = profile.is_tags.filter(func (t:Tag): return t.type == Tag.TYPE.Personal)
+	#if len(ptags) > 0:
+		#personal_tags.add_tags(ptags)
+	#else:
+		#personal_tags.hide()
+	#other_tags.add_tags(profile.is_tags.filter(func (t:Tag): return t.type not in [Tag.TYPE.Personal, Tag.TYPE.RelationshipType]))
+	other_tags.add_tags(profile.is_tags)
 	
-	var tag_containers:Array[TagContainer] = [relationship_tags, personal_tags, other_tags]
+	var tag_containers:Array[TagContainer] = [other_tags] # [relationship_tags, personal_tags, other_tags]
 	
 	for tag_container in tag_containers:
 		tag_container.show_matched_tags(must_have_tags)

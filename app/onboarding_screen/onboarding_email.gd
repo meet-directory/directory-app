@@ -1,4 +1,4 @@
-extends MarginContainer
+extends OnboardingStep
 @onready var new_username_field: LineEdit = %NewUsernameField
 @onready var new_password_field: LineEdit = %NewPasswordField
 @onready var confirm_password_field: LineEdit = %ConfirmPasswordField
@@ -14,18 +14,12 @@ extends MarginContainer
 @onready var warn_password_dont_match: Label = %WarnPasswordDontMatch
 
 
-signal confirmed(variable:Variant)
 func _ready() -> void:
 	var screen_size = Constants.get_screen_size()
 	container.custom_minimum_size.x = screen_size.x/1.5
 	error_panel.hide()
 	for node in error_messages.get_children():
 		node.hide()
-
-var _birthday_string:String
-
-func set_passed_arg(birthday_dict) -> void:
-	_birthday_string = '{}-{}-{}'.format([birthday_dict['year'], birthday_dict['month'], birthday_dict['day']], '{}')
 
 func _on_create_account_button_pressed() -> void:
 	var email:String = new_username_field.text
@@ -50,7 +44,9 @@ func _on_create_account_button_pressed() -> void:
 	if has_warning:
 		error_panel.show()
 		return
-	Server.register_new_user(email.to_lower(), password, _birthday_string, _on_new_user_registered)
+	
+	var birthday_string = onboarding_data['birthdate']
+	Server.register_new_user(email.to_lower(), password, birthday_string, _on_new_user_registered)
 	return
 
 func _on_new_user_registered(resp_code:int, response):
@@ -73,7 +69,7 @@ func _on_login_request_returned(response_code):
 			#Server.get_session_profile(Server.set_session_profile)
 			# TODO ensure get_profile is successful before scene change
 			# TODO if sesstion profile is not found in db, go to onboarding screen
-			confirmed.emit(null)
+			confirmed.emit()
 		#401: # Invalid login
 			#show_error_message(warn_incorrect_login)
 		_: Server.show_default_error_msg(response_code)

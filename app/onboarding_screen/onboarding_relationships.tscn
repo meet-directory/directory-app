@@ -1,0 +1,126 @@
+[gd_scene format=3 uid="uid://cc8kr6uj63bkf"]
+
+[ext_resource type="Theme" uid="uid://c52euoe38n0nm" path="res://resources/styles/app_theme.tres" id="1_0lv4s"]
+[ext_resource type="Script" uid="uid://tc0w4op7af3l" path="res://app/onboarding_screen/onboarding_relationships.gd" id="1_ps7xn"]
+[ext_resource type="LabelSettings" uid="uid://d10w3u76wg4e6" path="res://resources/styles/subtle_grey_text_accent_panel_label_setting.tres" id="3_2hxl8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ps7xn"]
+bg_color = Color(0.23, 0.23, 0.23, 0.40392157)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hm8ex"]
+bg_color = Color(0.35378706, 0.34672892, 0.41265374, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="OnboardingRelationships" type="MarginContainer" unique_id=967864837]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme = ExtResource("1_0lv4s")
+script = ExtResource("1_ps7xn")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=707252157]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=1313332632]
+custom_minimum_size = Vector2(20, 10)
+layout_mode = 2
+text = "Select all the relationship types you are open to. "
+autowrap_mode = 3
+
+[node name="Label2" type="Label" parent="VBoxContainer" unique_id=1694661511]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+text = "(This will be public on your profile)"
+label_settings = ExtResource("3_2hxl8")
+autowrap_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=293453842]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Panel" type="Panel" parent="VBoxContainer/MarginContainer" unique_id=57047662]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ps7xn")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer" unique_id=542270060]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/MarginContainer/MarginContainer" unique_id=1867239812]
+layout_mode = 2
+
+[node name="FriendButton" type="CheckBox" parent="VBoxContainer/MarginContainer/MarginContainer/VBoxContainer2" unique_id=192993302]
+unique_name_in_owner = true
+layout_mode = 2
+text = "🏄Friends & Activities"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/MarginContainer/VBoxContainer2" unique_id=768116620]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="VBoxContainer/MarginContainer/MarginContainer/VBoxContainer2/MarginContainer" unique_id=1267927471]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hm8ex")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/MarginContainer/VBoxContainer2/MarginContainer" unique_id=1887507926]
+layout_mode = 2
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/MarginContainer/VBoxContainer2/MarginContainer/MarginContainer" unique_id=64913646]
+layout_mode = 2
+
+[node name="DatingToggle" type="CheckBox" parent="VBoxContainer/MarginContainer/MarginContainer/VBoxContainer2/MarginContainer/MarginContainer/VBoxContainer" unique_id=1609032254]
+unique_name_in_owner = true
+layout_mode = 2
+text = "👩‍❤️‍💋‍👨 Dating"
+
+[node name="DatingTypes" type="MarginContainer" parent="VBoxContainer/MarginContainer/MarginContainer/VBoxContainer2/MarginContainer/MarginContainer/VBoxContainer" unique_id=1570732002]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/margin_left = 30
+
+[node name="Dating Types" type="VBoxContainer" parent="VBoxContainer/MarginContainer/MarginContainer/VBoxContainer2/MarginContainer/MarginContainer/VBoxContainer/DatingTypes" unique_id=1703937939]
+layout_mode = 2
+
+[node name="CasualButton" type="CheckBox" parent="VBoxContainer/MarginContainer/MarginContainer/VBoxContainer2/MarginContainer/MarginContainer/VBoxContainer/DatingTypes/Dating Types" unique_id=192180394]
+unique_name_in_owner = true
+layout_mode = 2
+text = "🤠Casual/Hookups"
+
+[node name="MonoButton" type="CheckBox" parent="VBoxContainer/MarginContainer/MarginContainer/VBoxContainer2/MarginContainer/MarginContainer/VBoxContainer/DatingTypes/Dating Types" unique_id=155827814]
+unique_name_in_owner = true
+layout_mode = 2
+text = "💍Monogamous Dating"
+
+[node name="PolyButton" type="CheckBox" parent="VBoxContainer/MarginContainer/MarginContainer/VBoxContainer2/MarginContainer/MarginContainer/VBoxContainer/DatingTypes/Dating Types" unique_id=356127530]
+unique_name_in_owner = true
+layout_mode = 2
+text = "💫 Polyamorous Dating"
+
+[node name="ContinueButton" type="Button" parent="VBoxContainer" unique_id=1681588137]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 10
+disabled = true
+text = "Continue"
+
+[connection signal="toggled" from="VBoxContainer/MarginContainer/MarginContainer/VBoxContainer2/FriendButton" to="." method="_on_button_toggled"]
+[connection signal="toggled" from="VBoxContainer/MarginContainer/MarginContainer/VBoxContainer2/MarginContainer/MarginContainer/VBoxContainer/DatingToggle" to="." method="_on_button_toggled"]
+[connection signal="toggled" from="VBoxContainer/MarginContainer/MarginContainer/VBoxContainer2/MarginContainer/MarginContainer/VBoxContainer/DatingToggle" to="." method="_on_dating_toggle_toggled"]
+[connection signal="toggled" from="VBoxContainer/MarginContainer/MarginContainer/VBoxContainer2/MarginContainer/MarginContainer/VBoxContainer/DatingTypes/Dating Types/CasualButton" to="." method="_on_button_toggled"]
+[connection signal="toggled" from="VBoxContainer/MarginContainer/MarginContainer/VBoxContainer2/MarginContainer/MarginContainer/VBoxContainer/DatingTypes/Dating Types/MonoButton" to="." method="_on_button_toggled"]
+[connection signal="toggled" from="VBoxContainer/MarginContainer/MarginContainer/VBoxContainer2/MarginContainer/MarginContainer/VBoxContainer/DatingTypes/Dating Types/PolyButton" to="." method="_on_button_toggled"]
+[connection signal="pressed" from="VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]

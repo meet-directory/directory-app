@@ -39,6 +39,7 @@ const PHOTO_GET_URL_ENDPOINT =        API + 'get_presigned_url'
 const PHOTO_UPDATE_ORDER_ENDPOINT =   API + 'update_photo_order'
 const ENDPOINT_UPDATE_LOC =           API + 'update_loc'
 const TAG_CATEGORY_ENDPOINT =         API + 'tag_category'
+const ENDPOINT_ONBOARD_STEP =         API + 'onboard_step'
 const HTTP_ERROR_DEFAULT = "An error occured. Try again later"
 const HTTP_ERROR_POPUP_MSGS = {
 	0: "There was no response from the server. Please try again in a moment.",
@@ -316,6 +317,12 @@ func unsuspend_account(callback:Callable) -> void:
 
 func update_profile(new_profile_data:Dictionary, callback:Callable) -> void:
 	_send_post_request(callback, ENDPOINT_SAVE_PROFILE, new_profile_data)
+
+func set_onboard_step(step:int, callback:Callable) -> void:
+	_send_post_request(callback, ENDPOINT_ONBOARD_STEP, {'onboard_step': step})
+
+func get_onboard_step(callback:Callable) -> void:
+	_send_get_request(callback, ENDPOINT_ONBOARD_STEP)
 
 func change_password(old_password:String, new_password:String, callback:Callable) -> void:
 	var data:Dictionary = {'old_password': old_password, 'new_password': new_password}

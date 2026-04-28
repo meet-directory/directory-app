@@ -1,21 +1,40 @@
-[gd_scene load_steps=11 format=3 uid="uid://cwk57ar17s111"]
+[gd_scene format=3 uid="uid://cwk57ar17s111"]
 
 [ext_resource type="Script" uid="uid://c1gclwgj4s0kr" path="res://app/onboarding_screen/onboarding_sequence.gd" id="1_iow3c"]
 [ext_resource type="Theme" uid="uid://c52euoe38n0nm" path="res://resources/styles/app_theme.tres" id="1_rmgpu"]
 [ext_resource type="PackedScene" uid="uid://de6qbtfyq0uh3" path="res://app/onboarding_screen/onboarding_birthday.tscn" id="2_nqrxi"]
 [ext_resource type="PackedScene" uid="uid://5dirtg6fwdc2" path="res://app/onboarding_screen/onboarding_screen.tscn" id="3_lc4iw"]
 [ext_resource type="PackedScene" uid="uid://ciqhr0cf4dfjy" path="res://app/onboarding_screen/onboarding_email.tscn" id="3_lxccs"]
+[ext_resource type="PackedScene" uid="uid://cc8kr6uj63bkf" path="res://app/onboarding_screen/onboarding_relationships.tscn" id="4_qcmpg"]
 [ext_resource type="StyleBox" uid="uid://dvjyuhjb1s8f4" path="res://resources/styles/app_background.tres" id="5_lxccs"]
-[ext_resource type="Script" uid="uid://cg1kfg1oqrnic" path="res://app/custom_ui_elements/virtual_keyboard_adjuster.gd" id="7_h5ly4"]
+[ext_resource type="PackedScene" uid="uid://cl2t3kc13p6" path="res://app/onboarding_screen/onboarding_identifiers.tscn" id="6_yyrb8"]
+[ext_resource type="PackedScene" uid="uid://bqmxcnllaunhp" path="res://app/onboarding_screen/onboarding_tags.tscn" id="7_2cvku"]
 [ext_resource type="Script" uid="uid://cmiecml4cjstp" path="res://app/custom_ui_elements/MobileScrollContainer.gd" id="8_qcmpg"]
+[ext_resource type="Script" uid="uid://bbarnu42x5057" path="res://app/onboarding_screen/virtual_keyboard_adjuster.gd" id="9_2dlfw"]
+[ext_resource type="StyleBox" uid="uid://n4amvtloledg" path="res://resources/styles/app_background_accent_panel.tres" id="11_2cvku"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yyrb8"]
+bg_color = Color(0.49247146, 0.63819647, 0.58357877, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2dlfw"]
+bg_color = Color(0.16862746, 0.14117648, 0.21568628, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rmgpu"]
+bg_color = Color(0.2702951, 0.20302689, 0.38489226, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_lxccs"]
 font_size = 23
 outline_size = 1
 
-[node name="OnboardingSequence" type="Control"]
+[node name="OnboardingSequence" type="Control" unique_id=780047659]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,9 +43,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_rmgpu")
 script = ExtResource("1_iow3c")
-sequence = Array[PackedScene]([ExtResource("2_nqrxi"), ExtResource("3_lxccs"), ExtResource("3_lc4iw")])
+sequence = Array[PackedScene]([ExtResource("2_nqrxi"), ExtResource("3_lxccs"), ExtResource("4_qcmpg"), ExtResource("6_yyrb8"), ExtResource("7_2cvku"), ExtResource("3_lc4iw")])
+progress_panel_complete = SubResource("StyleBoxFlat_yyrb8")
+progress_panel_incomplete = SubResource("StyleBoxFlat_2dlfw")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="." unique_id=107512534]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -35,7 +56,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("5_lxccs")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=927299652]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -43,87 +64,102 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=1529735146]
 layout_mode = 2
 size_flags_vertical = 0
 mouse_filter = 2
 
-[node name="Panel" type="Panel" parent="VBoxContainer/MarginContainer"]
+[node name="Panel" type="Panel" parent="VBoxContainer/MarginContainer" unique_id=795719414]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_rmgpu")
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer" unique_id=1510189500]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_bottom = 10
 
-[node name="HFlowContainer" type="HFlowContainer" parent="VBoxContainer/MarginContainer/MarginContainer"]
+[node name="HFlowContainer" type="HFlowContainer" parent="VBoxContainer/MarginContainer/MarginContainer" unique_id=1323976574]
 layout_mode = 2
 
-[node name="BackButton" type="Button" parent="VBoxContainer/MarginContainer/MarginContainer/HFlowContainer"]
+[node name="BackButton" type="Button" parent="VBoxContainer/MarginContainer/MarginContainer/HFlowContainer" unique_id=1196260430]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "Back"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/MarginContainer/HFlowContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/MarginContainer/HFlowContainer" unique_id=1953731671]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
 mouse_filter = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/MarginContainer/HFlowContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/MarginContainer/HFlowContainer/VBoxContainer" unique_id=682983397]
 layout_mode = 2
 size_flags_horizontal = 6
 text = "Account Creation"
 label_settings = SubResource("LabelSettings_lxccs")
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/MarginContainer/HFlowContainer/VBoxContainer"]
-visible = false
+[node name="ProgressPanels" type="HBoxContainer" parent="VBoxContainer/MarginContainer/MarginContainer/HFlowContainer/VBoxContainer" unique_id=2067335421]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 15)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 
-[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/MarginContainer/HFlowContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "Progress: "
-
-[node name="Panel" type="Panel" parent="VBoxContainer/MarginContainer/MarginContainer/HFlowContainer/VBoxContainer/HBoxContainer"]
+[node name="Panel" type="Panel" parent="VBoxContainer/MarginContainer/MarginContainer/HFlowContainer/VBoxContainer/ProgressPanels" unique_id=1788316361]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_yyrb8")
 
-[node name="Panel2" type="Panel" parent="VBoxContainer/MarginContainer/MarginContainer/HFlowContainer/VBoxContainer/HBoxContainer"]
+[node name="Panel2" type="Panel" parent="VBoxContainer/MarginContainer/MarginContainer/HFlowContainer/VBoxContainer/ProgressPanels" unique_id=240193868]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2dlfw")
 
-[node name="Panel3" type="Panel" parent="VBoxContainer/MarginContainer/MarginContainer/HFlowContainer/VBoxContainer/HBoxContainer"]
+[node name="Panel4" type="Panel" parent="VBoxContainer/MarginContainer/MarginContainer/HFlowContainer/VBoxContainer/ProgressPanels" unique_id=874033636]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2dlfw")
 
-[node name="VirtualKeyboardAdjuster" type="MarginContainer" parent="VBoxContainer"]
+[node name="VirtualKeyboardAdjuster" type="MarginContainer" parent="VBoxContainer" unique_id=775903173]
+custom_minimum_size = Vector2(500, 500)
 layout_mode = 2
-size_flags_vertical = 3
-script = ExtResource("7_h5ly4")
+size_flags_horizontal = 4
+size_flags_vertical = 6
+script = ExtResource("9_2dlfw")
 metadata/_custom_type_script = "uid://cg1kfg1oqrnic"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/VirtualKeyboardAdjuster"]
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/VirtualKeyboardAdjuster" unique_id=317881614]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-horizontal_scroll_mode = 3
+horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
 script = ExtResource("8_qcmpg")
 metadata/_custom_type_script = "uid://cmiecml4cjstp"
 
-[node name="Underlay" type="MarginContainer" parent="VBoxContainer/VirtualKeyboardAdjuster/ScrollContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/VirtualKeyboardAdjuster/ScrollContainer" unique_id=1101376610]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Panel" type="Panel" parent="VBoxContainer/VirtualKeyboardAdjuster/ScrollContainer/MarginContainer" unique_id=632561925]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("11_2cvku")
+
+[node name="Underlay" type="MarginContainer" parent="VBoxContainer/VirtualKeyboardAdjuster/ScrollContainer/MarginContainer" unique_id=322440723]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1975957719]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
