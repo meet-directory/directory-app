@@ -1,6 +1,6 @@
 extends Node
 @export var is_prod = true
-var software_version = 'v0.1.4-beta'
+var software_version = 'v0.1.5-beta'
 ## Prevents downloading photos during development. If using prod, should always be true
 @export var load_photos = true
 
@@ -39,15 +39,8 @@ func _ready():
 	elif OS.get_name() == "Android" or OS.get_name() == "iOS":
 		version = VERSIONS.MOBILE
 	
-	# When browsing on desktop or desktop-web, give profile previews a max width
 	await get_tree().process_frame
-	if OS.has_feature("web_android") or OS.has_feature("web_ios"):
-		PROFILE_VIEW_WIDTH = get_screen_size().x - 20
-	elif OS.get_name() == "Android" or OS.get_name() == "iOS":
-		PROFILE_VIEW_WIDTH = get_screen_size().x - 20
-	else:
-		PROFILE_VIEW_WIDTH = min(get_screen_size().x - 20, 400)
-
+	PROFILE_VIEW_WIDTH = min(get_screen_size().y*0.9 - 120, 400)
 
 func show_login_screen() -> void:
 	get_tree().change_scene_to_file(Constants.login_screen_file)
