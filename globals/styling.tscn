@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://brwlx66wrpnae"]
+
+[ext_resource type="Script" uid="uid://2su4xds1o10n" path="res://globals/styling.gd" id="1_cu2l7"]
+[ext_resource type="Theme" uid="uid://c52euoe38n0nm" path="res://resources/styles/app_theme.tres" id="2_mgyx0"]
+[ext_resource type="StyleBox" uid="uid://p7paiqtk5qkk" path="res://resources/styles/main_screen_button.tres" id="3_eauh1"]
+
+[node name="Styling" type="Node" unique_id=655100868]
+script = ExtResource("1_cu2l7")
+accent_color = Color(0.3152464, 0.28283867, 0.3914337, 1)
+theme = ExtResource("2_mgyx0")
+main_screen_button_normal = ExtResource("3_eauh1")
