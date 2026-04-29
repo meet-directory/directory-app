@@ -54,10 +54,15 @@ corner_radius_bottom_left = 6
 font_size = 12
 font_color = Color(0.9428228, 0.94282264, 0.94282264, 1)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tyljt"]
+[sub_resource type="LabelSettings" id="LabelSettings_cvpb5"]
+font_size = 14
+font_color = Color(0.446777, 0.44677705, 0.44677705, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_guhvx"]
+font_size = 15
 font_color = Color(0.6509804, 0.7058824, 0.7490196, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tyljt"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m14c4"]
 bg_color = Color(0.38431373, 0.34117648, 0.38039216, 1)
@@ -134,7 +139,7 @@ theme_override_styles/panel = ExtResource("2_omvvx")
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 3
-theme_override_constants/margin_top = 3
+theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 3
 theme_override_constants/margin_bottom = 3
 
@@ -142,9 +147,8 @@ theme_override_constants/margin_bottom = 3
 clip_contents = true
 layout_mode = 2
 theme_override_constants/margin_left = 7
-theme_override_constants/margin_top = 7
 theme_override_constants/margin_right = 7
-theme_override_constants/margin_bottom = 7
+theme_override_constants/margin_bottom = 2
 
 [node name="AxisLockedScrollContainer" type="ScrollContainer" parent="MarginContainer/MarginContainer/ContentClipper" unique_id=258122580]
 layout_mode = 2
@@ -156,6 +160,7 @@ vertical_scroll_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_constants/separation = 2
 
 [node name="PhotoViewer" parent="MarginContainer/MarginContainer/ContentClipper/AxisLockedScrollContainer/VBoxContainer" unique_id=745231879 instance=ExtResource("2_xdqhq")]
 unique_name_in_owner = true
@@ -309,10 +314,11 @@ layout_mode = 2
 text = "💫 Polyamorous Dating"
 label_settings = SubResource("LabelSettings_wldei")
 
-[node name="HSeparator" type="HSeparator" parent="MarginContainer/MarginContainer/ContentClipper/AxisLockedScrollContainer/VBoxContainer" unique_id=700638247]
+[node name="Label" type="Label" parent="MarginContainer/MarginContainer/ContentClipper/AxisLockedScrollContainer/VBoxContainer" unique_id=1043445045]
 layout_mode = 2
-theme_override_constants/separation = 14
-theme_override_styles/separator = SubResource("StyleBoxEmpty_tyljt")
+text = "~"
+label_settings = SubResource("LabelSettings_cvpb5")
+horizontal_alignment = 1
 
 [node name="DescriptionLabel" type="Label" parent="MarginContainer/MarginContainer/ContentClipper/AxisLockedScrollContainer/VBoxContainer" unique_id=2113719380]
 unique_name_in_owner = true

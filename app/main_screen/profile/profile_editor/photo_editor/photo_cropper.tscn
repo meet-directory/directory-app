@@ -1,59 +1,58 @@
-[gd_scene load_steps=5 format=3 uid="uid://cg0teb4x52wsp"]
+[gd_scene format=3 uid="uid://cg0teb4x52wsp"]
 
 [ext_resource type="Script" uid="uid://bfei0mfbtisw2" path="res://app/main_screen/profile/profile_editor/photo_editor/photo_cropper.gd" id="1_isdc1"]
 [ext_resource type="Script" uid="uid://cvngtvdyo4opm" path="res://app/main_screen/profile/profile_editor/photo_editor/photo_crop_rexture_rect.gd" id="2_0fbp3"]
 [ext_resource type="StyleBox" uid="uid://dvjyuhjb1s8f4" path="res://resources/styles/app_background.tres" id="2_xosmk"]
 [ext_resource type="Script" uid="uid://n2wdmcrkfgkg" path="res://app/main_screen/profile/profile_editor/photo_editor/overlay.gd" id="3_todap"]
 
-[node name="CanvasLayer" type="CanvasLayer"]
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1605820938]
 layer = 5
 script = ExtResource("1_isdc1")
 
-[node name="PhotoCropper" type="MarginContainer" parent="."]
+[node name="PhotoCropper" type="MarginContainer" parent="." unique_id=1270179050]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="PhotoCropper"]
+[node name="Panel" type="Panel" parent="PhotoCropper" unique_id=1931414733]
 layout_mode = 2
 theme_override_styles/panel = ExtResource("2_xosmk")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PhotoCropper"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PhotoCropper" unique_id=176229223]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="PhotoCropper/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="PhotoCropper/VBoxContainer" unique_id=1847339097]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Control" type="Control" parent="PhotoCropper/VBoxContainer/MarginContainer"]
+[node name="Control" type="Control" parent="PhotoCropper/VBoxContainer/MarginContainer" unique_id=518668230]
 clip_children = 1
 clip_contents = true
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="PhotoCropper/VBoxContainer/MarginContainer/Control"]
+[node name="Panel" type="Panel" parent="PhotoCropper/VBoxContainer/MarginContainer/Control" unique_id=62432246]
 layout_mode = 0
 offset_right = 920.0
 offset_bottom = 1045.0
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="PhotoCropper/VBoxContainer/MarginContainer/Control"]
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="PhotoCropper/VBoxContainer/MarginContainer/Control" unique_id=1626218324]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-ratio = 0.8
 
-[node name="CropArea" type="ReferenceRect" parent="PhotoCropper/VBoxContainer/MarginContainer/Control/AspectRatioContainer"]
+[node name="CropArea" type="ReferenceRect" parent="PhotoCropper/VBoxContainer/MarginContainer/Control/AspectRatioContainer" unique_id=1168701807]
 unique_name_in_owner = true
 layout_mode = 2
 border_color = Color(0.80049086, 0.80049074, 0.80049074, 1)
 border_width = 2.0
 editor_only = false
 
-[node name="DraggablePhoto" type="TextureRect" parent="PhotoCropper/VBoxContainer/MarginContainer/Control/AspectRatioContainer/CropArea"]
+[node name="DraggablePhoto" type="TextureRect" parent="PhotoCropper/VBoxContainer/MarginContainer/Control/AspectRatioContainer/CropArea" unique_id=535296941]
 unique_name_in_owner = true
 show_behind_parent = true
 layout_mode = 0
@@ -62,7 +61,7 @@ offset_bottom = 1080.0
 stretch_mode = 2
 script = ExtResource("2_0fbp3")
 
-[node name="Overlay" type="Control" parent="PhotoCropper/VBoxContainer/MarginContainer/Control" node_paths=PackedStringArray("crop_area")]
+[node name="Overlay" type="Control" parent="PhotoCropper/VBoxContainer/MarginContainer/Control" unique_id=947426723 node_paths=PackedStringArray("crop_area")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -72,15 +71,15 @@ grow_vertical = 2
 script = ExtResource("3_todap")
 crop_area = NodePath("../AspectRatioContainer/CropArea")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PhotoCropper/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PhotoCropper/VBoxContainer" unique_id=968346094]
 layout_mode = 2
 
-[node name="CancelButton" type="Button" parent="PhotoCropper/VBoxContainer/HBoxContainer"]
+[node name="CancelButton" type="Button" parent="PhotoCropper/VBoxContainer/HBoxContainer" unique_id=140050126]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Cancel"
 
-[node name="SaveButton" type="Button" parent="PhotoCropper/VBoxContainer/HBoxContainer"]
+[node name="SaveButton" type="Button" parent="PhotoCropper/VBoxContainer/HBoxContainer" unique_id=290145549]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "save"

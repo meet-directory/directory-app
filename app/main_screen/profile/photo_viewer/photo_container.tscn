@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c7kfhjronlyao"]
+[gd_scene format=3 uid="uid://c7kfhjronlyao"]
 
 [ext_resource type="Script" uid="uid://c5rj2dvfeent4" path="res://app/main_screen/profile/photo_viewer/photo_container.gd" id="1_e6i5k"]
 [ext_resource type="Shader" uid="uid://5lvlujhai0u2" path="res://resources/styles/photo_loading.gdshader" id="2_clg5u"]
@@ -12,7 +12,7 @@ shader_parameter/brightness = 0.0950000045125
 shader_parameter/softness = 0.02000000095
 shader_parameter/pause_duration = 1.0
 
-[node name="PhotoContainer" type="AspectRatioContainer"]
+[node name="PhotoContainer" type="AspectRatioContainer" unique_id=2139338226]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -20,16 +20,15 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-ratio = 0.8
 script = ExtResource("1_e6i5k")
 load_material = SubResource("ShaderMaterial_yqs00")
 
-[node name="PhotoContainer" type="MarginContainer" parent="."]
+[node name="PhotoContainer" type="MarginContainer" parent="." unique_id=212693004]
 clip_contents = true
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="TextureRect" type="TextureRect" parent="PhotoContainer"]
+[node name="TextureRect" type="TextureRect" parent="PhotoContainer" unique_id=739116315]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3

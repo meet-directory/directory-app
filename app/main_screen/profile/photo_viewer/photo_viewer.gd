@@ -39,6 +39,9 @@ func setup(photos:Array[ProfilePhoto]) -> void:
 	
 	if index_list.get_child_count() > 0:
 		index_list.get_child(0).button_pressed = true
+	
+	await get_tree().process_frame
+	custom_minimum_size = scroll_container.size
 
 func _on_index_button_pressed(i:int):
 	scroll_container.scroll_to(i)

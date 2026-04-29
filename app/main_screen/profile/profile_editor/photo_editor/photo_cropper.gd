@@ -29,7 +29,7 @@ func get_cropped_texture() -> ImageTexture:
 	var crop_size:Vector2i = max_crop_size
 	if img.get_height() < max_crop_size.y:
 		crop_size.y = img.get_height()
-		crop_size.x = int(crop_size.y*0.8)
+		crop_size.x = int(crop_size.y*Constants.PIC_RATIO)
 	
 	src_rect = src_rect.intersection(Rect2(Vector2.ZERO, Vector2(img.get_width(), img.get_height())))
 	var cropped = img.get_region(src_rect.abs())
