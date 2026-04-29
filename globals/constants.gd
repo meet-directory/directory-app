@@ -25,7 +25,8 @@ const chat_pane_scene = preload("res://app/main_screen/messages/chats/chat_pane.
 const PROFILE_VIEWER_MIN_SIZE = Vector2(300, 500)
 const MAX_TAG_NAME_LENGTH = 50
 const TAG_ALLOWED_CHARS:String = 'abcdefghijklmnopqrstuvwxyz-'
-const MIN_REQUIRED_PROFILE_TAGS = 5
+const MIN_REQUIRED_PROFILE_TAGS = 0
+const PIC_RATIO = 1
 
 const TEST_USER = 't'
 const TEST_PASS = 't'

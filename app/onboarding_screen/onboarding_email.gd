@@ -69,6 +69,7 @@ func _on_login_request_returned(response_code):
 			#Server.get_session_profile(Server.set_session_profile)
 			# TODO ensure get_profile is successful before scene change
 			# TODO if sesstion profile is not found in db, go to onboarding screen
+			Server.get_session_profile()
 			confirmed.emit()
 		#401: # Invalid login
 			#show_error_message(warn_incorrect_login)

@@ -9,6 +9,7 @@ var index = 0
 @onready var scroll_container: MobileScrollContainer = %ScrollContainer
 @onready var progress_panels: HBoxContainer = %ProgressPanels
 
+var min_size = 320
 
 var onboarding_data:Dictionary
 
@@ -27,6 +28,20 @@ func _ready() -> void:
 	_step_done()
 	if Server.session_profile:
 		_resume_onboarding()
+	_adjust_size()
+
+func _adjust_size() -> void:
+	await get_tree().process_frame
+	var screen_size = Constants.get_screen_size()
+	var content_size = underlay.size
+	scroll_container.custom_minimum_size.y = min(screen_size.y * 0.85, content_size.y)
+	
+	if screen_size.x < min_size:
+		scroll_container.custom_minimum_size.x = screen_size.x
+	else:
+		scroll_container.custom_minimum_size.x = min_size
+	
+
 
 func _step_done():
 	for node in underlay.get_children():
@@ -40,8 +55,10 @@ func _step_done():
 	next_scene.onboarding_data = onboarding_data
 	underlay.add_child(next_scene)
 	scroll_container.update()
-	Server.set_onboard_step(index, func (_x, _y): return)
+	if Server.session_profile:
+		Server.set_onboard_step(index, func (_x, _y): return)
 	index += 1
+	_adjust_size()
 
 func _mark_step_complete(step_index:int) -> void:
 	(progress_panels.get_child(step_index) as Panel).add_theme_stylebox_override('panel', progress_panel_complete)
@@ -68,7 +85,7 @@ func _on_back_button_pressed() -> void:
 	if index < 3:
 		var conf:ConfirmationPopup = App.show_conf_popup("Cancel Account Creation?", "No", "Yes")
 		conf.confirm_pressed.connect(_account_canceled)
-	elif index == 3:
+	elif index >= 3:
 		var conf:ConfirmationPopup = App.show_conf_popup("Return to login screen?", "No", "Yes")
 		conf.confirm_pressed.connect(_account_canceled)
 

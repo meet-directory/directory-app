@@ -70,11 +70,11 @@ func _over_18(date_dict:Dictionary) -> bool:
 	
 	if cyear - year > 18:
 		return true
-		
-	if cyear - year == 17:
+	
+	if cyear - year == 18:
 		if cmonth > month:
 			return true
-		if cmonth == month:
+		elif cmonth == month:
 			if cday >= day:
 				return true
 	return false

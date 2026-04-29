@@ -84,6 +84,7 @@ func load_access_token() -> String:
 func clear_access_token() -> void:
 	_access_token = ''
 	DirAccess.remove_absolute(ACCESS_TOKEN_PATH)
+	DirAccess.remove_absolute(REFRESH_TOKEN_PATH)
 
 func get_access_token() -> String:
 	return _access_token

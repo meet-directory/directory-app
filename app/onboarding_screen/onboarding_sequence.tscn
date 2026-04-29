@@ -76,8 +76,9 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_rmgpu")
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer" unique_id=1510189500]
 layout_mode = 2
 theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_bottom = 10
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 6
 
 [node name="HFlowContainer" type="HFlowContainer" parent="VBoxContainer/MarginContainer/MarginContainer" unique_id=1323976574]
 layout_mode = 2
@@ -124,7 +125,6 @@ layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_2dlfw")
 
 [node name="VirtualKeyboardAdjuster" type="MarginContainer" parent="VBoxContainer" unique_id=775903173]
-custom_minimum_size = Vector2(500, 500)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
@@ -133,8 +133,10 @@ metadata/_custom_type_script = "uid://cg1kfg1oqrnic"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/VirtualKeyboardAdjuster" unique_id=317881614]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 500)
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_horizontal = 4
+size_flags_vertical = 6
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
 script = ExtResource("8_qcmpg")
