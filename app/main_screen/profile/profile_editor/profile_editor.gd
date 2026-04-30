@@ -15,8 +15,19 @@ class_name ProfileEditor
 signal edit_saved
 signal edit_canceled
 
-#func _ready() -> void:
-	#Server.user_session_loaded.connect(_on_profile_loaded)
+# session is only reloaded when we change photos, so want to refresh the photos
+func _ready() -> void:
+	Server.user_session_loaded.connect(_on_session_profile_loaded)
+	call_deferred("set_sizing")
+	custom_minimum_size.x = App.PROFILE_VIEW_WIDTH
+
+func set_sizing():
+	### Ensure the name is always visible, even on small displays
+	### if the photo viewer takes up the whole screen, there is no place to grab
+	### to scroll and see the rest of the profile.
+	### Likewise the photoviewer size control flags should never be set to EXPAND.
+	var y = photo_viewer.get_parent().size.x*1.2
+	photo_viewer.custom_minimum_size.y = y
 
 func display(profile:ProfileResource) -> void:
 	name_edit.text = profile.username
@@ -58,20 +69,8 @@ func _on_photo_editor_editing_finished() -> void:
 	edit_profile_container.show()
 	Server.get_session_profile()
 
-# session is only reloaded when we change photos, so want to refresh the photos
-func _ready() -> void:
-	Server.user_session_loaded.connect(_on_session_profile_loaded)
-	call_deferred("set_sizing")
-	custom_minimum_size.x = App.PROFILE_VIEW_WIDTH
-	
 
-func set_sizing():
-	### Ensure the name is always visible, even on small displays
-	### if the photo viewer takes up the whole screen, there is no place to grab
-	### to scroll and see the rest of the profile.
-	### Likewise the photoviewer size control flags should never be set to EXPAND.
-	var y = photo_viewer.get_parent().size.x*.8
-	photo_viewer.custom_minimum_size.y = y
+
 
 func _on_session_profile_loaded(profile:ProfileResource) -> void:
 	photo_viewer.setup(profile.photos)

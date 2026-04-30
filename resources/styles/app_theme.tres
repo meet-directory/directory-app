@@ -121,6 +121,7 @@ Button/styles/focus = SubResource("StyleBoxEmpty_pll2o")
 Button/styles/hover = SubResource("StyleBoxFlat_ijf42")
 Button/styles/normal = SubResource("StyleBoxFlat_32p4c")
 Button/styles/pressed = SubResource("StyleBoxFlat_etiqk")
+CheckBox/font_sizes/font_size = 14
 CheckBox/styles/hover = SubResource("StyleBoxFlat_qvy20")
 CheckBox/styles/hover_pressed = SubResource("StyleBoxFlat_qm0go")
 CheckBox/styles/normal = SubResource("StyleBoxFlat_qvy20")

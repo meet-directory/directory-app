@@ -21,7 +21,7 @@ var toggles:int = 0
 func _ready() -> void:
 	dating_types.hide()
 	dating_toggle.toggled.connect(_on_dating_toggle_toggled)
-	custom_minimum_size.x = min(App.get_screen_size().x*6, 400)
+	#custom_minimum_size.x = min(App.get_screen_size().x*6, 400)
 
 func _on_dating_toggle_toggled(toggled_on: bool) -> void:
 	dating_types.visible = toggled_on

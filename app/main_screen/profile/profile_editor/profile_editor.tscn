@@ -33,11 +33,12 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [node name="ProfileEditor" type="MarginContainer" unique_id=178248927]
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 9
 anchor_bottom = 1.0
-grow_horizontal = 2
+offset_right = 376.0
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("1_mo5yl")
 
 [node name="Panel" type="Panel" parent="." unique_id=284619978]
@@ -58,6 +59,7 @@ layout_mode = 2
 [node name="EditProfileContainer" type="ScrollContainer" parent="MarginContainer/EditProfileContainer" unique_id=685163244]
 layout_mode = 2
 size_flags_vertical = 3
+horizontal_scroll_mode = 0
 script = ExtResource("2_odxqi")
 metadata/_custom_type_script = "uid://cmiecml4cjstp"
 
@@ -237,8 +239,9 @@ label_settings = ExtResource("6_x0y50")
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="VBoxContainer2" type="HBoxContainer" parent="MarginContainer/EditProfileContainer/EditProfileContainer/VBoxContainer/IdentityMasks/MarginContainer/VBoxContainer" unique_id=1995119084]
+[node name="VBoxContainer2" type="HFlowContainer" parent="MarginContainer/EditProfileContainer/EditProfileContainer/VBoxContainer/IdentityMasks/MarginContainer/VBoxContainer" unique_id=1224336291]
 layout_mode = 2
+alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/EditProfileContainer/EditProfileContainer/VBoxContainer/IdentityMasks/MarginContainer/VBoxContainer/VBoxContainer2" unique_id=961339437]
 layout_mode = 2
