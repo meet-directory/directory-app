@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c7ur1emuhx3c7" path="res://app/main_screen/profile/photo_viewer/photo_viewer.gd" id="1_6vxon"]
 [ext_resource type="PackedScene" uid="uid://ceuv06iwksn2x" path="res://app/main_screen/profile/photo_viewer/photo_viewer_index_button.tscn" id="3_1ub40"]
 [ext_resource type="PackedScene" uid="uid://c7kfhjronlyao" path="res://app/main_screen/profile/photo_viewer/photo_container.tscn" id="3_ldt2f"]
+[ext_resource type="LabelSettings" uid="uid://crec8tr40vb4i" path="res://resources/styles/subtle_grey_text_label_setting.tres" id="4_f3jfh"]
 [ext_resource type="Script" uid="uid://bvgtssvy1rsod" path="res://app/custom_ui_elements/snapping_scroll_container.gd" id="4_ux30x"]
 [ext_resource type="Texture2D" uid="uid://btmnrhfcdxyia" path="res://resources/icons/no-photo.png" id="5_ldt2f"]
 
@@ -30,14 +31,27 @@ script = ExtResource("1_6vxon")
 photo_container_scene = ExtResource("3_ldt2f")
 photo_index_button = ExtResource("3_1ub40")
 
-[node name="Panel" type="Panel" parent="." unique_id=1215021536]
-visible = false
-layout_mode = 2
-
 [node name="CornerClip" type="Panel" parent="." unique_id=1924443810]
 clip_children = 1
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ldt2f")
+
+[node name="NoPhotoDefaultPanel" type="MarginContainer" parent="CornerClip" unique_id=68532764]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CornerClip/NoPhotoDefaultPanel" unique_id=1215021536]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CornerClip/NoPhotoDefaultPanel" unique_id=3618696]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "no photos :("
+label_settings = ExtResource("4_f3jfh")
 
 [node name="MarginContainer" type="MarginContainer" parent="CornerClip" unique_id=2026253202]
 layout_mode = 1
@@ -70,6 +84,7 @@ size_flags_vertical = 3
 theme_override_constants/separation = 4
 
 [node name="TextureRect" type="TextureRect" parent="CornerClip/MarginContainer/ViewerSizeNode/ScrollContainer/PhotoContainerList" unique_id=925055498]
+visible = false
 layout_mode = 2
 texture = ExtResource("5_ldt2f")
 expand_mode = 5
