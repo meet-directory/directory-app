@@ -66,14 +66,15 @@ func _on_login_request_returned(response_code):
 	match response_code:
 		200: # SUCCESS
 			# The session cookie was already set by the database for logging in
-			#Server.get_session_profile(Server.set_session_profile)
-			# TODO ensure get_profile is successful before scene change
-			# TODO if sesstion profile is not found in db, go to onboarding screen
+			# Ensure get_profile is successful before scene change
+			Server.user_session_loaded.connect(_on_got_session_profile)
 			Server.get_session_profile()
-			confirmed.emit()
 		#401: # Invalid login
 			#show_error_message(warn_incorrect_login)
 		_: Server.show_default_error_msg(response_code)
+
+func _on_got_session_profile(_prof):
+	confirmed.emit()
 
 func show_error_message(message:Label):
 	error_panel.show()
