@@ -2,7 +2,7 @@ extends CanvasLayer
 @onready var draggable_photo: TextureRect = %DraggablePhoto
 @onready var crop_area: ReferenceRect = %CropArea
 
-var max_crop_size := Vector2i(1080,1350)
+var max_crop_size := Vector2i(1080,1080)
 
 signal photo_cropped(cropped:ImageTexture)
 
