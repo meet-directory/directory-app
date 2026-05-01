@@ -1,6 +1,6 @@
 extends Node
 @export var is_prod = true
-var software_version = 'v0.2.0-beta'
+var software_version = 'v0.2.1-beta'
 ## Prevents downloading photos during development. If using prod, should always be true
 @export var load_photos = true
 
