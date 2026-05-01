@@ -372,8 +372,9 @@ func push_seen_profile(user_id:int) -> void:
 		_flush_queue[user_id] = true
 
 func _flush_seen_profiles():
-	if len(_flush_queue.keys()) > 0:
-		_mark_profiles_seen(_flush_queue.keys(), _on_mark_seen_returned)
+	if session_profile:
+		if len(_flush_queue.keys()) > 0:
+			_mark_profiles_seen(_flush_queue.keys(), _on_mark_seen_returned)
 
 # NOTE between the time the request is sent and received, some profiles could get added and then erased
 func _on_mark_seen_returned(resp_code:int, _resp) -> void:
