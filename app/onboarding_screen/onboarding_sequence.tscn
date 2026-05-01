@@ -161,9 +161,4 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1975957719]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
 [connection signal="pressed" from="VBoxContainer/MarginContainer/MarginContainer/HFlowContainer/BackButton" to="." method="_on_back_button_pressed"]
