@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b322t7vttcqj0"]
 
-[node name="FileDialog" type="FileDialog"]
+[node name="FileDialog" type="FileDialog" unique_id=250115852]
 oversampling_override = 1.0
 title = "Open a File"
 initial_position = 1

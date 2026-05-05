@@ -1,26 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://bbyxfs4lar07c"]
+[gd_scene format=3 uid="uid://bbyxfs4lar07c"]
 
 [ext_resource type="Script" uid="uid://bubgrddmfo7ro" path="res://app/main_screen/profile/profile_editor/photo_editor/photo_edit_button.gd" id="1_3l1ru"]
-[ext_resource type="PackedScene" uid="uid://b322t7vttcqj0" path="res://app/main_screen/profile/profile_editor/photo_editor/file_dialog.tscn" id="2_md0yv"]
 [ext_resource type="PackedScene" uid="uid://cg0teb4x52wsp" path="res://app/main_screen/profile/profile_editor/photo_editor/photo_cropper.tscn" id="3_8uthp"]
 [ext_resource type="LabelSettings" uid="uid://crec8tr40vb4i" path="res://resources/styles/subtle_grey_text_label_setting.tres" id="4_xpao4"]
 
-[node name="PhotoEditButton" type="AspectRatioContainer"]
+[node name="PhotoEditButton" type="AspectRatioContainer" unique_id=860149920]
 offset_right = 40.0
 offset_bottom = 40.0
 ratio = 0.8
 script = ExtResource("1_3l1ru")
-file_dialogue_scene = ExtResource("2_md0yv")
 photo_cropper_scene = ExtResource("3_8uthp")
 
-[node name="PhotoEditButton" type="Button" parent="."]
+[node name="PhotoEditButton" type="Button" parent="." unique_id=2142882364]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 theme_override_font_sizes/font_size = 80
 text = "+"
 icon_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="PhotoEditButton"]
+[node name="TextureRect" type="TextureRect" parent="PhotoEditButton" unique_id=654358088]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -31,7 +29,7 @@ grow_vertical = 2
 expand_mode = 2
 stretch_mode = 4
 
-[node name="DeleteButton" type="Button" parent="PhotoEditButton"]
+[node name="DeleteButton" type="Button" parent="PhotoEditButton" unique_id=398917957]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 1
@@ -42,7 +40,7 @@ offset_bottom = 41.0
 grow_horizontal = 0
 text = "🗑️"
 
-[node name="FocusIndicator" type="MarginContainer" parent="PhotoEditButton"]
+[node name="FocusIndicator" type="MarginContainer" parent="PhotoEditButton" unique_id=686336815]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
@@ -53,11 +51,11 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Panel" type="Panel" parent="PhotoEditButton/FocusIndicator"]
+[node name="Panel" type="Panel" parent="PhotoEditButton/FocusIndicator" unique_id=93510632]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Label" type="Label" parent="PhotoEditButton/FocusIndicator"]
+[node name="Label" type="Label" parent="PhotoEditButton/FocusIndicator" unique_id=892927618]
 layout_mode = 2
 size_flags_vertical = 1
 text = "Change Photo"
