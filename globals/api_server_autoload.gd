@@ -1,12 +1,13 @@
 extends Node
 
-const NPROFILES_PER_QUERY = 10
+@export var debug:bool = false
 
 var BASE_URL:String
 var HTTP_PREFIX:String = "https://"
 const DEV_BASE_URL = "0.0.0.0:10000"
 const PROD_BASE_URL = "directory-api-w9mi.onrender.com"
 #const PROD_BASE_URL = "directory-api-1.onrender.com"
+const NPROFILES_PER_QUERY = 10
 
 const LOGIN_ENDPOINT =                'login'
 const REGISTER_ENDPOINT =             'register'
@@ -50,7 +51,7 @@ const MARK_SEEN_FLUSH_INTERVAL = 15
 
 const CONTENT_JSON_HEADER = 'Content-Type: application/json'
 #const ORIGIN_HEADER = "Origin: localhost:8060"
-@export var debug:bool = false
+
 
 signal user_session_loaded(profile:ProfileResource)
 signal failed_to_load_user_session # only used by app.gd to test initial login with stored token
