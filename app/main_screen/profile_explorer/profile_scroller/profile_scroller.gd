@@ -70,17 +70,26 @@ func _load_next_page() -> void:
 	right_button.show()
 	Server.query_profiles(_http_request_completed, page)
 
-func _http_request_completed(_resp_code, response):
+func _http_request_completed(resp_code, response):
 	if response != null:
-		var profiles:Array[ProfileResource]
-		for data in response:
-			var profile = ProfileResource.new()
-			profile.from_db(data)
-			profiles.append(profile)
-		profile_scroller.show()
-		if end_screen:
-			end_screen.queue_free()
-		_add_profiles(profiles)
+		right_button.hide()
+		left_button.hide()
+		match resp_code:
+			422:
+				if response["code"] == "no_location":
+					end_screen = end_of_results_scene.instantiate()
+					profile_scroller.add_child(end_screen)
+					end_screen.show_no_loc()
+			200:
+				var profiles:Array[ProfileResource]
+				for data in response:
+					var profile = ProfileResource.new()
+					profile.from_db(data)
+					profiles.append(profile)
+				profile_scroller.show()
+				if end_screen:
+					end_screen.queue_free()
+				_add_profiles(profiles)
  
 func _add_profiles(profiles:Array[ProfileResource]) -> void:
 	for profile in profiles:
