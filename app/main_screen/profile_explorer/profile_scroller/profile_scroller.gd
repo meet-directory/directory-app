@@ -72,11 +72,11 @@ func _load_next_page() -> void:
 
 func _http_request_completed(resp_code, response):
 	if response != null:
-		right_button.hide()
-		left_button.hide()
 		match resp_code:
 			422:
 				if response["code"] == "no_location":
+					right_button.hide()
+					left_button.hide()
 					end_screen = end_of_results_scene.instantiate()
 					profile_scroller.add_child(end_screen)
 					end_screen.show_no_loc()
