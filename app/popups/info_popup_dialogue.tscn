@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://vt5pm8h4n43n"]
+[gd_scene format=3 uid="uid://vt5pm8h4n43n"]
 
 [ext_resource type="Script" uid="uid://c6mteqydl40sd" path="res://app/popups/info_popup_dialogue.gd" id="1_d7pvo"]
 [ext_resource type="StyleBox" uid="uid://7s6g47fwt5ve" path="res://resources/styles/greyed_background_panel.tres" id="2_mor8o"]
@@ -15,11 +15,11 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[node name="InfoPopupDialogue" type="CanvasLayer"]
+[node name="InfoPopupDialogue" type="CanvasLayer" unique_id=993939486]
 layer = 100
 script = ExtResource("1_d7pvo")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=367784045]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -28,42 +28,57 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Panel" type="Panel" parent="MarginContainer"]
+[node name="Panel" type="Panel" parent="MarginContainer" unique_id=1501054716]
 layout_mode = 2
 theme_override_styles/panel = ExtResource("2_mor8o")
 
-[node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer" unique_id=1743148482]
 layout_mode = 2
 
-[node name="Popup" type="MarginContainer" parent="MarginContainer/CenterContainer"]
+[node name="Popup" type="MarginContainer" parent="MarginContainer/CenterContainer" unique_id=2124765423]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="MarginContainer/CenterContainer/Popup"]
+[node name="Panel" type="Panel" parent="MarginContainer/CenterContainer/Popup" unique_id=238690075]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_d7pvo")
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/CenterContainer/Popup"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/CenterContainer/Popup" unique_id=1147234381]
 layout_mode = 2
+size_flags_vertical = 3
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CenterContainer/Popup/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CenterContainer/Popup/MarginContainer" unique_id=668388860]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/CenterContainer/Popup/MarginContainer/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/CenterContainer/Popup/MarginContainer/VBoxContainer" unique_id=2026907305]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScrollContent" type="VBoxContainer" parent="MarginContainer/CenterContainer/Popup/MarginContainer/VBoxContainer/ScrollContainer" unique_id=289856773]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/CenterContainer/Popup/MarginContainer/VBoxContainer/ScrollContainer/ScrollContent" unique_id=261664894]
 layout_mode = 2
 text = "ℹ️"
 
-[node name="DescriptionLabel" type="Label" parent="MarginContainer/CenterContainer/Popup/MarginContainer/VBoxContainer"]
+[node name="DescriptionLabel" type="Label" parent="MarginContainer/CenterContainer/Popup/MarginContainer/VBoxContainer/ScrollContainer/ScrollContent" unique_id=537957618]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
-text = "description ipsum dolor ya yada yada"
+size_flags_vertical = 3
+text = "description ipsum dolor ya yada yadadescription ipsum dolor ya yada yadadescription ipsum dolor ya yada yadadescription ipsum dolor ya yada yadadescription ipsum dolor ya yada yadadescription ipsum dolor ya yada yadadescription ipsum dolor ya yada yadadescription ipsum dolor ya yada yada"
 autowrap_mode = 2
 
-[node name="CloseButton" type="Button" parent="MarginContainer/CenterContainer/Popup/MarginContainer/VBoxContainer"]
+[node name="CloseButton" type="Button" parent="MarginContainer/CenterContainer/Popup/MarginContainer/VBoxContainer" unique_id=1446638126]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
