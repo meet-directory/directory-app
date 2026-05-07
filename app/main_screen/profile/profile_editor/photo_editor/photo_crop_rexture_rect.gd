@@ -19,7 +19,7 @@ func set_photo(tex:Texture2D) -> void:
 	
 	# Ensure photo starts within bounds at a reasonable zoom
 	await get_tree().process_frame
-	apply_zoom(0.25, Vector2.ZERO)
+	apply_zoom(0.01, Vector2.ZERO)
 
 func _gui_input(event: InputEvent):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
