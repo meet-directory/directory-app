@@ -53,11 +53,11 @@ window/handheld/orientation=1
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/double_slider/plugin.cfg", "res://addons/file_access_web/plugin.cfg")
+enabled=PackedStringArray("res://addons/GodotGetImage/plugin.cfg", "res://addons/double_slider/plugin.cfg", "res://addons/file_access_web/plugin.cfg")
 
 [gui]
 
-theme/custom_font="uid://c0rg3bblrrf5m"
+theme/custom_font="uid://bi37j6bt4qrvy"
 
 [input]
 

@@ -40,7 +40,7 @@ func _ready():
 		version = VERSIONS.MOBILE
 	
 	await get_tree().process_frame
-	PROFILE_VIEW_WIDTH = min(get_screen_size().y*0.9 - 120, 400)
+	PROFILE_VIEW_WIDTH = min(get_screen_size().y*0.9 - 120, 400, get_screen_size().x)
 
 func show_login_screen() -> void:
 	get_tree().change_scene_to_file(Constants.login_screen_file)
