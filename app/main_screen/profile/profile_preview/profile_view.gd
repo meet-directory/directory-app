@@ -8,12 +8,15 @@ class_name ProfileView
 #@onready var relationship_tags: TagContainer = %RelationshipTags
 @onready var other_tags: TagContainer = %OtherTags
 @onready var personal_tags: TagContainer = %PersonalTags
-@onready var match_options: MarginContainer = %MatchOptions
+#@onready var match_options: MarginContainer = %MatchOptions
 @onready var age_label: Label = %AgeLabel
-@onready var report_menu: MarginContainer = %ReportMenu
+#@onready var report_menu: MarginContainer = %ReportMenu
 @onready var location_label: Label = %LocationLabel
 @onready var location_panel: MarginContainer = %LocationPanel
 @onready var relationship_types: MarginContainer = %RelationshipTypes
+@onready var description_box: VBoxContainer = %DescriptionBox
+@onready var like_button: Button = %LikeButton
+@onready var match_options: MarginContainer = %MatchOptions
 
 var profile_data:ProfileResource
 
@@ -28,11 +31,14 @@ func set_display_mode(mode:DISPLAY_MODES) -> void:
 	display_mode = mode
 	match mode:
 		DISPLAY_MODES.no_options:
-			report_menu.hide()
+			match_options.hide()
+			like_button.hide()
 		DISPLAY_MODES.all_options:
-			match_options.visible = true
+			#match_options.visible = true
+			like_button.show()
 		DISPLAY_MODES.only_report_options:
-			match_options.visible = false
+			#match_options.visible = false
+			like_button.hide()
 
 signal user_blocked
 
@@ -50,15 +56,17 @@ func set_sizing():
 
 func display(profile:ProfileResource, must_have_tags:Array[String]=[], wanted_tags:Array[String]=[]) -> void:
 	profile_data = profile
-	match_options.setup_for_profile(profile_data)
+	#match_options.setup_for_profile(profile_data)
 	name_label.text = profile.username
 	description_label.text = profile.description
+	if description_label.text.is_empty():
+		description_box.hide()
 	age_label.text = str(profile.age)
 	location_label.text = profile.loc_string
 	relationship_types.set_mask(profile.relationship_mask)
 	if profile.loc_string.is_empty():
 		location_panel.hide()
-	
+	like_button.setup(profile)
 	#var rtags = profile.is_tags.filter(func (t:Tag): return t.type == Tag.TYPE.RelationshipType)
 	#if len(rtags) > 0:
 		#relationship_tags.add_tags(rtags)

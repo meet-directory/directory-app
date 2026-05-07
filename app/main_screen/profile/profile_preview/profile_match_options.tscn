@@ -1,37 +1,97 @@
-[gd_scene load_steps=13 format=3 uid="uid://c03ewan0er1vt"]
+[gd_scene format=3 uid="uid://c03ewan0er1vt"]
 
 [ext_resource type="Script" uid="uid://bb635otrs27wp" path="res://app/main_screen/profile/profile_preview/profile_match_options.gd" id="1_5yok3"]
 [ext_resource type="Texture2D" uid="uid://cvyewqcns718a" path="res://resources/icons/burger.svg" id="2_w0imt"]
 [ext_resource type="Script" uid="uid://ggmkw5wy64nl" path="res://app/main_screen/profile/profile_preview/menu_button.gd" id="3_4qx7b"]
 [ext_resource type="PackedScene" uid="uid://hfria8mrmtqh" path="res://app/main_screen/reporting/report_user_menu.tscn" id="4_cgf6k"]
+[ext_resource type="Script" uid="uid://cvue7awgxe111" path="res://app/main_screen/profile/profile_preview/like_button.gd" id="4_orb8q"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lyk1e"]
-bg_color = Color(0.56482446, 0.41173252, 0.47423828, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.51, 0.36720002, 0.44098002, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g4ctk"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.1254902, 0.1254902, 0.1254902, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xdqhq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ym0iw"]
+content_margin_left = 4.0
+content_margin_top = 2.0
+content_margin_right = 4.0
+content_margin_bottom = 6.0
+bg_color = Color(0.42615372, 0.44268548, 0.5190064, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 4
+border_color = Color(0.17283267, 0.1728327, 0.17283252, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1aqc8"]
+bg_color = Color(0.50534403, 0.5053441, 0.50534385, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 4
+border_color = Color(0.17283267, 0.1728327, 0.17283252, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xdqhq"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dctqu"]
+content_margin_top = 0.0
+bg_color = Color(0.6830772, 0.6830774, 0.6830771, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 4
+border_color = Color(0.17283267, 0.1728327, 0.17283252, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wfatv"]
+content_margin_left = 4.0
+content_margin_top = 2.0
+content_margin_right = 4.0
+content_margin_bottom = 6.0
+bg_color = Color(0.33659998, 0.44352996, 0.51, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 4
+border_color = Color(0.17283267, 0.1728327, 0.17283252, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ugt32"]
-content_margin_left = 5.0
-content_margin_right = 5.0
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
 bg_color = Color(0.7384275, 0.55515426, 0.61158925, 1)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 4
 border_color = Color(0.25942641, 0.17483518, 0.19239298, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 expand_margin_bottom = 2.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w0imt"]
@@ -66,6 +126,40 @@ expand_margin_bottom = 2.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ugt32"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_orb8q"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.4355, 0.67, 0.48240003, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 4
+border_color = Color(0.25942641, 0.17483518, 0.19239298, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xqeg2"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.3157, 0.37070835, 0.41, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 4
+border_color = Color(0.25942641, 0.17483518, 0.19239298, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+expand_margin_bottom = 2.0
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cgf6k"]
 bg_color = Color(0.3892836, 0.32940444, 0.42233357, 1)
 border_width_left = 1
@@ -84,51 +178,94 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[node name="MatchOptions" type="MarginContainer"]
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 44.0
+[node name="MatchOptions" type="MarginContainer" unique_id=39948340]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -60.5
+offset_right = 60.5
+offset_bottom = 60.0
 grow_horizontal = 2
+size_flags_horizontal = 4
 size_flags_vertical = 8
 script = ExtResource("1_5yok3")
 report_user_menu = ExtResource("4_cgf6k")
 
-[node name="Panel" type="Panel" parent="."]
-visible = false
+[node name="Panel" type="Panel" parent="." unique_id=1054737358]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_lyk1e")
+theme_override_styles/panel = SubResource("StyleBoxFlat_g4ctk")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=2131867261]
 layout_mode = 2
-theme_override_constants/margin_left = 5
+size_flags_horizontal = 4
+theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
+theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 5
 
-[node name="TabContainer" type="TabContainer" parent="MarginContainer"]
+[node name="TabContainer" type="TabContainer" parent="MarginContainer" unique_id=1092574996]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_xdqhq")
 current_tab = 0
 tabs_visible = false
 
-[node name="LikeOptions" type="HFlowContainer" parent="MarginContainer/TabContainer"]
+[node name="LikeOptions" type="HBoxContainer" parent="MarginContainer/TabContainer" unique_id=374724627]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_constants/separation = 22
 metadata/_tab_index = 0
 
-[node name="LikeButton" type="Button" parent="MarginContainer/TabContainer/LikeOptions"]
+[node name="MenuButton2" type="Button" parent="MarginContainer/TabContainer/LikeOptions" unique_id=684869084]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxFlat_ym0iw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1aqc8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dctqu")
+toggle_mode = true
+text = "❔"
+icon_alignment = 1
+
+[node name="MenuButton3" type="Button" parent="MarginContainer/TabContainer/LikeOptions" unique_id=1491325881]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 3
-tooltip_text = "Send a like that they can see."
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxFlat_wfatv")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1aqc8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dctqu")
+toggle_mode = true
+icon = ExtResource("2_w0imt")
+icon_alignment = 1
+
+[node name="LikeButton" type="Button" parent="MarginContainer/TabContainer/LikeOptions" unique_id=477571698]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+tooltip_text = "Send a like"
+theme_override_font_sizes/font_size = 21
 theme_override_styles/normal = SubResource("StyleBoxFlat_ugt32")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_w0imt")
 theme_override_styles/hover = SubResource("StyleBoxFlat_6dk1i")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ugt32")
-text = "♥️ Like"
-text_overrun_behavior = 2
+text = "♥️"
+script = ExtResource("4_orb8q")
 
-[node name="MenuButton" type="Button" parent="MarginContainer/TabContainer/LikeOptions"]
+[node name="Button" type="Button" parent="MarginContainer/TabContainer/LikeOptions" unique_id=1770802379]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+theme_override_colors/font_pressed_color = Color(0.6255971, 0.6255971, 0.6255971, 1)
+theme_override_font_sizes/font_size = 21
+theme_override_styles/normal = SubResource("StyleBoxFlat_orb8q")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xqeg2")
+toggle_mode = true
+text = "👁️"
+
+[node name="MenuButton" type="Button" parent="MarginContainer/TabContainer/LikeOptions" unique_id=1235163080]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
@@ -138,7 +275,7 @@ icon = ExtResource("2_w0imt")
 icon_alignment = 1
 script = ExtResource("3_4qx7b")
 
-[node name="Menu" type="MarginContainer" parent="MarginContainer/TabContainer/LikeOptions/MenuButton"]
+[node name="Menu" type="MarginContainer" parent="MarginContainer/TabContainer/LikeOptions/MenuButton" unique_id=22547624]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 3
@@ -152,43 +289,45 @@ offset_bottom = -30.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="Panel" type="Panel" parent="MarginContainer/TabContainer/LikeOptions/MenuButton/Menu"]
+[node name="Panel" type="Panel" parent="MarginContainer/TabContainer/LikeOptions/MenuButton/Menu" unique_id=1442506873]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_cgf6k")
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/TabContainer/LikeOptions/MenuButton/Menu"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/TabContainer/LikeOptions/MenuButton/Menu" unique_id=1610149466]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TabContainer/LikeOptions/MenuButton/Menu/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TabContainer/LikeOptions/MenuButton/Menu/MarginContainer" unique_id=186779021]
 layout_mode = 2
 
-[node name="ReportUserButton" type="Button" parent="MarginContainer/TabContainer/LikeOptions/MenuButton/Menu/MarginContainer/VBoxContainer"]
+[node name="ReportUserButton" type="Button" parent="MarginContainer/TabContainer/LikeOptions/MenuButton/Menu/MarginContainer/VBoxContainer" unique_id=618719820]
 layout_mode = 2
 text = "✒️ Report User"
 
-[node name="BlockUserButton" type="Button" parent="MarginContainer/TabContainer/LikeOptions/MenuButton/Menu/MarginContainer/VBoxContainer"]
+[node name="BlockUserButton" type="Button" parent="MarginContainer/TabContainer/LikeOptions/MenuButton/Menu/MarginContainer/VBoxContainer" unique_id=497983605]
 layout_mode = 2
 text = "🚫 Block User"
 
-[node name="MatchedContainer" type="MarginContainer" parent="MarginContainer/TabContainer"]
+[node name="MatchedContainer" type="MarginContainer" parent="MarginContainer/TabContainer" unique_id=1174052023]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="Panel" type="Panel" parent="MarginContainer/TabContainer/MatchedContainer"]
+[node name="Panel" type="Panel" parent="MarginContainer/TabContainer/MatchedContainer" unique_id=613190846]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_omvvx")
 
-[node name="Label" type="Label" parent="MarginContainer/TabContainer/MatchedContainer"]
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/MatchedContainer" unique_id=2094168107]
 layout_mode = 2
 text = "👏 Matched! 👏"
 horizontal_alignment = 1
 
+[connection signal="toggled" from="MarginContainer/TabContainer/LikeOptions/MenuButton2" to="MarginContainer/TabContainer/LikeOptions/MenuButton2" method="_on_toggled"]
+[connection signal="toggled" from="MarginContainer/TabContainer/LikeOptions/MenuButton3" to="MarginContainer/TabContainer/LikeOptions/MenuButton3" method="_on_toggled"]
 [connection signal="pressed" from="MarginContainer/TabContainer/LikeOptions/LikeButton" to="." method="_on_like_button_pressed"]
 [connection signal="toggled" from="MarginContainer/TabContainer/LikeOptions/MenuButton" to="MarginContainer/TabContainer/LikeOptions/MenuButton" method="_on_toggled"]
 [connection signal="pressed" from="MarginContainer/TabContainer/LikeOptions/MenuButton/Menu/MarginContainer/VBoxContainer/ReportUserButton" to="." method="_on_report_user_button_pressed"]

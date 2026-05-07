@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ds8fo6ghwa7vd"]
+[gd_scene format=3 uid="uid://ds8fo6ghwa7vd"]
 
 [ext_resource type="Script" uid="uid://xsup7x8d6rgg" path="res://app/main_screen/profile_explorer/search_tool/tag.gd" id="1_mw8eu"]
 [ext_resource type="StyleBox" uid="uid://d1gvm3stgniun" path="res://resources/styles/tag_other.tres" id="2_2j2ut"]
@@ -18,7 +18,7 @@ font_size = 13
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_51836"]
 
-[node name="Tag" type="MarginContainer"]
+[node name="Tag" type="MarginContainer" unique_id=123854432]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -41,42 +41,43 @@ backgrounds = Dictionary[int, StyleBoxFlat]({
 normal_label_setting = SubResource("LabelSettings_kuk48")
 small_label_setting = SubResource("LabelSettings_owgwo")
 
-[node name="BackgroundPanel" type="Panel" parent="."]
+[node name="BackgroundPanel" type="Panel" parent="." unique_id=1590200341]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/panel = ExtResource("6_owgwo")
 
-[node name="MatchPanel" type="Panel" parent="."]
+[node name="MatchPanel" type="Panel" parent="." unique_id=1805142208]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 theme_override_styles/panel = ExtResource("6_5cxxf")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1321749101]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/margin_left = 3
+theme_override_constants/margin_left = 2
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 3
 theme_override_constants/margin_bottom = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=515054761]
 layout_mode = 2
+theme_override_constants/separation = 2
 
-[node name="EmojiLabel" type="Label" parent="MarginContainer/HBoxContainer"]
+[node name="EmojiLabel" type="Label" parent="MarginContainer/HBoxContainer" unique_id=391259623]
 unique_name_in_owner = true
 layout_mode = 2
 text = "❔"
 label_settings = ExtResource("8_kuk48")
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer" unique_id=444266089]
 unique_name_in_owner = true
 layout_mode = 2
 text = "unknown"
 label_settings = ExtResource("8_kuk48")
 
-[node name="Button" type="Button" parent="MarginContainer"]
+[node name="Button" type="Button" parent="MarginContainer" unique_id=1574355552]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_51836")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_51836")
@@ -84,7 +85,7 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_51836")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_51836")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_51836")
 
-[node name="DisabledPanel" type="Panel" parent="."]
+[node name="DisabledPanel" type="Panel" parent="." unique_id=1869273176]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2

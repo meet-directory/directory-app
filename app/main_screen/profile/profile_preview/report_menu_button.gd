@@ -2,8 +2,8 @@ extends Button
 @export var menu:Control
 @onready var report_user_button: Button = %ReportUserButton
 
-func _ready() -> void:
-	menu.hide()
+#func _ready() -> void:
+	#menu.hide()
 
 func _on_toggled(toggled_on: bool) -> void:
 	menu.visible = toggled_on

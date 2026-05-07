@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://br648q2fsfocx"]
+[gd_scene format=3 uid="uid://br648q2fsfocx"]
 
 [ext_resource type="Script" uid="uid://bsxmrfxn3kk03" path="res://app/main_screen/profile/profile_preview/profile_view_popup.gd" id="1_bo5fg"]
 [ext_resource type="PackedScene" uid="uid://cr731ljnp80m6" path="res://app/main_screen/profile/profile_preview/profile_view.tscn" id="2_cbvkh"]
@@ -7,25 +7,25 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k0hty"]
 bg_color = Color(0.27, 0.27, 0.27, 0.7019608)
 
-[node name="ProfileViewPopup" type="CanvasLayer"]
+[node name="ProfileViewPopup" type="CanvasLayer" unique_id=1558917338]
 script = ExtResource("1_bo5fg")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=523839125]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="MarginContainer"]
+[node name="Panel" type="Panel" parent="MarginContainer" unique_id=1997950774]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_k0hty")
 
-[node name="BottomMarker" type="Control" parent="MarginContainer"]
+[node name="BottomMarker" type="Control" parent="MarginContainer" unique_id=342278359]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="MenuContainer" type="MarginContainer" parent="."]
+[node name="MenuContainer" type="MarginContainer" parent="." unique_id=1817063080]
 unique_name_in_owner = true
 anchors_preset = 13
 anchor_left = 0.5
@@ -38,14 +38,14 @@ grow_vertical = 2
 size_flags_horizontal = 4
 theme = ExtResource("2_k0hty")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MenuContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuContainer" unique_id=1292486094]
 layout_mode = 2
 
-[node name="ProfileViewer" parent="MenuContainer/VBoxContainer" instance=ExtResource("2_cbvkh")]
+[node name="ProfileViewer" parent="MenuContainer/VBoxContainer" unique_id=1053726824 instance=ExtResource("2_cbvkh")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="CloseButton" type="Button" parent="MenuContainer/VBoxContainer"]
+[node name="CloseButton" type="Button" parent="MenuContainer/VBoxContainer" unique_id=772724478]
 layout_mode = 2
 text = "Close Preview"
 

@@ -7,7 +7,7 @@ signal user_blocked
 
 
 # TODO make like options first move with hflow container before trimming text
-@onready var like_options: HFlowContainer = %LikeOptions
+@onready var like_options: HBoxContainer = %LikeOptions
 @onready var matched_container: MarginContainer = %MatchedContainer
 #@onready var rescind_like_button: Button = %RescindLikeButton
 @onready var like_button: Button = %LikeButton

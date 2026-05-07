@@ -180,7 +180,8 @@ func _http_request_completed(result, response_code, headers, body, callback:Call
 	
 	# response format [{ "name": "dnd" }]
 	_remove_loading_screen()
-	callback.call(response_code, response)
+	if !callback.is_null(): # call back owner could have been freed while waiting
+		callback.call(response_code, response)
 
 func show_default_error_msg(response_code:int):
 	App.show_error_popup(HTTP_ERROR_POPUP_MSGS.get(response_code, HTTP_ERROR_DEFAULT))

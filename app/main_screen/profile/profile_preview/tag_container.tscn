@@ -1,11 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://cn5xs71ca846w"]
+[gd_scene format=3 uid="uid://cn5xs71ca846w"]
 
 [ext_resource type="Script" uid="uid://dp7nnsuibwk2h" path="res://app/main_screen/profile/profile_preview/tag_container.gd" id="1_kadew"]
 [ext_resource type="StyleBox" uid="uid://dglfl5sw7ex3c" path="res://resources/styles/tag_selector_container.tres" id="1_yfyxo"]
 [ext_resource type="PackedScene" uid="uid://ds8fo6ghwa7vd" path="res://app/main_screen/profile_explorer/search_tool/tag_control.tscn" id="2_kadew"]
 [ext_resource type="LabelSettings" uid="uid://crec8tr40vb4i" path="res://resources/styles/subtle_grey_text_label_setting.tres" id="3_n64qn"]
 
-[node name="TagContainer" type="MarginContainer"]
+[node name="TagContainer" type="MarginContainer" unique_id=1191645446]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -13,66 +13,66 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_kadew")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="." unique_id=401911275]
 layout_mode = 2
 theme_override_styles/panel = ExtResource("1_yfyxo")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=2093925129]
 layout_mode = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 6
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer" unique_id=1361616850]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer2"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer2" unique_id=445134056]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Interests"
 label_settings = ExtResource("3_n64qn")
 
-[node name="TagContainer" type="HFlowContainer" parent="MarginContainer/VBoxContainer2"]
+[node name="TagContainer" type="HFlowContainer" parent="MarginContainer/VBoxContainer2" unique_id=1764857292]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="Tag" parent="MarginContainer/VBoxContainer2/TagContainer" instance=ExtResource("2_kadew")]
+[node name="Tag" parent="MarginContainer/VBoxContainer2/TagContainer" unique_id=896691008 instance=ExtResource("2_kadew")]
 layout_mode = 2
 
-[node name="Tag2" parent="MarginContainer/VBoxContainer2/TagContainer" instance=ExtResource("2_kadew")]
+[node name="Tag2" parent="MarginContainer/VBoxContainer2/TagContainer" unique_id=480094776 instance=ExtResource("2_kadew")]
 layout_mode = 2
 
-[node name="Tag3" parent="MarginContainer/VBoxContainer2/TagContainer" instance=ExtResource("2_kadew")]
+[node name="Tag3" parent="MarginContainer/VBoxContainer2/TagContainer" unique_id=1301276420 instance=ExtResource("2_kadew")]
 layout_mode = 2
 
-[node name="Tag4" parent="MarginContainer/VBoxContainer2/TagContainer" instance=ExtResource("2_kadew")]
+[node name="Tag4" parent="MarginContainer/VBoxContainer2/TagContainer" unique_id=148620987 instance=ExtResource("2_kadew")]
 layout_mode = 2
 
-[node name="Tag5" parent="MarginContainer/VBoxContainer2/TagContainer" instance=ExtResource("2_kadew")]
+[node name="Tag5" parent="MarginContainer/VBoxContainer2/TagContainer" unique_id=1328797220 instance=ExtResource("2_kadew")]
 layout_mode = 2
 
-[node name="Tag6" parent="MarginContainer/VBoxContainer2/TagContainer" instance=ExtResource("2_kadew")]
+[node name="Tag6" parent="MarginContainer/VBoxContainer2/TagContainer" unique_id=1748021791 instance=ExtResource("2_kadew")]
 layout_mode = 2
 
-[node name="Tag7" parent="MarginContainer/VBoxContainer2/TagContainer" instance=ExtResource("2_kadew")]
+[node name="Tag7" parent="MarginContainer/VBoxContainer2/TagContainer" unique_id=523823826 instance=ExtResource("2_kadew")]
 layout_mode = 2
 
-[node name="Tag8" parent="MarginContainer/VBoxContainer2/TagContainer" instance=ExtResource("2_kadew")]
+[node name="Tag8" parent="MarginContainer/VBoxContainer2/TagContainer" unique_id=514021555 instance=ExtResource("2_kadew")]
 layout_mode = 2
 
-[node name="Tag9" parent="MarginContainer/VBoxContainer2/TagContainer" instance=ExtResource("2_kadew")]
+[node name="Tag9" parent="MarginContainer/VBoxContainer2/TagContainer" unique_id=834763503 instance=ExtResource("2_kadew")]
 layout_mode = 2
 
-[node name="Tag10" parent="MarginContainer/VBoxContainer2/TagContainer" instance=ExtResource("2_kadew")]
+[node name="Tag10" parent="MarginContainer/VBoxContainer2/TagContainer" unique_id=149788455 instance=ExtResource("2_kadew")]
 layout_mode = 2
 
-[node name="VBoxContainer" type="HFlowContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="HFlowContainer" parent="MarginContainer" unique_id=313586662]
 visible = false
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1020794148]
 layout_mode = 2
