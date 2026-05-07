@@ -1,6 +1,8 @@
 extends Resource
 class_name ProfileResource
 
+const MILE_PER_KM = 0.6213712
+
 @export var username:String
 @export var email:String
 @export var photos:Array[ProfilePhoto]
@@ -34,6 +36,9 @@ var match_status:match_statuses
 var is_mask:int
 var wants_mask:int
 var relationship_mask:int
+
+var km_away:int
+var miles_away:int
 
 @export var is_tags:Array[Tag]
 @export var wants_tags:Array[Tag] # DEPR?
@@ -72,6 +77,9 @@ func from_db(dict:Dictionary):
 	if city == null:
 		city = ''
 	loc_string = city
+	
+	km_away = round(dict.get('distance_km', 0))
+	miles_away = round(dict.get('distance_km', 0)*MILE_PER_KM)
 	
 	var image_urls = dict.get('image_uris', [])
 	if true:

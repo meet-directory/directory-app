@@ -17,6 +17,7 @@ class_name ProfileView
 @onready var description_box: VBoxContainer = %DescriptionBox
 @onready var like_button: Button = %LikeButton
 @onready var match_options: MarginContainer = %MatchOptions
+@onready var distance_label: Label = %DistanceLabel
 
 var profile_data:ProfileResource
 
@@ -33,11 +34,11 @@ func set_display_mode(mode:DISPLAY_MODES) -> void:
 		DISPLAY_MODES.no_options:
 			match_options.hide()
 			like_button.hide()
+			distance_label.hide()
 		DISPLAY_MODES.all_options:
-			#match_options.visible = true
 			like_button.show()
 		DISPLAY_MODES.only_report_options:
-			#match_options.visible = false
+			distance_label.hide()
 			like_button.hide()
 
 signal user_blocked
@@ -67,6 +68,7 @@ func display(profile:ProfileResource, must_have_tags:Array[String]=[], wanted_ta
 	if profile.loc_string.is_empty():
 		location_panel.hide()
 	like_button.setup(profile)
+	distance_label.text = "%d miles away" % [profile.miles_away]
 	#var rtags = profile.is_tags.filter(func (t:Tag): return t.type == Tag.TYPE.RelationshipType)
 	#if len(rtags) > 0:
 		#relationship_tags.add_tags(rtags)
