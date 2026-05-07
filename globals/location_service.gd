@@ -103,7 +103,12 @@ func _on_location_error(args) -> void:
 	var error = args[0]
 	print("Geolocation error code: ", error.code, " - ", error.message)
 	if error.code == 1: # DENIED access
-		App.show_info_popup("You denied the location permission. Without your location, we can't show you users in your area. Please refresh the page and allow the permission.\n\n Note that Directory only collects rough location data to see what city you are in.")
+		var text:String
+		if OS.has_feature('web_android'):
+			text = "Please enable location services, refresh, and enable the location permission for this site. Without location we can't show users in your area."
+		else:
+			text = "You denied the location permission. Without your location, we can't show you users in your area. Please refresh the page and allow the permission.\n\n Note that Directory only collects rough location data to see what city you are in."
+		App.show_info_popup(text)
 	
 
 ### Desktop ####################################################################
