@@ -16,6 +16,7 @@ func _ready() -> void:
 
 func _new_message_received(chat_id:int):
 	if chat_id == _chat_id:
+		# TODO just load new messages instead of refresh the entire state each time
 		Server.get_chat_msgs(chat_id, _on_msgs_loaded)
 
 func setup(chat_id:int, username:String) -> void:
@@ -40,6 +41,7 @@ func _on_msgs_loaded(resp_code, resp) -> void:
 					label.text = last_timestamp
 					label.label_settings = grey_label_setting
 				append_message(row['text'], row['timestamp'], user_id == row['sender_id'])
+			Server.mark_chat_read(_chat_id, func (_c, _r): Server.chats_refreshed.emit())
 			#scroll_container.set_deferred("scroll_vertical" , scroll_container.get_v_scroll_bar().max_value)
 		_: Server.show_default_error_msg(resp_code)
 

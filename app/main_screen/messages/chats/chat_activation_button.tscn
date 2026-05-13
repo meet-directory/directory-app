@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://buaob3exm4enb"]
+[gd_scene format=3 uid="uid://buaob3exm4enb"]
 
 [ext_resource type="Script" uid="uid://ddnedc4jgqts6" path="res://app/main_screen/messages/chats/chat_activation_button.gd" id="1_kg2fs"]
 [ext_resource type="PackedScene" uid="uid://xmn6w3gata1k" path="res://app/main_screen/messages/view_profile_button.tscn" id="2_40ixj"]
@@ -8,7 +8,17 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qkuk6"]
 bg_color = Color(0.6, 0.6, 0.6, 0.1254902)
 
-[node name="ChatActivator" type="MarginContainer"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8dikr"]
+bg_color = Color(0.4874956, 0.65600246, 0.4169803, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_lk2rg"]
+font_size = 9
+
+[node name="ChatActivator" type="MarginContainer" unique_id=1538852768]
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 31.0
@@ -16,23 +26,23 @@ grow_horizontal = 2
 size_flags_vertical = 0
 script = ExtResource("1_kg2fs")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=182556573]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=2122194423]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_right = 10
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer" unique_id=511989484]
 layout_mode = 2
 
-[node name="ViewProfileButton" parent="VBoxContainer/MarginContainer/HBoxContainer" instance=ExtResource("2_40ixj")]
+[node name="ViewProfileButton" parent="VBoxContainer/MarginContainer/HBoxContainer" unique_id=537096787 instance=ExtResource("2_40ixj")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="Button" type="Button" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="Button" type="Button" parent="VBoxContainer/MarginContainer/HBoxContainer" unique_id=1467932831]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -42,7 +52,35 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_qkuk6")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_koce4")
 text = "user123"
 
-[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+[node name="MsgNotification" type="MarginContainer" parent="VBoxContainer/MarginContainer/HBoxContainer" unique_id=1156084711]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Panel" type="Panel" parent="VBoxContainer/MarginContainer/HBoxContainer/MsgNotification" unique_id=99128580]
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_8dikr")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/HBoxContainer/MsgNotification" unique_id=227379581]
+layout_mode = 2
+
+[node name="msg_count_label" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer/MsgNotification/MarginContainer" unique_id=1520358006]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(14, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 1
+text = "3"
+label_settings = SubResource("LabelSettings_lk2rg")
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer" unique_id=1410203081]
 layout_mode = 2
 
 [connection signal="pressed" from="VBoxContainer/MarginContainer/HBoxContainer/Button" to="." method="_on_button_pressed"]

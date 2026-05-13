@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://rlwqcw06icrj"]
+[gd_scene format=3 uid="uid://rlwqcw06icrj"]
 
 [ext_resource type="StyleBox" uid="uid://fh3x8tnulkac" path="res://resources/styles/profile_panel_background.tres" id="1_jmtp6"]
 [ext_resource type="Script" uid="uid://ct8gp1n5q1v8f" path="res://app/main_screen/messages/like_request_pane.gd" id="1_mmwii"]
@@ -12,42 +12,42 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c0ogf"]
 
-[node name="LikeRequestPane" type="MarginContainer"]
+[node name="LikeRequestPane" type="MarginContainer" unique_id=323681401]
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 69.0
 grow_horizontal = 2
 script = ExtResource("1_mmwii")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="." unique_id=1968043294]
 layout_mode = 2
 theme_override_styles/panel = ExtResource("1_jmtp6")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=113174201]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 6
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=778815379]
 layout_mode = 2
 
-[node name="ViewProfileButton" parent="MarginContainer/HBoxContainer" instance=ExtResource("3_mmwii")]
+[node name="ViewProfileButton" parent="MarginContainer/HBoxContainer" unique_id=1892103368 instance=ExtResource("3_mmwii")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="VSeparator" type="VSeparator" parent="MarginContainer/HBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/HBoxContainer" unique_id=323343524]
 visible = false
 layout_mode = 2
 theme_override_constants/separation = 13
 theme_override_styles/separator = SubResource("StyleBoxEmpty_c0ogf")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1865799761]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="AcceptButton" type="Button" parent="MarginContainer/HBoxContainer/HBoxContainer"]
+[node name="AcceptButton" type="Button" parent="MarginContainer/HBoxContainer/HBoxContainer" unique_id=1509322023]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/normal = ExtResource("4_cciqf")
@@ -55,7 +55,7 @@ theme_override_styles/pressed = ExtResource("5_5gpid")
 theme_override_styles/hover = ExtResource("6_hrc0v")
 text = "Accept"
 
-[node name="DeclineButton" type="Button" parent="MarginContainer/HBoxContainer/HBoxContainer"]
+[node name="DeclineButton" type="Button" parent="MarginContainer/HBoxContainer/HBoxContainer" unique_id=645768926]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/normal = ExtResource("4_7rpdl")

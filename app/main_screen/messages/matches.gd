@@ -8,14 +8,20 @@ extends MarginContainer
 @onready var no_likes_label: Label = %NoLikesLabel
 
 func _ready() -> void:
-	Server.user_session_loaded.connect(refresh)
-	Websockets.new_message_received.connect(refresh)
-	App.user_blocked_from_profile_popup.connect(refresh)
+	Server.user_session_loaded.connect(_refresh_if_active)
+	if Server.session_profile:
+		_refresh_if_active()
+	Websockets.like_request_accepted.connect(Server.get_likes.bind(_on_get_likes_returned))
+	App.user_blocked_from_profile_popup.connect(_refresh_if_active)
 
 func selected() -> void:
 	refresh()
 
-func refresh(_profile=null) -> void:
+func _refresh_if_active(_profile=null) -> void:
+	if visible:
+		refresh()
+
+func refresh() -> void:
 	Server.get_likes(_on_get_likes_returned)
 	Server.get_chats(_on_get_chats_returned)
 
@@ -25,11 +31,19 @@ func _on_get_likes_returned(resp_code, resp) -> void:
 	match resp_code:
 		200:
 			no_likes_label.visible = len(resp) == 0
+			App.nlikes_changed.emit(len(resp))
 			for row in resp:
 				var node:LikeRequestPane = Constants.like_request_pane.instantiate()
+				node.action_taken.connect(_on_like_action_taken.bind(node))
+				node.accepted.connect(refresh)
 				like_requests_container.add_child(node)
 				node.setup(row['from_id'])
 		_: Server.show_default_error_msg(resp_code)
+
+func _on_like_action_taken(like_pane:Node):
+	var nlikes = max(0, like_requests_container.get_child_count() -1)
+	like_pane.queue_free()
+	App.nlikes_changed.emit(nlikes)
 
 func _on_get_chats_returned(resp_code, resp) -> void:
 	for node in chats_container.get_children():
@@ -40,16 +54,8 @@ func _on_get_chats_returned(resp_code, resp) -> void:
 			for row in resp:
 				var node:ChatActivator = Constants.chat_activator_scene.instantiate()
 				chats_container.add_child(node)
-				node.setup(row['chat_id'], row['other_user_ids'], row['other_user_names'], row['participant_photo_uris'])
-				node.pressed.connect(_on_chat_selected)
+				node.setup(row['chat_id'], row['other_user_ids'], row['other_user_names'], row['participant_photo_uris'], row['unread_count'])
 		_: Server.show_default_error_msg(resp_code)
-
-func _on_chat_selected(chat_id, participant_ids:Array, participant_names:Array):
-	# chats currently only supported with one user
-	#chat_pane.setup(chat_id, participant_names[0], participant_ids[0])
-	App.show_chat_pane(chat_id, participant_names[0])
-	#slide_window.slide_left()
-	#tab_container.current_tab = 1
 
 func _on_refresh_button_pressed() -> void:
 	refresh()

@@ -1,26 +1,88 @@
-[gd_scene load_steps=6 format=3 uid="uid://dlp24xb8w8dpq"]
+[gd_scene format=3 uid="uid://dlp24xb8w8dpq"]
 
 [ext_resource type="Script" uid="uid://cueis1ohvy5v4" path="res://app/main_screen/messages/matches.gd" id="1_as1ef"]
+[ext_resource type="Theme" uid="uid://c52euoe38n0nm" path="res://resources/styles/app_theme.tres" id="1_nrdkc"]
 [ext_resource type="Script" uid="uid://dyj603klmmiyo" path="res://app/main_screen/messages/slide_window.gd" id="2_exor4"]
 [ext_resource type="Script" uid="uid://cqgdswj1lyike" path="res://app/main_screen/tab_manager.gd" id="3_exor4"]
 [ext_resource type="LabelSettings" uid="uid://crec8tr40vb4i" path="res://resources/styles/subtle_grey_text_label_setting.tres" id="3_vkdml"]
 [ext_resource type="Script" uid="uid://b6lh6hsveq2l" path="res://app/main_screen/messages/tab_container.gd" id="4_nrdkc"]
+[ext_resource type="PackedScene" uid="uid://xmewxk11uyh2" path="res://app/main_screen/messages/notifications/like_notification.tscn" id="5_bgwjx"]
 
-[node name="Matches" type="MarginContainer"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7hlc6"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.2509804, 0.27450982, 0.3019608, 1)
+border_width_bottom = 4
+border_color = Color(0.059979677, 0.07275782, 0.13054782, 1)
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bgwjx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3eamc"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.19729552, 0.22268385, 0.2516971, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_color = Color(0.059979677, 0.07275782, 0.13054782, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_70lu3"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.25200003, 0.27600002, 0.3, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_color = Color(0.059979677, 0.07275782, 0.13054782, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_urlr7"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.2509804, 0.27450982, 0.3019608, 1)
+border_width_bottom = 4
+border_color = Color(0.059979677, 0.07275782, 0.13054782, 1)
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_bottom = 2.0
+
+[node name="Matches" type="MarginContainer" unique_id=2123137010]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_nrdkc")
 script = ExtResource("1_as1ef")
 metadata/_tab_index = 1
 
-[node name="SlideWindow" type="Control" parent="."]
+[node name="Panel" type="Panel" parent="." unique_id=1289089093]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7hlc6")
+
+[node name="SlideWindow" type="Control" parent="." unique_id=2009694806]
 unique_name_in_owner = true
 layout_mode = 2
 script = ExtResource("2_exor4")
 
-[node name="TabContainer" type="TabContainer" parent="SlideWindow"]
+[node name="TabContainer" type="TabContainer" parent="SlideWindow" unique_id=285954691]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -28,49 +90,68 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_bgwjx")
 current_tab = 0
 tabs_visible = false
 
-[node name="MarginContainer" type="MarginContainer" parent="SlideWindow/TabContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="SlideWindow/TabContainer" unique_id=976082083]
 layout_mode = 2
 size_flags_horizontal = 3
 metadata/_tab_index = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="SlideWindow/TabContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="SlideWindow/TabContainer/MarginContainer" unique_id=343202752]
 layout_mode = 2
+theme_override_constants/separation = 1
 
-[node name="TabManager" type="HBoxContainer" parent="SlideWindow/TabContainer/MarginContainer/VBoxContainer"]
+[node name="TabManager" type="HBoxContainer" parent="SlideWindow/TabContainer/MarginContainer/VBoxContainer" unique_id=1973927698]
 layout_mode = 2
 script = ExtResource("3_exor4")
 current_tab = 1
 
-[node name="LikeButton" type="Button" parent="SlideWindow/TabContainer/MarginContainer/VBoxContainer/TabManager"]
+[node name="LikeButton" type="Button" parent="SlideWindow/TabContainer/MarginContainer/VBoxContainer/TabManager" unique_id=480420795]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_3eamc")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_70lu3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3eamc")
 toggle_mode = true
+button_pressed = true
 text = "👋 Like Requests"
 
-[node name="ChatButton" type="Button" parent="SlideWindow/TabContainer/MarginContainer/VBoxContainer/TabManager"]
+[node name="LikeNotification" parent="SlideWindow/TabContainer/MarginContainer/VBoxContainer/TabManager/LikeButton" unique_id=1870757808 instance=ExtResource("5_bgwjx")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -12.0
+offset_bottom = 13.0
+grow_horizontal = 0
+
+[node name="ChatButton" type="Button" parent="SlideWindow/TabContainer/MarginContainer/VBoxContainer/TabManager" unique_id=288603014]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_3eamc")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_70lu3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3eamc")
 toggle_mode = true
 text = "💬 Chats"
 
-[node name="TabContainer" type="TabContainer" parent="SlideWindow/TabContainer/MarginContainer/VBoxContainer"]
+[node name="TabContainer" type="TabContainer" parent="SlideWindow/TabContainer/MarginContainer/VBoxContainer" unique_id=282073285]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_urlr7")
 tab_alignment = 1
 current_tab = 1
 tabs_visible = false
 script = ExtResource("4_nrdkc")
 
-[node name="Likes" type="MarginContainer" parent="SlideWindow/TabContainer/MarginContainer/VBoxContainer/TabContainer"]
+[node name="Likes" type="MarginContainer" parent="SlideWindow/TabContainer/MarginContainer/VBoxContainer/TabContainer" unique_id=1417780169]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="NoLikesLabel" type="Label" parent="SlideWindow/TabContainer/MarginContainer/VBoxContainer/TabContainer/Likes"]
+[node name="NoLikesLabel" type="Label" parent="SlideWindow/TabContainer/MarginContainer/VBoxContainer/TabContainer/Likes" unique_id=1566061958]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 6
@@ -78,20 +159,20 @@ text = "No pending likes"
 label_settings = ExtResource("3_vkdml")
 horizontal_alignment = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="SlideWindow/TabContainer/MarginContainer/VBoxContainer/TabContainer/Likes"]
+[node name="ScrollContainer" type="ScrollContainer" parent="SlideWindow/TabContainer/MarginContainer/VBoxContainer/TabContainer/Likes" unique_id=203849861]
 layout_mode = 2
 
-[node name="LikeRequestsContainer" type="VBoxContainer" parent="SlideWindow/TabContainer/MarginContainer/VBoxContainer/TabContainer/Likes/ScrollContainer"]
+[node name="LikeRequestsContainer" type="VBoxContainer" parent="SlideWindow/TabContainer/MarginContainer/VBoxContainer/TabContainer/Likes/ScrollContainer" unique_id=713223883]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Chats" type="MarginContainer" parent="SlideWindow/TabContainer/MarginContainer/VBoxContainer/TabContainer"]
+[node name="Chats" type="MarginContainer" parent="SlideWindow/TabContainer/MarginContainer/VBoxContainer/TabContainer" unique_id=706326098]
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="NoChatsLabel" type="Label" parent="SlideWindow/TabContainer/MarginContainer/VBoxContainer/TabContainer/Chats"]
+[node name="NoChatsLabel" type="Label" parent="SlideWindow/TabContainer/MarginContainer/VBoxContainer/TabContainer/Chats" unique_id=339299600]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 6
@@ -99,16 +180,16 @@ text = "You don't have any chats yet."
 label_settings = ExtResource("3_vkdml")
 horizontal_alignment = 1
 
-[node name="ScrollContainer2" type="ScrollContainer" parent="SlideWindow/TabContainer/MarginContainer/VBoxContainer/TabContainer/Chats"]
+[node name="ScrollContainer2" type="ScrollContainer" parent="SlideWindow/TabContainer/MarginContainer/VBoxContainer/TabContainer/Chats" unique_id=1889460833]
 layout_mode = 2
 
-[node name="ChatsContainer" type="VBoxContainer" parent="SlideWindow/TabContainer/MarginContainer/VBoxContainer/TabContainer/Chats/ScrollContainer2"]
+[node name="ChatsContainer" type="VBoxContainer" parent="SlideWindow/TabContainer/MarginContainer/VBoxContainer/TabContainer/Chats/ScrollContainer2" unique_id=1331672179]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="RefreshButton" type="Button" parent="."]
+[node name="RefreshButton" type="Button" parent="." unique_id=681756683]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 8

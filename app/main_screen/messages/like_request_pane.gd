@@ -2,6 +2,8 @@ extends MarginContainer
 class_name LikeRequestPane
 
 @onready var view_profile_button: Button = %ViewProfileButton
+signal action_taken
+signal accepted
 
 var _user_id
 var profile
@@ -18,7 +20,8 @@ func _on_accept_button_pressed() -> void:
 	Server.accept_like(_user_id, func (code, _resp):
 		match code:
 			200:
-				queue_free()
+				accepted.emit()
+				action_taken.emit()
 			_: Server.show_default_error_msg(code)
 		)
 
@@ -36,7 +39,7 @@ func _on_declined() -> void:
 	Server.decline_like(_user_id, func (code, _resp):
 		match code:
 			200:
-				queue_free()
+				action_taken.emit()
 			_: Server.show_default_error_msg(code)
 		)
 
@@ -44,7 +47,7 @@ func _on_blocked() -> void:
 	Server.block_user(_user_id, func (code, _resp):
 		match code:
 			200:
-				queue_free()
+				action_taken.emit()
 			_: Server.show_default_error_msg(code)
 		)
 

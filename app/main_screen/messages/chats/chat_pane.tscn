@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://4okj4j3hkk50"]
+[gd_scene format=3 uid="uid://4okj4j3hkk50"]
 
 [ext_resource type="PackedScene" uid="uid://daiq3ls2tnj3o" path="res://app/main_screen/messages/chats/message_control.tscn" id="1_mfmtu"]
 [ext_resource type="Script" uid="uid://5osbkfm5fs4l" path="res://app/main_screen/messages/chats/chat_pane.gd" id="1_naceh"]
@@ -20,7 +20,7 @@ corner_radius_top_right = 5
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pmwdm"]
 
-[node name="ChatPane" type="MarginContainer"]
+[node name="ChatPane" type="MarginContainer" unique_id=118873497]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -30,53 +30,53 @@ script = ExtResource("1_naceh")
 message_control_scene = ExtResource("1_mfmtu")
 grey_label_setting = ExtResource("4_p113a")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="." unique_id=116447472]
 layout_mode = 2
 theme_override_styles/panel = ExtResource("3_5yqn4")
 
-[node name="VirtualKeyboardAdjuster" type="MarginContainer" parent="."]
+[node name="VirtualKeyboardAdjuster" type="MarginContainer" parent="." unique_id=1769684062]
 layout_mode = 2
 script = ExtResource("4_cf5so")
 metadata/_custom_type_script = "uid://cg1kfg1oqrnic"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VirtualKeyboardAdjuster"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VirtualKeyboardAdjuster" unique_id=2093474387]
 layout_mode = 2
 
-[node name="Header" type="HBoxContainer" parent="VirtualKeyboardAdjuster/VBoxContainer"]
+[node name="Header" type="HBoxContainer" parent="VirtualKeyboardAdjuster/VBoxContainer" unique_id=1064281521]
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="BackButton" type="Button" parent="VirtualKeyboardAdjuster/VBoxContainer/Header"]
+[node name="BackButton" type="Button" parent="VirtualKeyboardAdjuster/VBoxContainer/Header" unique_id=310265958]
 layout_mode = 2
 text = "Back"
 
-[node name="UsernameLabel" type="Label" parent="VirtualKeyboardAdjuster/VBoxContainer/Header"]
+[node name="UsernameLabel" type="Label" parent="VirtualKeyboardAdjuster/VBoxContainer/Header" unique_id=863829595]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "User 123"
 horizontal_alignment = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="VirtualKeyboardAdjuster/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="VirtualKeyboardAdjuster/VBoxContainer" unique_id=619144662]
 layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="VirtualKeyboardAdjuster/VBoxContainer/ScrollContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VirtualKeyboardAdjuster/VBoxContainer/ScrollContainer" unique_id=201402942]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Panel" type="Panel" parent="VirtualKeyboardAdjuster/VBoxContainer/ScrollContainer/MarginContainer"]
+[node name="Panel" type="Panel" parent="VirtualKeyboardAdjuster/VBoxContainer/ScrollContainer/MarginContainer" unique_id=802208220]
 layout_mode = 2
 theme_override_styles/panel = ExtResource("1_pmwdm")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VirtualKeyboardAdjuster/VBoxContainer/ScrollContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VirtualKeyboardAdjuster/VBoxContainer/ScrollContainer/MarginContainer" unique_id=229754597]
 layout_mode = 2
 theme_override_constants/separation = -2
 
-[node name="MarginContainer2" type="MarginContainer" parent="VirtualKeyboardAdjuster/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="VirtualKeyboardAdjuster/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1938793703]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 10
@@ -84,26 +84,26 @@ theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="VirtualKeyboardAdjuster/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer2"]
+[node name="ScrollContainer" type="ScrollContainer" parent="VirtualKeyboardAdjuster/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer2" unique_id=505643437]
 unique_name_in_owner = true
 layout_mode = 2
 horizontal_scroll_mode = 0
 
-[node name="MessagesContainer" type="VBoxContainer" parent="VirtualKeyboardAdjuster/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer2/ScrollContainer"]
+[node name="MessagesContainer" type="VBoxContainer" parent="VirtualKeyboardAdjuster/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer2/ScrollContainer" unique_id=55568128]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="VirtualKeyboardAdjuster/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer2/ScrollContainer/MessagesContainer"]
+[node name="Label" type="Label" parent="VirtualKeyboardAdjuster/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer2/ScrollContainer/MessagesContainer" unique_id=1565055424]
 layout_mode = 2
 size_flags_horizontal = 4
 label_settings = ExtResource("4_p113a")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VirtualKeyboardAdjuster/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VirtualKeyboardAdjuster/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1356992582]
 layout_mode = 2
 
-[node name="MessageEdit" type="TextEdit" parent="VirtualKeyboardAdjuster/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="MessageEdit" type="TextEdit" parent="VirtualKeyboardAdjuster/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=950609572]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
@@ -119,7 +119,7 @@ caret_blink = true
 caret_multiple = false
 script = ExtResource("4_470q8")
 
-[node name="SubmitTextButton" type="Button" parent="VirtualKeyboardAdjuster/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="SubmitTextButton" type="Button" parent="VirtualKeyboardAdjuster/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=285470251]
 layout_mode = 2
 text = "➡"
 

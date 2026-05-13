@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://jwq4gqu0au66"]
+
+[ext_resource type="Script" uid="uid://icv17sk6ip45" path="res://app/main_screen/messages/notifications/msg_notification.gd" id="1_7prqo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8dikr"]
+bg_color = Color(0.4874956, 0.65600246, 0.4169803, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_lk2rg"]
+font_size = 9
+
+[node name="MsgNotification" type="MarginContainer" unique_id=1156084711]
+size_flags_vertical = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+script = ExtResource("1_7prqo")
+
+[node name="Panel" type="Panel" parent="." unique_id=99128580]
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_8dikr")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=227379581]
+custom_minimum_size = Vector2(14, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer" unique_id=1520358006]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 1
+text = "3"
+label_settings = SubResource("LabelSettings_lk2rg")
+horizontal_alignment = 1
