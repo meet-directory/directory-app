@@ -9,10 +9,12 @@ const PROD_BASE_URL = "directory-api-w9mi.onrender.com"
 #const PROD_BASE_URL = "directory-api-1.onrender.com"
 const NPROFILES_PER_QUERY = 10
 
-const LOGIN_ENDPOINT =                'login'
-const REGISTER_ENDPOINT =             'register'
-const REFRESH_ENDPOINT =              'auth/refresh'
-const API =                           'api/'
+const API_VERSION = '0'
+
+const LOGIN_ENDPOINT =                'v' + API_VERSION + '/login'
+const REGISTER_ENDPOINT =             'v' + API_VERSION + '/register'
+const REFRESH_ENDPOINT =              'v' + API_VERSION + '/auth/refresh'
+const API =                           'api/v' + API_VERSION + '/'
 const TAG_QUERY_ENDPOINT =            API + 'tags'
 const ENDPOINT_SUSPEND =              API + 'suspend'
 const ENDPOINT_UNSUSPEND =            API + 'unsuspend'
@@ -49,13 +51,15 @@ const HTTP_ERROR_POPUP_MSGS = {
 
 const MARK_SEEN_FLUSH_INTERVAL = 15
 
-const CONTENT_JSON_HEADER = 'Content-Type: application/json'
+const HEADER_CONTENT_JSON = 'Content-Type: application/json'
 #const ORIGIN_HEADER = "Origin: localhost:8060"
+const HEADER_VERSION = 'X-APIV: ' + API_VERSION
 
 
 signal user_session_loaded(profile:ProfileResource)
 signal failed_to_load_user_session # only used by app.gd to test initial login with stored token
 signal logged_out
+signal chats_refreshed
 
 var session_profile:ProfileResource
 
@@ -116,7 +120,7 @@ func _send_post_request(callback:Callable, endpoint, data:Dictionary = {}, http_
 	var error
 	if !data.is_empty():
 		var data_string:String = JSON.stringify(data)
-		var headers = [CONTENT_JSON_HEADER]
+		var headers = [HEADER_CONTENT_JSON, HEADER_VERSION]
 		if !TokenStorage.get_access_token().is_empty():
 			headers.append(get_cookie_header())
 		error = http_request.request(
@@ -149,7 +153,7 @@ func _send_get_request(callback:Callable, endpoint, url_params='', http_callback
 		'params': url_params
 		})
 	if debug: print('GET req to ', url)
-	var error = http_request.request(url, [get_cookie_header()], HTTPClient.METHOD_GET)
+	var error = http_request.request(url, [HEADER_VERSION, get_cookie_header()], HTTPClient.METHOD_GET)
 	if error != OK:
 		push_error("An error occurred in the HTTP request: ", error)
 
@@ -198,7 +202,7 @@ func refresh_token(retry_callback:Callable) -> void:
 		'endpoint': REFRESH_ENDPOINT,
 		})
 	
-	var headers = [CONTENT_JSON_HEADER, 'Authorization: Bearer ' + TokenStorage.load_refresh_token()]
+	var headers = [HEADER_VERSION, HEADER_CONTENT_JSON, 'Authorization: Bearer ' + TokenStorage.load_refresh_token()]
 	if debug: print('POST request to ', url, ' with headers ', headers)
 	var error = http_request.request(
 		url, 
@@ -239,7 +243,6 @@ func _http_login_request_completed(result, response_code, headers, body, callbac
 			pass
 		_:
 			if debug: print('http request result', result,' ', response_code, ' ', headers, ' ', response)
-			App.show_error_popup(HTTP_ERROR_POPUP_MSGS.get(response_code, HTTP_ERROR_DEFAULT))
 	
 	_remove_loading_screen()
 	callback.call(response_code)
@@ -452,7 +455,6 @@ func get_chat_msgs(chat_id:int, callback:Callable) -> void:
 func send_message(chat_id:int, text:String, callback:Callable) -> void:
 	var data = {"chat_id": chat_id, "text": text}
 	_send_post_request(callback, SEND_MSG_ENDPOINT, data)
-
 
 ### OBJECT STORAGE #######################################
 func get_uri(index:int, callback:Callable) -> void:
