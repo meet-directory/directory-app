@@ -42,21 +42,21 @@ const raw_to_type:Dictionary[String, TYPE] = {
 const _media_color = Color("7995b7ff")
 # enum is used as an index to the character
 const type_to_emoji = [
-	['🧍', Color("b3ac7dff")],
-	['💑', Color("b38f7dff")],
-	['😏', Color("b594adff")],
-	['⭐', Color("7a8e99ff")],
-	['🌳', Color("7db38eff")],
-	['🏋️‍♀️', Color("b37d82ff")],
-	['🎥', _media_color],
-	['📺', _media_color],
-	['🎵', _media_color],
-	['🎮', _media_color],
-	['🥕', Color(0.698, 0.531, 0.451, 1.0)],
-	['🕋', Color(0.49, 0.7, 0.7, 1.0)],
-	['🎨', Color(0.73, 0.703, 0.496, 1.0)],
-	['📖', _media_color],
-	['🌐', Color(0.49, 0.63, 0.7, 1.0)]
+	['🧍', Color("b3ac7dff")],  # identity
+	['💑', Color("b38f7dff")],  # relationship
+	['😏', Color("b594adff")],  # intimacy
+	['⭐', Color("7a8e99ff")],  # other
+	['🌳', Color("7db38eff")],  # outdoors
+	['🏋️‍♀️', Color("b37d82ff")],  # sports
+	['🎥', Color("7995b7ff")],  # movie
+	['📺', Color("7995b7ff")],  # tv
+	['🎵', Color("8a94b8ff")],  # music
+	['🎮', Color("7995b7ff")],  # games
+	['🥕', Color("a78763ff")],  # diet  
+	['🕋', Color("8988b9ff")],  # religion
+	['🎨', Color("9bb1c6ff")],  # art
+	['📖', Color("7995b7ff")],  # literature
+	['🌐', Color("6089aeff")]   # politics
 	]
 
 
