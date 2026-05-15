@@ -25,9 +25,14 @@ func _ready() -> void:
 			panel.add_theme_stylebox_override('panel', progress_panel_incomplete)
 		progress_panels.add_child(panel)
 	
-	_step_done()
 	if Server.session_profile:
 		_resume_onboarding()
+	else:
+		# it's important that this does not run first if we are resuming onboarding,
+		# else we'll incorrectly update the index to 0 and the user won't be able to
+		# use their email if they hadn't already validated it.
+		_step_done()
+	
 	_adjust_size()
 
 func _adjust_size() -> void:
@@ -40,7 +45,6 @@ func _adjust_size() -> void:
 		scroll_container.custom_minimum_size.x = screen_size.x
 	else:
 		scroll_container.custom_minimum_size.x = min_size
-	
 
 
 func _step_done():

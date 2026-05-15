@@ -33,10 +33,12 @@ label_setting = SubResource("LabelSettings_g3jma")
 unique_name_in_owner = true
 layout_mode = 2
 text = "A eight-digit code has been sent to bob@example.com"
+autowrap_mode = 3
 
 [node name="Label2" type="Label" parent="VBoxContainer" unique_id=112145539]
 layout_mode = 2
 text = "Please verify your email by entering it below:"
+autowrap_mode = 3
 
 [node name="LineEdit" type="LineEdit" parent="VBoxContainer" unique_id=947470363]
 unique_name_in_owner = true
