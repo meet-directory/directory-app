@@ -2,10 +2,11 @@
 
 [ext_resource type="Script" uid="uid://c1gclwgj4s0kr" path="res://app/onboarding_screen/onboarding_sequence.gd" id="1_iow3c"]
 [ext_resource type="Theme" uid="uid://c52euoe38n0nm" path="res://resources/styles/app_theme.tres" id="1_rmgpu"]
-[ext_resource type="PackedScene" uid="uid://de6qbtfyq0uh3" path="res://app/onboarding_screen/onboarding_birthday.tscn" id="2_nqrxi"]
+[ext_resource type="PackedScene" uid="uid://de6qbtfyq0uh3" path="res://app/onboarding_screen/onboarding_0_birthday.tscn" id="2_nqrxi"]
 [ext_resource type="PackedScene" uid="uid://5dirtg6fwdc2" path="res://app/onboarding_screen/onboarding_screen.tscn" id="3_lc4iw"]
-[ext_resource type="PackedScene" uid="uid://ciqhr0cf4dfjy" path="res://app/onboarding_screen/onboarding_email.tscn" id="3_lxccs"]
+[ext_resource type="PackedScene" uid="uid://ciqhr0cf4dfjy" path="res://app/onboarding_screen/onboarding_1_email.tscn" id="3_lxccs"]
 [ext_resource type="PackedScene" uid="uid://cc8kr6uj63bkf" path="res://app/onboarding_screen/onboarding_relationships.tscn" id="4_qcmpg"]
+[ext_resource type="PackedScene" uid="uid://bfalx0m4433iy" path="res://app/onboarding_screen/onboarding_2_verify_email.tscn" id="5_aqj32"]
 [ext_resource type="StyleBox" uid="uid://dvjyuhjb1s8f4" path="res://resources/styles/app_background.tres" id="5_lxccs"]
 [ext_resource type="PackedScene" uid="uid://cl2t3kc13p6" path="res://app/onboarding_screen/onboarding_identifiers.tscn" id="6_yyrb8"]
 [ext_resource type="PackedScene" uid="uid://bqmxcnllaunhp" path="res://app/onboarding_screen/onboarding_tags.tscn" id="7_2cvku"]
@@ -43,7 +44,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_rmgpu")
 script = ExtResource("1_iow3c")
-sequence = Array[PackedScene]([ExtResource("2_nqrxi"), ExtResource("3_lxccs"), ExtResource("4_qcmpg"), ExtResource("6_yyrb8"), ExtResource("7_2cvku"), ExtResource("3_lc4iw")])
+sequence = Array[PackedScene]([ExtResource("2_nqrxi"), ExtResource("3_lxccs"), ExtResource("5_aqj32"), ExtResource("4_qcmpg"), ExtResource("6_yyrb8"), ExtResource("7_2cvku"), ExtResource("3_lc4iw")])
 progress_panel_complete = SubResource("StyleBoxFlat_yyrb8")
 progress_panel_incomplete = SubResource("StyleBoxFlat_2dlfw")
 

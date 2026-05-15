@@ -13,6 +13,8 @@ const API_VERSION = '0'
 
 const LOGIN_ENDPOINT =                'v' + API_VERSION + '/login'
 const REGISTER_ENDPOINT =             'v' + API_VERSION + '/register'
+const VERIFY_ENDPOINT =             'v' + API_VERSION + '/verify_email'
+const REVERIFY_ENDPOINT =             'v' + API_VERSION + '/resend_verification'
 const REFRESH_ENDPOINT =              'v' + API_VERSION + '/auth/refresh'
 const API =                           'api/v' + API_VERSION + '/'
 const TAG_QUERY_ENDPOINT =            API + 'tags'
@@ -38,6 +40,8 @@ const MARK_SEEN_ENDPOINT =            API + 'mark_seen'
 const SEND_MSG_ENDPOINT =             API + 'send_message'
 const GET_CHATS_ENDPOINT =            API + 'get_chats'
 const GET_CHAT_MSGS_ENDPOINT =        API + 'get_chat_messages'
+const ENDPOINT_MARK_CHAT_READ =       API + 'mark_chat_read'
+const ENDPOINT_GET_UNREAD_TOTAL =     API + 'total_unread'
 const PHOTO_GET_URL_ENDPOINT =        API + 'get_presigned_url'
 const PHOTO_UPDATE_ORDER_ENDPOINT =   API + 'update_photo_order'
 const ENDPOINT_UPDATE_LOC =           API + 'update_loc'
@@ -448,13 +452,20 @@ func decline_like(from_id:int, callback:Callable) -> void:
 func get_chats(callback:Callable) -> void:
 	_send_get_request(callback, GET_CHATS_ENDPOINT)
 
+func mark_chat_read(chat_id, callback:Callable) -> void:
+	_send_post_request(callback, ENDPOINT_MARK_CHAT_READ, {"chat_id": chat_id})
+
 func get_chat_msgs(chat_id:int, callback:Callable) -> void:
 	var data = {"chat_id": chat_id}
-	_send_post_request(callback, GET_CHAT_MSGS_ENDPOINT, data)
+	_send_post_request(callback, GET_CHAT_MSGS_ENDPOINT, data, _http_request_completed, false)
 
 func send_message(chat_id:int, text:String, callback:Callable) -> void:
 	var data = {"chat_id": chat_id, "text": text}
 	_send_post_request(callback, SEND_MSG_ENDPOINT, data)
+
+func get_unread_msg_total(callback:Callable) -> void:
+	_send_get_request(callback, ENDPOINT_GET_UNREAD_TOTAL, "", _http_request_completed, false)
+
 
 ### OBJECT STORAGE #######################################
 func get_uri(index:int, callback:Callable) -> void:
@@ -462,3 +473,10 @@ func get_uri(index:int, callback:Callable) -> void:
 
 func update_and_confirm_photos(uris:Array[String], callback:Callable) -> void:
 	_send_post_request(callback, PHOTO_UPDATE_ORDER_ENDPOINT, {'uris': uris})
+
+### OBJECT STORAGE #######################################
+func verify_email(email:String, code:String, callback:Callable) -> void:
+	_send_post_request(callback, VERIFY_ENDPOINT, {'email': email, 'code': code})
+
+func resend_code(email:String, callback:Callable) -> void:
+	_send_post_request(callback, REVERIFY_ENDPOINT, {'email': email})

@@ -31,6 +31,14 @@ script = ExtResource("1_ps7xn")
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=707252157]
 layout_mode = 2
 
+[node name="Label3" type="Label" parent="VBoxContainer" unique_id=661703066]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+size_flags_vertical = 2
+text = "Your email has been verified."
+label_settings = ExtResource("3_2hxl8")
+autowrap_mode = 3
+
 [node name="Label" type="Label" parent="VBoxContainer" unique_id=1313332632]
 custom_minimum_size = Vector2(20, 10)
 layout_mode = 2

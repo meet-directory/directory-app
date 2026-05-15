@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ciqhr0cf4dfjy"]
 
-[ext_resource type="Script" uid="uid://rmkljqth1ckd" path="res://app/onboarding_screen/onboarding_email.gd" id="1_clyat"]
+[ext_resource type="Script" uid="uid://rmkljqth1ckd" path="res://app/onboarding_screen/onboarding_1_email.gd" id="1_clyat"]
 [ext_resource type="LabelSettings" uid="uid://d10w3u76wg4e6" path="res://resources/styles/subtle_grey_text_accent_panel_label_setting.tres" id="4_goorx"]
 [ext_resource type="LabelSettings" uid="uid://cdcmno7gw1tok" path="res://resources/styles/login_error_label_settings.tres" id="4_urggu"]
 
@@ -31,7 +31,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="VBoxContainer2" unique_id=1922623478]
 layout_mode = 2
-text = "Email verification is not currently implemented. If email is incorrect and you forget your credentials, there is no way to recover your account."
+text = "Please enter an email and password!"
 label_settings = ExtResource("4_goorx")
 autowrap_mode = 3
 

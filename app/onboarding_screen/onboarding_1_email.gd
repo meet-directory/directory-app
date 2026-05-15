@@ -13,8 +13,10 @@ extends OnboardingStep
 @onready var warn_email_duplicate: Label = %WarnEmailDuplicate
 @onready var warn_password_dont_match: Label = %WarnPasswordDontMatch
 
+var valid_email_regex:RegEx
 
 func _ready() -> void:
+	valid_email_regex = RegEx.create_from_string("^[\\w\\-\\.]+@([\\w-]+\\.)+[\\w-]{2,}$")
 	var screen_size = Constants.get_screen_size()
 	container.custom_minimum_size.x = screen_size.x/1.5
 	error_panel.hide()
@@ -32,9 +34,9 @@ func _on_create_account_button_pressed() -> void:
 	if email.is_empty():
 		show_error_message(warn_email_empty)
 		has_warning = true
-	#elif !valid_email_regex.search(email):
-		#warn_email_invalid.show()
-		#has_warning = true
+	elif !valid_email_regex.search(email):
+		warn_email_invalid.show()
+		has_warning = true
 	if password != password_conf:
 		has_warning = true
 		show_error_message(warn_password_dont_match)

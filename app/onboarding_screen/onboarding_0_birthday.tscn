@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://de6qbtfyq0uh3"]
 
-[ext_resource type="Script" uid="uid://du4y63r8beqpy" path="res://app/onboarding_screen/onboarding_birthday.gd" id="1_cd1so"]
+[ext_resource type="Script" uid="uid://du4y63r8beqpy" path="res://app/onboarding_screen/onboarding_0_birthday.gd" id="1_cd1so"]
 [ext_resource type="LabelSettings" uid="uid://d10w3u76wg4e6" path="res://resources/styles/subtle_grey_text_accent_panel_label_setting.tres" id="3_yrwls"]
 [ext_resource type="Script" uid="uid://cr5s2h5o41gc7" path="res://addons/mobile_option_dropdown/mobile_option_dropdown_menu.gd" id="5_xygl3"]
 

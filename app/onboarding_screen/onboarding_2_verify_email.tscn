@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://bfalx0m4433iy"]
+
+[ext_resource type="Script" uid="uid://cjgwvdj8vqr6j" path="res://app/onboarding_screen/onboarding_2_verify_email.gd" id="1_vrlps"]
+[ext_resource type="PackedScene" uid="uid://dh42ok3r4vn3g" path="res://app/main_screen/settings/submit_tag_menu/warning_box.tscn" id="2_g3jma"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_g3jma"]
+font_size = 13
+font_color = Color(0, 0, 0, 1)
+
+[node name="OnboardingVerifyEmail" type="MarginContainer" unique_id=302121645]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vrlps")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1769282716]
+layout_mode = 2
+
+[node name="WarningBox" parent="VBoxContainer" unique_id=815250298 instance=ExtResource("2_g3jma")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+use_bg_panel = true
+warnings = Dictionary[String, String]({
+"invalid": "The code you entered is not valid.",
+"resent": "A new code has been sent."
+})
+label_setting = SubResource("LabelSettings_g3jma")
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=528979776]
+unique_name_in_owner = true
+layout_mode = 2
+text = "A eight-digit code has been sent to bob@example.com"
+
+[node name="Label2" type="Label" parent="VBoxContainer" unique_id=112145539]
+layout_mode = 2
+text = "Please verify your email by entering it below:"
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer" unique_id=947470363]
+unique_name_in_owner = true
+layout_mode = 2
+max_length = 8
+
+[node name="HFlowContainer" type="HFlowContainer" parent="VBoxContainer" unique_id=744623238]
+layout_mode = 2
+
+[node name="ResendButton" type="Button" parent="VBoxContainer/HFlowContainer" unique_id=1104494369]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Resend Code"
+
+[node name="SubmitButton" type="Button" parent="VBoxContainer/HFlowContainer" unique_id=783383431]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Submit"
+
+[connection signal="pressed" from="VBoxContainer/HFlowContainer/ResendButton" to="." method="_on_resend_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HFlowContainer/SubmitButton" to="." method="_on_submit_button_pressed"]
