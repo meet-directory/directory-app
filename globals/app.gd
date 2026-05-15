@@ -1,6 +1,6 @@
 extends Node
 @export var is_prod = true
-var software_version = 'v0.2.5-beta'
+var software_version = 'v0.2.6-beta'
 ## Prevents downloading photos during development. If using prod, should always be true
 @export var load_photos = true
 
@@ -19,6 +19,7 @@ var version:VERSIONS = VERSIONS.DESKTOP_WEB
 var PROFILE_VIEW_WIDTH
 
 signal user_blocked_from_profile_popup
+signal nlikes_changed(nlikes:int) # emitted by matches pane
 
 func is_mobile():
 	return OS.get_name() in ['Android', 'iOS'] or OS.has_feature("web_android") or OS.has_feature("web_ios")
@@ -40,6 +41,7 @@ func _ready():
 		version = VERSIONS.MOBILE
 	
 	await get_tree().process_frame
+	#PROFILE_VIEW_WIDTH = 250 # for screenshots
 	PROFILE_VIEW_WIDTH = min(get_screen_size().y*0.9 - 120, 400, get_screen_size().x)
 
 func show_login_screen() -> void:
@@ -73,9 +75,8 @@ func show_info_popup(text:String) -> InfoPopup:
 	return popup
 
 func show_error_popup(text:String) -> void:
-	var popup = Constants.error_popup.instantiate()
-	get_tree().root.add_child(popup)
-	popup.set_text(text)
+	var popup:InfoPopup = show_info_popup(text)
+	popup.use_server_style()
 
 func show_conf_popup(text:String, cancel_btn:String="Go back", confirm_btn="Confirm") -> ConfirmationPopup:
 	var popup = Constants.conf_popup.instantiate()
@@ -95,9 +96,10 @@ func create_new_tag_scene(editable=false) -> TagControl:
 func get_screen_size() -> Vector2:
 	return get_viewport().get_visible_rect().size
 
-func show_chat_pane(chat_id:int, username:String) -> void:
+func show_chat_pane(chat_id:int, username:String) -> ChatPane:
 	var pane:ChatPane = add_node(Constants.chat_pane_scene)
 	pane.setup(chat_id, username)
+	return pane
 
 func show_slideup_menu(menu:Menu) -> void:
 	var slide_up_menu:SlideUpMenu = add_node(Constants.slide_up_menu_scene)

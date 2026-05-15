@@ -56,4 +56,8 @@ func _on_fetch_completed(_result: int, response_code: int, _headers: PackedStrin
 			var image:Image = Image.new()
 			if !body.is_empty():
 				image.load_jpg_from_buffer(body)
-				callback.call(image)
+				if callback.is_valid():
+					callback.call(image)
+		#_: 
+			## TODO should send this error back to the server
+			#print(response_code, body.get_string_from_utf8())

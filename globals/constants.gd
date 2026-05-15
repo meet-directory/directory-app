@@ -11,7 +11,6 @@ const slide_up_menu_scene = preload("res://app/popups/general_slideup_menu/slide
 const profile_editor_scene = preload("res://app/main_screen/profile/profile_editor/profile_editor_popup.tscn")
 const profile_preview_popup_scene = preload("res://app/main_screen/profile/profile_preview/profile_view_popup.tscn")
 const info_popup = preload("res://app/popups/info_popup_dialogue.tscn")
-const error_popup = preload("res://app/popups/server_popup_dialogue.tscn")
 const conf_popup = preload("res://app/popups/confirmation_popup_dialogue.tscn")
 const tag_scene = preload("res://app/main_screen/profile_explorer/search_tool/tag_control.tscn")
 const editable_tag_scene = preload("res://app/main_screen/profile_explorer/search_tool/editable_tag.tscn")

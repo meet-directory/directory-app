@@ -102,7 +102,11 @@ layout_mode = 2
 [node name="Profile3" parent="ProfileScrollContainer/MarginContainer/ProfileScroller" unique_id=1130062824 instance=ExtResource("1_ytsve")]
 layout_mode = 2
 
-[node name="RightButton" type="Button" parent="." unique_id=384633397]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=381478541]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="RightButton" type="Button" parent="MarginContainer" unique_id=384633397]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
@@ -112,7 +116,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_gv7q5")
 theme_override_styles/hover = SubResource("StyleBoxFlat_wp0fx")
 text = "➡️"
 
-[node name="LeftButton" type="Button" parent="." unique_id=1635258918]
+[node name="LeftButton" type="Button" parent="MarginContainer" unique_id=1635258918]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
@@ -122,5 +126,5 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_gv7q5")
 theme_override_styles/hover = SubResource("StyleBoxFlat_wp0fx")
 text = "⬅️"
 
-[connection signal="pressed" from="RightButton" to="." method="_on_right_button_pressed"]
-[connection signal="pressed" from="LeftButton" to="." method="_on_left_button_pressed"]
+[connection signal="pressed" from="MarginContainer/RightButton" to="." method="_on_right_button_pressed"]
+[connection signal="pressed" from="MarginContainer/LeftButton" to="." method="_on_left_button_pressed"]

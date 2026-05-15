@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dh42ok3r4vn3g"]
+[gd_scene format=3 uid="uid://dh42ok3r4vn3g"]
 
 [ext_resource type="Script" uid="uid://c1wn3vle1sq7o" path="res://app/main_screen/settings/submit_tag_menu/warning_box.gd" id="1_abyph"]
 [ext_resource type="LabelSettings" uid="uid://crec8tr40vb4i" path="res://resources/styles/subtle_grey_text_label_setting.tres" id="2_2xxka"]
@@ -10,7 +10,7 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[node name="WarningBox" type="MarginContainer"]
+[node name="WarningBox" type="MarginContainer" unique_id=1622582092]
 custom_minimum_size = Vector2(80, 0)
 anchors_preset = 10
 anchor_right = 1.0
@@ -21,22 +21,22 @@ size_flags_vertical = 10
 script = ExtResource("1_abyph")
 label_setting = ExtResource("2_2xxka")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="." unique_id=1227019371]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_myqrv")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1064590201]
 layout_mode = 2
 
-[node name="TitleLabel" type="Label" parent="VBoxContainer"]
+[node name="TitleLabel" type="Label" parent="VBoxContainer" unique_id=1476251978]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 text = "⚠️ warnings"
 label_settings = ExtResource("2_2xxka")
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=57743648]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 5
@@ -44,6 +44,6 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="WarningLabelContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer"]
+[node name="WarningLabelContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer" unique_id=802708127]
 unique_name_in_owner = true
 layout_mode = 2

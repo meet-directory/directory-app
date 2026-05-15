@@ -26,6 +26,7 @@ func _ready() -> void:
 	
 	panel.visible = use_bg_panel
 	title_label.visible = use_bg_panel
+	title_label.label_settings = label_setting
 	
 
 func warn_conditional(key:String, condition:bool) -> void:

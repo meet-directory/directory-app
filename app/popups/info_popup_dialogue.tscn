@@ -3,6 +3,18 @@
 [ext_resource type="Script" uid="uid://c6mteqydl40sd" path="res://app/popups/info_popup_dialogue.gd" id="1_d7pvo"]
 [ext_resource type="StyleBox" uid="uid://7s6g47fwt5ve" path="res://resources/styles/greyed_background_panel.tres" id="2_mor8o"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mor8o"]
+bg_color = Color(0.67682666, 0.68, 0.48960003, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.20871013, 0.20871016, 0.20870999, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d7pvo"]
 bg_color = Color(0.5436913, 0.5754469, 0.66517323, 1)
 border_width_left = 1
@@ -18,6 +30,7 @@ corner_radius_bottom_left = 5
 [node name="InfoPopupDialogue" type="CanvasLayer" unique_id=993939486]
 layer = 100
 script = ExtResource("1_d7pvo")
+server_popup_panel_style = SubResource("StyleBoxFlat_mor8o")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=367784045]
 anchors_preset = 15
@@ -41,6 +54,7 @@ custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 
 [node name="Panel" type="Panel" parent="MarginContainer/CenterContainer/Popup" unique_id=238690075]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_d7pvo")
 
