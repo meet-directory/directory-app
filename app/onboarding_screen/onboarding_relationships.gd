@@ -20,7 +20,6 @@ var toggles:int = 0
 
 func _ready() -> void:
 	dating_types.hide()
-	custom_minimum_size.x = min(App.get_screen_size().x*6, 400)
 
 
 func _on_continue_button_pressed() -> void:

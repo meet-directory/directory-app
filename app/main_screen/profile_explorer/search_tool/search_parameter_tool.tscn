@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://eeutadd3g8ww"]
+[gd_scene format=3 uid="uid://eeutadd3g8ww"]
 
 [ext_resource type="Script" uid="uid://cytsucydo1gbd" path="res://app/main_screen/profile_explorer/search_tool/search_parameter_tool.gd" id="1_8s0uw"]
 [ext_resource type="LabelSettings" uid="uid://crec8tr40vb4i" path="res://resources/styles/subtle_grey_text_label_setting.tres" id="2_mujbb"]
@@ -12,46 +12,47 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[node name="SearchParamList" type="VBoxContainer"]
+[node name="SearchParamList" type="VBoxContainer" unique_id=1403061659]
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 390.0
 grow_horizontal = 2
 script = ExtResource("1_8s0uw")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=2137569754]
+visible = false
 layout_mode = 2
 text = "Search Filters"
 horizontal_alignment = 1
 
-[node name="Sliders" type="MarginContainer" parent="."]
+[node name="Sliders" type="MarginContainer" parent="." unique_id=1504678832]
 layout_mode = 2
 
-[node name="Panel2" type="Panel" parent="Sliders"]
+[node name="Panel2" type="Panel" parent="Sliders" unique_id=415500549]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_mujbb")
 
-[node name="MarginContainer" type="MarginContainer" parent="Sliders"]
+[node name="MarginContainer" type="MarginContainer" parent="Sliders" unique_id=420941657]
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 6
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 11
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Sliders/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Sliders/MarginContainer" unique_id=1025495789]
 layout_mode = 2
 
-[node name="DistanceRange" type="VBoxContainer" parent="Sliders/MarginContainer/VBoxContainer"]
+[node name="DistanceRange" type="VBoxContainer" parent="Sliders/MarginContainer/VBoxContainer" unique_id=226756657]
 layout_mode = 2
 theme_override_constants/separation = -13
 
-[node name="Label" type="Label" parent="Sliders/MarginContainer/VBoxContainer/DistanceRange"]
+[node name="Label" type="Label" parent="Sliders/MarginContainer/VBoxContainer/DistanceRange" unique_id=308089562]
 layout_mode = 2
 text = "Distance (miles):"
 label_settings = ExtResource("2_mujbb")
 horizontal_alignment = 1
 
-[node name="DistanceSlider" type="Control" parent="Sliders/MarginContainer/VBoxContainer/DistanceRange"]
+[node name="DistanceSlider" type="Control" parent="Sliders/MarginContainer/VBoxContainer/DistanceRange" unique_id=5519548]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(50, 44)
 layout_mode = 2
@@ -64,17 +65,17 @@ grabber_color = Color(0.80100876, 0.7843172, 0.86191726, 1)
 grabber_pressed_color = Color(0.5631667, 0.5518, 0.62, 1)
 metadata/_custom_type_script = "uid://df2klrys7sahx"
 
-[node name="AgeRange" type="VBoxContainer" parent="Sliders/MarginContainer/VBoxContainer"]
+[node name="AgeRange" type="VBoxContainer" parent="Sliders/MarginContainer/VBoxContainer" unique_id=702838253]
 layout_mode = 2
 theme_override_constants/separation = -13
 
-[node name="Label" type="Label" parent="Sliders/MarginContainer/VBoxContainer/AgeRange"]
+[node name="Label" type="Label" parent="Sliders/MarginContainer/VBoxContainer/AgeRange" unique_id=1912079353]
 layout_mode = 2
 text = "Age (years):"
 label_settings = ExtResource("2_mujbb")
 horizontal_alignment = 1
 
-[node name="AgeSlider" type="Control" parent="Sliders/MarginContainer/VBoxContainer/AgeRange"]
+[node name="AgeSlider" type="Control" parent="Sliders/MarginContainer/VBoxContainer/AgeRange" unique_id=1922755709]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(50, 44)
 layout_mode = 2
@@ -88,24 +89,24 @@ grabber_color = Color(0.80100876, 0.7843172, 0.86191726, 1)
 grabber_pressed_color = Color(0.5631667, 0.5518, 0.62, 1)
 metadata/_custom_type_script = "uid://df2klrys7sahx"
 
-[node name="Checkers" type="MarginContainer" parent="."]
+[node name="Checkers" type="MarginContainer" parent="." unique_id=281044652]
 layout_mode = 2
 
-[node name="Panel2" type="Panel" parent="Checkers"]
+[node name="Panel2" type="Panel" parent="Checkers" unique_id=1929382457]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_mujbb")
 
-[node name="MarginContainer" type="MarginContainer" parent="Checkers"]
+[node name="MarginContainer" type="MarginContainer" parent="Checkers" unique_id=750544714]
 layout_mode = 2
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 6
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 6
 
-[node name="SeenProfiles" type="HBoxContainer" parent="Checkers/MarginContainer"]
+[node name="SeenProfiles" type="HBoxContainer" parent="Checkers/MarginContainer" unique_id=287390899]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Checkers/MarginContainer/SeenProfiles"]
+[node name="Label" type="Label" parent="Checkers/MarginContainer/SeenProfiles" unique_id=1765612186]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Don't show previously seen profiles:"
@@ -113,62 +114,62 @@ label_settings = ExtResource("2_mujbb")
 horizontal_alignment = 2
 autowrap_mode = 2
 
-[node name="DontShowSeenCheckBox" type="CheckBox" parent="Checkers/MarginContainer/SeenProfiles"]
+[node name="DontShowSeenCheckBox" type="CheckBox" parent="Checkers/MarginContainer/SeenProfiles" unique_id=607496047]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="TagFilters" type="MarginContainer" parent="."]
+[node name="TagFilters" type="MarginContainer" parent="." unique_id=591801092]
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="TagFilters"]
+[node name="Panel" type="Panel" parent="TagFilters" unique_id=1026535291]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_mujbb")
 
-[node name="MarginContainer2" type="MarginContainer" parent="TagFilters"]
+[node name="MarginContainer2" type="MarginContainer" parent="TagFilters" unique_id=1467555748]
 layout_mode = 2
 theme_override_constants/margin_left = 2
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TagFilters/MarginContainer2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="TagFilters/MarginContainer2" unique_id=1288850032]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="TagFilters/MarginContainer2/VBoxContainer"]
+[node name="Label" type="Label" parent="TagFilters/MarginContainer2/VBoxContainer" unique_id=1868831894]
 layout_mode = 2
 text = "Tag Filters"
 label_settings = ExtResource("2_mujbb")
 horizontal_alignment = 1
 
-[node name="WantMatchTagsContainer" parent="TagFilters/MarginContainer2/VBoxContainer" instance=ExtResource("3_kalbu")]
+[node name="WantMatchTagsContainer" parent="TagFilters/MarginContainer2/VBoxContainer" unique_id=1704009277 instance=ExtResource("3_kalbu")]
 unique_name_in_owner = true
 layout_mode = 2
 title = "Want to see profiles with:"
 enable_add_tag_feature = false
 
-[node name="MustMatchTagsContainer" parent="TagFilters/MarginContainer2/VBoxContainer" instance=ExtResource("3_kalbu")]
+[node name="MustMatchTagsContainer" parent="TagFilters/MarginContainer2/VBoxContainer" unique_id=45906947 instance=ExtResource("3_kalbu")]
 unique_name_in_owner = true
 layout_mode = 2
 title = "Only show profiles with:"
 enable_add_tag_feature = false
 
-[node name="DontMatchTagsContainer" parent="TagFilters/MarginContainer2/VBoxContainer" instance=ExtResource("3_kalbu")]
+[node name="DontMatchTagsContainer" parent="TagFilters/MarginContainer2/VBoxContainer" unique_id=959104614 instance=ExtResource("3_kalbu")]
 unique_name_in_owner = true
 layout_mode = 2
 title = "Dont show profiles with"
 enable_add_tag_feature = false
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=987675902]
 visible = false
 layout_mode = 2
 
-[node name="Button" type="Button" parent="HBoxContainer"]
+[node name="Button" type="Button" parent="HBoxContainer" unique_id=85364242]
 layout_mode = 2
 size_flags_horizontal = 3
 disabled = true
 text = "Save as Default"
 
-[node name="Button2" type="Button" parent="HBoxContainer"]
+[node name="Button2" type="Button" parent="HBoxContainer" unique_id=468302160]
 layout_mode = 2
 size_flags_horizontal = 3
 disabled = true

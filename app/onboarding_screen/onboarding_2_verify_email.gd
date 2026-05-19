@@ -10,6 +10,15 @@ const text = "An eight-digit code has been sent to %s"
 func _ready() -> void:
 	var email = Server.session_profile.email
 	label.text = text % [email]
+	_check_disable()
+
+func _check_disable():
+	if not is_node_ready():
+		await ready
+	await get_tree().create_timer(1).timeout
+	if App.disable_email_verification:
+		confirmed.emit()
+		
 
 func _on_submit_button_pressed() -> void:
 	var code = line_edit.text

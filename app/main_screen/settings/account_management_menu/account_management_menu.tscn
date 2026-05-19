@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://l0y7vw5m8x5n"]
+[gd_scene format=3 uid="uid://l0y7vw5m8x5n"]
 
 [ext_resource type="Theme" uid="uid://c52euoe38n0nm" path="res://resources/styles/app_theme.tres" id="1_cl6pm"]
 [ext_resource type="Script" uid="uid://dtcp02kmcmeww" path="res://app/main_screen/settings/account_management_menu/account_management_menu.gd" id="2_vl1r3"]
@@ -10,9 +10,12 @@
 [ext_resource type="Script" uid="uid://pggof84jo8it" path="res://app/main_screen/settings/account_management_menu/email_label.gd" id="5_wwrt3"]
 [ext_resource type="LabelSettings" uid="uid://crec8tr40vb4i" path="res://resources/styles/subtle_grey_text_label_setting.tres" id="6_wwrt3"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_nm4s1"]
+font_size = 13
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5bns7"]
 
-[node name="AccountManagementMenu" type="MarginContainer"]
+[node name="AccountManagementMenu" type="MarginContainer" unique_id=1732282786]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -21,94 +24,95 @@ grow_vertical = 2
 theme = ExtResource("1_cl6pm")
 script = ExtResource("2_vl1r3")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="." unique_id=1719287771]
 layout_mode = 2
 theme_override_styles/panel = ExtResource("3_ney4k")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=2002601019]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer" unique_id=607768025]
 layout_mode = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer2"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer2" unique_id=880900686]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer2/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer2/ScrollContainer" unique_id=975097299]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 15
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer" unique_id=89175716]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "⚙️ Account Management"
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer" unique_id=978538651]
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/MarginContainer"]
+[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/MarginContainer" unique_id=995055022]
 layout_mode = 2
 
-[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/MarginContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/MarginContainer" unique_id=1182338510]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/MarginContainer/MarginContainer2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/MarginContainer/MarginContainer2" unique_id=1619886798]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/MarginContainer/MarginContainer2/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/MarginContainer/MarginContainer2/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/MarginContainer/MarginContainer2/VBoxContainer" unique_id=1526265747]
 layout_mode = 2
 text = "Current Email: "
 label_settings = ExtResource("6_wwrt3")
 
-[node name="EmailLabel" type="Label" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/MarginContainer/MarginContainer2/VBoxContainer/HBoxContainer"]
+[node name="EmailLabel" type="Label" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/MarginContainer/MarginContainer2/VBoxContainer" unique_id=497610668]
 layout_mode = 2
+size_flags_horizontal = 3
 text = "user@example.com"
+label_settings = SubResource("LabelSettings_nm4s1")
+horizontal_alignment = 1
+autowrap_mode = 1
 script = ExtResource("5_wwrt3")
 
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/MarginContainer/MarginContainer2/VBoxContainer"]
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/MarginContainer/MarginContainer2/VBoxContainer" unique_id=1488074058]
 layout_mode = 2
 text = "To change your email address, send an email with the above address to contact@meet.directory"
 label_settings = ExtResource("6_wwrt3")
 autowrap_mode = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer" unique_id=2090797654]
 layout_mode = 2
 
-[node name="ChangePasswordMenu" type="MarginContainer" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/VBoxContainer"]
+[node name="ChangePasswordMenu" type="MarginContainer" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/VBoxContainer" unique_id=1199893763]
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/VBoxContainer/ChangePasswordMenu"]
+[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/VBoxContainer/ChangePasswordMenu" unique_id=1934644423]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/VBoxContainer/ChangePasswordMenu"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/VBoxContainer/ChangePasswordMenu" unique_id=804088736]
 layout_mode = 2
 
-[node name="ChangePasswordButton" type="Button" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/VBoxContainer/ChangePasswordMenu/VBoxContainer"]
+[node name="ChangePasswordButton" type="Button" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/VBoxContainer/ChangePasswordMenu/VBoxContainer" unique_id=1400772257]
 layout_mode = 2
 toggle_mode = true
 text = "🔧 Change Password"
 alignment = 0
 
-[node name="DropDownMenu" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/VBoxContainer/ChangePasswordMenu/VBoxContainer" node_paths=PackedStringArray("toggle_button", "collapsable_content") instance=ExtResource("5_vl1r3")]
+[node name="DropDownMenu" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/VBoxContainer/ChangePasswordMenu/VBoxContainer" unique_id=774579365 node_paths=PackedStringArray("toggle_button", "collapsable_content") instance=ExtResource("5_vl1r3")]
 layout_mode = 2
 toggle_button = NodePath("../ChangePasswordButton")
 collapsable_content = NodePath("PasswordFields")
 
-[node name="PasswordFields" type="MarginContainer" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/VBoxContainer/ChangePasswordMenu/VBoxContainer/DropDownMenu"]
+[node name="PasswordFields" type="MarginContainer" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/VBoxContainer/ChangePasswordMenu/VBoxContainer/DropDownMenu" unique_id=2102299415]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -119,52 +123,52 @@ theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 10
 script = ExtResource("4_5bns7")
 
-[node name="PasswordFields" type="VBoxContainer" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/VBoxContainer/ChangePasswordMenu/VBoxContainer/DropDownMenu/PasswordFields"]
+[node name="PasswordFields" type="VBoxContainer" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/VBoxContainer/ChangePasswordMenu/VBoxContainer/DropDownMenu/PasswordFields" unique_id=158944924]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/VBoxContainer/ChangePasswordMenu/VBoxContainer/DropDownMenu/PasswordFields/PasswordFields"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/VBoxContainer/ChangePasswordMenu/VBoxContainer/DropDownMenu/PasswordFields/PasswordFields" unique_id=1609073426]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/VBoxContainer/ChangePasswordMenu/VBoxContainer/DropDownMenu/PasswordFields/PasswordFields/HBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/VBoxContainer/ChangePasswordMenu/VBoxContainer/DropDownMenu/PasswordFields/PasswordFields/HBoxContainer" unique_id=286138394]
 layout_mode = 2
 text = "Current Password"
 label_settings = ExtResource("6_wwrt3")
 
-[node name="OldPasswordField" type="LineEdit" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/VBoxContainer/ChangePasswordMenu/VBoxContainer/DropDownMenu/PasswordFields/PasswordFields/HBoxContainer"]
+[node name="OldPasswordField" type="LineEdit" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/VBoxContainer/ChangePasswordMenu/VBoxContainer/DropDownMenu/PasswordFields/PasswordFields/HBoxContainer" unique_id=692835489]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 secret = true
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/VBoxContainer/ChangePasswordMenu/VBoxContainer/DropDownMenu/PasswordFields/PasswordFields"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/VBoxContainer/ChangePasswordMenu/VBoxContainer/DropDownMenu/PasswordFields/PasswordFields" unique_id=836331165]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/VBoxContainer/ChangePasswordMenu/VBoxContainer/DropDownMenu/PasswordFields/PasswordFields/HBoxContainer2"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/VBoxContainer/ChangePasswordMenu/VBoxContainer/DropDownMenu/PasswordFields/PasswordFields/HBoxContainer2" unique_id=888154598]
 layout_mode = 2
 text = "New Password"
 label_settings = ExtResource("6_wwrt3")
 
-[node name="NewPasswordField" type="LineEdit" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/VBoxContainer/ChangePasswordMenu/VBoxContainer/DropDownMenu/PasswordFields/PasswordFields/HBoxContainer2"]
+[node name="NewPasswordField" type="LineEdit" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/VBoxContainer/ChangePasswordMenu/VBoxContainer/DropDownMenu/PasswordFields/PasswordFields/HBoxContainer2" unique_id=1410849917]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 secret = true
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/VBoxContainer/ChangePasswordMenu/VBoxContainer/DropDownMenu/PasswordFields/PasswordFields"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/VBoxContainer/ChangePasswordMenu/VBoxContainer/DropDownMenu/PasswordFields/PasswordFields" unique_id=359396766]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/VBoxContainer/ChangePasswordMenu/VBoxContainer/DropDownMenu/PasswordFields/PasswordFields/HBoxContainer3"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/VBoxContainer/ChangePasswordMenu/VBoxContainer/DropDownMenu/PasswordFields/PasswordFields/HBoxContainer3" unique_id=1082745183]
 layout_mode = 2
 text = "Confirm New password"
 label_settings = ExtResource("6_wwrt3")
 
-[node name="ConfPasswordField" type="LineEdit" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/VBoxContainer/ChangePasswordMenu/VBoxContainer/DropDownMenu/PasswordFields/PasswordFields/HBoxContainer3"]
+[node name="ConfPasswordField" type="LineEdit" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/VBoxContainer/ChangePasswordMenu/VBoxContainer/DropDownMenu/PasswordFields/PasswordFields/HBoxContainer3" unique_id=440391263]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 secret = true
 
-[node name="WarningBox" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/VBoxContainer/ChangePasswordMenu/VBoxContainer/DropDownMenu/PasswordFields/PasswordFields" instance=ExtResource("5_nm4s1")]
+[node name="WarningBox" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/VBoxContainer/ChangePasswordMenu/VBoxContainer/DropDownMenu/PasswordFields/PasswordFields" unique_id=2145171554 instance=ExtResource("5_nm4s1")]
 unique_name_in_owner = true
 layout_mode = 2
 use_bg_panel = true
@@ -176,36 +180,36 @@ warnings = Dictionary[String, String]({
 "same-pass": "Your new password is the same as your old password."
 })
 
-[node name="SubmitPasswordButton" type="Button" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/VBoxContainer/ChangePasswordMenu/VBoxContainer/DropDownMenu/PasswordFields/PasswordFields"]
+[node name="SubmitPasswordButton" type="Button" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/VBoxContainer/ChangePasswordMenu/VBoxContainer/DropDownMenu/PasswordFields/PasswordFields" unique_id=1406740356]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Submit"
 
-[node name="SuspendAccountButton" type="Button" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/VBoxContainer"]
+[node name="SuspendAccountButton" type="Button" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/VBoxContainer" unique_id=114260644]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "🫥 Suspend Account"
 alignment = 0
 script = ExtResource("4_jnyh5")
 
-[node name="DeleteAccountButton" type="Button" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/VBoxContainer"]
+[node name="DeleteAccountButton" type="Button" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/VBoxContainer" unique_id=1220363773]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "😱 Delete Account"
 alignment = 0
 
-[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/VBoxContainer" unique_id=1488730191]
 layout_mode = 2
 
-[node name="LogoutButton" type="Button" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/VBoxContainer"]
+[node name="LogoutButton" type="Button" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/VBoxContainer" unique_id=2015968814]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "👾 Logout"
 alignment = 0
 
-[node name="CloseButton" type="Button" parent="MarginContainer/VBoxContainer2"]
+[node name="CloseButton" type="Button" parent="MarginContainer/VBoxContainer2" unique_id=370132489]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 8

@@ -57,7 +57,6 @@ func set_sizing():
 
 func display(profile:ProfileResource, must_have_tags:Array[String]=[], wanted_tags:Array[String]=[]) -> void:
 	profile_data = profile
-	#match_options.setup_for_profile(profile_data)
 	name_label.text = profile.username
 	description_label.text = profile.description
 	if description_label.text.is_empty():
@@ -69,17 +68,6 @@ func display(profile:ProfileResource, must_have_tags:Array[String]=[], wanted_ta
 		location_panel.hide()
 	like_button.setup(profile)
 	distance_label.text = "%d miles away" % [profile.miles_away]
-	#var rtags = profile.is_tags.filter(func (t:Tag): return t.type == Tag.TYPE.RelationshipType)
-	#if len(rtags) > 0:
-		#relationship_tags.add_tags(rtags)
-	#else:
-		#relationship_tags.hide()
-	#var ptags = profile.is_tags.filter(func (t:Tag): return t.type == Tag.TYPE.Personal)
-	#if len(ptags) > 0:
-		#personal_tags.add_tags(ptags)
-	#else:
-		#personal_tags.hide()
-	#other_tags.add_tags(profile.is_tags.filter(func (t:Tag): return t.type not in [Tag.TYPE.Personal, Tag.TYPE.RelationshipType]))
 	other_tags.add_tags(profile.is_tags)
 	
 	var tag_containers:Array[TagContainer] = [other_tags] # [relationship_tags, personal_tags, other_tags]

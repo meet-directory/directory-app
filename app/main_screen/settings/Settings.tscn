@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://fqjrmqkdhvkf"]
+[gd_scene format=3 uid="uid://fqjrmqkdhvkf"]
 
 [ext_resource type="Script" uid="uid://m4q17njm7xsi" path="res://app/main_screen/settings/settings.gd" id="1_vu2du"]
 [ext_resource type="PackedScene" uid="uid://b7o8n2d1lrj4u" path="res://app/main_screen/settings/submit_tag_menu/submit_tag_menu.tscn" id="2_gnyii"]
@@ -18,7 +18,7 @@ corner_radius_bottom_left = 3
 expand_margin_left = 18.0
 expand_margin_right = 19.0
 
-[node name="Settings" type="MarginContainer"]
+[node name="Settings" type="MarginContainer" unique_id=1803444015]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -33,67 +33,67 @@ add_tag_menu = ExtResource("2_gnyii")
 account_mgmt_menu = ExtResource("3_ha2qc")
 feedback_menu = ExtResource("4_ha2qc")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1300466006]
 layout_mode = 2
 horizontal_scroll_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer" unique_id=1225049421]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=86361238]
 layout_mode = 2
 text = "Hello, user!"
 script = ExtResource("2_opeqm")
 
-[node name="HSeparator" type="HSeparator" parent="ScrollContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="ScrollContainer/VBoxContainer" unique_id=174596387]
 layout_mode = 2
 
-[node name="EditProfileButton" type="Button" parent="ScrollContainer/VBoxContainer"]
+[node name="EditProfileButton" type="Button" parent="ScrollContainer/VBoxContainer" unique_id=1686295525]
 unique_name_in_owner = true
 layout_mode = 2
 text = "✏️ Edit Profile"
 alignment = 0
 
-[node name="ProfileViewToggle" type="Button" parent="ScrollContainer/VBoxContainer"]
+[node name="ProfileViewToggle" type="Button" parent="ScrollContainer/VBoxContainer" unique_id=594612674]
 layout_mode = 2
 text = "👁️ View Profile"
 alignment = 0
 
-[node name="AddTagButton" type="Button" parent="ScrollContainer/VBoxContainer"]
+[node name="AddTagButton" type="Button" parent="ScrollContainer/VBoxContainer" unique_id=430248914]
 layout_mode = 2
 text = "🏷️ Submit New Tag"
 alignment = 0
 
-[node name="Panel" type="Panel" parent="ScrollContainer/VBoxContainer"]
+[node name="Panel" type="Panel" parent="ScrollContainer/VBoxContainer" unique_id=651006534]
 custom_minimum_size = Vector2(0, 2)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_x8np0")
 
-[node name="PaymentButton" type="Button" parent="ScrollContainer/VBoxContainer"]
+[node name="PaymentButton" type="Button" parent="ScrollContainer/VBoxContainer" unique_id=909982514]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "😇 Donate"
 alignment = 0
 
-[node name="FeedBackButton" type="Button" parent="ScrollContainer/VBoxContainer"]
+[node name="FeedBackButton" type="Button" parent="ScrollContainer/VBoxContainer" unique_id=2132942102]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "📝 Feedback"
 alignment = 0
 
-[node name="Panel2" type="Panel" parent="ScrollContainer/VBoxContainer"]
+[node name="Panel2" type="Panel" parent="ScrollContainer/VBoxContainer" unique_id=784999249]
 custom_minimum_size = Vector2(0, 2)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_x8np0")
 
-[node name="AccountManagementButton" type="Button" parent="ScrollContainer/VBoxContainer"]
+[node name="AccountManagementButton" type="Button" parent="ScrollContainer/VBoxContainer" unique_id=583396824]
 layout_mode = 2
 text = "⚙️ Account Management"
 alignment = 0
 
-[node name="Label2" type="Label" parent="ScrollContainer/VBoxContainer"]
+[node name="VersionLabel" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=1137002817]
 layout_mode = 2
 size_flags_vertical = 10
 text = "v0.1.1-beta"

@@ -119,7 +119,7 @@ func _send_post_request(callback:Callable, endpoint, data:Dictionary = {}, http_
 		'base_url': HTTP_PREFIX + BASE_URL, 
 		'endpoint': endpoint,
 		})
-	if debug: print('POST request to ', url, ' with data ', data, ' and header ', get_cookie_header())
+	if debug: print(' -> POST request to ', url, ' with data ', data, ' and header ', get_cookie_header())
 	
 	var error
 	if !data.is_empty():
@@ -188,7 +188,7 @@ func _http_request_completed(result, response_code, headers, body, callback:Call
 	
 	# response format [{ "name": "dnd" }]
 	_remove_loading_screen()
-	if !callback.is_null(): # call back owner could have been freed while waiting
+	if callback.get_object(): # call back owner could have been freed while waiting
 		callback.call(response_code, response)
 
 func show_default_error_msg(response_code:int):
@@ -216,7 +216,7 @@ func refresh_token(retry_callback:Callable) -> void:
 	if error != OK:
 		push_error("An error occurred in the HTTP request.")
 
-func _on_got_refresh_token(_result, response_code, _headers, body, retry_callback:Callable) -> void:
+func _on_got_refresh_token(result, response_code, headers, body, retry_callback:Callable) -> void:
 	var json = JSON.new()
 	json.parse(body.get_string_from_utf8())
 	var response = json.get_data()
@@ -228,6 +228,7 @@ func _on_got_refresh_token(_result, response_code, _headers, body, retry_callbac
 			retry_callback.call()
 			if debug: print('RETRY!!!')
 		_:
+			if debug: print(' `-> http request response: ', result,' code: ', response_code, ' ', headers, ' body: ', body.get_string_from_utf8(), 'resp: ', response)
 			logout()
 			App.show_login_screen()
 			App.show_error_popup("Unable to authenticate, please login again.")

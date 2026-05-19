@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://duy1kwsnwrcb5"]
+[gd_scene format=3 uid="uid://duy1kwsnwrcb5"]
 
 [ext_resource type="Theme" uid="uid://c52euoe38n0nm" path="res://resources/styles/app_theme.tres" id="1_5i0su"]
 [ext_resource type="Script" uid="uid://cp2q16pyq35lc" path="res://app/login_screen/login.gd" id="2_704r5"]
@@ -8,6 +8,8 @@
 [ext_resource type="LabelSettings" uid="uid://cdcmno7gw1tok" path="res://resources/styles/login_error_label_settings.tres" id="4_v6k8x"]
 [ext_resource type="Script" uid="uid://b4nmfnaeluowr" path="res://app/custom_ui_elements/relative_margin_container.gd" id="4_wwvf7"]
 [ext_resource type="Script" uid="uid://btwfpxf4bhuux" path="res://app/login_screen/scroll_container.gd" id="5_wwvf7"]
+[ext_resource type="LabelSettings" uid="uid://crec8tr40vb4i" path="res://resources/styles/subtle_grey_text_label_setting.tres" id="9_d3omq"]
+[ext_resource type="Script" uid="uid://d2uc7bhpo6e1h" path="res://app/main_screen/settings/version_label.gd" id="10_ncqrk"]
 [ext_resource type="Script" uid="uid://dmkxlpy8ehgun" path="res://app/login_screen/dev_blocker.gd" id="10_t2x35"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_704r5"]
@@ -34,7 +36,7 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
-[node name="LoginScreen" type="MarginContainer"]
+[node name="LoginScreen" type="MarginContainer" unique_id=1978562730]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -43,11 +45,11 @@ grow_vertical = 2
 theme = ExtResource("1_5i0su")
 script = ExtResource("2_704r5")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="." unique_id=778749537]
 layout_mode = 2
 theme_override_styles/panel = ExtResource("3_b5krj")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1748605741]
 layout_mode = 2
 theme_override_constants/margin_left = 184
 theme_override_constants/margin_top = 0
@@ -58,52 +60,52 @@ left = 0.2
 right = 0.2
 metadata/_custom_type_script = "uid://b4nmfnaeluowr"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer" unique_id=1866075014]
 layout_mode = 2
 mouse_filter = 2
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 0
 script = ExtResource("5_wwvf7")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ScrollContainer" unique_id=711098397]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer" unique_id=1282433247]
 layout_mode = 2
 text = "Welcome to"
 label_settings = SubResource("LabelSettings_704r5")
 horizontal_alignment = 1
 autowrap_mode = 1
 
-[node name="Label2" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="Label2" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer" unique_id=283839746]
 layout_mode = 2
 text = "Directory"
 label_settings = SubResource("LabelSettings_v6k8x")
 horizontal_alignment = 1
 autowrap_mode = 1
 
-[node name="Label3" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="Label3" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer" unique_id=1024431122]
 visible = false
 layout_mode = 2
 text = "!!!!!!!! WARNING: I will not be responsible for any data you put into this website."
 label_settings = SubResource("LabelSettings_kv2mc")
 autowrap_mode = 2
 
-[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/ScrollContainer/VBoxContainer" unique_id=778359450]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 
-[node name="Panel" type="Panel" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2"]
+[node name="Panel" type="Panel" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2" unique_id=338708432]
 layout_mode = 2
 theme_override_styles/panel = ExtResource("4_c23a4")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2" unique_id=1500356475]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer" unique_id=1624392998]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme_override_constants/margin_left = 10
@@ -111,89 +113,89 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/MarginContainer" unique_id=2076851293]
 layout_mode = 2
 
-[node name="CreateAccountButton" type="Button" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="CreateAccountButton" type="Button" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/MarginContainer/VBoxContainer" unique_id=2015002324]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Create Account"
 
-[node name="LoginButton" type="Button" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="LoginButton" type="Button" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/MarginContainer/VBoxContainer" unique_id=703884659]
 unique_name_in_owner = true
 layout_mode = 2
 toggle_mode = true
 text = "Login"
 
-[node name="DropDownMenu" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/MarginContainer/VBoxContainer" node_paths=PackedStringArray("toggle_button", "collapsable_content") instance=ExtResource("2_my7at")]
+[node name="DropDownMenu" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/MarginContainer/VBoxContainer" unique_id=762189557 node_paths=PackedStringArray("toggle_button", "collapsable_content") instance=ExtResource("2_my7at")]
 layout_mode = 2
 toggle_button = NodePath("../LoginButton")
 collapsable_content = NodePath("MarginContainer")
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/MarginContainer/VBoxContainer/DropDownMenu"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/MarginContainer/VBoxContainer/DropDownMenu" unique_id=1776604876]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 66.0
 grow_horizontal = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/MarginContainer/VBoxContainer/DropDownMenu/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/MarginContainer/VBoxContainer/DropDownMenu/MarginContainer" unique_id=29488110]
 layout_mode = 2
 
-[node name="UsernameField" type="LineEdit" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/MarginContainer/VBoxContainer/DropDownMenu/MarginContainer/VBoxContainer"]
+[node name="UsernameField" type="LineEdit" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/MarginContainer/VBoxContainer/DropDownMenu/MarginContainer/VBoxContainer" unique_id=1515312478]
 unique_name_in_owner = true
 layout_mode = 2
 placeholder_text = "email"
 
-[node name="PasswordField" type="LineEdit" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/MarginContainer/VBoxContainer/DropDownMenu/MarginContainer/VBoxContainer"]
+[node name="PasswordField" type="LineEdit" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/MarginContainer/VBoxContainer/DropDownMenu/MarginContainer/VBoxContainer" unique_id=1650400707]
 unique_name_in_owner = true
 layout_mode = 2
 placeholder_text = "password"
 secret = true
 
-[node name="LoginButton" type="Button" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/MarginContainer/VBoxContainer/DropDownMenu/MarginContainer/VBoxContainer"]
+[node name="LoginButton" type="Button" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/MarginContainer/VBoxContainer/DropDownMenu/MarginContainer/VBoxContainer" unique_id=1578996230]
 layout_mode = 2
 text = "Login!"
 
-[node name="ErrorPanel" type="MarginContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
+[node name="ErrorPanel" type="MarginContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer" unique_id=724755028]
 unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/ErrorPanel"]
+[node name="Panel" type="Panel" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/ErrorPanel" unique_id=693168965]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_v6k8x")
 
-[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/ErrorPanel"]
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/ErrorPanel" unique_id=275115803]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/ErrorPanel/MarginContainer2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/ErrorPanel/MarginContainer2" unique_id=1646099862]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/ErrorPanel/MarginContainer2/VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/ErrorPanel/MarginContainer2/VBoxContainer" unique_id=985375378]
 layout_mode = 2
 text = "⚠️ Errors"
 
-[node name="HSeparator" type="HSeparator" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/ErrorPanel/MarginContainer2/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/ErrorPanel/MarginContainer2/VBoxContainer" unique_id=1155058441]
 layout_mode = 2
 
-[node name="ErrorMessages" type="VBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/ErrorPanel/MarginContainer2/VBoxContainer"]
+[node name="ErrorMessages" type="VBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/ErrorPanel/MarginContainer2/VBoxContainer" unique_id=1014645700]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="WarnEmailInvalid" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/ErrorPanel/MarginContainer2/VBoxContainer/ErrorMessages"]
+[node name="WarnEmailInvalid" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/ErrorPanel/MarginContainer2/VBoxContainer/ErrorMessages" unique_id=1329172512]
 unique_name_in_owner = true
 layout_mode = 2
 text = "- email must be valid format"
 label_settings = ExtResource("4_v6k8x")
 autowrap_mode = 3
 
-[node name="WarnEmailEmpty" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/ErrorPanel/MarginContainer2/VBoxContainer/ErrorMessages"]
+[node name="WarnEmailEmpty" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/ErrorPanel/MarginContainer2/VBoxContainer/ErrorMessages" unique_id=794631362]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
@@ -201,56 +203,65 @@ text = "- email must not be empty"
 label_settings = ExtResource("4_v6k8x")
 autowrap_mode = 3
 
-[node name="WarnPasswordEmpty" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/ErrorPanel/MarginContainer2/VBoxContainer/ErrorMessages"]
+[node name="WarnPasswordEmpty" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/ErrorPanel/MarginContainer2/VBoxContainer/ErrorMessages" unique_id=293854584]
 unique_name_in_owner = true
 layout_mode = 2
 text = "- password must not be empty"
 label_settings = ExtResource("4_v6k8x")
 autowrap_mode = 3
 
-[node name="WarnIncorrectLogin" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/ErrorPanel/MarginContainer2/VBoxContainer/ErrorMessages"]
+[node name="WarnIncorrectLogin" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/ErrorPanel/MarginContainer2/VBoxContainer/ErrorMessages" unique_id=93165388]
 unique_name_in_owner = true
 layout_mode = 2
 text = "email or password is incorrect!"
 label_settings = ExtResource("4_v6k8x")
 autowrap_mode = 3
 
-[node name="WarnEmailDuplicate" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/ErrorPanel/MarginContainer2/VBoxContainer/ErrorMessages"]
+[node name="WarnEmailDuplicate" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/ErrorPanel/MarginContainer2/VBoxContainer/ErrorMessages" unique_id=1185157920]
 unique_name_in_owner = true
 layout_mode = 2
 text = "There is already an account associated with that email."
 label_settings = ExtResource("4_v6k8x")
 autowrap_mode = 3
 
-[node name="Control" type="Control" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="Control" type="Control" parent="MarginContainer/ScrollContainer/VBoxContainer" unique_id=247774351]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="DevBlocker" type="CanvasLayer" parent="."]
+[node name="VersionLabel" type="Label" parent="MarginContainer" unique_id=1149507969]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 10
+text = "v0.1.1-beta"
+label_settings = ExtResource("9_d3omq")
+horizontal_alignment = 2
+script = ExtResource("10_ncqrk")
+
+[node name="DevBlocker" type="CanvasLayer" parent="." unique_id=685138202]
 visible = false
 script = ExtResource("10_t2x35")
 
-[node name="MarginContainer" type="MarginContainer" parent="DevBlocker"]
+[node name="MarginContainer" type="MarginContainer" parent="DevBlocker" unique_id=796794165]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel2" type="Panel" parent="DevBlocker/MarginContainer"]
+[node name="Panel2" type="Panel" parent="DevBlocker/MarginContainer" unique_id=887737581]
 layout_mode = 2
 theme_override_styles/panel = ExtResource("3_b5krj")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="DevBlocker/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="DevBlocker/MarginContainer" unique_id=1708670646]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Label" type="Label" parent="DevBlocker/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="DevBlocker/MarginContainer/VBoxContainer" unique_id=415752228]
 layout_mode = 2
 text = "Enter development password:"
 
-[node name="LineEdit" type="LineEdit" parent="DevBlocker/MarginContainer/VBoxContainer"]
+[node name="LineEdit" type="LineEdit" parent="DevBlocker/MarginContainer/VBoxContainer" unique_id=633317691]
 layout_mode = 2
 secret = true
 

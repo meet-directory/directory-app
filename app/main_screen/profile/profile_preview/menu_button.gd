@@ -21,8 +21,3 @@ func _input(event: InputEvent) -> void:
 		var is_touch_tap = event is InputEventScreenTouch and event.pressed
 		var is_mouse_click = event is InputEventMouseButton and event.pressed \
 			and event.button_index == MOUSE_BUTTON_LEFT
-
-		if is_touch_tap or is_mouse_click:
-			if not menu.get_global_rect().has_point(event.position) and not get_global_rect().has_point(event.position):
-				button_pressed = false
-				menu.hide()

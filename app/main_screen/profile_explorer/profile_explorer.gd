@@ -9,7 +9,9 @@ extends MarginContainer
 @onready var search_menu: CanvasLayer = %SearchMenu
 @onready var suspended_view: RelativeMarginContainer = %SuspendedView
 @onready var page: VBoxContainer = %Page
+@onready var panel_tab: Panel = %PanelTab
 
+const min_button_size = Vector2(40,40)
 
 func _ready() -> void:
 	selected()
@@ -17,13 +19,22 @@ func _ready() -> void:
 	# show profiles when the app is loaded
 	await get_tree().create_timer(0.05).timeout
 	_refresh_search()
+	search_toggle_button.custom_minimum_size = min_button_size
 
 func _on_search_toggle_button_toggled(toggled_on: bool) -> void:
 	if toggled_on:
-		search_toggle_button.text = "Close"
+		search_toggle_button.text = "Search Filter Editor"
+		await get_tree().process_frame
+		search_toggle_button.custom_minimum_size = search_toggle_button.size + min_button_size * Vector2(1, 0)
+		#search_toggle_button.text = "🔧 Close Search Editor"
 		#search_param_list.show()
+		panel_tab.show()
 	else:
-		search_toggle_button.text = "Edit Search Criteria"
+		#search_toggle_button.text = "🔧 Edit Search"
+		panel_tab.hide()
+		search_toggle_button.text = ""
+		search_toggle_button.custom_minimum_size = min_button_size
+		#_refresh_search()
 
 func _refresh_search() -> void:
 	show_profiles()

@@ -35,8 +35,9 @@ func _on_create_account_button_pressed() -> void:
 		show_error_message(warn_email_empty)
 		has_warning = true
 	elif !valid_email_regex.search(email):
-		warn_email_invalid.show()
-		has_warning = true
+		if !App.disable_email_verification:
+			warn_email_invalid.show()
+			has_warning = true
 	if password != password_conf:
 		has_warning = true
 		show_error_message(warn_password_dont_match)
