@@ -60,6 +60,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
 script = ExtResource("2_odxqi")
 metadata/_custom_type_script = "uid://cmiecml4cjstp"
 
