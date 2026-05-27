@@ -79,6 +79,7 @@ label_settings = ExtResource("8_kuk48")
 
 [node name="Button" type="Button" parent="MarginContainer" unique_id=1574355552]
 layout_mode = 2
+mouse_filter = 1
 theme_override_styles/normal = SubResource("StyleBoxEmpty_51836")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_51836")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_51836")
