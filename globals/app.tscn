@@ -1,10 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://cp7wj74nfjm7s"]
+[gd_scene format=3 uid="uid://cp7wj74nfjm7s"]
 
 [ext_resource type="Script" uid="uid://bdoijywwbgia" path="res://globals/app.gd" id="1_y4sqq"]
 
-[node name="App" type="Node"]
+[node name="App" type="Node" unique_id=1721895330]
 script = ExtResource("1_y4sqq")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=850842781]
+
+[node name="Background" type="MarginContainer" parent="." unique_id=1812981071]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Background" unique_id=347279745]
+layout_mode = 2
+color = Color(0.12833333, 0.112, 0.14, 1)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

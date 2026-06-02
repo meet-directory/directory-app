@@ -1,34 +1,37 @@
-[gd_scene load_steps=6 format=3 uid="uid://pq7nl1g3i242"]
+[gd_scene format=3 uid="uid://pq7nl1g3i242"]
 
 [ext_resource type="Script" uid="uid://bnwhb14ohxien" path="res://app/popups/general_slideup_menu/slide_up_menu.gd" id="1_3cbaw"]
 [ext_resource type="Theme" uid="uid://c52euoe38n0nm" path="res://resources/styles/app_theme.tres" id="2_1qxr2"]
+[ext_resource type="Script" uid="uid://duuskjd1x37tb" path="res://app/custom_ui_elements/safe_margin_container.gd" id="2_jucvp"]
 [ext_resource type="Script" uid="uid://cg1kfg1oqrnic" path="res://app/custom_ui_elements/virtual_keyboard_adjuster.gd" id="3_1qxr2"]
 [ext_resource type="Script" uid="uid://b4nmfnaeluowr" path="res://app/custom_ui_elements/relative_margin_container.gd" id="3_jucvp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cxhc7"]
 bg_color = Color(0.27, 0.27, 0.27, 0.7019608)
 
-[node name="SlideUpMenu" type="CanvasLayer"]
+[node name="SlideUpMenu" type="CanvasLayer" unique_id=1532535073]
 layer = 50
 script = ExtResource("1_3cbaw")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1286698158]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("2_jucvp")
+metadata/_custom_type_script = "uid://duuskjd1x37tb"
 
-[node name="Panel" type="Panel" parent="MarginContainer"]
+[node name="Panel" type="Panel" parent="MarginContainer" unique_id=176241312]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_cxhc7")
 
-[node name="BottomMarker" type="Control" parent="MarginContainer"]
+[node name="BottomMarker" type="Control" parent="MarginContainer" unique_id=2112061912]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="MenuContainer" type="MarginContainer" parent="."]
+[node name="MenuContainer" type="MarginContainer" parent="." unique_id=1894941620]
 unique_name_in_owner = true
 anchors_preset = 15
 anchor_right = 1.0
@@ -36,13 +39,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_1qxr2")
+script = ExtResource("2_jucvp")
+metadata/_custom_type_script = "uid://duuskjd1x37tb"
 
-[node name="VirtualKeyboardAdjuster" type="MarginContainer" parent="MenuContainer"]
+[node name="VirtualKeyboardAdjuster" type="MarginContainer" parent="MenuContainer" unique_id=2128225239]
 layout_mode = 2
 script = ExtResource("3_1qxr2")
 metadata/_custom_type_script = "uid://cg1kfg1oqrnic"
 
-[node name="SideMargins" type="MarginContainer" parent="MenuContainer/VirtualKeyboardAdjuster"]
+[node name="SideMargins" type="MarginContainer" parent="MenuContainer/VirtualKeyboardAdjuster" unique_id=1985107554]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/margin_left = 18

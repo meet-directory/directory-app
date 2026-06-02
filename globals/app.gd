@@ -1,12 +1,13 @@
 extends Node
 @export var is_prod = true
 @export var disable_email_verification = false
-var software_version = 'v0.3.0-beta'
+var software_version = 'v0.3.1-beta'
 ## Prevents downloading photos during development. If using prod, should always be true
 @export var load_photos = true
 
 const keyboard_padding = 0
 var _last_height:float = 0
+var _ui_root:SafeMarginContainer
 
 signal keyboard_opened(height:int)
 signal keyboard_closed
@@ -44,18 +45,28 @@ func _ready():
 	await get_tree().process_frame
 	#PROFILE_VIEW_WIDTH = 250 # for screenshots
 	PROFILE_VIEW_WIDTH = min(get_screen_size().y*0.9 - 120, 400, get_screen_size().x)
+	
+	_ui_root = SafeMarginContainer.new()
+	_ui_root.set_anchors_preset(Control.PRESET_FULL_RECT)
+	add_child(_ui_root)
+	get_tree().current_scene.reparent(_ui_root)
 
 func show_login_screen() -> void:
-	get_tree().change_scene_to_file(Constants.login_screen_file)
+	show_screen(Constants.login_screen_file)
+
+func show_screen(file_name:String) -> void:
+	_ui_root.get_child(0).queue_free()
+	var packed:PackedScene = load(file_name)
+	_ui_root.add_child(packed.instantiate())
 
 func show_main_app_screen() -> void:
 	assert(Server.session_profile)
 	if Server.session_profile.onboarded:
-		get_tree().change_scene_to_file(Constants.main_screen_file)
+		show_screen(Constants.main_screen_file)
 	else:
 		var popup:InfoPopup = show_info_popup("Looks like you started creating an account. Lets finish your profile setup and find your people!")
 		await popup.closed
-		get_tree().change_scene_to_file(Constants.onboarding_screen_file)
+		show_screen(Constants.onboarding_screen_file)
 
 ###################################
 

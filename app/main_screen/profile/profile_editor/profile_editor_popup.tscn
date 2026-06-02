@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://cg1kfg1oqrnic" path="res://app/custom_ui_elements/virtual_keyboard_adjuster.gd" id="2_2f0bb"]
 [ext_resource type="StyleBox" uid="uid://fh3x8tnulkac" path="res://resources/styles/profile_panel_background.tres" id="2_apxo5"]
 [ext_resource type="Theme" uid="uid://c52euoe38n0nm" path="res://resources/styles/app_theme.tres" id="2_lty33"]
+[ext_resource type="Script" uid="uid://duuskjd1x37tb" path="res://app/custom_ui_elements/safe_margin_container.gd" id="2_sim7q"]
 [ext_resource type="Script" uid="uid://b4nmfnaeluowr" path="res://app/custom_ui_elements/relative_margin_container.gd" id="2_t64xu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hse4c"]
@@ -13,12 +14,13 @@ bg_color = Color(0.27, 0.27, 0.27, 0.7019608)
 [node name="ProfileEditorPopup" type="CanvasLayer" unique_id=1899795735]
 script = ExtResource("1_457ld")
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1276960092]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=234569845]
+offset_right = 920.0
+offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("2_sim7q")
+metadata/_custom_type_script = "uid://duuskjd1x37tb"
 
 [node name="Panel" type="Panel" parent="MarginContainer" unique_id=1454725556]
 layout_mode = 2
@@ -28,7 +30,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_hse4c")
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="MenuContainer" type="MarginContainer" parent="." unique_id=1698251010]
+[node name="MenuContainer" type="MarginContainer" parent="." unique_id=535648998]
 unique_name_in_owner = true
 anchors_preset = 13
 anchor_left = 0.5
@@ -40,6 +42,8 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 theme = ExtResource("2_lty33")
+script = ExtResource("2_sim7q")
+metadata/_custom_type_script = "uid://duuskjd1x37tb"
 
 [node name="VirtualKeyboardAdjuster" type="MarginContainer" parent="MenuContainer" unique_id=1120009980]
 layout_mode = 2

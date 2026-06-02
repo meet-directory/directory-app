@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bsxmrfxn3kk03" path="res://app/main_screen/profile/profile_preview/profile_view_popup.gd" id="1_bo5fg"]
 [ext_resource type="PackedScene" uid="uid://cr731ljnp80m6" path="res://app/main_screen/profile/profile_preview/profile_view.tscn" id="2_cbvkh"]
+[ext_resource type="Script" uid="uid://duuskjd1x37tb" path="res://app/custom_ui_elements/safe_margin_container.gd" id="2_iyixu"]
 [ext_resource type="Theme" uid="uid://c52euoe38n0nm" path="res://resources/styles/app_theme.tres" id="2_k0hty"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k0hty"]
@@ -10,12 +11,14 @@ bg_color = Color(0.27, 0.27, 0.27, 0.7019608)
 [node name="ProfileViewPopup" type="CanvasLayer" unique_id=1558917338]
 script = ExtResource("1_bo5fg")
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=523839125]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=924553059]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("2_iyixu")
+metadata/_custom_type_script = "uid://duuskjd1x37tb"
 
 [node name="Panel" type="Panel" parent="MarginContainer" unique_id=1997950774]
 layout_mode = 2
@@ -25,18 +28,20 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_k0hty")
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="MenuContainer" type="MarginContainer" parent="." unique_id=1817063080]
+[node name="MenuContainer" type="MarginContainer" parent="." unique_id=969824543]
 unique_name_in_owner = true
 anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -68.5
-offset_right = 68.5
+offset_left = -104.5
+offset_right = 104.5
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 theme = ExtResource("2_k0hty")
+script = ExtResource("2_iyixu")
+metadata/_custom_type_script = "uid://duuskjd1x37tb"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MenuContainer" unique_id=1292486094]
 layout_mode = 2

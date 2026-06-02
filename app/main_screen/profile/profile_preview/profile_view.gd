@@ -1,4 +1,4 @@
-extends Control
+extends MarginContainer
 class_name ProfileView
 
 @onready var name_label: Label = %NameLabel

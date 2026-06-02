@@ -43,7 +43,7 @@ func _on_onboard_completed(resp_code, _resp) -> void:
 			Server.show_default_error_msg(resp_code)
 
 func _on_profile_retrieved(_prof) -> void:
-	get_tree().change_scene_to_file(Constants.main_screen_file)
+	App.show_screen(Constants.main_screen_file)
 
 func _on_profile_failed() -> void:
 	var window:InfoPopup = App.show_info_popup("Your profile has been saved, but there was an issue with the server :(. Please try opening the app later.")

@@ -61,7 +61,7 @@ func _on_login_request_returned(response_code):
 
 
 func _on_create_account_button_pressed() -> void:
-	get_tree().change_scene_to_file(Constants.onboarding_screen_file)
+	App.show_screen(Constants.onboarding_screen_file)
 	#var email:String = new_username_field.text
 	#var password:String = new_password_field.text
 	#
@@ -90,7 +90,6 @@ func _on_create_account_button_pressed() -> void:
 			#var password:String = new_password_field.text
 			## TODO ensure this login is successful before switching
 			#Server.login(email, password, func (_code): pass)
-			#get_tree().change_scene_to_file(Constants.onboarding_screen_file)
 
 func show_error_message(message:Label):
 	error_panel.show()

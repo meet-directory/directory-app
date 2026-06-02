@@ -1,4 +1,4 @@
-extends Node
+extends Control
 class_name Menu
 
 ## Intended to be used by SlideUpMenu
