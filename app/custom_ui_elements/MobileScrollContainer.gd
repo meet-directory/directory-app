@@ -16,7 +16,6 @@ func update() -> void:
 
 # Recursively find and connect all focusable nodes
 func _connect_text_fields(node: Node) -> void:
-	print('connect ', node)
 	for child in node.get_children():
 		if child is TextEdit or child is LineEdit:
 			child.focus_entered.connect(func (): _focused_field = child)

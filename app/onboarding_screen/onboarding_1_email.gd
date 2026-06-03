@@ -89,17 +89,14 @@ func hide_error_message(message:Label):
 		if !error_messages.get_children().any(func (node): return node.visible):
 			error_panel.hide()
 
-
 func _on_new_password_field_text_changed(_new_text: String) -> void:
 	if new_password_field.text == confirm_password_field.text:
 		hide_error_message(warn_password_dont_match)
 	else:
 		show_error_message(warn_password_dont_match)
 
-
 func _on_confirm_password_field_text_changed(new_text: String) -> void:
 	_on_new_password_field_text_changed(new_text)
-
 
 func _on_new_username_field_text_changed(_new_text: String) -> void:
 	hide_error_message(warn_email_invalid)

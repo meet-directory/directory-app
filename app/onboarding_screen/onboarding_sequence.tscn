@@ -127,8 +127,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_2dlfw")
 
 [node name="VirtualKeyboardAdjuster" type="MarginContainer" parent="VBoxContainer" unique_id=775903173]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 6
+size_flags_vertical = 3
 script = ExtResource("9_2dlfw")
 metadata/_custom_type_script = "uid://cg1kfg1oqrnic"
 
@@ -137,11 +136,10 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(500, 500)
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 6
+size_flags_vertical = 3
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
 script = ExtResource("8_qcmpg")
-metadata/_custom_type_script = "uid://cmiecml4cjstp"
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/VirtualKeyboardAdjuster/ScrollContainer" unique_id=1101376610]
 layout_mode = 2
@@ -157,9 +155,10 @@ theme_override_styles/panel = ExtResource("11_2cvku")
 [node name="Underlay" type="MarginContainer" parent="VBoxContainer/VirtualKeyboardAdjuster/ScrollContainer/MarginContainer" unique_id=322440723]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 0
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
+theme_override_constants/margin_bottom = 20
 
 [connection signal="pressed" from="VBoxContainer/MarginContainer/MarginContainer/HFlowContainer/BackButton" to="." method="_on_back_button_pressed"]
