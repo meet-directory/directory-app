@@ -6,9 +6,8 @@ extends MarginContainer
 @onready var profile_scroller: ProfileScroller = %ProfileScroller
 #@onready var not_found_tab: MarginContainer = %NotFoundView
 
-@onready var search_menu: CanvasLayer = %SearchMenu
 @onready var suspended_view: RelativeMarginContainer = %SuspendedView
-@onready var page: VBoxContainer = %Page
+@onready var page:Control = %Page
 @onready var panel_tab: Panel = %PanelTab
 
 const min_button_size = Vector2(40,40)
@@ -56,12 +55,10 @@ func _on_search_button_pressed() -> void:
 func selected():
 	if Server.session_profile.suspended:
 		suspended_view.show()
-		search_menu.hide()
 		page.hide()
 	else:
 		suspended_view.hide()
-		search_menu.show()
 		page.show()
 
 func deselected():
-	search_menu.hide()
+	pass
