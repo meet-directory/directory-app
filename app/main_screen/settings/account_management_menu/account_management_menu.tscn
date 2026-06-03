@@ -103,6 +103,7 @@ layout_mode = 2
 
 [node name="ChangePasswordButton" type="Button" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/VBoxContainer/ChangePasswordMenu/VBoxContainer" unique_id=1400772257]
 layout_mode = 2
+mouse_filter = 1
 toggle_mode = true
 text = "🔧 Change Password"
 alignment = 0
@@ -190,6 +191,7 @@ text = "Submit"
 [node name="SuspendAccountButton" type="Button" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/VBoxContainer" unique_id=114260644]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 1
 text = "🫥 Suspend Account"
 alignment = 0
 script = ExtResource("4_jnyh5")
@@ -197,6 +199,7 @@ script = ExtResource("4_jnyh5")
 [node name="DeleteAccountButton" type="Button" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/VBoxContainer" unique_id=1220363773]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 1
 text = "😱 Delete Account"
 alignment = 0
 
@@ -206,6 +209,7 @@ layout_mode = 2
 [node name="LogoutButton" type="Button" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/VBoxContainer" unique_id=2015968814]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 1
 text = "👾 Logout"
 alignment = 0
 
