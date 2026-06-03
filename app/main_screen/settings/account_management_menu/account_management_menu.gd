@@ -22,6 +22,7 @@ func _on_deleted(resp_code, _resp) -> void:
 		200:
 			Server.logout()
 			App.show_info_popup("Your account was successfully deleted. Sorry to see you go 👋")
+			closed.emit()
 		_:
 			Server.show_default_error_msg(resp_code)
 
