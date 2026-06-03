@@ -15,8 +15,9 @@ bg_color = Color(0.27, 0.27, 0.27, 0.7019608)
 script = ExtResource("1_457ld")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=234569845]
-offset_right = 920.0
-offset_bottom = 1080.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_sim7q")

@@ -10,8 +10,10 @@ signal location_updated
 func _ready() -> void:
 	match OS.get_name():
 		'Web':
-			request_location_web()
-		'Android':
+			# Need to call this from a user gesture
+			# request_location_web()
+			pass
+		'Android', 'iOS':
 			request_location_desktop()
 		_:
 			request_location_desktop()
@@ -109,7 +111,6 @@ func _on_location_error(args) -> void:
 		else:
 			text = "You denied the location permission. Without your location, we can't show you users in your area. Please refresh the page and allow the permission.\n\n Note that Directory only collects rough location data to see what city you are in."
 		App.show_info_popup(text)
-	
 
 ### Desktop ####################################################################
 # Desktop apps aren't supported yet, just need this for testing

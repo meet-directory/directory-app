@@ -13,8 +13,7 @@ const desktop_scale := 1.5
 const CALIBRATION := {
 	"ios": 1.0,
 	"android": 1.45,
-	"web": 0.6,
-	
+	"web": 0.7,
 }
 
 func _ready() -> void:

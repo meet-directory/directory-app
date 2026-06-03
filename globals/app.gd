@@ -51,11 +51,22 @@ func _ready():
 	add_child(_ui_root)
 	get_tree().current_scene.reparent(_ui_root)
 
+	if App.version == App.VERSIONS.MOBILE_WEB:
+		_show_location_request_popup()
+
+func _show_location_request_popup():
+	var popup:InfoPopup = App.show_info_popup("Allow Location Permission")
+	popup.closed.connect(LocationService.request_location_web)
+
+
 func show_login_screen() -> void:
 	show_screen(Constants.login_screen_file)
 
 func show_screen(file_name:String) -> void:
-	_ui_root.get_child(0).queue_free()
+	for child in _ui_root.get_children():
+		child.queue_free()
+	if _ui_root.get_child_count() > 0:
+		await get_tree().process_frame
 	var packed:PackedScene = load(file_name)
 	_ui_root.add_child(packed.instantiate())
 
