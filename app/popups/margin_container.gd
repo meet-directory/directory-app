@@ -30,7 +30,6 @@ func refit() -> void:
 	var natural := font.get_multiline_string_size(
 		label.text, HORIZONTAL_ALIGNMENT_LEFT, -1, font_size
 	)
-	print('hegith ' , natural)
 	
 	# 2. Width: grow to fit text, cap at screen
 	var want_w: float = natural.x + chrome.x
