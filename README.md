@@ -9,14 +9,15 @@ We are currently working on describing and making the public contribution proces
 
 ### Setting up for development
 
-1. Email me at cecilia@meet.directory for access to the development server and database. 
+1. Email me at cecilia@meet.directory for access to the development server and database.
 2. Download the relevant Godot version [here](https://godotengine.org/). Directory is on Godot 4.7
-3. You should be able to press F5 or the Play button in the upper right to run it immediately.
-4. Sometimes the font setting doesn't import correctly. If the font or emojis
+3. Clone this repository, open godot and import the project by selecting the `project.godot` file from the import dialogue.
+5. You should be able to press F5 or the Play button in the upper right to run it immediately.
+6. Sometimes the font setting doesn't import correctly. If the font or emojis
    on buttons aren't rendering correctly, go to `Project->Project
    Settings->General->GUI->Theme`. Add the font path to the Custom Font field.
    It should be `res://resources/fonts/Open_Sans/static/OpenSans-Regular.ttf`.
-5. Happy editing!
+7. Happy editing!
 
 ### Mobile Development and Testing
 If you are interested in joining Android or iOS internal testing please email me! This will allow you to download the latest releases from app stores before they are public.
