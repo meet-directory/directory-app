@@ -21,7 +21,7 @@ api_url="0.0.0.0:10000"
 config/name="Directory"
 run/main_scene="uid://duy1kwsnwrcb5"
 config/quit_on_go_back=false
-config/features=PackedStringArray("4.6", "Forward Plus")
+config/features=PackedStringArray("4.7", "Forward Plus")
 boot_splash/image="uid://6hd57acjr2eb"
 config/icon="res://icon.svg"
 
@@ -34,7 +34,7 @@ App="*res://globals/app.tscn"
 ScaleManager="*res://globals/scale_manager.gd"
 Websockets="*res://globals/websockets.gd"
 Constants="*res://globals/constants.gd"
-LocationService="*res://globals/location_service.gd"
+LocationService="*res://globals/location/location_service.gd"
 ObjectStorage="*res://globals/object_storage.gd"
 ScrollOwner="*res://globals/scroll_owner.gd"
 ReportOverlay="*res://globals/report_overlay.tscn"

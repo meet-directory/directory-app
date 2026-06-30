@@ -304,11 +304,10 @@ func register_new_user(email:String, password:String, birthdate:String, callback
 	var data = {"email": email,"password": password, "birthdate": birthdate, "lat": LocationService.latitude, "lon": LocationService.longitude, "city": LocationService.city_string}
 	_send_post_request(callback, REGISTER_ENDPOINT, data)
 
-func update_location() -> void:
-	if !LocationService.is_location_updated:
-		await LocationService.location_updated
-	var data = {"lat": LocationService.latitude, "lon": LocationService.longitude, "city": LocationService.city_string}
-	_send_post_request(func (_rc, _r): return, ENDPOINT_UPDATE_LOC, data, _http_request_completed, false)
+func update_location(callback, lat, lon) -> void:
+	# TODO, deprecate the city param on the server so we can remove this now unused parameter
+	var data = {"lat": lat, "lon": lon, "city": ''}
+	_send_post_request(callback, ENDPOINT_UPDATE_LOC, data, _http_request_completed, false)
 
 func get_user_search_params(callback:Callable) -> void:
 	_send_get_request(callback, GET_USER_SEARCH_PARAM_ENDPOINT)
@@ -408,17 +407,31 @@ func fuzzy_search_tags(text:String, callback:Callable) -> void:
 var search_tool:SearchParamList
 
 func query_profiles(callback:Callable, page=0) -> void:
+	# ensure user's default search params have been restored so we don't send a blank query
 	if !search_tool.is_params_retrieved:
 		await search_tool.params_retrived
-	var parameters:Dictionary = search_tool.get_html_query_values()
 	
-	parameters['limit'] = NPROFILES_PER_QUERY
-	parameters['offset'] = page*NPROFILES_PER_QUERY
+	# Ensure location is fresh before querying
+	if LocationService.is_location_expired():
+		if LocationService.location_updated.is_connected(_finish_profile_query):
+			LocationService.location_updated.disconnect(_finish_profile_query)
+		LocationService.location_updated.connect(_finish_profile_query.bind(callback, page))
+		LocationService.start_location_requests()
+		return
 	
-	var param_str:String = ''
-	for param_key in parameters.keys():
-		param_str += "{}={}&".format([param_key, str(parameters[param_key])], "{}")
-	_send_get_request(callback, PROFILE_QUERY_ENDPOINT, param_str)
+	_finish_profile_query(true, callback, page)
+
+func _finish_profile_query(location_updated:bool, callback, page) -> void:
+	if location_updated:
+		var parameters:Dictionary = search_tool.get_html_query_values()
+		
+		parameters['limit'] = NPROFILES_PER_QUERY
+		parameters['offset'] = page*NPROFILES_PER_QUERY
+		
+		var param_str:String = ''
+		for param_key in parameters.keys():
+			param_str += "{}={}&".format([param_key, str(parameters[param_key])], "{}")
+		_send_get_request(callback, PROFILE_QUERY_ENDPOINT, param_str)
 
 
 ### TAGS ########################################################

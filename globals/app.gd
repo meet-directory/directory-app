@@ -1,7 +1,7 @@
 extends Node
 @export var is_prod = true
 @export var disable_email_verification = false
-var software_version = 'v0.3.1-beta'
+var software_version = 'v0.3.2-beta'
 ## Prevents downloading photos during development. If using prod, should always be true
 @export var load_photos = true
 
@@ -56,7 +56,7 @@ func _ready():
 
 func _show_location_request_popup():
 	var popup:InfoPopup = App.show_info_popup("Allow Location Permission")
-	popup.closed.connect(LocationService.request_location_web)
+	popup.closed.connect(LocationService.request_location)
 
 
 func show_login_screen() -> void:

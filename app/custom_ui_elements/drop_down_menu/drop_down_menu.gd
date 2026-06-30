@@ -25,7 +25,7 @@ func _ready() -> void:
 		# avoid menu button being triggered by the first draw
 		# there's probably a better way to do this
 		await get_tree().create_timer(0.5).timeout
-		collapsable_content.item_rect_changed.connect(on_content_size_changed)
+		#collapsable_content.item_rect_changed.connect(on_content_size_changed)
 
 func on_content_size_changed() -> void:
 	# wait a few frames so the element is redrawn at the correct size before expanding
