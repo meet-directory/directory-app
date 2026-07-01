@@ -4,14 +4,13 @@ class_name LocationFinderIOS
 ## Uses the LocationPlugin native plugin (ios/plugins/location_plugin), which wraps
 ## CoreLocation's CLLocationManager and exposes it as a singleton with signals.
 
-## Mirrors CLAuthorizationStatus as reported by the plugin's AuthorizationStatusUpdated signal
-# Values are integer codes from Apple's CLAuthorizationStatus mapped for readability
+## These are Apple's actual raw CLAuthorizationStatus values
 enum AuthStatus {
 	NOT_DETERMINED = 0,
-	WHEN_IN_USE = 1 << 0,
-	ALWAYS = 1 << 1,
-	DENIED = 1 << 2,
-	RESTRICTED = 1 << 3,
+	RESTRICTED = 1,
+	DENIED = 2,
+	AUTHORIZED_ALWAYS = 3,
+	AUTHORIZED_WHEN_IN_USE = 4,
 }
 
 ## Reported by the plugin's LocationStatusUpdated signal
@@ -30,6 +29,7 @@ func request_location():
 	_plugin = _get_plugin()
 	if not _plugin:
 		print("LocationPlugin singleton not available")
+		location_request_failed.emit()
 		return
 
 	if not _plugin.is_connected("LocationUpdated", _on_location_updated):
@@ -47,10 +47,11 @@ func _get_plugin():
 	return null
 
 func _on_authorization_status_updated(status: int) -> void:
-	if status & (AuthStatus.WHEN_IN_USE | AuthStatus.ALWAYS):
-		_plugin.StartLocationService()
-	elif status == AuthStatus.DENIED or status == AuthStatus.RESTRICTED:
-		App.show_info_popup("Directory might not show accurate results without the location permission. Please grant the location permission in the settings.")
+	match status:
+		AuthStatus.AUTHORIZED_ALWAYS, AuthStatus.AUTHORIZED_WHEN_IN_USE:
+			_plugin.StartLocationService()
+		AuthStatus.DENIED, AuthStatus.RESTRICTED:
+			App.show_info_popup("Directory might not show accurate results without the location permission. Please grant the location permission in the settings.")
 
 func _on_location_status_updated(status: int) -> void:
 	if status == LocStatus.NOT_ENABLED:
