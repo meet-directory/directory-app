@@ -26,7 +26,8 @@ func _ready() -> void:
 	match OS.get_name():
 		"Android":
 			_location_finder = LocationFinderAndroid.new()
-		# TODO: iOS
+		"iOS":
+			_location_finder = LocationFinderIOS.new()
 		'Web':
 			_location_finder = LocationFinderWeb.new()
 			# Not currently supporting mobile web, but if we do,
