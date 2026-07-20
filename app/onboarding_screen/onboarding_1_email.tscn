@@ -112,17 +112,20 @@ autowrap_mode = 3
 unique_name_in_owner = true
 layout_mode = 2
 placeholder_text = "account email"
+virtual_keyboard_type = 5
 
 [node name="NewPasswordField" type="LineEdit" parent="VBoxContainer2" unique_id=1112566254]
 unique_name_in_owner = true
 layout_mode = 2
 placeholder_text = "new password"
+virtual_keyboard_type = 6
 secret = true
 
 [node name="ConfirmPasswordField" type="LineEdit" parent="VBoxContainer2" unique_id=706465365]
 unique_name_in_owner = true
 layout_mode = 2
 placeholder_text = "confirm password"
+virtual_keyboard_type = 6
 secret = true
 
 [node name="CreateAccountButton" type="Button" parent="VBoxContainer2" unique_id=220678546]

@@ -146,11 +146,13 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 placeholder_text = "email"
+virtual_keyboard_type = 5
 
 [node name="PasswordField" type="LineEdit" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/MarginContainer/VBoxContainer/DropDownMenu/MarginContainer/VBoxContainer" unique_id=1650400707]
 unique_name_in_owner = true
 layout_mode = 2
 placeholder_text = "password"
+virtual_keyboard_type = 6
 secret = true
 
 [node name="LoginButton" type="Button" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/MarginContainer/VBoxContainer/DropDownMenu/MarginContainer/VBoxContainer" unique_id=1578996230]

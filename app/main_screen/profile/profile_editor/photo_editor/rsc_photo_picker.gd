@@ -79,7 +79,6 @@ func _open_ios_photo_picker():
 		_picker = Engine.get_singleton("PhotoPicker")
 		_picker.connect("image_picked", _on_ios_image_picked)
 		_picker.connect("permission_updated", _on_permission_updated)
-		
 	else:
 		print("PhotoPicker not available — only works on iOS device/simulator")
 	
@@ -98,7 +97,6 @@ func _on_permission_updated(granted: bool):
 
 
 ################  ANDROID  #########################################################
-
 func _open_android_photo_picker():
 	if Engine.has_singleton("GodotGetImage"):
 		_picker = Engine.get_singleton("GodotGetImage")

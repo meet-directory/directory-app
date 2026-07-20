@@ -3,7 +3,7 @@ class_name ProfileEditor
 
 
 @onready var tag_container: TagSelectorContainer = %Tags
-@onready var name_edit: LineEdit = %NameEdit
+@onready var name_edit: TextEdit = %NameEdit
 @onready var description_edit: MaxLengthTextEdit = %DescriptionEdit
 @onready var photo_viewer: PhotoViewer = %PhotoViewer
 @onready var edit_profile_container: Control = %EditProfileContainer
@@ -20,6 +20,15 @@ func _ready() -> void:
 	Server.user_session_loaded.connect(_on_session_profile_loaded)
 	call_deferred("set_sizing")
 	custom_minimum_size.x = App.PROFILE_VIEW_WIDTH
+	_set_mouse_filter(edit_photos_container)
+	_set_mouse_filter(edit_profile_container)
+
+func _set_mouse_filter(root:Node) -> void:
+	if root is Control:
+		if root.mouse_filter == Control.MOUSE_FILTER_STOP:
+			root.mouse_filter = Control.MOUSE_FILTER_PASS
+	for node in root.get_children():
+		_set_mouse_filter(node)
 
 func set_sizing():
 	### Ensure the name is always visible, even on small displays

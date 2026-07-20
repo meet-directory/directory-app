@@ -1,19 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://bbh7rn8ndc5br"]
+[gd_scene format=3 uid="uid://bbh7rn8ndc5br"]
 
 [ext_resource type="Script" uid="uid://bx4hv65weu3yj" path="res://app/custom_ui_elements/max_length_text_edit/max_length_text_edit.gd" id="1_2ffkc"]
 [ext_resource type="LabelSettings" uid="uid://crec8tr40vb4i" path="res://resources/styles/subtle_grey_text_label_setting.tres" id="2_xuip7"]
 
-[node name="MaxLengthTextEdit" type="MarginContainer"]
+[node name="MaxLengthTextEdit" type="MarginContainer" unique_id=1754396050]
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 172.0
 grow_horizontal = 2
 script = ExtResource("1_2ffkc")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1870994595]
 layout_mode = 2
 
-[node name="TextEdit" type="TextEdit" parent="VBoxContainer"]
+[node name="TextEdit" type="TextEdit" parent="VBoxContainer" unique_id=288295027]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
@@ -21,34 +21,37 @@ mouse_filter = 1
 theme_override_colors/font_placeholder_color = Color(0.8745098, 0.8745098, 0.8745098, 0.1764706)
 theme_override_font_sizes/font_size = 16
 placeholder_text = "placeholder"
+selecting_enabled = false
 wrap_mode = 1
+tab_input_mode = false
+scroll_fit_content_height = true
 caret_blink = true
 caret_multiple = false
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer" unique_id=1923215361]
 layout_mode = 2
 
-[node name="Label4" type="Label" parent="VBoxContainer/HBoxContainer4"]
+[node name="Label4" type="Label" parent="VBoxContainer/HBoxContainer4" unique_id=1179222340]
 layout_mode = 2
 text = "chars left: "
 label_settings = ExtResource("2_xuip7")
 horizontal_alignment = 2
 
-[node name="CharsUsedLabel" type="Label" parent="VBoxContainer/HBoxContainer4"]
+[node name="CharsUsedLabel" type="Label" parent="VBoxContainer/HBoxContainer4" unique_id=1765312398]
 unique_name_in_owner = true
 layout_mode = 2
 text = "300"
 label_settings = ExtResource("2_xuip7")
 horizontal_alignment = 2
 
-[node name="Label3" type="Label" parent="VBoxContainer/HBoxContainer4"]
+[node name="Label3" type="Label" parent="VBoxContainer/HBoxContainer4" unique_id=959762400]
 layout_mode = 2
 size_flags_horizontal = 10
 text = "max length:"
 label_settings = ExtResource("2_xuip7")
 horizontal_alignment = 2
 
-[node name="MaxLenLabel" type="Label" parent="VBoxContainer/HBoxContainer4"]
+[node name="MaxLenLabel" type="Label" parent="VBoxContainer/HBoxContainer4" unique_id=1213462400]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8

@@ -6,11 +6,14 @@
 [ext_resource type="Script" uid="uid://cmiecml4cjstp" path="res://app/custom_ui_elements/MobileScrollContainer.gd" id="2_odxqi"]
 [ext_resource type="PackedScene" uid="uid://407tgnvratx3" path="res://app/main_screen/profile/profile_editor/photo_editor/photo_edit_arranger.tscn" id="2_uc052"]
 [ext_resource type="PackedScene" uid="uid://bbh7rn8ndc5br" path="res://app/custom_ui_elements/max_length_text_edit/max_length_text_edit.tscn" id="3_50a7t"]
+[ext_resource type="Script" uid="uid://b17ke3p6q4p8k" path="res://app/main_screen/profile/profile_editor/name_edit.gd" id="4_ia2bq"]
 [ext_resource type="Script" uid="uid://b64fitfbob0sm" path="res://app/main_screen/profile/profile_editor/photo_editor/photo_editor.gd" id="4_u4xtl"]
 [ext_resource type="Script" uid="uid://dvmwxd1o1wnpy" path="res://app/main_screen/profile/profile_editor/relationship_types.gd" id="5_o0lig"]
 [ext_resource type="StyleBox" uid="uid://7s6g47fwt5ve" path="res://resources/styles/greyed_background_panel.tres" id="6_lgiu3"]
 [ext_resource type="LabelSettings" uid="uid://crec8tr40vb4i" path="res://resources/styles/subtle_grey_text_label_setting.tres" id="6_x0y50"]
 [ext_resource type="Script" uid="uid://dyn8ohaaqynr8" path="res://app/main_screen/profile/profile_editor/identity_masks.gd" id="8_0y8wp"]
+[ext_resource type="Script" uid="uid://bxxuafx42ouqh" path="res://app/main_screen/profile/profile_editor/h_box_container_2.gd" id="11_3snjn"]
+[ext_resource type="Script" uid="uid://crp27fimnllu6" path="res://app/main_screen/profile/profile_editor/h_box_container.gd" id="11_5xh0w"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_re2j5"]
 bg_color = Color(0.6, 0.6, 0.6, 0.101960786)
@@ -93,12 +96,12 @@ layout_mode = 2
 layout_mode = 2
 text = "Display Name"
 
-[node name="NameEdit" type="LineEdit" parent="MarginContainer/EditProfileContainer/EditProfileContainer/VBoxContainer/HBoxContainer" unique_id=1222192748]
+[node name="NameEdit" type="TextEdit" parent="MarginContainer/EditProfileContainer/EditProfileContainer/VBoxContainer/HBoxContainer" unique_id=332205773]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 size_flags_horizontal = 3
-mouse_filter = 1
-max_length = 80
+script = ExtResource("4_ia2bq")
 
 [node name="DescriptionLabel" type="Label" parent="MarginContainer/EditProfileContainer/EditProfileContainer/VBoxContainer" unique_id=1939382289]
 layout_mode = 2
@@ -317,8 +320,27 @@ layout_mode = 2
 button_pressed = true
 text = "🤠 Something else"
 
+[node name="HSeparator5" type="HSeparator" parent="MarginContainer/EditProfileContainer/EditProfileContainer/VBoxContainer" unique_id=1975486927]
+layout_mode = 2
+theme_override_constants/separation = 21
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/EditProfileContainer/EditProfileContainer/VBoxContainer" unique_id=197232180]
+layout_mode = 2
+script = ExtResource("11_3snjn")
+
+[node name="CancelEditButton" type="Button" parent="MarginContainer/EditProfileContainer/EditProfileContainer/VBoxContainer/HBoxContainer2" unique_id=1546448363]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Cancel Changes"
+
+[node name="SaveEditButton" type="Button" parent="MarginContainer/EditProfileContainer/EditProfileContainer/VBoxContainer/HBoxContainer2" unique_id=946792103]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Save Profile"
+
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/EditProfileContainer" unique_id=1354946789]
 layout_mode = 2
+script = ExtResource("11_5xh0w")
 
 [node name="CancelEditButton" type="Button" parent="MarginContainer/EditProfileContainer/HBoxContainer" unique_id=1750721892]
 layout_mode = 2
@@ -386,6 +408,9 @@ size_flags_horizontal = 3
 text = "Save Changes"
 
 [connection signal="pressed" from="MarginContainer/EditProfileContainer/EditProfileContainer/VBoxContainer/EditPhotosButton" to="." method="_on_edit_photos_button_pressed"]
+[connection signal="text_changed" from="MarginContainer/EditProfileContainer/EditProfileContainer/VBoxContainer/HBoxContainer/NameEdit" to="MarginContainer/EditProfileContainer/EditProfileContainer/VBoxContainer/HBoxContainer/NameEdit" method="_on_text_changed"]
+[connection signal="pressed" from="MarginContainer/EditProfileContainer/EditProfileContainer/VBoxContainer/HBoxContainer2/CancelEditButton" to="." method="_on_cancel_edit_button_pressed"]
+[connection signal="pressed" from="MarginContainer/EditProfileContainer/EditProfileContainer/VBoxContainer/HBoxContainer2/SaveEditButton" to="." method="_on_save_edit_button_pressed"]
 [connection signal="pressed" from="MarginContainer/EditProfileContainer/HBoxContainer/CancelEditButton" to="." method="_on_cancel_edit_button_pressed"]
 [connection signal="pressed" from="MarginContainer/EditProfileContainer/HBoxContainer/SaveEditButton" to="." method="_on_save_edit_button_pressed"]
 [connection signal="editing_finished" from="MarginContainer/EditPhotosContainer/PhotoEditor" to="." method="_on_photo_editor_editing_finished"]
