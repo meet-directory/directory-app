@@ -1,7 +1,7 @@
 extends Node
 @export var is_prod = true
 @export var disable_email_verification = false
-var software_version = 'v0.3.2-beta'
+var software_version = 'v0.3.3-beta'
 ## Prevents downloading photos during development. If using prod, should always be true
 @export var load_photos = true
 
@@ -78,6 +78,7 @@ func show_main_app_screen() -> void:
 		var popup:InfoPopup = show_info_popup("Looks like you started creating an account. Lets finish your profile setup and find your people!")
 		await popup.closed
 		show_screen(Constants.onboarding_screen_file)
+
 
 ###################################
 
